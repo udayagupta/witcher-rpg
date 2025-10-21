@@ -1,0 +1,52 @@
+{
+  "white_orchard": {
+    "name": "White Orchard",
+    "place_description": "White Orchard is a region and village located in Temeria famous for its fruit orchards, whose boughs burst out white blossoms come spring. The Ismena river flows through the village and continues north.",
+    "badge": "./images/white-orchard-badge.png",
+    "contracts": [
+      {
+        "questId": 1,
+        "contract_name": "Beast of White Orchard",
+        "monster_id": "griffin",
+        "monster_quantity": 1,
+        "reward": 500,
+        "exp": 200,
+        "short_description": "A griffin has been terrorizing the fields near the Ismena River.",
+        "description": "A Griffin has made its nest near the fields south of the Ismena River. It has been preying on livestock and even attacked a patrol. Villagers are offering a handsome reward for slaying the beast and bringing proof of the kill.",
+        "isCompleted": false
+      },
+      {
+        "questId": 2,
+        "contract_name": "Drowners by the Old Mill",
+        "monster_id": "drowner",
+        "monster_quantity": 3,
+        "reward": 200,
+        "exp": 80,
+        "short_description": "Drowners lurking near the old mill are scaring the fishermen away.",
+        "description": "Several drowners have been sighted along the riverbank near the old mill. Fishermen fear to go near the water after dusk. The village elder seeks someone skilled enough to cleanse the area of the monsters.",
+        "isCompleted": false
+      },
+      {
+        "questId": 3,
+        "contract_name": "Song Beneath the River",
+        "monster_id": "siren",
+        "monster_quantity": 3,
+        "reward": 400,
+        "exp": 100,
+        "short_description": "Sailors report eerie songs luring them toward the river cliffs.",
+        "description": "Sailors traveling the Ismena River report eerie singing that lures them toward the rocks at night. Those who follow never return. The locals suspect a group of sirens nesting near the river cliffs. A reward is offered for their heads.",
+        "isCompleted": false
+      },
+      {
+        "questId": 4,
+        "contract_name": "Devil by the well",
+        "monster_id": "devil-by-the-well",
+        "monster_quantity": 1,
+        "reward": 300,
+        "exp": 100,
+        "short_description": "Villagers of the Abandoned Village claim a vengeful spirit haunts the old well, dragging the living to their deaths",
+        "description": "Villagers report a restless spirit by the old well. It attacks anyone who ventures too close. The elders promise a reward for lifting the curse. None dare fetch water or till the nearby fields, for the ghost's wailing is heard at dawn and dusk. Any witcher brave enough to face the spirit shall be paid 300 crowns upon proof of the wraith’s defeat."
+      }
+    ]
+  }
+}

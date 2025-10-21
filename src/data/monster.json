@@ -1,0 +1,34 @@
+{
+    "griffin": {
+        "name": "Griffin",
+        "species": "Hybrid",
+        "vitality": 1200,
+        "weakness": ["Hybrid Oil", "Aard"],
+        "attack": [60, 80],
+        "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown"
+    },
+    "drowner": {
+        "name": "Drowner",
+        "species": "Necrophage",
+        "vitality": 500,
+        "weakness": ["Necrophage Oil", "Igni"],
+        "attack": [20, 40],
+        "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners."
+    },
+    "siren": {
+        "name": "Siren",
+        "species": "Hybrid",
+        "vitality": 600,
+        "weakness": ["Hybrid Oil", "Aard", "Igni"],
+        "attack": [30, 50],
+        "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm."
+    },
+    "devil-by-the-well": {
+        "name": "Devil by the well",
+        "species": "Specter",
+        "vitality": 700,
+        "weakness": ["Yrden", "Specter Oil"],
+        "attack": [40, 50],
+        "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths."
+    }
+}

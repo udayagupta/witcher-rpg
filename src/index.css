@@ -1,1 +1,71 @@
 @import "tailwindcss";
+
+
+@font-face {
+    font-family: "The Witcher";
+    src: url("./thewitcher-font/Thewitcher.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "PT Sans";
+    src: url("./PT_Sans/PTSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+}
+
+.scale-on-active:active {
+    scale: 0.95;
+}
+
+.witcher-font {
+    font-family: "The Witcher";
+}
+
+
+.pt-sans-font {
+    font-family: "PT Sans";
+}
+
+.contracts-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 20px;
+    overflow: auto;
+}
+
+
+.side-bar-link {
+    border: 1px solid;
+    padding: 16px;
+    font-size: 18px;
+    transition: 300ms ease;
+    position: relative;
+    /* border-radius: 8px; */
+}
+
+.side-bar-link:hover {
+    color: orange;
+    cursor: pointer;
+    border-color: orange;
+}
+
+.side-bar-link:active {
+    scale: 0.95;
+}
+
+/* .side-bar-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: orange;
+  border-radius: 1px;
+  animation: underlinePop 0.3s ease;
+}
+
+@keyframes underlinePop {
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
+} */

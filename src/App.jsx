@@ -1,9 +1,11 @@
+import MainGameScreen from "./components/MainGameScreen/MainGameScreen.jsx";
+
 function App() {
 
   return (
-    <>
-      <h1 className="text-red-500">Hello world</h1>
-    </>
+    <main>
+      <MainGameScreen />
+    </main>
   )
 }
 
