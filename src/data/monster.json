@@ -5,7 +5,12 @@
         "vitality": 1200,
         "weakness": ["Hybrid Oil", "Aard"],
         "attack": [60, 80],
-        "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown"
+        "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
+        "img_url": "",
+        "drops": [
+            { "id": "hybrid_oil", "name": "Hybrid Oil", "type": "oil", "chance": 0.35, "qty": [1,1] },
+            { "id": "potion_small", "name": "Health Potion", "type": "potion", "chance": 0.25, "qty": [1,1], "heal": 150 }
+        ]
     },
     "drowner": {
         "name": "Drowner",
@@ -13,7 +18,12 @@
         "vitality": 500,
         "weakness": ["Necrophage Oil", "Igni"],
         "attack": [20, 40],
-        "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners."
+        "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners.",
+        "img_url": "",
+        "drops": [
+            { "id": "necrophage_oil", "name": "Necrophage Oil", "type": "oil", "chance": 0.30, "qty": [1,1] },
+            { "id": "potion_small", "name": "Health Potion", "type": "potion", "chance": 0.2, "qty": [1,1], "heal": 100 }
+        ]
     },
     "siren": {
         "name": "Siren",
@@ -21,7 +31,12 @@
         "vitality": 600,
         "weakness": ["Hybrid Oil", "Aard", "Igni"],
         "attack": [30, 50],
-        "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm."
+        "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm.",
+        "img_url": "",
+        "drops": [
+            { "id": "hybrid_oil", "name": "Hybrid Oil", "type": "oil", "chance": 0.28, "qty": [1,1] },
+            { "id": "potion_small", "name": "Health Potion", "type": "potion", "chance": 0.22, "qty": [1,1], "heal": 120 }
+        ]
     },
     "devil-by-the-well": {
         "name": "Devil by the well",
@@ -29,6 +44,64 @@
         "vitality": 700,
         "weakness": ["Yrden", "Specter Oil"],
         "attack": [40, 50],
-        "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths."
+        "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths.",
+        "img_url": "",
+        "drops": [
+            { "id": "specter_oil", "name": "Specter Oil", "type": "oil", "chance": 0.30, "qty": [1,1] },
+            { "id": "ectoplasm", "name": "Ectoplasm", "type": "material", "chance": 0.20, "qty": [1,2] }
+        ]
+    }
+    ,
+    "noonwraith": {
+        "name": "Noonwraith",
+        "species": "Specter",
+        "vitality": 850,
+        "weakness": ["Yrden", "Specter Oil", "Quen"],
+        "attack": [45, 65],
+        "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
+        "img_url": "",
+        "drops": [
+            { "id": "specter_oil", "name": "Specter Oil", "type": "oil", "chance": 0.4, "qty": [1,1] },
+            { "id": "potion_medium", "name": "Greater Health Potion", "type": "potion", "chance": 0.18, "qty": [1,1], "heal": 250 }
+        ]
+    },
+    "leshen": {
+        "name": "Leshen",
+        "species": "Cursed Woodland Spirit",
+        "vitality": 1400,
+        "weakness": ["Relict Oil", "Yrden", "Aard"],
+        "attack": [70, 95],
+        "bestiary_entry": "An ancient forest guardian turned hostile. Leshens command roots and animals to do their bidding — they are cunning and territorial.",
+        "img_url": "",
+        "drops": [
+            { "id": "relict_oil", "name": "Relict Oil", "type": "oil", "chance": 0.28, "qty": [1,1] },
+            { "id": "leshen_root", "name": "Leshen Root", "type": "material", "chance": 0.35, "qty": [1,2] }
+        ]
+    },
+    "wyvern": {
+        "name": "Wyvern",
+        "species": "Draconid",
+        "vitality": 1100,
+        "weakness": ["Draconid Oil", "Igni"],
+        "attack": [55, 85],
+        "bestiary_entry": "Smaller than dragons but far from harmless — wyverns are fast, aggressive, and often nest on cliffs above human settlements.",
+        "img_url": "",
+        "drops": [
+            { "id": "draconid_oil", "name": "Draconid Oil", "type": "oil", "chance": 0.32, "qty": [1,1] },
+            { "id": "wyvern_scale", "name": "Wyvern Scale", "type": "material", "chance": 0.4, "qty": [1,3] }
+        ]
+    },
+    "nekker": {
+        "name": "Nekker",
+        "species": "Cursed Beast",
+        "vitality": 300,
+        "weakness": ["Necrophage Oil", "Igni"],
+        "attack": [15, 30],
+        "bestiary_entry": "Small, vicious, and dangerous in packs. Nekkering swarms can overwhelm lone travelers with their numbers and speed.",
+        "img_url": "",
+        "drops": [
+            { "id": "necrophage_oil", "name": "Necrophage Oil", "type": "oil", "chance": 0.22, "qty": [1,1] },
+            { "id": "potion_small", "name": "Health Potion", "type": "potion", "chance": 0.15, "qty": [1,1], "heal": 80 }
+        ]
     }
 }

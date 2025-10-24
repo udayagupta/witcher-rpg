@@ -1,0 +1,249 @@
+{
+  "steel_swords": {
+    "kaer_morhen_steel_sword": {
+      "id": "kaer_morhen_steel_sword",
+      "name": "Kaer Morhen Steel Sword",
+      "type": "weapon",
+      "subtype": "steel",
+      "rarity": "rare",
+      "level_req": 5,
+      "attack": [
+        60,
+        85
+      ],
+      "durability": 120,
+      "price": 800,
+      "description": "A well-tempered steel blade from Kaer Morhen. Good vs humans and beasts."
+    },
+    "steel_sword_basic": {
+      "id": "steel_sword_basic",
+      "name": "Basic Steel Sword",
+      "type": "weapon",
+      "subtype": "steel",
+      "rarity": "common",
+      "level_req": 1,
+      "attack": [
+        20,
+        35
+      ],
+      "durability": 60,
+      "price": 120,
+      "description": "An ordinary steel sword. Reliable and cheap."
+    }
+  },
+  "silver_swords": {
+    "kaer_morhen_silver_sword": {
+      "id": "kaer_morhen_silver_sword",
+      "name": "Kaer Morhen Silver Sword",
+      "type": "weapon",
+      "subtype": "silver",
+      "rarity": "rare",
+      "level_req": 5,
+      "attack": [
+        70,
+        100
+      ],
+      "durability": 100,
+      "price": 1200,
+      "description": "Forged to fight monsters — silver cuts through many unnatural defenses."
+    },
+    "silver_sword_basic": {
+      "id": "silver_sword_basic",
+      "name": "Basic Silver Sword",
+      "type": "weapon",
+      "subtype": "silver",
+      "rarity": "uncommon",
+      "level_req": 1,
+      "attack": [
+        30,
+        50
+      ],
+      "durability": 50,
+      "price": 350,
+      "description": "A simple silver blade — effective against many monsters."
+    }
+  },
+  "armor": {
+    "kaer_morhen_armor": {
+      "id": "kaer_morhen_armor",
+      "name": "Kaer Morhen Armor",
+      "type": "armor",
+      "slot": "body",
+      "rarity": "rare",
+      "level_req": 5,
+      "defense": 50,
+      "durability": 200,
+      "price": 900,
+      "description": "Sturdy armor issued at Kaer Morhen. Excellent protection without too much weight."
+    },
+    "kaer_morhen_trousers": {
+      "id": "kaer_morhen_trousers",
+      "name": "Kaer Morhen Trousers",
+      "type": "armor",
+      "slot": "legs",
+      "rarity": "rare",
+      "level_req": 5,
+      "defense": 22,
+      "durability": 120,
+      "price": 350,
+      "description": "Durable trousers used by witchers-in-training."
+    },
+    "kaer_morhen_boots": {
+      "id": "kaer_morhen_boots",
+      "name": "Kaer Morhen Boots",
+      "type": "armor",
+      "slot": "feet",
+      "rarity": "rare",
+      "level_req": 5,
+      "defense": 18,
+      "durability": 100,
+      "price": 220,
+      "description": "Boots worn by witchers — comfortable and protective."
+    },
+    "viper_basic_armor": {
+      "id": "viper_basic_armor",
+      "name": "Viper Basic Armor",
+      "type": "armor",
+      "slot": "body",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 20,
+      "durability": 200,
+      "price": 200,
+      "description": "Sturdy leather armor reinforced with metal plates, favored by witchers of the Viper School."
+    },
+    "viper_basic_gauntlets": {
+      "id": "viper_basic_gauntlets",
+      "name": "Viper Basic Gauntlets",
+      "type": "armor",
+      "slot": "hands",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 8,
+      "durability": 120,
+      "price": 120,
+      "description": "Simple but durable gloves that improve grip and slightly boost protection."
+    },
+    "viper_basic_trousers": {
+      "id": "viper_basic_trousers",
+      "name": "Viper Basic Trousers",
+      "type": "armor",
+      "slot": "legs",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 10,
+      "durability": 150,
+      "price": 150,
+      "description": "Lightweight trousers that allow for flexibility in combat without sacrificing too much protection."
+    },
+    "viper_basic_boots": {
+      "id": "viper_basic_boots",
+      "name": "Viper Basic Boots",
+      "type": "armor",
+      "slot": "feet",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 7,
+      "durability": 100,
+      "price": 100,
+      "description": "Witcher-grade boots designed for long treks and swift movement."
+    }
+  },
+  "potions": {
+    "potion_small": {
+      "id": "potion_small",
+      "name": "Small Health Potion",
+      "type": "potion",
+      "rarity": "common",
+      "heal": 120,
+      "price": 60,
+      "description": "Restores a small amount of vitality."
+    },
+    "potion_medium": {
+      "id": "potion_medium",
+      "name": "Greater Health Potion",
+      "type": "potion",
+      "rarity": "uncommon",
+      "heal": 250,
+      "price": 180,
+      "description": "Restores a moderate amount of vitality."
+    },
+    "potion_greater": {
+      "id": "potion_greater",
+      "name": "Superior Health Potion",
+      "type": "potion",
+      "rarity": "rare",
+      "heal": 500,
+      "price": 500,
+      "description": "Large restorative potion. Expensive, but saves lives."
+    }
+  },
+  "oils": {
+    "hybrid_oil": {
+      "id": "hybrid_oil",
+      "name": "Hybrid Oil",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 140,
+      "description": "Applied to silver swords — increases damage against hybrid monsters."
+    },
+    "necrophage_oil": {
+      "id": "necrophage_oil",
+      "name": "Necrophage Oil",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 140,
+      "description": "Increases silver sword effectiveness against necrophages."
+    },
+    "specter_oil": {
+      "id": "specter_oil",
+      "name": "Specter Oil",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 160,
+      "description": "Helpful against specters and wraiths when applied to silver blades."
+    },
+    "draconid_oil": {
+      "id": "draconid_oil",
+      "name": "Draconid Oil",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 160,
+      "description": "Effective versus draconids like wyverns."
+    },
+    "relict_oil": {
+      "id": "relict_oil",
+      "name": "Relict Oil",
+      "type": "oil",
+      "rarity": "rare",
+      "price": 220,
+      "description": "Powerful oil used against ancient and relict creatures."
+    }
+  },
+  "materials": {
+    "wyvern_scale": {
+      "id": "wyvern_scale",
+      "name": "Wyvern Scale",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 90,
+      "description": "A tough scale from a wyvern. Useful for crafting."
+    },
+    "leshen_root": {
+      "id": "leshen_root",
+      "name": "Leshen Root",
+      "type": "material",
+      "rarity": "rare",
+      "price": 200,
+      "description": "A mysterious root possessing druidic properties; used in alchemy."
+    },
+    "ectoplasm": {
+      "id": "ectoplasm",
+      "name": "Ectoplasm",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 120,
+      "description": "Remnant of a specter — used in crafting and alchemy."
+    }
+  }
+}

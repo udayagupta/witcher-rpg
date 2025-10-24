@@ -25,7 +25,7 @@ const ContractsBoard = ({ playerLocation }) => {
         <h3 className="text-center text-3xl text-orange-400 witcher-font">
           {selectedContract.contract_name}
         </h3>
-        <p className="text-center text-xl">{selectedContract.description}</p>
+        <p className="text-center text-lg playwrite-font">{selectedContract.description}</p>
         <div className="flex flex-col text-left">
           <p className="flex-1" title="Monster quantity">
             Monster: {monstersData[contractMonster].name}(s) (
@@ -63,7 +63,7 @@ const ContractsBoard = ({ playerLocation }) => {
               }`}
             >
               <p className="bg-slate-700 p-1 py-2">{item.contract_name}</p>
-              <p className="text-[16px] p-2">{item.short_description}</p>
+              <p className="text-[16px] p-2 ">{item.short_description}</p>
             </li>
           ))}
         </ul>

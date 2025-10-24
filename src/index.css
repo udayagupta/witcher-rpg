@@ -25,6 +25,10 @@
     font-family: "PT Sans";
 }
 
+.playwrite-font {
+    font-family: "Playwrite AU TAS";
+}
+
 .contracts-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -35,12 +39,12 @@
 
 
 .side-bar-link {
-    border: 1px solid;
+    border: 2px solid ;
     padding: 16px;
     font-size: 18px;
-    transition: 300ms ease;
+    transition: 400ms ease;
     position: relative;
-    /* border-radius: 8px; */
+    border-radius: 4px;
 }
 
 .side-bar-link:hover {
@@ -49,23 +53,8 @@
     border-color: orange;
 }
 
-.side-bar-link:active {
-    scale: 0.95;
-}
 
-/* .side-bar-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background: orange;
-  border-radius: 1px;
-  animation: underlinePop 0.3s ease;
+.monster-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
-
-@keyframes underlinePop {
-  from { width: 0; opacity: 0; }
-  to { width: 100%; opacity: 1; }
-} */

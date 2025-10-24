@@ -4,7 +4,6 @@ import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 export const PlayerProfile = ({className}) => {
   const { player } = usePlayer();
   
-
   return (
     <section className={`${className} player-profile w-full p-4`}>
       <h2 className="text-xl font-bold mb-2">{player.fullName}</h2>
@@ -22,6 +21,9 @@ export const PlayerProfile = ({className}) => {
       <p className="text-sm mt-2">
         ❤️ {player.vitality}/{player.maxVitality}
       </p>
+      <p>Defense: {player?.defense}</p>
+      <p>Steel Sword: {player.attack?.steelAttack.join("-")} ATK</p>
+      <p>Silver Sword: {player.attack?.silverAttack.join("-")} ATK</p>
     </section>
   );
 };
