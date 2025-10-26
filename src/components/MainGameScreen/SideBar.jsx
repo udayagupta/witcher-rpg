@@ -3,14 +3,14 @@ import { PlayerProfile } from "../PlayerProfile/PlayerProfile";
 
 const SideBar = () => {
   return (
-    <ul className="flex flex-col flex-2 w-full gap-3 witcher-font px-4">
-      <li className="border rounded-md pt-sans-font">
+    <ul className="flex flex-col flex-2 w-full h-screen overflow-auto gap-3 witcher-font">
+      <li className="rounded-md pt-sans-font">
         <PlayerProfile />
       </li>
       <NavLink
         to={"/"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-orange-400" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
         Contracts Board
@@ -18,7 +18,7 @@ const SideBar = () => {
       <NavLink
         to={"/journal"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-orange-400" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
         Journal
@@ -26,7 +26,7 @@ const SideBar = () => {
       <NavLink
         to={"/monster-bestiary"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-orange-400" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
         Monster Bestiary

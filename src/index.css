@@ -18,6 +18,7 @@
 
 .witcher-font {
     font-family: "The Witcher";
+    /* letter-spacing: 3px; */
 }
 
 
@@ -27,6 +28,10 @@
 
 .playwrite-font {
     font-family: "Playwrite AU TAS";
+}
+
+.contracts-board {
+    background-image: linear-gradient(oklch(0.205 0 0) 0%, oklch(0.269 0 0) 100%);
 }
 
 .contracts-list {
@@ -39,7 +44,7 @@
 
 
 .side-bar-link {
-    border: 2px solid ;
+    border: 1px solid ;
     padding: 16px;
     font-size: 18px;
     transition: 400ms ease;
@@ -48,13 +53,57 @@
 }
 
 .side-bar-link:hover {
-    color: orange;
-    cursor: pointer;
-    border-color: orange;
+    @apply text-amber-300;
 }
-
 
 .monster-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+/* Theme utility classes so new components can reuse the same look */
+@layer components {
+    .app-shell {
+        @apply min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white p-4;
+    }
+
+    .card {
+        @apply bg-neutral-900/30 rounded-lg shadow-lg p-4;
+    }
+    
+    .card:hover {
+        @apply text-amber-300;
+    }
+
+    .heading {
+        @apply text-2xl p-2 text-amber-300;
+    }
+
+    .btn-amber {
+        @apply px-4 py-1 rounded font-bold text-neutral-900 bg-amber-500 hover:bg-amber-400 transition;
+    }
+}
+
+/* Themed scrollbars (WebKit + Firefox) */
+/* WebKit-based browsers */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.03);
+    border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    /* background: linear-gradient(180deg, #f59e0b, #d97706); */
+    background-color: oklch(87.9% 0.169 91.605);
+    border-radius: 9999px;
+    border: 2px solid rgba(0,0,0,0);
+    background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    filter: brightness(0.95);
 }

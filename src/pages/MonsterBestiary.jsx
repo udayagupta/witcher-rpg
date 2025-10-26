@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import monstersData from "../data/monster.json";
-import { useScroll } from "motion/react";
 
 const MonsterBestiary = () => {
   const [selectedMonster, setSelectedMonster] = useState("");
@@ -8,8 +7,8 @@ const MonsterBestiary = () => {
   const SelectedMonsterCard = () => {
     if (!selectedMonster) {
       return (
-        <div className="flex flex-col justify-center text-lg items-center h-full text-slate-400">
-          <p>Select a contract to view details.</p>
+        <div className="flex flex-col justify-center text-lg items-center h-full text-neutral-300">
+          <p>Select a monster to view details.</p>
         </div>
       );
     }
@@ -17,45 +16,55 @@ const MonsterBestiary = () => {
     const selectedMonsterData = monstersData[selectedMonster];
 
     return (
-      <div>
-        <img src={`./images/${selectedMonster}.png`} alt="" />
-        <p className="witcher-font text-3xl text-orange-400">
-          {selectedMonsterData.name}
-        </p>
-        <p className="p-3 playwrite-font">{selectedMonsterData.bestiary_entry}</p>
-        <p className="p-3">
-          Weakness: {selectedMonsterData.weakness.join(", ")}
-        </p>
+      <div className="flex flex-col gap-3 p-4 bg-neutral-900/30 rounded text-white">
+        <img src={`./images/${selectedMonster}.png`} alt={selectedMonsterData.name} className="w-full object-contain" />
+        <p className="witcher-font text-3xl text-amber-300">{selectedMonsterData.name}</p>
+        <p className="p-3 playwrite-font text-sm opacity-90">{selectedMonsterData.bestiary_entry}</p>
+          <p className="">
+            <span className="opacity-80 text-sm">Weakness — Oils:</span>{" "}
+            <span className="font-semibold">{(selectedMonsterData.weakness?.oil || []).join(", ") || '—'}</span>
+          </p>
+          <p className="">
+            <span className="opacity-80 text-sm">Weakness — Signs:</span>{" "}
+            <span className="font-semibold">{(selectedMonsterData.weakness?.signs || []).join(", ") || '—'}</span>
+          </p>
+          <p className="">
+            <span className="opacity-80 text-sm">Buffs:</span>{" "}
+            <span className="capitalize font-semibold">{(selectedMonsterData.buffs || []).join(", ") || '—'}</span>
+          </p>
       </div>
     );
   };
 
   return (
-    <div className="flex pt-sans-font gap-5">
+    <section className="flex pt-sans-font gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
       <div className="w-[65%] h-[500px] overflow-auto">
-        <ul className="border gap-5 p-4 monster-list">
+        <h3 className="text-2xl p-2 witcher-font text-amber-300">Monsters</h3>
+        <ul className="gap-4 p-2 monster-list">
           {Object.keys(monstersData).map((key, index) => (
             <li
               onClick={() => setSelectedMonster(key)}
               key={index}
-              className={`${
-                key === selectedMonster ? "text-orange-400" : ""
-              }  max-h-max flex flex-col overflow-hidden transition duration-300 cursor-pointer border-2 border-slate-800 rounded-md hover:text-orange-400 hover:border-orange-400`}
+              className={`max-h-max flex flex-col overflow-hidden transition duration-300 cursor-pointer hover:text-amber-300 rounded ${
+                key === selectedMonster
+                  ? "border-2 border-amber-300 bg-neutral-900/20 text-amber-300"
+                  : "border border-neutral-700 bg-neutral-900/10 hover:border-amber-300"
+              }`}
             >
-              <p className="bg-slate-800 p-2 witcher-font">{monstersData[key].name}</p>
+              <p className="p-2 witcher-font font-semibold">{monstersData[key].name}</p>
               <img
                 src={`./images/${key}.png`}
-                className=""
+                className="w-full object-contain"
                 alt={monstersData[key].name}
               />
             </li>
           ))}
         </ul>
       </div>
-      <div className="selected-monster h-[500px] overflow-auto w-[35%] border">
+      <div className="selected-monster h-[500px] overflow-auto w-[35%]">
         <SelectedMonsterCard />
       </div>
-    </div>
+    </section>
   );
 };
 

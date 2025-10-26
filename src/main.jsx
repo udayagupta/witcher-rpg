@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { PlayerProvider } from './context/PlayerContext/PlayerContext.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainGameScreen from './components/MainGameScreen/MainGameScreen.jsx';
+import Layout from './components/Layout.jsx';
 import { Home } from './pages/Home.jsx';
 import Journal from './components/Journal/Journal.jsx';
 import MonsterBestiary from './pages/MonsterBestiary.jsx';
@@ -12,7 +13,11 @@ import MonsterBestiary from './pages/MonsterBestiary.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainGameScreen />,
+    element: (
+      <Layout>
+        <MainGameScreen />
+      </Layout>
+    ),
     children: [
       { index: true, element: <Home />},
       { path: "journal", element: <Journal />},

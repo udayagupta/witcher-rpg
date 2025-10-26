@@ -1,5 +1,6 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import itemsData from "../../data/items.json";
+import { playerSilverDamage, monsterDamage, generateLoot } from "../../utils/battle.js";
 
 const PlayerContext = createContext();
 
@@ -13,7 +14,7 @@ export const PlayerProvider = ({ children }) => {
     completedQuests: [],
     activeQuests: [],
     coins: 500,
-    crit_chance: 5,
+    crit_chance: 5, // in percent
     base_attack: 15,
     base_defense: 20,
     inventory: [
@@ -33,12 +34,13 @@ export const PlayerProvider = ({ children }) => {
       boots: "viper_basic_boots",
     },
     currentLocation: "white_orchard",
+    inBattle: false,
   });
 
   const heal = (amount) => {
     setPlayer((prev) => ({
       ...prev,
-      vitality: Math.max(prev.vitality + amount, prev.maxVitality),
+      vitality: Math.min(prev.vitality + amount, prev.maxVitality),
     }));
   };
 
@@ -87,44 +89,74 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const reflectEquippedEquipment = (player) => {
-    const equippedSteelSword = player.equipment.steel_sword ? itemsData["steel_swords"][player.equipment.steel_sword] : null;
-    const equippedSilverSword = player.equipment.silver_sword ? itemsData["silver_swords"][player.equipment.silver_sword] : null;
+    const equippedSteelSword = player.equipment.steel_sword
+      ? itemsData["steel_swords"][player.equipment.steel_sword]
+      : null;
+    const equippedSilverSword = player.equipment.silver_sword
+      ? itemsData["silver_swords"][player.equipment.silver_sword]
+      : null;
 
-    const equippedArmor = player.equipment.armor ? itemsData["armor"][player.equipment.armor] : null;
-    const equippedGauntlets = player.equipment.gauntlets ? itemsData["armor"][player.equipment.gauntlets] : null;
-    const equippedTrousers = player.equipment.trousers ? itemsData["armor"][player.equipment.trousers] : null;
-    const equippedBoots = player.equipment.boots ? itemsData["armor"][player.equipment.boots] : null;
+    const equippedArmor = player.equipment.armor
+      ? itemsData["armor"][player.equipment.armor]
+      : null;
+    const equippedGauntlets = player.equipment.gauntlets
+      ? itemsData["armor"][player.equipment.gauntlets]
+      : null;
+    const equippedTrousers = player.equipment.trousers
+      ? itemsData["armor"][player.equipment.trousers]
+      : null;
+    const equippedBoots = player.equipment.boots
+      ? itemsData["armor"][player.equipment.boots]
+      : null;
 
-    const totalDefense = player.base_defense + (equippedArmor ? equippedArmor.defense : 0) + (equippedGauntlets ? equippedGauntlets.defense : 0) + (equippedTrousers ? equippedTrousers.defense : 0) + (equippedBoots ? equippedBoots.defense : 0)
-    
-    const steelSwordAttack = [player.base_attack + (equippedSteelSword ? equippedSteelSword.attack[0] : 0), (equippedSteelSword ? equippedSteelSword.attack[0] : player.base_attack)]
-    const silverSwordAttack = [player.base_attack + (equippedSilverSword ? equippedSilverSword.attack[0] : 0), (equippedSilverSword ? equippedSilverSword.attack[0] : player.base_attack)]
-    
-    console.log(`silver sword atk: ${silverSwordAttack}`);
-    console.log(`steel sword atk: ${steelSwordAttack}`);
-    
-    console.log(`equippedArmor: ${equippedArmor.defense}`)
-    console.log(`equippedGauntlets: ${equippedGauntlets.defense}`)
-    console.log(`equippedTrousers: ${equippedTrousers.defense}`)
-    console.log(`equippedBoots: ${equippedBoots.defense}`)
+    const totalDefense =
+      player.base_defense +
+      (equippedArmor ? equippedArmor.defense : 0) +
+      (equippedGauntlets ? equippedGauntlets.defense : 0) +
+      (equippedTrousers ? equippedTrousers.defense : 0) +
+      (equippedBoots ? equippedBoots.defense : 0);
 
-    console.log(`total defense: ${totalDefense}`);
+    const steelSwordAttack = [
+      player.base_attack +
+        (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
+      equippedSteelSword ? equippedSteelSword.attack[0] : player.base_attack,
+    ];
+    const silverSwordAttack = [
+      player.base_attack +
+        (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
+      equippedSilverSword ? equippedSilverSword.attack[0] : player.base_attack,
+    ];
 
     return {
       ...player,
       defense: totalDefense,
       attack: {
         steelAttack: steelSwordAttack,
-        silverAttack: silverSwordAttack 
-      }
-    }
+        silverAttack: silverSwordAttack,
+      },
+    };
+  };
 
-  }
-  
   useEffect(() => {
     const updatedPlayer = reflectEquippedEquipment(player);
     setPlayer(updatedPlayer);
+
+    
   }, [player.equipment]);
+
+  useEffect(() => {
+    // monsterDamage("devil-by-the-well", player.defense);
+    // monsterDamage("griffin", player.defense);
+    // monsterDamage("drowner", player.defense);
+    // monsterDamage("siren", player.defense);
+    // monsterDamage("leshen", player.defense);
+    // monsterDamage("nekker", player.defense);    
+    // monsterDamage("wyvern", player.defense);
+    
+    generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "potion_small", "chance": 0.25 }])
+    generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "potion_medium", "chance": 0.15 }])
+
+  })
 
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>

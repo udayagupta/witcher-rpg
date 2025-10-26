@@ -11,7 +11,7 @@
         60,
         85
       ],
-      "durability": 120,
+      "durability": 100,
       "price": 800,
       "description": "A well-tempered steel blade from Kaer Morhen. Good vs humans and beasts."
     },
@@ -26,7 +26,7 @@
         20,
         35
       ],
-      "durability": 60,
+      "durability": 100,
       "price": 120,
       "description": "An ordinary steel sword. Reliable and cheap."
     }
@@ -58,7 +58,7 @@
         30,
         50
       ],
-      "durability": 50,
+      "durability": 100,
       "price": 350,
       "description": "A simple silver blade — effective against many monsters."
     }
@@ -72,7 +72,7 @@
       "rarity": "rare",
       "level_req": 5,
       "defense": 50,
-      "durability": 200,
+      "durability": 100,
       "price": 900,
       "description": "Sturdy armor issued at Kaer Morhen. Excellent protection without too much weight."
     },
@@ -84,7 +84,7 @@
       "rarity": "rare",
       "level_req": 5,
       "defense": 22,
-      "durability": 120,
+      "durability": 100,
       "price": 350,
       "description": "Durable trousers used by witchers-in-training."
     },
@@ -108,7 +108,7 @@
       "rarity": "common",
       "level_req": 1,
       "defense": 20,
-      "durability": 200,
+      "durability": 100,
       "price": 200,
       "description": "Sturdy leather armor reinforced with metal plates, favored by witchers of the Viper School."
     },
@@ -120,7 +120,7 @@
       "rarity": "common",
       "level_req": 1,
       "defense": 8,
-      "durability": 120,
+      "durability": 100,
       "price": 120,
       "description": "Simple but durable gloves that improve grip and slightly boost protection."
     },
@@ -132,7 +132,7 @@
       "rarity": "common",
       "level_req": 1,
       "defense": 10,
-      "durability": 150,
+      "durability": 100,
       "price": 150,
       "description": "Lightweight trousers that allow for flexibility in combat without sacrificing too much protection."
     },
