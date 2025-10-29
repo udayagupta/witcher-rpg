@@ -3,10 +3,10 @@ import locationsData from "../../data/locations.json";
 import monstersData from "../../data/monster.json";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 
-const ContractsBoard = ({ playerLocation }) => {
-  const contracts = locationsData[playerLocation].contracts;
+const ContractsBoard = () => {
   const [selectedContract, setSelectedContract] = useState("");
   const { player, acceptContract } = usePlayer();
+  const contracts = locationsData[player.currentLocation].contracts;
 
   const ContractCard = () => {
     if (!selectedContract) {
@@ -51,7 +51,7 @@ const ContractsBoard = ({ playerLocation }) => {
   };
 
   return (
-    <section className="contracts-board h-[500px] text-lg gap-5 flex bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
+    <section className="contracts-board h-full text-lg gap-5 flex bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
       <div className="flex-2 px-4">
         <h3 className="text-2xl p-2 witcher-font text-amber-300">Contracts</h3>
         <ul className="contracts-list flex flex-col gap-2">

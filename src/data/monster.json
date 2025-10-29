@@ -5,25 +5,16 @@
     "vitality": 1200,
     "crit_chance": 10,
     "weakness": {
-      "oil": [
-        "Hybrid Oil"
-      ],
-      "signs": [
-        "Aard"
-      ]
+      "oil": ["Hybrid Oil"],
+      "signs": ["Aard"]
     },
-    "buffs": [
-      "bleed"
-    ],
-    "attack": [
-      60,
-      80
-    ],
+    "buffs": ["bleed"],
+    "attack": [60, 80],
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
     "img_url": "",
     "drops": [
       { "id": "hybrid_oil", "chance": 0.35 },
-      { "id": "potion_small", "chance": 0.25 }
+  { "id": "swallow", "chance": 0.25 }
     ],
     "discovered": false
   },
@@ -33,25 +24,16 @@
     "vitality": 500,
     "crit_chance": 7,
     "weakness": {
-      "oil": [
-        "Necrophage Oil"
-      ],
-      "signs": [
-        "Igni"
-      ]
+      "oil": ["Necrophage Oil"],
+      "signs": ["Igni"]
     },
-    "buffs": [
-      "poison"
-    ],
-    "attack": [
-      20,
-      40
-    ],
+    "buffs": ["poison"],
+    "attack": [20, 40],
     "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.30 },
-      { "id": "potion_small", "chance": 0.2 }
+      { "id": "necrophage_oil", "chance": 0.3 },
+  { "id": "swallow", "chance": 0.2 }
     ],
     "discovered": false
   },
@@ -61,26 +43,16 @@
     "vitality": 600,
     "crit_chance": 7,
     "weakness": {
-      "oil": [
-        "Hybrid Oil"
-      ],
-      "signs": [
-        "Aard",
-        "Igni"
-      ]
+      "oil": ["Hybrid Oil"],
+      "signs": ["Aard", "Igni"]
     },
-    "buffs": [
-      "charm"
-    ],
-    "attack": [
-      30,
-      50
-    ],
+    "buffs": ["charm"],
+    "attack": [30, 50],
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm.",
     "img_url": "",
     "drops": [
       { "id": "hybrid_oil", "chance": 0.28 },
-      { "id": "potion_small", "chance": 0.22 }
+  { "id": "swallow", "chance": 0.22 }
     ],
     "discovered": false
   },
@@ -90,25 +62,16 @@
     "vitality": 700,
     "crit_chance": 7,
     "weakness": {
-      "oil": [
-        "Specter Oil"
-      ],
-      "signs": [
-        "Yrden"
-      ]
+      "oil": ["Specter Oil"],
+      "signs": ["Yrden"]
     },
-    "buffs": [
-      "fear"
-    ],
-    "attack": [
-      40,
-      50
-    ],
+    "buffs": ["fear"],
+    "attack": [40, 50],
     "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths.",
     "img_url": "",
     "drops": [
-      { "id": "specter_oil", "chance": 0.30 },
-      { "id": "ectoplasm", "chance": 0.20 }
+      { "id": "specter_oil", "chance": 0.3 },
+      { "id": "ectoplasm", "chance": 0.2 }
     ],
     "discovered": false
   },
@@ -118,26 +81,16 @@
     "vitality": 850,
     "crit_chance": 9,
     "weakness": {
-      "oil": [
-        "Specter Oil"
-      ],
-      "signs": [
-        "Yrden",
-        "Quen"
-      ]
+      "oil": ["Specter Oil"],
+      "signs": ["Yrden", "Quen"]
     },
-    "buffs": [
-      "life_drain"
-    ],
-    "attack": [
-      45,
-      65
-    ],
+    "buffs": ["life_drain"],
+    "attack": [45, 65],
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
     "img_url": "",
     "drops": [
-      { "id": "specter_oil", "chance": 0.4 },
-      { "id": "potion_medium", "chance": 0.18 }
+  { "id": "specter_oil", "chance": 0.4 },
+  { "id": "swallow_strong", "chance": 0.18 }
     ],
     "discovered": false
   },
@@ -147,21 +100,11 @@
     "vitality": 1400,
     "crit_chance": 12,
     "weakness": {
-      "oil": [
-        "Relict Oil"
-      ],
-      "signs": [
-        "Yrden",
-        "Aard"
-      ]
+      "oil": ["Relict Oil"],
+      "signs": ["Yrden", "Aard"]
     },
-    "buffs": [
-      "rooted"
-    ],
-    "attack": [
-      70,
-      95
-    ],
+    "buffs": ["rooted"],
+    "attack": [70, 95],
     "bestiary_entry": "An ancient forest guardian turned hostile. Leshens command roots and animals to do their bidding — they are cunning and territorial.",
     "img_url": "",
     "drops": [
@@ -176,20 +119,11 @@
     "vitality": 1100,
     "crit_chance": 10,
     "weakness": {
-      "oil": [
-        "Draconid Oil"
-      ],
-      "signs": [
-        "Igni"
-      ]
+      "oil": ["Draconid Oil"],
+      "signs": ["Igni"]
     },
-    "buffs": [
-      "poison"
-    ],
-    "attack": [
-      55,
-      85
-    ],
+    "buffs": ["poison"],
+    "attack": [55, 85],
     "bestiary_entry": "Smaller than dragons but far from harmless — wyverns are fast, aggressive, and often nest on cliffs above human settlements.",
     "img_url": "",
     "drops": [
@@ -204,25 +138,175 @@
     "vitality": 300,
     "crit_chance": 5,
     "weakness": {
-      "oil": [
-        "Necrophage Oil"
-      ],
-      "signs": [
-        "Igni"
-      ]
+      "oil": ["Necrophage Oil"],
+      "signs": ["Igni"]
     },
-    "buffs": [
-      "poison"
-    ],
-    "attack": [
-      15,
-      30
-    ],
+    "buffs": ["poison"],
+    "attack": [15, 30],
     "bestiary_entry": "Small, vicious, and dangerous in packs. Nekkering swarms can overwhelm lone travelers with their numbers and speed.",
     "img_url": "",
     "drops": [
       { "id": "necrophage_oil", "chance": 0.22 },
-      { "id": "potion_small", "chance": 0.15 }
+  { "id": "swallow", "chance": 0.15 }
+    ],
+    "discovered": false
+  },
+  "foglet": {
+    "name": "Foglet",
+    "species": "Necrophage",
+    "vitality": 650,
+    "crit_chance": 8,
+    "weakness": {
+      "oil": ["Necrophage Oil"],
+      "signs": ["Quen", "Igni"]
+    },
+    "buffs": ["invisibility"],
+    "attack": [35, 55],
+    "bestiary_entry": "They appear from the mist, strike, and vanish. If you see fog in bright daylight — run, for it's no natural mist.",
+    "img_url": "",
+    "drops": [
+      { "id": "necrophage_oil", "chance": 0.25 },
+      { "id": "foglet_essence", "chance": 0.3 }
+    ],
+    "discovered": false
+  },
+
+  "ghoul": {
+    "name": "Ghoul",
+    "species": "Necrophage",
+    "vitality": 450,
+    "crit_chance": 6,
+    "weakness": {
+      "oil": ["Necrophage Oil"],
+      "signs": ["Igni"]
+    },
+    "buffs": ["life_steal"],
+    "attack": [25, 45],
+    "bestiary_entry": "Corpse eaters that gather in battlefields and graveyards. Ghouls can heal themselves by consuming flesh mid-fight.",
+    "img_url": "",
+    "drops": [
+      { "id": "necrophage_oil", "chance": 0.3 },
+      { "id": "ghoul_blood", "chance": 0.25 }
+    ],
+    "discovered": false
+  },
+
+  "werewolf": {
+    "name": "Werewolf",
+    "species": "Cursed One",
+    "vitality": 1300,
+    "crit_chance": 15,
+    "weakness": {
+      "oil": ["Cursed Oil"],
+      "signs": ["Igni"]
+    },
+    "buffs": ["regeneration"],
+    "attack": [70, 90],
+    "bestiary_entry": "Cursed men who turn into beasts under the full moon. Werewolves heal rapidly and grow stronger as they bleed.",
+    "img_url": "",
+    "drops": [
+      { "id": "cursed_oil", "chance": 0.3 },
+      { "id": "werewolf_hide", "chance": 0.4 }
+    ],
+    "discovered": false
+  },
+
+  "ice_elemental": {
+    "name": "Ice Elemental",
+    "species": "Elemental",
+    "vitality": 1500,
+    "crit_chance": 10,
+    "weakness": {
+      "oil": ["Elemental Oil"],
+      "signs": ["Igni"]
+    },
+    "buffs": ["frozen_armor"],
+    "attack": [80, 100],
+    "bestiary_entry": "Forged from eternal frost by powerful mages. They are slow but hit like falling glaciers and resist most damage.",
+    "img_url": "",
+    "drops": [
+      { "id": "elemental_oil", "chance": 0.25 },
+      { "id": "frost_core", "chance": 0.35 }
+    ],
+    "discovered": false
+  },
+
+  "fiend": {
+    "name": "Fiend",
+    "species": "Relict",
+    "vitality": 1600,
+    "crit_chance": 12,
+    "weakness": {
+      "oil": ["Relict Oil"],
+      "signs": ["Aard"]
+    },
+    "buffs": ["fear"],
+    "attack": [85, 110],
+    "bestiary_entry": "Massive, horned beasts that shake the ground with every step. Their third eye can hypnotize prey before tearing it apart.",
+    "img_url": "",
+    "drops": [
+      { "id": "relict_oil", "chance": 0.3 },
+      { "id": "fiend_eye", "chance": 0.35 }
+    ],
+    "discovered": false
+  },
+
+  "water_hag": {
+    "name": "Water Hag",
+    "species": "Necrophage",
+    "vitality": 700,
+    "crit_chance": 8,
+    "weakness": {
+      "oil": ["Necrophage Oil"],
+      "signs": ["Igni"]
+    },
+    "buffs": ["mud_splash"],
+    "attack": [40, 60],
+    "bestiary_entry": "Ugly, hateful creatures that dwell near swamps and rivers. They fling mud to blind their prey before dragging them under.",
+    "img_url": "",
+    "drops": [
+      { "id": "necrophage_oil", "chance": 0.28 },
+      { "id": "hag_teeth", "chance": 0.25 }
+    ],
+    "discovered": false
+  },
+
+  "harpy": {
+    "name": "Harpy",
+    "species": "Hybrid",
+    "vitality": 550,
+    "crit_chance": 8,
+    "weakness": {
+      "oil": ["Hybrid Oil"],
+      "signs": ["Aard"]
+    },
+    "buffs": ["knockback"],
+    "attack": [30, 50],
+    "bestiary_entry": "Shrieking monsters that attack from above. Harpies strike quickly and retreat, making them hard to pin down.",
+    "img_url": "",
+    "drops": [
+      { "id": "hybrid_oil", "chance": 0.25 },
+      { "id": "harpy_feather", "chance": 0.3 }
+    ],
+    "discovered": false
+  },
+
+  "earth_elemental": {
+    "name": "Earth Elemental",
+    "species": "Elemental",
+    "vitality": 1700,
+    "crit_chance": 8,
+    "weakness": {
+      "oil": ["Elemental Oil"],
+      "signs": ["Aard"]
+    },
+    "buffs": ["damage_resist"],
+    "attack": [75, 95],
+    "bestiary_entry": "Created to guard ancient ruins. Earth elementals crush their foes with unstoppable force and shrug off most attacks.",
+    "img_url": "",
+    "drops": [
+      { "id": "elemental_oil", "chance": 0.3 },
+      { "id": "earth_core", "chance": 0.35 }
     ],
     "discovered": false
   }

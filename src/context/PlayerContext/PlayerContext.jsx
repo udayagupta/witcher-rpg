@@ -1,6 +1,5 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import itemsData from "../../data/items.json";
-import { playerSilverDamage, monsterDamage, generateLoot } from "../../utils/battle.js";
 
 const PlayerContext = createContext();
 
@@ -9,12 +8,13 @@ export const PlayerProvider = ({ children }) => {
     name: "Geralt",
     fullName: "Geralt of Rivia",
     level: 1,
+    currentExp: 0,
     vitality: 500,
     maxVitality: 500,
     completedQuests: [],
     activeQuests: [],
-    coins: 500,
-    crit_chance: 5, // in percent
+    coins: 111500,
+    crit_chance: 5,
     base_attack: 15,
     base_defense: 20,
     inventory: [
@@ -34,13 +34,22 @@ export const PlayerProvider = ({ children }) => {
       boots: "viper_basic_boots",
     },
     currentLocation: "white_orchard",
+    subLocation: "woesong_bridge",
     inBattle: false,
+    isTraveling: false,
   });
 
   const heal = (amount) => {
     setPlayer((prev) => ({
       ...prev,
       vitality: Math.min(prev.vitality + amount, prev.maxVitality),
+    }));
+  };
+
+  const damage = (amount) => {
+    setPlayer((prev) => ({
+      ...prev,
+      vitality: Math.max(prev.vitality - amount, 0),
     }));
   };
 
@@ -86,6 +95,7 @@ export const PlayerProvider = ({ children }) => {
     addToInventory,
     completeQuest,
     acceptContract,
+    damage,
   };
 
   const reflectEquippedEquipment = (player) => {
@@ -119,12 +129,12 @@ export const PlayerProvider = ({ children }) => {
     const steelSwordAttack = [
       player.base_attack +
         (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
-      equippedSteelSword ? equippedSteelSword.attack[0] : player.base_attack,
+      equippedSteelSword ? player.base_attack + equippedSteelSword.attack[1] : player.base_attack,
     ];
     const silverSwordAttack = [
       player.base_attack +
         (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
-      equippedSilverSword ? equippedSilverSword.attack[0] : player.base_attack,
+      equippedSilverSword ? player.base_attack + equippedSilverSword.attack[1] : player.base_attack,
     ];
 
     return {
@@ -139,7 +149,7 @@ export const PlayerProvider = ({ children }) => {
 
   useEffect(() => {
     const updatedPlayer = reflectEquippedEquipment(player);
-    setPlayer(updatedPlayer);
+    setPlayer((prev) => ({ ...updatedPlayer }));
 
     
   }, [player.equipment]);
@@ -153,8 +163,8 @@ export const PlayerProvider = ({ children }) => {
     // monsterDamage("nekker", player.defense);    
     // monsterDamage("wyvern", player.defense);
     
-    generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "potion_small", "chance": 0.25 }])
-    generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "potion_medium", "chance": 0.15 }])
+  // generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "swallow", "chance": 0.25 }])
+  // generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "swallow_strong", "chance": 0.15 }])
 
   })
 

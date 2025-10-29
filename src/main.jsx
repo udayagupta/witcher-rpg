@@ -1,14 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import { PlayerProvider } from './context/PlayerContext/PlayerContext.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainGameScreen from './components/MainGameScreen/MainGameScreen.jsx';
 import Layout from './components/Layout.jsx';
-import { Home } from './pages/Home.jsx';
 import Journal from './components/Journal/Journal.jsx';
 import MonsterBestiary from './pages/MonsterBestiary.jsx';
+import WorldMap from './components/WorldMap/WorldMap.jsx';
+import Regions from './components/Regions/Regions.jsx';
+import ContractsBoard from './components/ContractsBoard/ContractsBoard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,11 @@ const router = createBrowserRouter([
       </Layout>
     ),
     children: [
-      { index: true, element: <Home />},
-      { path: "journal", element: <Journal />},
-      { path: "monster-bestiary", element: <MonsterBestiary />}
+      { index: true, element: <Regions /> },
+      { path: "contracts-board", element: <ContractsBoard />},
+      { path: "journal", element: <Journal /> },
+      { path: "monster-bestiary", element: <MonsterBestiary /> },
+      { path: "world-map", element: <WorldMap /> }
     ]
   }
 ])

@@ -47,6 +47,250 @@
         "short_description": "Villagers of the Abandoned Village claim a vengeful spirit haunts the old well, dragging the living to their deaths",
         "description": "Villagers report a restless spirit by the old well. It attacks anyone who ventures too close. The elders promise a reward for lifting the curse. None dare fetch water or till the nearby fields, for the ghost's wailing is heard at dawn and dusk. Any witcher brave enough to face the spirit shall be paid 300 crowns upon proof of the wraith’s defeat."
       }
-    ]
+    ],
+    "sub_locations": {
+      "woesong_bridge": {
+        "name": "Woesong Bridge 🌉",
+        "monsters_found": ["drowner"],
+        "armorer": "woesong-armorer",
+        "resources_to_gather": ["herbs", "river_clay"]
+      },
+      "nilfgaardian_garrison": {
+        "name": "Nilfgaardian Garrison ⚔️",
+        "monsters_found": null,
+        "npc": ["garrison_commander"],
+        "resources_to_gather": ["metal_scraps", "wolf_hide"]
+      },
+      "abandoned_village": {
+        "name": "Abandoned Village 🏚️",
+        "monsters_found": ["ghoul", "noonwraith"],
+        "resources_to_gather": ["herbs", "bones"],
+        "points_of_interest": ["cursed_well"]
+      },
+      "sawmill": {
+        "name": "Sawmill 🪵",
+        "monsters_found": ["wolf"],
+        "resources_to_gather": ["timber", "wolf_pelt"],
+        "craftsman": "woodworker"
+      },
+      "broken_cart_pass": {
+        "name": "Broken Cart Pass 🛞",
+        "monsters_found": ["bandit", "nekker"],
+        "resources_to_gather": ["loot_crates", "herbs"]
+      },
+      "isemen_riverbank": {
+        "name": "Isemen Riverbank 🌊",
+        "monsters_found": ["drowner", "siren"],
+        "resources_to_gather": ["water_essence", "reeds"]
+      },
+      "crossroads_inn": {
+        "name": "Crossroads Inn 🍺",
+        "monsters_found": null,
+        "npc": ["innkeeper", "merchant"],
+        "resources_to_gather": null
+      },
+      "hunter_cabin": {
+        "name": "Hunter's Cabin 🐺",
+        "monsters_found": ["wolf"],
+        "npc": ["hunter"],
+        "resources_to_gather": ["animal_hide", "herbs"]
+      },
+      "orchard_fields": {
+        "name": "Orchard Fields 🍎",
+        "monsters_found": ["griffin"],
+        "resources_to_gather": ["fruit", "herbs"]
+      },
+      "sawmill_forest_edge": {
+        "name": "Sawmill Forest Edge 🌲",
+        "monsters_found": ["wolf", "nekker"],
+        "resources_to_gather": ["wood", "herbs"]
+      }
+    },
+    "default_sub_location": "woesong_bridge"
+  },
+  "velen": {
+    "name": "Velen",
+    "place_description": "A war-torn, swampy region south of Novigrad with ruined villages, bogs and bandit-filled roads. Velen is harsh and populated by desperate folk and dangerous beasts.",
+    "badge": "./images/velen-badge.png",
+    "contracts": [
+      {
+        "questId": 101,
+        "contract_name": "Leshen in Crookback Bog",
+        "monster_id": "leshen",
+        "monster_quantity": 1,
+        "reward": 900,
+        "exp": 400,
+        "short_description": "A Leshen has been seen drawing beasts to trample the peat bogs.",
+        "description": "Locals report an ancient Leshen has returned and is calling animals and roots to protect its domain. Pack animal routes have been destroyed and the farmers fear for their livestock.",
+        "isCompleted": false
+      },
+      {
+        "questId": 102,
+        "contract_name": "Wyvern Nest at Crow's Perch",
+        "monster_id": "wyvern",
+        "monster_quantity": 1,
+        "reward": 600,
+        "exp": 300,
+        "short_description": "A wyvern nesting in the high cliffs has started raiding nearby farms.",
+        "description": "Farmers report missing livestock and a large, dragon-like shadow seen circling the cliffs near Crow's Perch. Bring proof of the wyvern's defeat.",
+        "isCompleted": false
+      }
+    ],
+    "sub_locations": {
+      "crookback_bog": {
+        "name": "Crookback Bog 🌫️",
+        "monsters_found": ["leshen", "nekker"],
+        "resources_to_gather": ["herbs", "leshen_root"]
+      },
+      "crow_perch_cliffs": {
+        "name": "Crow's Perch Cliffs 🪶",
+        "monsters_found": ["wyvern"],
+        "points_of_interest": ["wyvern_nest"]
+      },
+      "dirtroad_crossing": {
+        "name": "Dirtroad Crossing 🪔",
+        "monsters_found": ["bandit", "wolf"],
+        "merchant": ["traveling_merchant"]
+      },
+      "orcchard_swamp": {
+        "name": "Orchard Swamp 🐸",
+        "monsters_found": ["drowner", "foglet"],
+        "resources_to_gather": ["swamp_herbs", "reed_fibers"]
+      },
+      "ruined_watchtower": {
+        "name": "Ruined Watchtower 🏰",
+        "monsters_found": ["ghoul", "wraith"],
+        "resources_to_gather": ["ancient_bricks", "rune_dust"],
+        "points_of_interest": ["forgotten_scroll"]
+      },
+      "blackbough_village": {
+        "name": "Blackbough Village 🌾",
+        "monsters_found": null,
+        "npc": ["blacksmith", "villager_elder"],
+        "resources_to_gather": ["grain", "herbs"]
+      },
+      "hanged_mans_tree": {
+        "name": "Hanged Man’s Tree ⚰️",
+        "monsters_found": ["wraith", "ghoul"],
+        "resources_to_gather": ["bones", "spirit_essence"]
+      },
+      "mulbrydale": {
+        "name": "Mulbrydale 🕯️",
+        "monsters_found": ["bandit"],
+        "npc": ["innkeeper", "herbalist"],
+        "resources_to_gather": ["herbs", "boar_hide"]
+      },
+      "lornruk_lighthouse": {
+        "name": "Lornruk Lighthouse 🏝️",
+        "monsters_found": ["harpy", "siren"],
+        "resources_to_gather": ["seashells", "draconid_blood"]
+      },
+      "devil_pit": {
+        "name": "Devil’s Pit 🔥",
+        "monsters_found": ["ghoul", "alghoul"],
+        "resources_to_gather": ["ore_fragments", "bone_shards"]
+      },
+      "reardon_manor": {
+        "name": "Reardon Manor 🏚️",
+        "monsters_found": ["noonwraith"],
+        "points_of_interest": ["cursed_cellar"],
+        "resources_to_gather": ["silver_candlestick", "linen"]
+      },
+      "burned_hamlet": {
+        "name": "Burned Hamlet 🪓",
+        "monsters_found": ["bandit"],
+        "resources_to_gather": ["charcoal", "metal_scraps"]
+      }
+    },
+    "default_sub_location": "crow_perch_cliffs"
+  },
+  "novigrad": {
+    "name": "Novigrad",
+    "place_description": "A bustling free city and merchant hub. Novigrad is rife with intrigue, markets, churches and criminal networks — monsters hide in alleys and sewers.",
+    "badge": "./images/novigrad-badge.png",
+    "contracts": [
+      {
+        "questId": 201,
+        "contract_name": "Sewer Beast",
+        "monster_id": "nekker",
+        "monster_quantity": 5,
+        "reward": 300,
+        "exp": 120,
+        "short_description": "Creatures have taken up residence in the old Novigrad sewers.",
+        "description": "Sewer workers unearthed signs of small, aggressive beasts living beneath Novigrad. Civilians have seen shadowy figures near the drains at night.",
+        "isCompleted": false
+      }
+    ],
+    "sub_locations": {
+      "docks": {
+        "name": "Novigrad Docks",
+        "monsters_found": ["siren", "drowner"],
+        "npc": ["fisherman", "dockmaster"],
+        "resources_to_gather": ["fish_oil", "reeds"]
+      },
+      "old_sewers": {
+        "name": "Old Sewers",
+        "monsters_found": ["nekker"],
+        "points_of_interest": ["collapsed_tunnel"]
+      },
+      "market_square": {
+        "name": "Market Square",
+        "monsters_found": null,
+        "npc": ["merchants", "street_performers"]
+      }
+    },
+    "default_sub_location": "docks"
+  },
+  "skellige": {
+    "name": "Skellige",
+    "place_description": "A brutal archipelago of windswept isles, famed for warriors, longships and rugged landscape. Sea-monsters and savage beasts make the islands perilous.",
+    "badge": "./images/skellige-badge.png",
+    "contracts": [
+      {
+        "questId": 301,
+        "contract_name": "Waves of the Wyvern",
+        "monster_id": "wyvern",
+        "monster_quantity": 1,
+        "reward": 700,
+        "exp": 320,
+        "short_description": "A wyvern has nested near a coastal village and attacks passing ships.",
+        "description": "Villagers report a fierce wyvern nesting atop a coastal stack, swooping down to plunder ships and livestock. The chieftain offers coin for its head.",
+        "isCompleted": false
+      },
+      {
+        "questId": 302,
+        "contract_name": "Spirits of the Standing Stones",
+        "monster_id": "noonwraith",
+        "monster_quantity": 1,
+        "reward": 500,
+        "exp": 220,
+        "short_description": "A restless specter haunts the ancient standing stones.",
+        "description": "Islanders whisper of a noonwraith that appears near the old standing stones. Farmers report terrified cattle and a chilling wail at midday.",
+        "isCompleted": false
+      }
+    ],
+    "sub_locations": {
+      "harral_west": {
+        "name": "Harral West",
+        "monsters_found": ["wyvern", "nekker"],
+        "resources_to_gather": ["fish_oil", "wyvern_scale"]
+      },
+      "standing_stones": {
+        "name": "Ancient Standing Stones",
+        "monsters_found": ["noonwraith"],
+        "points_of_interest": ["ritual_site"]
+      },
+      "longship_harbor": {
+        "name": "Longship Harbor",
+        "monsters_found": ["siren"],
+        "npc": ["shipwright", "boatman"]
+      },
+      "kaer_torlde": {
+        "name": "Kaer Torlde",
+        "monsters_found": null,
+        "npc": null
+      }
+    },
+    "default_sub_location": "kaer_torlde"
   }
 }

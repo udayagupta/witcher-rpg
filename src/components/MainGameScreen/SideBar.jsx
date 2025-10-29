@@ -3,7 +3,7 @@ import { PlayerProfile } from "../PlayerProfile/PlayerProfile";
 
 const SideBar = () => {
   return (
-    <ul className="flex flex-col flex-2 w-full h-screen overflow-auto gap-3 witcher-font">
+    <ul className="flex flex-col flex-2 h-screen overflow-auto gap-3 witcher-font">
       <li className="rounded-md pt-sans-font">
         <PlayerProfile />
       </li>
@@ -13,7 +13,24 @@ const SideBar = () => {
           `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
-        Contracts Board
+        Regions Map 🏞️
+      </NavLink>
+      <NavLink className={`side-bar-link`}>Explore Region ⛰️</NavLink>
+      <NavLink
+        to={"/world-map"}
+        className={({ isActive }) =>
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+        }
+      >
+        World Map 🗺️
+      </NavLink>
+      <NavLink
+        to={"/contracts-board"}
+        className={({ isActive }) =>
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+        }
+      >
+        Contracts Board 🪧
       </NavLink>
       <NavLink
         to={"/journal"}
@@ -21,7 +38,7 @@ const SideBar = () => {
           `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
-        Journal
+        Journal 📜
       </NavLink>
       <NavLink
         to={"/monster-bestiary"}
@@ -29,11 +46,10 @@ const SideBar = () => {
           `side-bar-link ${isActive ? "text-amber-300" : ""}`
         }
       >
-        Monster Bestiary
+        Monster Bestiary 🐦‍🔥
       </NavLink>
-      <NavLink className={`side-bar-link`}>
-        Inventory
-      </NavLink>
+      <NavLink className={`side-bar-link`}>Inventory 📦</NavLink>
+      <NavLink className={`side-bar-link`}>Alcehmy 🧪</NavLink>
     </ul>
   );
 };
