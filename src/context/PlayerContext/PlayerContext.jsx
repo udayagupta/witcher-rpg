@@ -46,7 +46,7 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
-  const damage = (amount) => {
+  const takeDamage = (amount) => {
     setPlayer((prev) => ({
       ...prev,
       vitality: Math.max(prev.vitality - amount, 0),
@@ -86,6 +86,13 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
+  const resetVitality = () => {
+    setPlayer((prev) => ({
+      ...prev,
+      vitality: prev.maxVitality
+    }))
+  }
+
   const value = {
     player,
     setPlayer,
@@ -95,7 +102,8 @@ export const PlayerProvider = ({ children }) => {
     addToInventory,
     completeQuest,
     acceptContract,
-    damage,
+    takeDamage,
+    resetVitality
   };
 
   const reflectEquippedEquipment = (player) => {

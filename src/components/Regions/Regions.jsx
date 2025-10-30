@@ -17,6 +17,7 @@ const Regions = () => {
     setTimeout(() => {
       setPlayer((prev) => ({ ...prev, subLocation }));
       setPlayer((prev) => ({ ...prev, isTraveling: false }));
+      
     }, travelTime);
   };
 
@@ -24,7 +25,7 @@ const Regions = () => {
     <section>
       {player.isTraveling && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-black/90 text-amber-300 text-2xl witcher-font z-50"
+          className="absolute inset-0 flex items-center justify-center bg-black text-amber-300 text-2xl witcher-font z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

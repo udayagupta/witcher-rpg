@@ -1,6 +1,7 @@
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { formatNumber } from "../../utils/utils";
 import itemsData from "../../data/items.json";
+import HealthBar from "./HealthBar";
 
 export const PlayerProfile = ({ className }) => {
   const { player, heal, damage } = usePlayer();
@@ -38,16 +39,7 @@ export const PlayerProfile = ({ className }) => {
             </div>
           </div>
 
-          <div className="mt-3">
-            <div className="text-sm mb-1 opacity-80">Vitality</div>
-            <div className="w-full h-5 bg-neutral-700 rounded overflow-hidden border-2 border-red-700">
-              <div
-                className="h-full bg-red-500 transition-all duration-300"
-                style={{ width: `${Math.max(0, Math.min(100, (player.vitality / player.maxVitality) * 100))}%` }}
-              />
-            </div>
-            <div className="text-xs mt-1">{player.vitality} / {player.maxVitality} ❤️</div>
-          </div>
+          <HealthBar className="mt-3" />
         </div>
       </div>
 

@@ -52,57 +52,81 @@
       "woesong_bridge": {
         "name": "Woesong Bridge 🌉",
         "monsters_found": ["drowner"],
-        "armorer": "woesong-armorer",
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": { "name": "Woesong Armorer", "items_in_stock": [] },
         "resources_to_gather": ["herbs", "river_clay"]
       },
       "nilfgaardian_garrison": {
         "name": "Nilfgaardian Garrison ⚔️",
         "monsters_found": null,
-        "npc": ["garrison_commander"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["metal_scraps", "wolf_hide"]
       },
       "abandoned_village": {
         "name": "Abandoned Village 🏚️",
         "monsters_found": ["ghoul", "noonwraith"],
-        "resources_to_gather": ["herbs", "bones"],
-        "points_of_interest": ["cursed_well"]
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": ["herbs", "bones"]
       },
       "sawmill": {
         "name": "Sawmill 🪵",
         "monsters_found": ["wolf"],
-        "resources_to_gather": ["timber", "wolf_pelt"],
-        "craftsman": "woodworker"
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": ["timber", "wolf_pelt"]
       },
       "broken_cart_pass": {
         "name": "Broken Cart Pass 🛞",
         "monsters_found": ["bandit", "nekker"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["loot_crates", "herbs"]
       },
       "isemen_riverbank": {
         "name": "Isemen Riverbank 🌊",
         "monsters_found": ["drowner", "siren"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["water_essence", "reeds"]
       },
       "crossroads_inn": {
         "name": "Crossroads Inn 🍺",
         "monsters_found": null,
-        "npc": ["innkeeper", "merchant"],
+        "merchant": { "name": "Crossroads Merchant", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": null
       },
       "hunter_cabin": {
         "name": "Hunter's Cabin 🐺",
         "monsters_found": ["wolf"],
-        "npc": ["hunter"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["animal_hide", "herbs"]
       },
       "orchard_fields": {
         "name": "Orchard Fields 🍎",
         "monsters_found": ["griffin"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["fruit", "herbs"]
       },
       "sawmill_forest_edge": {
         "name": "Sawmill Forest Edge 🌲",
         "monsters_found": ["wolf", "nekker"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["wood", "herbs"]
       }
     },
@@ -140,65 +164,95 @@
       "crookback_bog": {
         "name": "Crookback Bog 🌫️",
         "monsters_found": ["leshen", "nekker"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["herbs", "leshen_root"]
       },
       "crow_perch_cliffs": {
         "name": "Crow's Perch Cliffs 🪶",
         "monsters_found": ["wyvern"],
-        "points_of_interest": ["wyvern_nest"]
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null
       },
       "dirtroad_crossing": {
         "name": "Dirtroad Crossing 🪔",
         "monsters_found": ["bandit", "wolf"],
-        "merchant": ["traveling_merchant"]
+        "merchant": { "name": "Traveling Merchant", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null
       },
       "orcchard_swamp": {
         "name": "Orchard Swamp 🐸",
         "monsters_found": ["drowner", "foglet"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["swamp_herbs", "reed_fibers"]
       },
       "ruined_watchtower": {
         "name": "Ruined Watchtower 🏰",
         "monsters_found": ["ghoul", "wraith"],
-        "resources_to_gather": ["ancient_bricks", "rune_dust"],
-        "points_of_interest": ["forgotten_scroll"]
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": ["ancient_bricks", "rune_dust"]
       },
       "blackbough_village": {
         "name": "Blackbough Village 🌾",
         "monsters_found": null,
-        "npc": ["blacksmith", "villager_elder"],
+        "merchant": null,
+        "blacksmith": { "name": "Blackbough Blacksmith", "items_in_stock": ["steel_sword_basic"] },
+        "armorer": null,
         "resources_to_gather": ["grain", "herbs"]
       },
       "hanged_mans_tree": {
         "name": "Hanged Man’s Tree ⚰️",
         "monsters_found": ["wraith", "ghoul"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["bones", "spirit_essence"]
       },
       "mulbrydale": {
         "name": "Mulbrydale 🕯️",
         "monsters_found": ["bandit"],
-        "npc": ["innkeeper", "herbalist"],
+        "merchant": { "name": "Mulbrydale Innkeeper", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["herbs", "boar_hide"]
       },
       "lornruk_lighthouse": {
         "name": "Lornruk Lighthouse 🏝️",
         "monsters_found": ["harpy", "siren"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["seashells", "draconid_blood"]
       },
       "devil_pit": {
         "name": "Devil’s Pit 🔥",
         "monsters_found": ["ghoul", "alghoul"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["ore_fragments", "bone_shards"]
       },
       "reardon_manor": {
         "name": "Reardon Manor 🏚️",
         "monsters_found": ["noonwraith"],
-        "points_of_interest": ["cursed_cellar"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["silver_candlestick", "linen"]
       },
       "burned_hamlet": {
         "name": "Burned Hamlet 🪓",
         "monsters_found": ["bandit"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["charcoal", "metal_scraps"]
       }
     },
@@ -225,18 +279,24 @@
       "docks": {
         "name": "Novigrad Docks",
         "monsters_found": ["siren", "drowner"],
-        "npc": ["fisherman", "dockmaster"],
+        "merchant": { "name": "Dockmaster", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null,
         "resources_to_gather": ["fish_oil", "reeds"]
       },
       "old_sewers": {
         "name": "Old Sewers",
         "monsters_found": ["nekker"],
-        "points_of_interest": ["collapsed_tunnel"]
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null
       },
       "market_square": {
         "name": "Market Square",
         "monsters_found": null,
-        "npc": ["merchants", "street_performers"]
+        "merchant": { "name": "Market Merchants", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null
       }
     },
     "default_sub_location": "docks"
@@ -278,17 +338,23 @@
       "standing_stones": {
         "name": "Ancient Standing Stones",
         "monsters_found": ["noonwraith"],
-        "points_of_interest": ["ritual_site"]
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null
       },
       "longship_harbor": {
         "name": "Longship Harbor",
         "monsters_found": ["siren"],
-        "npc": ["shipwright", "boatman"]
+        "merchant": { "name": "Harbor Merchant", "items_in_stock": [] },
+        "blacksmith": null,
+        "armorer": null
       },
       "kaer_torlde": {
         "name": "Kaer Torlde",
         "monsters_found": null,
-        "npc": null
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null
       }
     },
     "default_sub_location": "kaer_torlde"

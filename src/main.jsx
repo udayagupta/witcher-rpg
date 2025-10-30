@@ -10,6 +10,7 @@ import MonsterBestiary from './pages/MonsterBestiary.jsx';
 import WorldMap from './components/WorldMap/WorldMap.jsx';
 import Regions from './components/Regions/Regions.jsx';
 import ContractsBoard from './components/ContractsBoard/ContractsBoard.jsx';
+import ExploreRegion from './components/Regions/ExploreRegion.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Regions /> },
       { path: "contracts-board", element: <ContractsBoard />},
+      { path: "explore-region", element: <ExploreRegion />},
       { path: "journal", element: <Journal /> },
       { path: "monster-bestiary", element: <MonsterBestiary /> },
       { path: "world-map", element: <WorldMap /> }

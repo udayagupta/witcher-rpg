@@ -3,6 +3,7 @@
     "name": "Griffin",
     "species": "Hybrid",
     "vitality": 1200,
+    "max_vitality": 1200,
     "crit_chance": 10,
     "weakness": {
       "oil": ["Hybrid Oil"],
@@ -14,7 +15,7 @@
     "img_url": "",
     "drops": [
       { "id": "hybrid_oil", "chance": 0.35 },
-  { "id": "swallow", "chance": 0.25 }
+      { "id": "swallow", "chance": 0.25 }
     ],
     "discovered": false
   },
@@ -22,6 +23,7 @@
     "name": "Drowner",
     "species": "Necrophage",
     "vitality": 500,
+    "max_vitality": 500,
     "crit_chance": 7,
     "weakness": {
       "oil": ["Necrophage Oil"],
@@ -33,7 +35,7 @@
     "img_url": "",
     "drops": [
       { "id": "necrophage_oil", "chance": 0.3 },
-  { "id": "swallow", "chance": 0.2 }
+      { "id": "swallow", "chance": 0.2 }
     ],
     "discovered": false
   },
@@ -41,6 +43,7 @@
     "name": "Siren",
     "species": "Hybrid",
     "vitality": 600,
+    "max_vitality": 600,
     "crit_chance": 7,
     "weakness": {
       "oil": ["Hybrid Oil"],
@@ -52,7 +55,7 @@
     "img_url": "",
     "drops": [
       { "id": "hybrid_oil", "chance": 0.28 },
-  { "id": "swallow", "chance": 0.22 }
+      { "id": "swallow", "chance": 0.22 }
     ],
     "discovered": false
   },
@@ -60,6 +63,7 @@
     "name": "Devil by the well",
     "species": "Specter",
     "vitality": 700,
+    "max_vitality": 700,
     "crit_chance": 7,
     "weakness": {
       "oil": ["Specter Oil"],
@@ -79,6 +83,7 @@
     "name": "Noonwraith",
     "species": "Specter",
     "vitality": 850,
+    "max_vitality": 850,
     "crit_chance": 9,
     "weakness": {
       "oil": ["Specter Oil"],
@@ -89,8 +94,8 @@
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
     "img_url": "",
     "drops": [
-  { "id": "specter_oil", "chance": 0.4 },
-  { "id": "swallow_strong", "chance": 0.18 }
+      { "id": "specter_oil", "chance": 0.4 },
+      { "id": "swallow_strong", "chance": 0.18 }
     ],
     "discovered": false
   },
@@ -98,6 +103,7 @@
     "name": "Leshen",
     "species": "Cursed Woodland Spirit",
     "vitality": 1400,
+    "max_vitality": 1400,
     "crit_chance": 12,
     "weakness": {
       "oil": ["Relict Oil"],
@@ -117,6 +123,7 @@
     "name": "Wyvern",
     "species": "Draconid",
     "vitality": 1100,
+    "max_vitality": 1100,
     "crit_chance": 10,
     "weakness": {
       "oil": ["Draconid Oil"],
@@ -136,6 +143,7 @@
     "name": "Nekker",
     "species": "Cursed Beast",
     "vitality": 300,
+    "max_vitality": 300,
     "crit_chance": 5,
     "weakness": {
       "oil": ["Necrophage Oil"],
@@ -147,7 +155,7 @@
     "img_url": "",
     "drops": [
       { "id": "necrophage_oil", "chance": 0.22 },
-  { "id": "swallow", "chance": 0.15 }
+      { "id": "swallow", "chance": 0.15 }
     ],
     "discovered": false
   },
@@ -155,6 +163,7 @@
     "name": "Foglet",
     "species": "Necrophage",
     "vitality": 650,
+    "max_vitality": 650,
     "crit_chance": 8,
     "weakness": {
       "oil": ["Necrophage Oil"],
@@ -170,11 +179,11 @@
     ],
     "discovered": false
   },
-
   "ghoul": {
     "name": "Ghoul",
     "species": "Necrophage",
     "vitality": 450,
+    "max_vitality": 450,
     "crit_chance": 6,
     "weakness": {
       "oil": ["Necrophage Oil"],
@@ -190,11 +199,11 @@
     ],
     "discovered": false
   },
-
   "werewolf": {
     "name": "Werewolf",
     "species": "Cursed One",
     "vitality": 1300,
+    "max_vitality": 1300,
     "crit_chance": 15,
     "weakness": {
       "oil": ["Cursed Oil"],
@@ -210,11 +219,11 @@
     ],
     "discovered": false
   },
-
   "ice_elemental": {
     "name": "Ice Elemental",
     "species": "Elemental",
     "vitality": 1500,
+    "max_vitality": 1500,
     "crit_chance": 10,
     "weakness": {
       "oil": ["Elemental Oil"],
@@ -230,11 +239,11 @@
     ],
     "discovered": false
   },
-
   "fiend": {
     "name": "Fiend",
     "species": "Relict",
     "vitality": 1600,
+    "max_vitality": 1600,
     "crit_chance": 12,
     "weakness": {
       "oil": ["Relict Oil"],
@@ -250,11 +259,11 @@
     ],
     "discovered": false
   },
-
   "water_hag": {
     "name": "Water Hag",
     "species": "Necrophage",
     "vitality": 700,
+    "max_vitality": 700,
     "crit_chance": 8,
     "weakness": {
       "oil": ["Necrophage Oil"],
@@ -270,11 +279,11 @@
     ],
     "discovered": false
   },
-
   "harpy": {
     "name": "Harpy",
     "species": "Hybrid",
     "vitality": 550,
+    "max_vitality": 550,
     "crit_chance": 8,
     "weakness": {
       "oil": ["Hybrid Oil"],
@@ -290,11 +299,11 @@
     ],
     "discovered": false
   },
-
   "earth_elemental": {
     "name": "Earth Elemental",
     "species": "Elemental",
     "vitality": 1700,
+    "max_vitality": 1700,
     "crit_chance": 8,
     "weakness": {
       "oil": ["Elemental Oil"],
@@ -308,6 +317,74 @@
       { "id": "elemental_oil", "chance": 0.3 },
       { "id": "earth_core", "chance": 0.35 }
     ],
+    "discovered": false
+  },
+  "wolf": {
+    "name": "Wolf",
+    "species": "Beast",
+    "vitality": 220,
+    "max_vitality": 220,
+    "crit_chance": 4,
+    "weakness": {
+      "oil": ["Beast Oil"],
+      "signs": ["Aard"]
+    },
+    "buffs": [],
+    "attack": [10, 28],
+    "bestiary_entry": "Common predator of the wilds. Wolves travel in packs and can be dangerous when provoked.",
+    "img_url": "",
+    "drops": [{ "id": "wolf_hide", "chance": 0.4 }],
+    "discovered": false
+  },
+  "bandit": {
+    "name": "Bandit",
+    "species": "Human",
+    "vitality": 300,
+    "max_vitality": 300,
+    "crit_chance": 6,
+    "weakness": {
+      "oil": [],
+      "signs": ["Quen"]
+    },
+    "buffs": [],
+    "attack": [18, 36],
+    "bestiary_entry": "Marauders and thieves who prey on travelers. Often lightly armored but numerous.",
+    "img_url": "",
+    "drops": [{ "id": "loot_crates", "chance": 0.3 }],
+    "discovered": false
+  },
+  "wraith": {
+    "name": "Wraith",
+    "species": "Specter",
+    "vitality": 650,
+    "max_vitality": 650,
+    "crit_chance": 9,
+    "weakness": {
+      "oil": ["Specter Oil"],
+      "signs": ["Yrden"]
+    },
+    "buffs": ["life_drain"],
+    "attack": [40, 60],
+    "bestiary_entry": "Restless spirits that haunt places of tragedy. Wraiths can sap the life of the unwary.",
+    "img_url": "",
+    "drops": [{ "id": "ectoplasm", "chance": 0.25 }],
+    "discovered": false
+  },
+  "alghoul": {
+    "name": "Alghoul",
+    "species": "Necrophage",
+    "vitality": 820,
+    "max_vitality": 820,
+    "crit_chance": 8,
+    "weakness": {
+      "oil": ["Necrophage Oil"],
+      "signs": ["Igni"]
+    },
+    "buffs": ["frenzy"],
+    "attack": [50, 72],
+    "bestiary_entry": "A stronger, more vicious variant of the ghoul; alghouls hunt in ravaged areas and are more resilient.",
+    "img_url": "",
+    "drops": [{ "id": "ghoul_blood", "chance": 0.3 }],
     "discovered": false
   }
 }

@@ -15,7 +15,14 @@ const SideBar = () => {
       >
         Regions Map 🏞️
       </NavLink>
-      <NavLink className={`side-bar-link`}>Explore Region ⛰️</NavLink>
+      <NavLink
+        to={`/explore-region`}
+        className={({ isActive }) =>
+          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+        }
+      >
+        Explore Region ⛰️
+      </NavLink>
       <NavLink
         to={"/world-map"}
         className={({ isActive }) =>

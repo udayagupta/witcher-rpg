@@ -46,11 +46,7 @@ const WorldMap = () => {
       <ul className="items-list">
         {Object.keys(locationsData).map((mainLocation) => {
           const locationData = locationsData[mainLocation];
-          console.log(
-            `Main Location: ${mainLocation} ${
-              mainLocation === player.currentLocation ? "True" : "False"
-            }`
-          );
+
           return (
             <li
               key={mainLocation}
@@ -59,7 +55,7 @@ const WorldMap = () => {
                   ? "items-list-item-selected"
                   : "items-list-item-not-selected"
               }`}
-              onClick={() => changeMainLocation(mainLocation, 1500)}
+              onClick={() => changeMainLocation(mainLocation, 2000)}
             >
               <h4 className="text-lg witcher-font text-amber-300">
                 {locationData.name}

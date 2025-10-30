@@ -1,5 +1,3 @@
-import monstersData from "../data/monster.json";
-
 export const randomInRange = (max, min) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -16,7 +14,7 @@ export const playerSilverDamage = (player, monsterWeakness, appliedOil = null) =
     const isCrit = Math.random() < critChance / 100;
 
 
-    let playerAttackDmg = 0;
+    let playerAttackDmg = parseInt(0);
 
     if (isCrit) {
         playerAttackDmg += damage*critMultiplier;
@@ -29,12 +27,11 @@ export const playerSilverDamage = (player, monsterWeakness, appliedOil = null) =
     };
 
     console.log(`${player.name} attacked for ${playerAttackDmg} ${appliedOil ? `with ${appliedOil}` : ""} ${isCrit ? "(CRIT!)" : ""}`)
-    return playerAttackDmg;
+    return { playerAttackDmg, log: `You dealt ${playerAttackDmg} ${appliedOil ? `, with ${appliedOil}` : ""} ${isCrit ? "(CRIT💥)" : ""}`};
 };
 
 
-export const monsterDamage = (monsterId, playerDefense) => {
-    const monster = monstersData[monsterId];
+export const monsterDamage = (monster, playerDefense) => {
 
     const isCrit = Math.random() < monster.crit_chance / 100;
     const damage = randomInRange(monster.attack[0], monster.attack[1]);
@@ -42,10 +39,9 @@ export const monsterDamage = (monsterId, playerDefense) => {
     const critMultiplier = 2;
     const defenseMultiplier = 100/(playerDefense+100);
 
-    let monsterAttackDmg = Math.max(0, isCrit ? (damage*critMultiplier)*defenseMultiplier : damage*defenseMultiplier);
+    let monsterAttackDmg = parseInt(Math.max(0, isCrit ? (damage*critMultiplier)*defenseMultiplier : damage*defenseMultiplier));
 
-    console.log(`${monster.name} attacked for ${monsterAttackDmg.toFixed(2)} ${isCrit ? "(CRIT!)" : ""}`);
-    return monsterAttackDmg;
+    return { monsterAttackDmg, log: `${monster.name} attacked for ${monsterAttackDmg.toFixed(2)} ${isCrit ? "(CRIT💥)" : ""}`};
 
 };
 
