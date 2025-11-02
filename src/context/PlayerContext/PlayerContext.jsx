@@ -13,18 +13,25 @@ export const PlayerProvider = ({ children }) => {
     maxVitality: 500,
     completedQuests: [],
     activeQuests: [],
-    coins: 111500,
+    coins: 1200,
     crit_chance: 5,
     base_attack: 15,
     base_defense: 20,
-    inventory: [
-      "steel_sword_basic",
-      "silver_sword_basic",
-      "viper_basic_armor",
-      "viper_basic_gauntlets",
-      "viper_basic_trousers",
-      "viper_basic_boots",
-    ],
+    stamina: 100,
+
+    inventory: {
+      steelSwords: [{ id: "steel_sword_basic", qty: 1 }],
+      silverSwords: [{ id: "silver_sword_basic", qty: 1 }],
+      armor: [{ id: "viper_basic_armor", qty: 1 }],
+      gauntlets: [{ id: "viper_basic_gauntlets", qty: 1 }],
+      trousers: [{ id: "viper_basic_trousers", qty: 1 }],
+      boots: [{ id: "viper_basic_boots", qty: 1 }],
+      potions: [],
+      oils: [],
+      resources: [],
+      food: [],
+    },
+
     equipment: {
       steel_sword: "steel_sword_basic",
       silver_sword: "silver_sword_basic",
@@ -33,10 +40,19 @@ export const PlayerProvider = ({ children }) => {
       trousers: "viper_basic_trousers",
       boots: "viper_basic_boots",
     },
+
     currentLocation: "white_orchard",
-    subLocation: "woesong_bridge",
+    subLocation: "orchard_fields",
     inBattle: false,
     isTraveling: false,
+
+    signsIntensity: {
+      igni: 1,
+      quen: 1,
+      yrden: 1,
+      axii: 1,
+      aard: 1
+    }
   });
 
   const heal = (amount) => {
@@ -56,6 +72,10 @@ export const PlayerProvider = ({ children }) => {
   const addCoins = (amount) => {
     setPlayer((prev) => ({ ...prev, coins: prev.coins + amount }));
   };
+
+  const usedASign = () => {
+    setPlayer((prev) => ({...prev, stamina: Math.max(0, prev.stamina - 20)}));
+  }
 
   const spendCoins = (amount) => {
     if (amount > player.coins) return false;
@@ -79,17 +99,21 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
-  const addToInventory = (item) => {
-    setPlayer((prev) => ({
-      ...prev,
-      inventory: [...prev.inventory, item],
-    }));
+  const addToInventory = (itemId, qty, itemCategory) => {
+    // {  }
   };
 
   const resetVitality = () => {
     setPlayer((prev) => ({
       ...prev,
-      vitality: prev.maxVitality
+      vitality: prev.maxVitality,
+    }));
+  };
+
+  const increaseStamina = (amount) => {
+    setPlayer((prev) => ({
+      ...prev,
+      stamina: Math.min(100, prev.stamina+amount)
     }))
   }
 
@@ -103,7 +127,9 @@ export const PlayerProvider = ({ children }) => {
     completeQuest,
     acceptContract,
     takeDamage,
-    resetVitality
+    resetVitality,
+    usedASign,
+    increaseStamina,
   };
 
   const reflectEquippedEquipment = (player) => {
@@ -137,12 +163,16 @@ export const PlayerProvider = ({ children }) => {
     const steelSwordAttack = [
       player.base_attack +
         (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
-      equippedSteelSword ? player.base_attack + equippedSteelSword.attack[1] : player.base_attack,
+      equippedSteelSword
+        ? player.base_attack + equippedSteelSword.attack[1]
+        : player.base_attack,
     ];
     const silverSwordAttack = [
       player.base_attack +
         (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
-      equippedSilverSword ? player.base_attack + equippedSilverSword.attack[1] : player.base_attack,
+      equippedSilverSword
+        ? player.base_attack + equippedSilverSword.attack[1]
+        : player.base_attack,
     ];
 
     return {
@@ -158,8 +188,6 @@ export const PlayerProvider = ({ children }) => {
   useEffect(() => {
     const updatedPlayer = reflectEquippedEquipment(player);
     setPlayer((prev) => ({ ...updatedPlayer }));
-
-    
   }, [player.equipment]);
 
   useEffect(() => {
@@ -168,13 +196,11 @@ export const PlayerProvider = ({ children }) => {
     // monsterDamage("drowner", player.defense);
     // monsterDamage("siren", player.defense);
     // monsterDamage("leshen", player.defense);
-    // monsterDamage("nekker", player.defense);    
+    // monsterDamage("nekker", player.defense);
     // monsterDamage("wyvern", player.defense);
-    
-  // generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "swallow", "chance": 0.25 }])
-  // generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "swallow_strong", "chance": 0.15 }])
-
-  })
+    // generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "swallow", "chance": 0.25 }])
+    // generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "swallow_strong", "chance": 0.15 }])
+  });
 
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>

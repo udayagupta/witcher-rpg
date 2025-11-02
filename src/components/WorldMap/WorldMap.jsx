@@ -2,12 +2,16 @@ import locationsData from "../../data/locations.json";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 
 const WorldMap = () => {
   const { player, setPlayer } = usePlayer();
   const [willTravelTo, setWillTravelTo] = useState("");
+  const navigate = useNavigate();
 
   const changeMainLocation = (mainLocation, travelTime = 1000) => {
+    if (player.currentLocation === mainLocation) return;
+
     setPlayer((prev) => ({ ...prev, isTraveling: true }));
     setWillTravelTo(mainLocation);
 
@@ -18,6 +22,7 @@ const WorldMap = () => {
         subLocation: locationsData[mainLocation]["default_sub_location"],
       }));
       setPlayer((prev) => ({ ...prev, isTraveling: false }));
+      navigate("/explore-region");
     }, travelTime);
   };
 
@@ -60,6 +65,7 @@ const WorldMap = () => {
               <h4 className="text-lg witcher-font text-amber-300">
                 {locationData.name}
               </h4>
+              {/* <p>{locationData.place_description}</p> */}
               <img
                 src={locationData.badge}
                 alt={locationData.name}

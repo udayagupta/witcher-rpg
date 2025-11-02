@@ -28,7 +28,7 @@ const MainGameScreen = () => {
               alt={currentLocation.name}
             />
           </h2>
-          <p className="text-xl opacity-90">{currentLocation.place_description}</p>
+          {/* <p className="text-xl opacity-90">{currentLocation.place_description}</p> */}
           <div className="relative overflow-hidden h-full">
             <motion.div
               key={location.pathname}

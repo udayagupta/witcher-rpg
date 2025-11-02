@@ -78,6 +78,24 @@
     @apply bg-neutral-900/10 border border-neutral-700;
 }
 
+@keyframes flashing-border {
+  0% {
+    border-color: transparent;
+    box-shadow: 0 0 0px rgba(255, 210, 48, 0);
+  }
+
+  100% {
+    border-color: rgb(255, 210, 48);
+    box-shadow: 0 0 12px 4px rgba(255, 210, 48, 0.6);
+  }
+}
+
+.flashing-border-container {
+  border: 1px solid transparent;
+  animation: flashing-border 700ms alternate infinite;
+}
+
+
 /* Theme utility classes so new components can reuse the same look */
 @layer components {
     .app-shell {

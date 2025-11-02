@@ -1,0 +1,148 @@
+import { useEffect, useState } from "react";
+import monstersData from "../../data/monster.json";
+import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+import {
+  playerSilverDamage,
+  monsterDamage,
+  isAlive,
+  checkIfEffectExists,
+  updateDuration,
+} from "../../utils/battle";
+import WonScreen from "./WonScreen";
+import { effectsData } from "../../utils/effects";
+import BattleScreenUI from "./BattleScreenUI";
+import { useBattle } from "../../hooks/useBattle";
+
+const BattleScreen = ({ monsterId }) => {
+  const { player, takeDamage, setPlayer, resetVitality } = usePlayer();
+  // const [monsterData, setMonsterData] = useState(monstersData[monsterId]);
+  const { battleState, setBattleState, playerActions, addLog, monsterData } = useBattle(monsterId);
+  // const [battleState, setBattleState] = useState({
+  //   appliedOil: null,
+  //   battleLogs: [`You've encountered a ${monsterData.name}.`],
+  //   turns: 0,
+  //   battleResult: null,
+  //   currentTurn: "player",
+  //   playerDebuffs: [],
+  //   monsterDebuffs: [],
+  // });
+
+  // const handlePlayerSilverAttack = () => {
+  //   if (battleState.currentTurn === "monster") return;
+
+  //   const playerAttack = playerSilverDamage(
+  //     player,
+  //     monsterData.weakness.oil,
+  //     battleState.appliedOil
+  //   );
+
+  //   setMonsterData((prev) => ({
+  //     ...prev,
+  //     vitality: Math.max(0, prev.vitality - playerAttack.playerAttackDmg),
+  //   }));
+
+  //   setBattleState((prev) => ({
+  //     ...prev,
+  //     battleLogs: [...prev.battleLogs, playerAttack.log],
+  //     currentTurn: "monster",
+  //   }));
+  // };
+
+  // const handleWin = () => {
+  //   if (!isAlive(monsterData) && isAlive(player)) {
+  //     setBattleState((prev) => ({ ...prev, battleResult: "player" }));
+  //     resetVitality();
+  //     setPlayer((prev) => ({ ...prev, inBattle: false }));
+  //   }
+
+  //   if (isAlive(monsterData) && !isAlive(player)) {
+  //     setBattleState((prev) => ({ ...prev, battleResult: "monster" }));
+  //     resetVitality();
+  //     setPlayer((prev) => ({ ...prev, inBattle: false }));
+  //   }
+  // };
+
+  // const handlePlayerIgni = () => {};
+  // const handlePlayerYrden = () => {};
+  // const handlePlayerQuen = () => {};
+  // const handlePlayerAard = () => {};
+  // const handlePlayerAxii = () => {};
+
+  // const playerActions = [
+  //   { name: "Silver Attack", handler: handlePlayerSilverAttack },
+  //   { name: "Igni", handler: handlePlayerIgni },
+  //   { name: "Yrden", handler: handlePlayerYrden },
+  //   { name: "Quen", handler: handlePlayerQuen },
+  //   { name: "Aard", handler: handlePlayerAard },
+  //   { name: "Axii", handler: handlePlayerAxii },
+  // ];
+
+
+  // useEffect(() => {
+  //   if (battleState.currentTurn === "monster" && isAlive(monsterData)) {
+  //     const timeout = setTimeout(() => {
+  //       const dmg = monsterDamage(monsterData, player.defense);
+  //       const buffId = dmg.buff ? dmg.buff.id : null;
+
+  //       setBattleState((prev) => ({
+  //         ...prev,
+  //         battleLogs: [...prev.battleLogs, dmg.log],
+  //         currentTurn: "player",
+  //         turns: prev.turns + 1,
+  //       }));
+
+  //       if (buffId && !checkIfEffectExists(battleState.playerDebuffs, buffId)) {
+  //         setBattleState((prev) => ({
+  //           ...prev,
+  //           playerDebuffs: [...prev.playerDebuffs, dmg.buff],
+  //         }));
+  //       }
+
+  //       if (
+  //         buffId &&
+  //         checkIfEffectExists(battleState.playerDebuffs, buffId) &&
+  //         effectsData[buffId].canStack
+  //       ) {
+  //         setBattleState((prev) => ({
+  //           ...prev,
+  //           playerDebuffs: updateDuration(
+  //             prev.playerDebuffs,
+  //             buffId,
+  //             effectsData[buffId].duration
+  //           ),
+  //         }));
+  //       }
+
+  //       takeDamage(dmg.monsterAttackDmg);
+  //     }, 1500);
+
+  //     return () => clearTimeout(timeout);
+  //   }
+  // }, [battleState.currentTurn]);
+
+  // useEffect(() => {
+  //   handleWin();
+  // }, [player.vitality, monsterData.vitality]);
+
+  return (
+    <div className="h-full">
+      <h3 className="witcher-font heading text-3xl text-amber-300">Battle</h3>
+
+      {battleState.battleResult === null ? (
+        <BattleScreenUI
+          battleState={battleState}
+          monsterData={monsterData}
+          monsterId={monsterId}
+          playerActions={playerActions}
+        />
+      ) : (
+        <WonScreen
+          battleResult={battleState.battleResult}
+          monsterId={monsterId}
+        />
+      )}
+    </div>
+  );
+};
+
+export default BattleScreen;

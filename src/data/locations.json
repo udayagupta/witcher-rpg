@@ -51,7 +51,7 @@
     "sub_locations": {
       "woesong_bridge": {
         "name": "Woesong Bridge 🌉",
-        "monsters_found": ["drowner"],
+        "monsters_found": ["drowner", "nekker"],
         "merchant": null,
         "blacksmith": null,
         "armorer": { "name": "Woesong Armorer", "items_in_stock": [] },
@@ -67,7 +67,7 @@
       },
       "abandoned_village": {
         "name": "Abandoned Village 🏚️",
-        "monsters_found": ["ghoul", "noonwraith"],
+        "monsters_found": ["ghoul", "noonwraith", "alghoul"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -75,7 +75,7 @@
       },
       "sawmill": {
         "name": "Sawmill 🪵",
-        "monsters_found": ["wolf"],
+        "monsters_found": ["wolf", "drowner"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -91,7 +91,7 @@
       },
       "isemen_riverbank": {
         "name": "Isemen Riverbank 🌊",
-        "monsters_found": ["drowner", "siren"],
+        "monsters_found": ["drowner", "siren", "nekker"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -107,7 +107,7 @@
       },
       "hunter_cabin": {
         "name": "Hunter's Cabin 🐺",
-        "monsters_found": ["wolf"],
+        "monsters_found": ["wolf", "bandit"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -115,7 +115,7 @@
       },
       "orchard_fields": {
         "name": "Orchard Fields 🍎",
-        "monsters_found": ["griffin"],
+        "monsters_found": ["griffin", "harpy"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -185,7 +185,7 @@
       },
       "orcchard_swamp": {
         "name": "Orchard Swamp 🐸",
-        "monsters_found": ["drowner", "foglet"],
+        "monsters_found": ["drowner", "foglet", "nekker"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -193,7 +193,7 @@
       },
       "ruined_watchtower": {
         "name": "Ruined Watchtower 🏰",
-        "monsters_found": ["ghoul", "wraith"],
+        "monsters_found": ["ghoul", "wraith", "alghoul"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,

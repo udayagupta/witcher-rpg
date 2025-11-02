@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { PlayerProfile } from "../PlayerProfile/PlayerProfile";
+import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 
 const SideBar = () => {
+  const { player } = usePlayer();
+
   return (
     <ul className="flex flex-col flex-2 h-screen overflow-auto gap-3 witcher-font">
       <li className="rounded-md pt-sans-font">
@@ -10,7 +13,9 @@ const SideBar = () => {
       <NavLink
         to={"/"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         Regions Map 🏞️
@@ -18,7 +23,9 @@ const SideBar = () => {
       <NavLink
         to={`/explore-region`}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         Explore Region ⛰️
@@ -26,7 +33,9 @@ const SideBar = () => {
       <NavLink
         to={"/world-map"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         World Map 🗺️
@@ -34,7 +43,9 @@ const SideBar = () => {
       <NavLink
         to={"/contracts-board"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         Contracts Board 🪧
@@ -42,7 +53,9 @@ const SideBar = () => {
       <NavLink
         to={"/journal"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         Journal 📜
@@ -50,7 +63,9 @@ const SideBar = () => {
       <NavLink
         to={"/monster-bestiary"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""}`
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
+            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
         }
       >
         Monster Bestiary 🐦‍🔥

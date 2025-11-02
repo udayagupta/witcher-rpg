@@ -5,7 +5,7 @@ import { useState } from "react";
 import BattleScreen from "../BattleScreen/BattleScreen";
 
 const ExploreRegion = () => {
-  const { player } = usePlayer();
+  const { player, setPlayer } = usePlayer();
   const subLocationData =
     locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
@@ -14,7 +14,7 @@ const ExploreRegion = () => {
 
   const Explore = () => {
     return (
-    <div>
+    <div className="bg-neutral-800 h-full rounded-md">
       <h3 className="witcher-font text-3xl heading">{subLocationData.name}</h3>
 
       <div className="interactions flex flex-col gap-10 mt-5">
@@ -44,7 +44,7 @@ const ExploreRegion = () => {
             Monster Hunting
           </h4>
           {subLocationData["monsters_found"] ? (
-            <ul className="grid grid-cols-4 gap-4 p-2">
+            <ul className="flex gap-5 justify-center p-2">
               {subLocationData["monsters_found"]?.map((monster) => (
                 <li
                   key={monster}
@@ -52,6 +52,7 @@ const ExploreRegion = () => {
                   onClick={() => {
                     setSelectedMonster(monster);
                     setGameMode("battle");
+                    setPlayer(prev => ({...prev, inBattle: true}))
                   }}
                 >
                   <p className="witcher-font font-semibold">

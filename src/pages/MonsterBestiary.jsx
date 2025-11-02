@@ -50,31 +50,6 @@ const MonsterBestiary = () => {
     );
   };
 
-  // const MonsterCard = ({ key, monstersData }) => {
-  //   const [imgError, setImgError] = useState(false);
-
-  //   return (
-  //     <li
-  //       onClick={() => setSelectedMonster(key)}
-  //       key={index}
-  //       className={`max-h-max flex flex-col overflow-hidden transition duration-300 cursor-pointer hover:text-amber-300 rounded ${
-  //         key === selectedMonster
-  //           ? "border-2 border-amber-300 bg-neutral-900/20 text-amber-300"
-  //           : "border border-neutral-700 bg-neutral-900/10 hover:border-amber-300"
-  //       }`}
-  //     >
-  //       <p className="p-2 witcher-font font-semibold">
-  //         {monstersData[key].name}
-  //       </p>
-  //       <img
-  //         src={`./images/${key}.png`}
-  //         className="w-full object-contain"
-  //         alt={monstersData[key].name}
-  //       />
-  //     </li>
-  //   );
-  // };
-
   return (
     <section className="flex pt-sans-font gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
       <div className="w-[65%] h-[500px] overflow-auto">

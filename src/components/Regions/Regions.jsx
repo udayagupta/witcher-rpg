@@ -3,21 +3,24 @@ import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Regions = () => {
   const { player, setPlayer } = usePlayer();
+  const navigate = useNavigate();
   const playerLocation = player.currentLocation;
   const currentLocationData = locationsData[playerLocation];
   const [willTravelTo, setWillTravelTo] = useState("");
 
   const changeSubLocation = (subLocation, travelTime = 1000) => {
+    if (player.subLocation === subLocation) return;
     setPlayer((prev) => ({ ...prev, isTraveling: true }));
     setWillTravelTo(subLocation);
 
     setTimeout(() => {
       setPlayer((prev) => ({ ...prev, subLocation }));
       setPlayer((prev) => ({ ...prev, isTraveling: false }));
-      
+      navigate("/explore-region");
     }, travelTime);
   };
 

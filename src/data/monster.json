@@ -14,8 +14,8 @@
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
     "img_url": "",
     "drops": [
-      { "id": "hybrid_oil", "chance": 0.35 },
-      { "id": "swallow", "chance": 0.25 }
+      { "id": "hybrid_oil", "type": "oil", "chance": 0.5 },
+      { "id": "swallow", "type": "potion", "chance": 0.25 }
     ],
     "discovered": false
   },
@@ -34,8 +34,8 @@
     "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.3 },
-      { "id": "swallow", "chance": 0.2 }
+      { "id": "necrophage_oil", "type": "oil", "chance": 0.5 },
+      { "id": "swallow", "type": "potion", "chance": 0.2 }
     ],
     "discovered": false
   },
@@ -49,13 +49,13 @@
       "oil": ["Hybrid Oil"],
       "signs": ["Aard", "Igni"]
     },
-    "buffs": ["charm"],
+    "buffs": [],
     "attack": [30, 50],
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm.",
     "img_url": "",
     "drops": [
-      { "id": "hybrid_oil", "chance": 0.28 },
-      { "id": "swallow", "chance": 0.22 }
+      { "id": "hybrid_oil", "type": "oil", "chance": 0.5 },
+      { "id": "swallow", "type": "potion", "chance": 0.22 }
     ],
     "discovered": false
   },
@@ -69,13 +69,13 @@
       "oil": ["Specter Oil"],
       "signs": ["Yrden"]
     },
-    "buffs": ["fear"],
+    "buffs": [],
     "attack": [40, 50],
     "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths.",
     "img_url": "",
     "drops": [
-      { "id": "specter_oil", "chance": 0.3 },
-      { "id": "ectoplasm", "chance": 0.2 }
+      { "id": "specter_oil", "type": "oil", "chance": 0.5 },
+      { "id": "ectoplasm", "type": "resource", "chance": 0.2 }
     ],
     "discovered": false
   },
@@ -89,13 +89,13 @@
       "oil": ["Specter Oil"],
       "signs": ["Yrden", "Quen"]
     },
-    "buffs": ["life_drain"],
+    "buffs": [],
     "attack": [45, 65],
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
     "img_url": "",
     "drops": [
-      { "id": "specter_oil", "chance": 0.4 },
-      { "id": "swallow_strong", "chance": 0.18 }
+      { "id": "specter_oil", "type": "oil", "chance": 0.5 },
+      { "id": "swallow_strong", "type": "potion", "chance": 0.18 }
     ],
     "discovered": false
   },
@@ -109,13 +109,13 @@
       "oil": ["Relict Oil"],
       "signs": ["Yrden", "Aard"]
     },
-    "buffs": ["rooted"],
+    "buffs": [],
     "attack": [70, 95],
     "bestiary_entry": "An ancient forest guardian turned hostile. Leshens command roots and animals to do their bidding — they are cunning and territorial.",
     "img_url": "",
     "drops": [
-      { "id": "relict_oil", "chance": 0.28 },
-      { "id": "leshen_root", "chance": 0.35 }
+      { "id": "relict_oil", "type": "oil", "chance": 0.5 },
+      { "id": "leshen_root", "type": "resource", "chance": 0.35 }
     ],
     "discovered": false
   },
@@ -134,8 +134,8 @@
     "bestiary_entry": "Smaller than dragons but far from harmless — wyverns are fast, aggressive, and often nest on cliffs above human settlements.",
     "img_url": "",
     "drops": [
-      { "id": "draconid_oil", "chance": 0.32 },
-      { "id": "wyvern_scale", "chance": 0.4 }
+      { "id": "draconid_oil", "type": "oil", "chance": 0.5 },
+      { "id": "wyvern_scale", "type": "resource", "chance": 0.4 }
     ],
     "discovered": false
   },
@@ -154,8 +154,8 @@
     "bestiary_entry": "Small, vicious, and dangerous in packs. Nekkering swarms can overwhelm lone travelers with their numbers and speed.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.22 },
-      { "id": "swallow", "chance": 0.15 }
+      { "id": "necrophage_oil", "type": "oil", "chance": 0.5 },
+      { "id": "swallow", "type": "potion", "chance": 0.15 }
     ],
     "discovered": false
   },
@@ -169,13 +169,13 @@
       "oil": ["Necrophage Oil"],
       "signs": ["Quen", "Igni"]
     },
-    "buffs": ["invisibility"],
+    "buffs": [],
     "attack": [35, 55],
     "bestiary_entry": "They appear from the mist, strike, and vanish. If you see fog in bright daylight — run, for it's no natural mist.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.25 },
-      { "id": "foglet_essence", "chance": 0.3 }
+      { "id": "necrophage_oil", "type": "oil", "chance": 0.5 },
+      { "id": "foglet_essence", "type": "resource", "chance": 0.3 }
     ],
     "discovered": false
   },
@@ -189,13 +189,13 @@
       "oil": ["Necrophage Oil"],
       "signs": ["Igni"]
     },
-    "buffs": ["life_steal"],
+    "buffs": [],
     "attack": [25, 45],
     "bestiary_entry": "Corpse eaters that gather in battlefields and graveyards. Ghouls can heal themselves by consuming flesh mid-fight.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.3 },
-      { "id": "ghoul_blood", "chance": 0.25 }
+      { "id": "necrophage_oil", "type": "oil", "chance": 0.5 },
+      { "id": "ghoul_blood", "type": "resource", "chance": 0.25 }
     ],
     "discovered": false
   },
@@ -209,13 +209,13 @@
       "oil": ["Cursed Oil"],
       "signs": ["Igni"]
     },
-    "buffs": ["regeneration"],
+    "buffs": [],
     "attack": [70, 90],
     "bestiary_entry": "Cursed men who turn into beasts under the full moon. Werewolves heal rapidly and grow stronger as they bleed.",
     "img_url": "",
     "drops": [
-      { "id": "cursed_oil", "chance": 0.3 },
-      { "id": "werewolf_hide", "chance": 0.4 }
+      { "id": "cursed_oil", "type": "oil", "chance": 0.5 },
+      { "id": "werewolf_hide", "type": "resource", "chance": 0.4 }
     ],
     "discovered": false
   },
@@ -229,13 +229,13 @@
       "oil": ["Elemental Oil"],
       "signs": ["Igni"]
     },
-    "buffs": ["frozen_armor"],
+    "buffs": [],
     "attack": [80, 100],
     "bestiary_entry": "Forged from eternal frost by powerful mages. They are slow but hit like falling glaciers and resist most damage.",
     "img_url": "",
     "drops": [
-      { "id": "elemental_oil", "chance": 0.25 },
-      { "id": "frost_core", "chance": 0.35 }
+      { "id": "elemental_oil", "type": "oil", "chance": 0.5 },
+      { "id": "frost_core", "type": "resource", "chance": 0.35 }
     ],
     "discovered": false
   },
@@ -249,13 +249,13 @@
       "oil": ["Relict Oil"],
       "signs": ["Aard"]
     },
-    "buffs": ["fear"],
+    "buffs": [],
     "attack": [85, 110],
     "bestiary_entry": "Massive, horned beasts that shake the ground with every step. Their third eye can hypnotize prey before tearing it apart.",
     "img_url": "",
     "drops": [
-      { "id": "relict_oil", "chance": 0.3 },
-      { "id": "fiend_eye", "chance": 0.35 }
+      { "id": "relict_oil", "type": "oil", "chance": 0.5 },
+      { "id": "fiend_eye", "type": "resource", "chance": 0.35 }
     ],
     "discovered": false
   },
@@ -269,13 +269,13 @@
       "oil": ["Necrophage Oil"],
       "signs": ["Igni"]
     },
-    "buffs": ["mud_splash"],
+    "buffs": [],
     "attack": [40, 60],
     "bestiary_entry": "Ugly, hateful creatures that dwell near swamps and rivers. They fling mud to blind their prey before dragging them under.",
     "img_url": "",
     "drops": [
-      { "id": "necrophage_oil", "chance": 0.28 },
-      { "id": "hag_teeth", "chance": 0.25 }
+      { "id": "necrophage_oil", "type": "oil", "chance": 0.5 },
+      { "id": "hag_teeth", "type": "resource", "chance": 0.25 }
     ],
     "discovered": false
   },
@@ -289,13 +289,13 @@
       "oil": ["Hybrid Oil"],
       "signs": ["Aard"]
     },
-    "buffs": ["knockback"],
+    "buffs": ["bleed"],
     "attack": [30, 50],
     "bestiary_entry": "Shrieking monsters that attack from above. Harpies strike quickly and retreat, making them hard to pin down.",
     "img_url": "",
     "drops": [
-      { "id": "hybrid_oil", "chance": 0.25 },
-      { "id": "harpy_feather", "chance": 0.3 }
+      { "id": "hybrid_oil", "type": "oil", "chance": 0.5 },
+      { "id": "harpy_feather", "type": "resource", "chance": 0.3 }
     ],
     "discovered": false
   },
@@ -309,13 +309,13 @@
       "oil": ["Elemental Oil"],
       "signs": ["Aard"]
     },
-    "buffs": ["damage_resist"],
+    "buffs": [],
     "attack": [75, 95],
     "bestiary_entry": "Created to guard ancient ruins. Earth elementals crush their foes with unstoppable force and shrug off most attacks.",
     "img_url": "",
     "drops": [
-      { "id": "elemental_oil", "chance": 0.3 },
-      { "id": "earth_core", "chance": 0.35 }
+      { "id": "elemental_oil", "type": "oil", "chance": 0.5 },
+      { "id": "earth_core", "type": "resource", "chance": 0.35 }
     ],
     "discovered": false
   },
@@ -329,11 +329,11 @@
       "oil": ["Beast Oil"],
       "signs": ["Aard"]
     },
-    "buffs": [],
+    "buffs": ["bleed"],
     "attack": [10, 28],
     "bestiary_entry": "Common predator of the wilds. Wolves travel in packs and can be dangerous when provoked.",
     "img_url": "",
-    "drops": [{ "id": "wolf_hide", "chance": 0.4 }],
+    "drops": [{ "id": "wolf_hide", "type": "resource", "chance": 0.5 }],
     "discovered": false
   },
   "bandit": {
@@ -346,11 +346,14 @@
       "oil": [],
       "signs": ["Quen"]
     },
-    "buffs": [],
+    "buffs": ["bleed"],
     "attack": [18, 36],
     "bestiary_entry": "Marauders and thieves who prey on travelers. Often lightly armored but numerous.",
     "img_url": "",
-    "drops": [{ "id": "loot_crates", "chance": 0.3 }],
+    "drops": [
+      { "id": "fish", "type": "food", "chance": 0.5 },
+      { "id": "wolf_hide", "type": "resource", "chance": 0.3 }
+    ],
     "discovered": false
   },
   "wraith": {
@@ -363,11 +366,11 @@
       "oil": ["Specter Oil"],
       "signs": ["Yrden"]
     },
-    "buffs": ["life_drain"],
+    "buffs": [],
     "attack": [40, 60],
     "bestiary_entry": "Restless spirits that haunt places of tragedy. Wraiths can sap the life of the unwary.",
     "img_url": "",
-    "drops": [{ "id": "ectoplasm", "chance": 0.25 }],
+    "drops": [{ "id": "ectoplasm", "type": "resource", "chance": 0.25 }],
     "discovered": false
   },
   "alghoul": {
@@ -380,11 +383,11 @@
       "oil": ["Necrophage Oil"],
       "signs": ["Igni"]
     },
-    "buffs": ["frenzy"],
+    "buffs": [],
     "attack": [50, 72],
     "bestiary_entry": "A stronger, more vicious variant of the ghoul; alghouls hunt in ravaged areas and are more resilient.",
     "img_url": "",
-    "drops": [{ "id": "ghoul_blood", "chance": 0.3 }],
+    "drops": [{ "id": "ghoul_blood", "type": "resource", "chance": 0.3 }],
     "discovered": false
   }
 }
