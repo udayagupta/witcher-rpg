@@ -2,7 +2,7 @@ import WonScreen from "./WonScreen";
 import BattleScreenUI from "./BattleScreenUI";
 import { useBattle } from "../../hooks/useBattle";
 
-const BattleScreen = ({ monsterId }) => {
+const BattleScreen = ({ monsterId, exit }) => {
   const { battleState, setBattleState, playerActions, addLog, monsterData } = useBattle(monsterId);
 
   return (
@@ -15,6 +15,7 @@ const BattleScreen = ({ monsterId }) => {
           monsterData={monsterData}
           monsterId={monsterId}
           playerActions={playerActions}
+          exit={exit}
         />
       ) : (
         <WonScreen

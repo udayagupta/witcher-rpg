@@ -10,7 +10,7 @@
       "signs": ["Aard"]
     },
     "buffs": ["bleed"],
-    "attack": [60, 80],
+    "attack": [50, 60],
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
     "img_url": "",
     "drops": [

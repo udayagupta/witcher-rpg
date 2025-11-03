@@ -16,7 +16,7 @@ const MonsterBestiary = () => {
     const selectedMonsterData = monstersData[selectedMonster];
 
     return (
-      <div className="flex flex-col gap-3 p-4 bg-neutral-900/30 rounded text-white">
+      <div className="flex flex-col border border-amber-300 gap-3 p-4 bg-neutral-900/30 rounded text-white">
         <img
           src={`./images/${selectedMonster}.png`}
           alt={selectedMonsterData.name}
@@ -25,7 +25,7 @@ const MonsterBestiary = () => {
         <p className="witcher-font text-3xl text-amber-300">
           {selectedMonsterData.name}
         </p>
-        <p className="p-3 playwrite-font text-sm opacity-90">
+        <p className="p-3  text-sm opacity-90">
           {selectedMonsterData.bestiary_entry}
         </p>
         <p className="">
@@ -51,8 +51,8 @@ const MonsterBestiary = () => {
   };
 
   return (
-    <section className="flex pt-sans-font gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
-      <div className="w-[65%] h-[500px] overflow-auto">
+    <section className="h-screen flex pt-sans-font gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
+      <div className="w-[65%] overflow-auto">
         <h3 className="text-2xl p-2 witcher-font text-amber-300">Monsters</h3>
         <ul className="gap-4 p-2 monster-list">
           {Object.keys(monstersData).map((key, index) => (
@@ -77,7 +77,7 @@ const MonsterBestiary = () => {
           ))}
         </ul>
       </div>
-      <div className="selected-monster h-[500px] overflow-auto w-[35%]">
+      <div className="selected-monster overflow-auto w-[35%]">
         <SelectedMonsterCard />
       </div>
     </section>

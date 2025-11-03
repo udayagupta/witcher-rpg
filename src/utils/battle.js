@@ -1,5 +1,6 @@
 import { effectsData } from "./effects";
 
+
 export const randomInRange = (max, min) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -43,28 +44,13 @@ export const playerSilverDamage = (
   };
 };
 
-export const checkIfEffectExists = (debuffs = [], effectId) => {
-  const exists = debuffs.find((effect) => effect.id === effectId);
-
-  return exists ? true : false;
-};
-
-export const updateDuration = (effects, effectId, durationToAdd) =>
-  effects.map((effect) =>
-    effect.id === effectId
-      ? {
-          ...effect,
-          duration: effect.duration + durationToAdd,
-        }
-      : effect
-  );
 
 export const monsterDamage = (monster, playerDefense) => {
   const isCrit = Math.random() < monster.crit_chance / 100;
   const damage = randomInRange(monster.attack[0], monster.attack[1]);
   const monsterBuffs = monster.buffs.length > 0 ? monster.buffs[0] : null;
   const effectData = monsterBuffs ? effectsData[monsterBuffs] : null;
-  const buffInflictingChance = 0.05;
+  const buffInflictingChance = 0.10;
   const isBuff = Math.random() < buffInflictingChance;
 
   const critMultiplier = 2;
@@ -80,17 +66,13 @@ export const monsterDamage = (monster, playerDefense) => {
   );
   return {
     monsterAttackDmg,
-    log: `${monster.name} attacked for ${parseInt(monsterAttackDmg)} damage ${
-      isCrit ? "(CRIT💥)" : ""
-    } ${
+    log: `${monster.name} attacked for ${parseInt(monsterAttackDmg)} damage ${isCrit ? "(CRIT💥)" : ""} 
+    ${
       isBuff && monsterBuffs
         ? `and inflicted ${effectData.name} for ${effectData.duration} turns`
         : ""
     }.`,
-    buff:
-      isBuff && monsterBuffs
-        ? { id: monsterBuffs, duration: effectData.duration }
-        : null,
+    buff: isBuff && monsterBuffs ? { id: monsterBuffs, duration: effectData.duration } : null,
   };
 };
 
@@ -129,9 +111,61 @@ export const handleYrden = () => {
 
 };
 export const handleAard = () => {};
-export const handleQuen = () => {};
+
+export const handleQuen = (regenChance = 0.05, player, monster) => {
+  const isRegenerate = Math.random() < regenChance;
+  const quenIntensity = player.signsIntensity.quen;
+  const baseHeal = 40
+  const totalHeal = baseHeal * quenIntensity;
+  const effectData = effectsData["defense_up"];
+
+  return {
+    heal: totalHeal,
+    isRegenerate: isRegenerate ? { id: effectData.id, duration: effectData.duration } : null,
+    log: `${player.name} use Quen and healed ${totalHeal} vitality ${isRegenerate ? `and for ${effectData.duration} turns, ${effectData.applyLog(player.name)}` : ""}`
+  }
+};
 export const handleAxii = () => {};
 
 export const isAlive = (user) => {
   return user.vitality > 0;
 };
+
+export const updateDuration = (effects, effectId, durationToAdd) =>
+  (effects || []).map((effect) =>
+    effect.id === effectId
+      ? {
+          ...effect,
+          duration: effect.duration + durationToAdd,
+        }
+      : effect
+);
+
+export const checkIfEffectExists = (debuffs = [], effectId) => {
+  const exists = debuffs.find((effect) => effect.id === effectId);
+
+  return exists ? true : false;
+};
+
+export const existsAndCanStack = (effects, effectId) => {
+  const effectData = effectsData[effectId];
+  return (checkIfEffectExists(effects, effectId) && effectData.canStack); 
+}
+
+export const updateBuffs = (target, battleState, setBattleState, effectId) => {
+  const targetDebuffs = target === "player" ? battleState.playerDebuffs : battleState.monsterDebuffs;
+  const targetDebuffsKey = target === "player" ? "playerDebuffs" : "monsterDebuffs";
+  const effectData = effectId ? effectsData[effectId] : null;
+
+  if (effectData && !checkIfEffectExists(targetDebuffs, effectId)) {
+    setBattleState((prev) => ({
+      ...prev,
+      [targetDebuffsKey]: [...prev[targetDebuffsKey], { id: effectData.id, duration: effectData.duration}]
+    }))
+  } else if (effectData && existsAndCanStack(targetDebuffs, effectId)) {
+    setBattleState((prev) => ({
+      ...prev,
+      [targetDebuffsKey]: updateDuration(prev[targetDebuffsKey], effectId, effectData.duration)
+    }))
+  }
+} 

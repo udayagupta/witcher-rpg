@@ -9,6 +9,7 @@ const BattleScreenUI = ({
   playerActions,
   monsterData,
   monsterId,
+  exit
 }) => {
   const { player } = usePlayer();
 
@@ -176,7 +177,7 @@ const BattleScreenUI = ({
       </div>
 
       <div className="border rounded-md mt-3">
-        <button onClick={() => {}} className="heading witcher-font w-full">
+        <button onClick={exit} className="heading witcher-font w-full">
           Flee
         </button>
       </div>

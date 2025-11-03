@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import {
   playerSilverDamage,
@@ -7,6 +7,8 @@ import {
   monsterDamage,
   updateDuration,
   handleIgni,
+  handleQuen,
+  updateBuffs,
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
 
@@ -73,7 +75,27 @@ export const useBattle = (monsterId) => {
     }))
   };
   const handlePlayerYrden = () => { };
-  const handlePlayerQuen = () => { };
+  const handlePlayerQuen = () => {
+    if (player.stamina < 25) {
+      addLog(`${player.name} consumed all its stamina and can't use the signs anymore.`);
+      return;
+    }
+
+    const heal = handleQuen(0.1, player, monsterData);
+    addLog(heal.log);
+    usedASign();
+
+    setPlayer((prev) => ({
+      ...prev,
+      vitality: Math.min(prev.maxVitality, prev.vitality + heal.heal)
+    }))
+
+    setBattleState((prev) => ({
+      ...prev,
+      currentTurn: "monster"
+    }));
+
+  };
   const handlePlayerAard = () => { };
   const handlePlayerAxii = () => { };
 
@@ -97,27 +119,28 @@ export const useBattle = (monsterId) => {
       turns: prev.turns + 1,
     }));
 
-    if (buffId && !checkIfEffectExists(battleState.playerDebuffs, buffId)) {
-      setBattleState((prev) => ({
-        ...prev,
-        playerDebuffs: [...prev.playerDebuffs, dmg.buff],
-      }));
-    }
+    // if (buffId && !checkIfEffectExists(battleState.playerDebuffs, buffId)) {
+    //   setBattleState((prev) => ({
+    //     ...prev,
+    //     playerDebuffs: [...prev.playerDebuffs, dmg.buff],
+    //   }));
+    // }
 
-    if (
-      buffId &&
-      checkIfEffectExists(battleState.playerDebuffs, buffId) &&
-      effectsData[buffId].canStack
-    ) {
-      setBattleState((prev) => ({
-        ...prev,
-        playerDebuffs: updateDuration(
-          prev.playerDebuffs,
-          buffId,
-          effectsData[buffId].duration
-        ),
-      }));
-    }
+    // if (
+    //   buffId &&
+    //   checkIfEffectExists(battleState.playerDebuffs, buffId) &&
+    //   effectsData[buffId].canStack
+    // ) {
+    //   setBattleState((prev) => ({
+    //     ...prev,
+    //     playerDebuffs: updateDuration(
+    //       prev.playerDebuffs,
+    //       buffId,
+    //       effectsData[buffId].duration
+    //     ),
+    //   }));
+    // }
+    updateBuffs("player", battleState, setBattleState, buffId);
 
     takeDamage(dmg.monsterAttackDmg);
   };

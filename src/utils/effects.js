@@ -97,4 +97,19 @@ export const effectsData = {
     tickLog: (targetName) => `${targetName}'s guard remains weakened.`,
     expireLog: (targetName) => `${targetName} regains composure and their guard returns.`,
   },
+
+  defense_up: {
+    id: "defense_up",
+    name: "Defense Up",
+    icon: "🛡️↑",
+    description: "Increases the defense for few turns.",
+    duration: 3,
+    type: "debuff",
+    statAffected: "defense",
+    modifier: +0.05,
+    canStack: false,
+    applyLog: (targetName) => `${targetName} has it's defense increased!`,
+    tickLog: (targetName) => `${targetName}'s guard remained increased!`,
+    expireLog: (targetName) => `${targetName}'s guard returned to normal.`
+  }
 };

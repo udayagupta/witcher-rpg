@@ -28,14 +28,16 @@ export const PlayerProfile = ({ className }) => {
 
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <div>
+            <div className="w-full">
               <h2 className="text-2xl font-extrabold witcher-font">{player.fullName}</h2>
-              <p className="text-sm opacity-80">Level <strong className="text-amber-300">{player.level}</strong></p>
+              <div className="flex justify-between text-md">
+                <p className=" opacity-80">Level <strong className="text-amber-300">{player.level}</strong></p>
+                <p className="">🪙<span className="font-semibold">{formattedPlayerCoins}</span></p>
+              </div>
             </div>
 
             <div className="text-right">
-              <p className="text-sm">💲<span className="font-semibold">{formattedPlayerCoins}</span></p>
-              <p className="text-xs opacity-70">Inv: {inventoryCount}</p>
+              {/* <p className="text-xs opacity-70">Inv: {inventoryCount}</p> */}
             </div>
           </div>
 

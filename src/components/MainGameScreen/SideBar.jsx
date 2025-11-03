@@ -6,7 +6,7 @@ const SideBar = () => {
   const { player } = usePlayer();
 
   return (
-    <ul className="flex flex-col flex-2 h-screen overflow-auto gap-3 witcher-font">
+    <ul className="flex flex-col flex-2 overflow-auto gap-3 witcher-font">
       <li className="rounded-md pt-sans-font">
         <PlayerProfile />
       </li>
