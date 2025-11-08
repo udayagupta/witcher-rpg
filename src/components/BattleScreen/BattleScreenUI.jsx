@@ -37,6 +37,7 @@ const BattleScreenUI = ({
         >
           <p className="witcher-font heading ">{player.name}</p>
           <HealthBar className="font-semibold" />
+          <p>{player.stamina}</p>
           <div className="stamina">
             
           </div>
@@ -104,7 +105,7 @@ const BattleScreenUI = ({
           >
             {battleState.battleLogs.map((log, index) => (
               <li
-                className="border border-neutral-600 py-2 px-1 rounded-md mx-2"
+                className={`border py-2 px-1 rounded-md mx-2 ${index === battleState.battleLogs.length - 1 ? "border-amber-300" : "border-neutral-600"}`}
                 key={index}
               >
                 {log}

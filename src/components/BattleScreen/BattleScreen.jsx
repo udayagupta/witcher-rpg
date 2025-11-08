@@ -8,8 +8,6 @@ const BattleScreen = ({ monsterId, exit }) => {
   return (
     <div className="h-full">
       <h3 className="witcher-font heading text-3xl text-amber-300">Battle</h3>
-
-      {battleState.battleResult === null ? (
         <BattleScreenUI
           battleState={battleState}
           monsterData={monsterData}
@@ -17,12 +15,8 @@ const BattleScreen = ({ monsterId, exit }) => {
           playerActions={playerActions}
           exit={exit}
         />
-      ) : (
-        <WonScreen
-          battleResult={battleState.battleResult}
-          monsterId={monsterId}
-        />
-      )}
+
+        
     </div>
   );
 };

@@ -23,7 +23,7 @@ const HealthBar = ({ className = "" }) => {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="text-xs mt-1">{vit} / {max} ❤️</div>
+      <div className="text-xs mt-1">{parseInt(vit)} / {max} ❤️</div>
     </div>
   );
 };

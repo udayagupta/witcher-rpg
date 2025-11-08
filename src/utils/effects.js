@@ -87,7 +87,7 @@ export const effectsData = {
     id: "charm",
     name: "Charm",
     icon: "💫",
-    description: "Lowers the target’s guard, reducing defense temporarily.",
+    description: "Lowers the target's guard, reducing defense temporarily.",
     duration: 2,
     type: "debuff",
     statAffected: "defense",

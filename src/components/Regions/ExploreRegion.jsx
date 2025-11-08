@@ -12,12 +12,6 @@ const ExploreRegion = () => {
   const [gameMode, setGameMode] = useState("explore");
   const [selectedMonster, setSelectedMonster] = useState(null);
 
-  // const exit = () => {
-  //   const fleeChance = Math.random() < 0.5;
-
-  //   return fleeChance ? true : false;
-  // }
-
   const exit = () => {
     setGameMode("explore");
     setPlayer((prev) => ({

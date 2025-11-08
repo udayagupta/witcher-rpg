@@ -25,7 +25,7 @@ Battle monsters, cast signs, apply oils, and manage buffs & debuffs through an i
 | State    | React Context API                                        |
 | Styling  | Tailwind CSS                                             |
 | Data     | Static JSON files                                        |
-| Logic    | Modular JS utility functions (`battle.js`, `effects.js`) |
+| Logic    | Modular JS utility functions                             |
 
 ---
 

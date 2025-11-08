@@ -73,8 +73,8 @@ export const PlayerProvider = ({ children }) => {
     setPlayer((prev) => ({ ...prev, coins: prev.coins + amount }));
   };
 
-  const usedASign = () => {
-    setPlayer((prev) => ({...prev, stamina: Math.max(0, prev.stamina - 20)}));
+  const usedASign = (staminaReq) => {
+    setPlayer((prev) => ({...prev, stamina: Math.max(0, prev.stamina - staminaReq)}));
   }
 
   const spendCoins = (amount) => {

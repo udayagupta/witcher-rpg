@@ -19,7 +19,7 @@ const MonsterHealth = ({ current = 0, max = 1, className = "" }) => {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="text-xs mt-1">{current} / {max} ⚔️</div>
+      <div className="text-xs mt-1">{parseInt(current)} / {max} ⚔️</div>
     </div>
   );
 };
