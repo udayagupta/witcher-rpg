@@ -206,9 +206,17 @@
       "rarity": "rare",
       "price": 220,
       "description": "Powerful oil used against ancient and relict creatures."
+    },
+    "elemental_oil": {
+      "id": "elemental_oil",
+      "name": "Elemental Oil",
+      "type": "oil",
+      "rarity": "rare",
+      "price": 500,
+      "description": "Effective versus Elementals."
     }
   },
-  "materials": {
+  "resources": {
     "wyvern_scale": {
       "id": "wyvern_scale",
       "name": "Wyvern Scale",
@@ -232,6 +240,47 @@
       "rarity": "uncommon",
       "price": 120,
       "description": "Remnant of a specter — used in crafting and alchemy."
+    },
+    "foglet_essence": {
+      "id": "foglet_essence",
+      "name": "Foglet Essence",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 200,
+      "description": "Something to be used in alchemy"
+    },
+    "ghoul_blood": {
+      "id": "ghoul_blood",
+      "name": "Ghoul Blood",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 200,
+      "description": "It is a guaranteed drop from ghouls, their monster nests, and alghouls that guard them"
+    },
+    "wolf_hide": {
+      "id": "wolf_hide",
+      "name": "Wolf Hide",
+      "type": "material",
+      "rarity": "common",
+      "price": 50,
+      "description": "Dropped from wolves"
+    },
+    "werewolf_hide": {
+      "id": "werewolf_hide",
+      "name": "Werewolf Hide",
+      "type": "material",
+      "rarity": "rare",
+      "price": 500,
+      "description": "A rare material dropped from Werewolves"
+    }
+  },
+  "foods": {
+    "fish": {
+      "id": "fish",
+      "name": "Fish",
+      "type": "common",
+      "price": 40,
+      "description": "A Fish."
     }
   }
 }

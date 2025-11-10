@@ -20,6 +20,10 @@ const ExploreRegion = () => {
     }))
   }
 
+  const changeGameMode = (mode) => {
+    setGameMode(mode);
+  }
+
   const Explore = () => {
     return (
     <div className="bg-neutral-800 h-full rounded-md">
@@ -114,7 +118,7 @@ const ExploreRegion = () => {
     gameMode === "explore" ? (
       <Explore />
     ) : (
-      <BattleScreen exit={exit} monsterId={selectedMonster}/>
+      <BattleScreen handleGameMode={changeGameMode} exit={exit} monsterId={selectedMonster}/>
     )
   );
 };

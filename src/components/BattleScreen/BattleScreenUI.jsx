@@ -59,8 +59,6 @@ const BattleScreenUI = ({
                   }`}
                   className="relative flex flex-col items-center"
                 >
-                  {/* Show emoji/icon if available, otherwise fall back to image */}
-
                   <img
                     src={`./images/${debuff.id}.png`}
                     className="h-[36px] w-[36px] object-contain"

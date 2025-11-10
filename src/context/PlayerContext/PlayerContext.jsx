@@ -22,14 +22,14 @@ export const PlayerProvider = ({ children }) => {
     inventory: {
       steelSwords: [{ id: "steel_sword_basic", qty: 1 }],
       silverSwords: [{ id: "silver_sword_basic", qty: 1 }],
-      armor: [{ id: "viper_basic_armor", qty: 1 }],
+      armors: [{ id: "viper_basic_armor", qty: 1 }],
       gauntlets: [{ id: "viper_basic_gauntlets", qty: 1 }],
       trousers: [{ id: "viper_basic_trousers", qty: 1 }],
       boots: [{ id: "viper_basic_boots", qty: 1 }],
       potions: [],
       oils: [],
       resources: [],
-      food: [],
+      foods: [],
     },
 
     equipment: {
@@ -100,7 +100,31 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const addToInventory = (itemId, qty, itemCategory) => {
-    // {  }
+    // ("swallow", 1, "potions")
+    let newList = [];
+    let itemFound = false;
+
+    player["inventory"][itemCategory].map((item) => {
+      if (item.id === itemId) {
+        itemFound = true;
+        return { ...item, qty: item.qyt+qty }
+      }
+
+      return item;
+    })
+
+    if (!itemFound) {
+      newList.push({ id: itemId, qty: qty })
+    }
+
+    setPlayer((prev) => ({
+      ...prev,
+      inventory: {
+        ...prev.inventory,
+        [itemCategory]: newList
+      }
+    }))
+
   };
 
   const resetVitality = () => {
@@ -189,18 +213,6 @@ export const PlayerProvider = ({ children }) => {
     const updatedPlayer = reflectEquippedEquipment(player);
     setPlayer((prev) => ({ ...updatedPlayer }));
   }, [player.equipment]);
-
-  useEffect(() => {
-    // monsterDamage("devil-by-the-well", player.defense);
-    // monsterDamage("griffin", player.defense);
-    // monsterDamage("drowner", player.defense);
-    // monsterDamage("siren", player.defense);
-    // monsterDamage("leshen", player.defense);
-    // monsterDamage("nekker", player.defense);
-    // monsterDamage("wyvern", player.defense);
-    // generateLoot([{ "id": "hybrid_oil", "chance": 0.35 }, { "id": "swallow", "chance": 0.25 }])
-    // generateLoot([{ "id": "necrophage_oil", "chance": 0.25 }, { "id": "swallow_strong", "chance": 0.15 }])
-  });
 
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>

@@ -34,11 +34,6 @@ export const playerSilverDamage = (
     playerAttackDmg *= oilMultiplier;
   }
 
-  console.log(
-    `${player.name} attacked for ${playerAttackDmg} ${
-      appliedOil ? `with ${appliedOil}` : ""
-    } ${isCrit ? "(CRIT!)" : ""}`
-  );
   return {
     playerAttackDmg,
     log: `${player.name} dealt ${playerAttackDmg} damage ${
@@ -84,17 +79,15 @@ export const generateLoot = (monsterDrops) => {
 
   monsterDrops.forEach((drop) => {
     const chance = Math.random() < drop.chance;
-    if (chance) loot.push(drop.id);
+    if (chance) loot.push({ id: drop.id, qty: drop.qty, type: drop.type });
   });
 
   console.log(loot);
 
   return loot;
 };
-export const completeContract = (quest_location, quest_id) => {
-  // include rewarding the player crowns,
-  // adding generated loot to the player inventory
-};
+
+
 
 export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const isBurning = Math.random() < burnChance;
@@ -204,7 +197,6 @@ export const applyEffects = (target, battleState, setBattleState, monsterData,  
           playerDebuffs: updateDuration(prev.playerDebuffs, effectData.id, -1)
         }))
       } else {
-        console.log(monsterData.vitality * effectData.tickDamagePercent);
         takeDamageMonster(monsterData.vitality * effectData.tickDamagePercent);
         setBattleState((prev) => ({
           ...prev,
