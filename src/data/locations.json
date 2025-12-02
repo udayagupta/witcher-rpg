@@ -63,7 +63,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["metal_scraps", "wolf_hide"]
+        "resources_to_gather": ["metal_scrap", "wolf_hide"]
       },
       "abandoned_village": {
         "name": "Abandoned Village 🏚️",
@@ -208,7 +208,7 @@
         "resources_to_gather": ["grain", "herbs"]
       },
       "hanged_mans_tree": {
-        "name": "Hanged Man’s Tree ⚰️",
+        "name": "Hanged Man's Tree ⚰️",
         "monsters_found": ["wraith", "ghoul"],
         "merchant": null,
         "blacksmith": null,
@@ -232,7 +232,7 @@
         "resources_to_gather": ["seashells", "draconid_blood"]
       },
       "devil_pit": {
-        "name": "Devil’s Pit 🔥",
+        "name": "Devil's Pit 🔥",
         "monsters_found": ["ghoul", "alghoul"],
         "merchant": null,
         "blacksmith": null,
@@ -253,7 +253,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["charcoal", "metal_scraps"]
+        "resources_to_gather": ["charcoal", "metal_scrap"]
       }
     },
     "default_sub_location": "crow_perch_cliffs"

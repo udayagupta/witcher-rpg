@@ -27,7 +27,12 @@ export const PlayerProvider = ({ children }) => {
       trousers: [{ id: "viper_basic_trousers", qty: 1 }],
       boots: [{ id: "viper_basic_boots", qty: 1 }],
       potions: [],
-      oils: [],
+      oils: [
+        { id: "hybrid_oil", qty: 5 },
+        { id: "necrophage_oil", qty: 5 },
+        { id: "specter_oil", qty: 5 },
+        { id: "draconid_oil", qty: 5 },
+      ],
       resources: [],
       foods: [],
     },
@@ -51,8 +56,8 @@ export const PlayerProvider = ({ children }) => {
       quen: 1,
       yrden: 1,
       axii: 1,
-      aard: 1
-    }
+      aard: 1,
+    },
   });
 
   const heal = (amount) => {
@@ -74,8 +79,11 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const usedASign = (staminaReq) => {
-    setPlayer((prev) => ({...prev, stamina: Math.max(0, prev.stamina - staminaReq)}));
-  }
+    setPlayer((prev) => ({
+      ...prev,
+      stamina: Math.max(0, prev.stamina - staminaReq),
+    }));
+  };
 
   const spendCoins = (amount) => {
     if (amount > player.coins) return false;
@@ -107,24 +115,23 @@ export const PlayerProvider = ({ children }) => {
     player["inventory"][itemCategory].map((item) => {
       if (item.id === itemId) {
         itemFound = true;
-        return { ...item, qty: item.qyt+qty }
+        return { ...item, qty: item.qyt + qty };
       }
 
       return item;
-    })
+    });
 
     if (!itemFound) {
-      newList.push({ id: itemId, qty: qty })
+      newList.push({ id: itemId, qty: qty });
     }
 
     setPlayer((prev) => ({
       ...prev,
       inventory: {
         ...prev.inventory,
-        [itemCategory]: newList
-      }
-    }))
-
+        [itemCategory]: newList,
+      },
+    }));
   };
 
   const resetVitality = () => {
@@ -137,9 +144,9 @@ export const PlayerProvider = ({ children }) => {
   const increaseStamina = (amount) => {
     setPlayer((prev) => ({
       ...prev,
-      stamina: Math.min(100, prev.stamina+amount)
-    }))
-  }
+      stamina: Math.min(100, prev.stamina + amount),
+    }));
+  };
 
   const value = {
     player,

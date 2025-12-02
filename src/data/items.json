@@ -272,6 +272,22 @@
       "rarity": "rare",
       "price": 500,
       "description": "A rare material dropped from Werewolves"
+    },
+    "metal_scrap": {
+      "id": "metal_scrap",
+      "name": "Metal Scrap",
+      "type": "material",
+      "rarity": "common",
+      "price": 80,
+      "description": "Metal scrap used in crafting various witcher gear."
+    },
+    "leather_scrap": {
+      "id": "leather_scrap",
+      "name": "Leather Scrap",
+      "type": "material",
+      "rarity": "common",
+      "price": 80,
+      "description": "Used in crafting witcher wearables gears."
     }
   },
   "foods": {

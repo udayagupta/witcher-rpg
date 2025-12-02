@@ -48,6 +48,13 @@ export const useBattle = (monsterId) => {
     }));
   }
 
+  const applyOil = (oil) => {
+    setBattleState((prev) => ({
+      ...prev,
+      appliedOil: { name: oil, duration: 5 }
+    }))
+  }
+
   const addLog = (log) =>
     setBattleState((prev) => ({
       ...prev,
@@ -63,6 +70,13 @@ export const useBattle = (monsterId) => {
 
   const handlePlayerSilverAttack = () => {
     if (battleState.currentTurn === "monster") return;
+    
+    if (battleState.appliedOil) {
+      setBattleState((prev) => ({
+        ...prev,
+        appliedOil: prev.appliedOil.duration > 0 ? { ...prev.appliedOil, duration: prev.appliedOil.duration-1 } : null
+      }))
+    }
 
     const playerAttack = playerSilverDamage(
       player,
@@ -90,6 +104,7 @@ export const useBattle = (monsterId) => {
 
   };
   const handlePlayerYrden = () => { };
+
   const handlePlayerQuen = () => {
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
@@ -153,5 +168,5 @@ export const useBattle = (monsterId) => {
   useEffect(handleTurn, [battleState.currentTurn]);
   useEffect(handleWin, [monsterData.vitality, player.vitality]);
 
-  return { battleState, setBattleState, playerActions, addLog, monsterData };
+  return { battleState, setBattleState, playerActions, addLog, monsterData, applyOil };
 };

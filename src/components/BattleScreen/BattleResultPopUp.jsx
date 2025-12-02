@@ -45,7 +45,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
                 <p className="text-neutral-400 italic mb-1">Loot received:</p>
                 {lootGenerated.map((loot, index) => (
                   <li key={index} className="heading text-amber-200">
-                    {items[loot.type][loot.id].name} × {loot.qty}
+                    {items[loot.type][loot.id].name} x {loot.qty}
                   </li>
                 ))}
               </ul>
@@ -64,7 +64,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
 
         <button
           onClick={() => handleGameMode("explore")}
-          className={`mt-5 mx-auto block witcher-font px-4 py-2 rounded-md text-sm border transition ${isVictory
+          className={`cursor-pointer mt-5 mx-auto block witcher-font px-4 py-2 rounded-md text-sm border transition ${isVictory
               ? "border-amber-300 hover:bg-amber-300 hover:text-black"
               : "border-red-500 hover:bg-red-500 hover:text-black"
             }`}

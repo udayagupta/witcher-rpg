@@ -30,14 +30,14 @@ export const playerSilverDamage = (
     playerAttackDmg += damage;
   }
 
-  if (appliedOil && monsterWeakness.includes(appliedOil)) {
+  if (appliedOil && appliedOil.duration > 0 && monsterWeakness.includes(appliedOil.name)) {
     playerAttackDmg *= oilMultiplier;
   }
 
   return {
     playerAttackDmg,
     log: `${player.name} dealt ${playerAttackDmg} damage ${
-      appliedOil ? `, with ${appliedOil}` : ""
+      appliedOil ? `, with ${appliedOil.name}` : ""
     } ${isCrit ? "(CRIT💥)" : ""}.`,
   };
 };
@@ -155,7 +155,6 @@ export const updateDuration = (effects, effectId, durationToAdd) =>
 
 export const checkIfEffectExists = (debuffs = [], effectId) => {
   const exists = debuffs.find((effect) => effect.id === effectId);
-
   return exists ? true : false;
 };
 
@@ -186,8 +185,7 @@ export const updateBuffs = (target, battleState, setBattleState, effectId) => {
 export const applyEffects = (target, battleState, setBattleState, monsterData,  player, takeDamagePlayer, takeDamageMonster, healPlayer, healMonster) => {
   const targetEffectsKey = target === "player" ? "playerDebuffs" : "monsterDebuffs";
 
-
-  battleState[targetEffectsKey].map((buff, _) => {
+  battleState[targetEffectsKey].forEach((buff) => {
     const effectData = effectsData[buff.id];
     if (effectData.type === "damageOverTime") {
       if (target === "player") {
@@ -206,14 +204,15 @@ export const applyEffects = (target, battleState, setBattleState, monsterData,  
     }
 
     if (effectData.type === "healOverTime") {
+      const healAmount = parseInt(target === "player" ? player.vitality * effectData.tickHealPercent : monsterData.vitality * effectData.tickHealPercent)
       if (target === "player") {
-        healPlayer(parseInt(player.vitality * effectData.tickHealPercent));
+        healPlayer(healAmount);
         setBattleState((prev) => ({
           ...prev,
           playerDebuffs: updateDuration(prev.playerDebuffs, effectData.id, -1)
         }))
       } else {
-        healMonster(parseInt(monsterDamage.vitality * effectData.tickHealPercent));
+        healMonster(healAmount);
         setBattleState((prev) => ({
           ...prev,
           monsterDebuffs: updateDuration(prev.monsterDebuffs, effectData.id, -1)

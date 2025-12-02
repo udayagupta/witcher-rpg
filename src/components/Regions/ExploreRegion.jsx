@@ -3,6 +3,7 @@ import locationsData from "../../data/locations.json";
 import monsterData from "../../data/monster.json";
 import { useState } from "react";
 import BattleScreen from "../BattleScreen/BattleScreen";
+import itemsData from "../../data/items.json";
 
 const ExploreRegion = () => {
   const { player, setPlayer } = usePlayer();
@@ -41,7 +42,8 @@ const ExploreRegion = () => {
                   key={item}
                   className="items-list-item items-list-item-not-selected"
                 >
-                  {item}
+                  {itemsData?.resources[item]?.name || itemsData?.foods[item]?.name || item}
+                  {/* {item} */}
                 </li>
               ))}
             </ul>

@@ -1,10 +1,9 @@
-import WonScreen from "./WonScreen";
 import BattleScreenUI from "./BattleScreenUI";
 import { useBattle } from "../../hooks/useBattle";
 import BattleResultPopUp from "./BattleResultPopUp";
 
 const BattleScreen = ({ monsterId, exit, handleGameMode }) => {
-  const { battleState, setBattleState, playerActions, addLog, monsterData } = useBattle(monsterId);
+  const { battleState, setBattleState, playerActions, addLog, monsterData, applyOil } = useBattle(monsterId);
 
   return (
     <div className="h-full">
@@ -15,6 +14,7 @@ const BattleScreen = ({ monsterId, exit, handleGameMode }) => {
           monsterId={monsterId}
           playerActions={playerActions}
           exit={exit}
+          applyOil={applyOil}
         />
 
         {battleState.battleResult && <BattleResultPopUp handleGameMode={handleGameMode} battleResult={battleState.battleResult} monsterData={monsterData} />}
