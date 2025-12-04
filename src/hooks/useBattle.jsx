@@ -33,7 +33,7 @@ export const useBattle = (monsterId) => {
 
   const handleRanOutOfStamina = (staminaReq) => {
     if (player.stamina < staminaReq) {
-      addLog(`${player.name} consumed all its stamina and can't use the signs anymore.`)
+      addLog(`${player.name} does not have enough stamina. Requied: ${staminaReq}`)
       return true;
     }
 
@@ -48,11 +48,12 @@ export const useBattle = (monsterId) => {
     }));
   }
 
-  const applyOil = (oil) => {
+  const applyOil = (oil, id) => {
     setBattleState((prev) => ({
       ...prev,
-      appliedOil: { name: oil, duration: 5 }
+      appliedOil: { name: oil, duration: 5, id: id }
     }))
+    addLog(`${player.name} applied ${oil} to it's sword for 5 turns.`)
   }
 
   const addLog = (log) =>

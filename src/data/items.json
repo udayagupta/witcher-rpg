@@ -170,6 +170,7 @@
     "hybrid_oil": {
       "id": "hybrid_oil",
       "name": "Hybrid Oil",
+      "img": "hybrid",
       "type": "oil",
       "rarity": "uncommon",
       "price": 140,
@@ -178,6 +179,7 @@
     "necrophage_oil": {
       "id": "necrophage_oil",
       "name": "Necrophage Oil",
+      "img": "necrophage",
       "type": "oil",
       "rarity": "uncommon",
       "price": 140,
@@ -186,6 +188,7 @@
     "specter_oil": {
       "id": "specter_oil",
       "name": "Specter Oil",
+      "img": "specter",
       "type": "oil",
       "rarity": "uncommon",
       "price": 160,
@@ -194,6 +197,7 @@
     "draconid_oil": {
       "id": "draconid_oil",
       "name": "Draconid Oil",
+      "img": "draconid",
       "type": "oil",
       "rarity": "uncommon",
       "price": 160,
@@ -202,14 +206,16 @@
     "relict_oil": {
       "id": "relict_oil",
       "name": "Relict Oil",
+      "img": "relict",
       "type": "oil",
       "rarity": "rare",
       "price": 220,
       "description": "Powerful oil used against ancient and relict creatures."
     },
     "elemental_oil": {
-      "id": "elemental_oil",
-      "name": "Elemental Oil",
+      "id": "elementa_oil",
+      "name": "Elementa Oil",
+      "img": "elementa",
       "type": "oil",
       "rarity": "rare",
       "price": 500,
