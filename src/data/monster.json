@@ -11,6 +11,7 @@
     },
     "buffs": ["bleed"],
     "attack": [50, 60],
+    "defense": 28,
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
     "img_url": "",
     "drops": [
@@ -32,6 +33,7 @@
     },
     "buffs": ["poison"],
     "attack": [20, 40],
+    "defense": 10,
     "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners.",
     "img_url": "",
     "drops": [
@@ -53,6 +55,7 @@
     },
     "buffs": [],
     "attack": [30, 50],
+    "defense": 12,
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm.",
     "img_url": "",
     "drops": [
@@ -74,6 +77,7 @@
     },
     "buffs": [],
     "attack": [40, 50],
+    "defense": 14,
     "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths.",
     "img_url": "",
     "drops": [
@@ -95,6 +99,7 @@
     },
     "buffs": [],
     "attack": [45, 65],
+    "defense": 18,
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
     "img_url": "",
     "drops": [
@@ -116,6 +121,7 @@
     },
     "buffs": [],
     "attack": [70, 95],
+    "defense": 36,
     "bestiary_entry": "An ancient forest guardian turned hostile. Leshens command roots and animals to do their bidding — they are cunning and territorial.",
     "img_url": "",
     "drops": [
@@ -137,6 +143,7 @@
     },
     "buffs": ["poison"],
     "attack": [55, 85],
+    "defense": 30,
     "bestiary_entry": "Smaller than dragons but far from harmless — wyverns are fast, aggressive, and often nest on cliffs above human settlements.",
     "img_url": "",
     "drops": [
@@ -158,6 +165,7 @@
     },
     "buffs": ["poison"],
     "attack": [15, 30],
+    "defense": 6,
     "bestiary_entry": "Small, vicious, and dangerous in packs. Nekkering swarms can overwhelm lone travelers with their numbers and speed.",
     "img_url": "",
     "drops": [
@@ -179,6 +187,7 @@
     },
     "buffs": [],
     "attack": [35, 55],
+    "defense": 12,
     "bestiary_entry": "They appear from the mist, strike, and vanish. If you see fog in bright daylight — run, for it's no natural mist.",
     "img_url": "",
     "drops": [
@@ -200,6 +209,7 @@
     },
     "buffs": [],
     "attack": [25, 45],
+    "defense": 9,
     "bestiary_entry": "Corpse eaters that gather in battlefields and graveyards. Ghouls can heal themselves by consuming flesh mid-fight.",
     "img_url": "",
     "drops": [
@@ -221,6 +231,7 @@
     },
     "buffs": [],
     "attack": [70, 90],
+    "defense": 33,
     "bestiary_entry": "Cursed men who turn into beasts under the full moon. Werewolves heal rapidly and grow stronger as they bleed.",
     "img_url": "",
     "drops": [
@@ -242,6 +253,7 @@
     },
     "buffs": [],
     "attack": [80, 100],
+    "defense": 40,
     "bestiary_entry": "Forged from eternal frost by powerful mages. They are slow but hit like falling glaciers and resist most damage.",
     "img_url": "",
     "drops": [
@@ -262,6 +274,7 @@
     },
     "buffs": [],
     "attack": [85, 110],
+    "defense": 44,
     "bestiary_entry": "Massive, horned beasts that shake the ground with every step. Their third eye can hypnotize prey before tearing it apart.",
     "img_url": "",
     "drops": [
@@ -282,6 +295,7 @@
     },
     "buffs": [],
     "attack": [40, 60],
+    "defense": 14,
     "bestiary_entry": "Ugly, hateful creatures that dwell near swamps and rivers. They fling mud to blind their prey before dragging them under.",
     "img_url": "",
     "drops": [
@@ -302,6 +316,7 @@
     },
     "buffs": ["bleed"],
     "attack": [30, 50],
+    "defense": 11,
     "bestiary_entry": "Shrieking monsters that attack from above. Harpies strike quickly and retreat, making them hard to pin down.",
     "img_url": "",
     "drops": [
@@ -322,6 +337,7 @@
     },
     "buffs": [],
     "attack": [75, 95],
+    "defense": 42,
     "bestiary_entry": "Created to guard ancient ruins. Earth elementals crush their foes with unstoppable force and shrug off most attacks.",
     "img_url": "",
     "drops": [
@@ -342,6 +358,7 @@
     },
     "buffs": ["bleed"],
     "attack": [10, 28],
+    "defense": 5,
     "bestiary_entry": "Common predator of the wilds. Wolves travel in packs and can be dangerous when provoked.",
     "img_url": "",
     "drops": [
@@ -362,6 +379,7 @@
     },
     "buffs": ["bleed"],
     "attack": [18, 36],
+    "defense": 8,
     "bestiary_entry": "Marauders and thieves who prey on travelers. Often lightly armored but numerous.",
     "img_url": "",
     "drops": [
@@ -383,6 +401,7 @@
     },
     "buffs": [],
     "attack": [40, 60],
+    "defense": 12,
     "bestiary_entry": "Restless spirits that haunt places of tragedy. Wraiths can sap the life of the unwary.",
     "img_url": "",
     "drops": [
@@ -403,6 +422,7 @@
     },
     "buffs": [],
     "attack": [50, 72],
+    "defense": 16,
     "bestiary_entry": "A stronger, more vicious variant of the ghoul; alghouls hunt in ravaged areas and are more resilient.",
     "img_url": "",
     "drops": [

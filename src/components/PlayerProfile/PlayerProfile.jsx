@@ -68,14 +68,14 @@ export const PlayerProfile = ({ className }) => {
         </div>
       </div>
 
-      {/* <div className="mt-4 flex gap-2">
+      <div className="mt-4 flex gap-2">
         <button
-          className="px-3 py-2 border border-amber-300 rounded text-white cursor-pointer font-bold"
+          className="px-3 py-2 border w-full border-amber-300 rounded text-white cursor-pointer font-bold"
           onClick={() => heal(100)}
         >
           Rest 😴 (+100 HP)
         </button>
-      </div> */}
+      </div>
     </section>
   );
 };

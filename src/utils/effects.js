@@ -106,10 +106,25 @@ export const effectsData = {
     duration: 3,
     type: "debuff",
     statAffected: "defense",
-    modifier: +0.05,
+    modifier: +0.15,
     canStack: false,
     applyLog: (targetName) => `${targetName} has it's defense increased!`,
     tickLog: (targetName) => `${targetName}'s guard remained increased!`,
+    expireLog: (targetName) => `${targetName}'s guard returned to normal.`
+  },
+
+  defense_low: {
+    id: "defense_low",
+    name: "Defense Lowered",
+    icon: "🛡️",
+    description: "Decreases the defense for few turns.",
+    duration: 3,
+    type: "debuff",
+    statAffected: "defense",
+    modifier: -0.15,
+    canStack: false,
+    applyLog: (targetName) => `${targetName} has it's defense lowered!`,
+    tickLog: (targetName) => `${targetName}'s guard remained lowered!`,
     expireLog: (targetName) => `${targetName}'s guard returned to normal.`
   }
 };

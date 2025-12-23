@@ -10,11 +10,15 @@ const SideBar = () => {
       <li className="rounded-md pt-sans-font">
         <PlayerProfile />
       </li>
+      <NavLink to={"/inventory"}
+        className={({ isActive }) =>
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          }`
+        }>Inventory 📦</NavLink>
       <NavLink
         to={"/"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
@@ -23,8 +27,7 @@ const SideBar = () => {
       <NavLink
         to={`/explore-region`}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
@@ -33,8 +36,7 @@ const SideBar = () => {
       <NavLink
         to={"/world-map"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
@@ -43,8 +45,7 @@ const SideBar = () => {
       <NavLink
         to={"/contracts-board"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
@@ -53,8 +54,7 @@ const SideBar = () => {
       <NavLink
         to={"/journal"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
@@ -63,14 +63,12 @@ const SideBar = () => {
       <NavLink
         to={"/monster-bestiary"}
         className={({ isActive }) =>
-          `side-bar-link ${isActive ? "text-amber-300" : ""} ${
-            player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
+          `side-bar-link ${isActive ? "text-amber-300" : ""} ${player.inBattle ? "pointer-events-none cursor-not-allowed" : "pointer-events-auto"
           }`
         }
       >
         Monster Bestiary 🐦‍🔥
       </NavLink>
-      <NavLink className={`side-bar-link`}>Inventory 📦</NavLink>
       <NavLink className={`side-bar-link`}>Alcehmy 🧪</NavLink>
     </ul>
   );

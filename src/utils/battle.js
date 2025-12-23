@@ -8,14 +8,51 @@ export const randomInRange = (max, min) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+
+export const generateLogText = (player, monster, battleState) => {
+  const LOG_TEMPLATES = {
+    // PLAYER_ATTACK -> damage player's attack produced, monster player attacked
+    // MONSTER_ATTACK -> damage monster's attack produced, player.name monster attacked
+    // PLAYER_SIGN_CAST -> which sign
+    PLAYER_ATTACK: "",
+    MONSTER_ATTACK: "",
+    PLAYER_SIGN_CAST: "",
+
+    DAMAGE_DEALT: "",
+    DAMAGE_RECEIVED: "",
+    HEAL_RECEIVED: "",
+    CRITICAL_HIT: "",
+
+    EFFECT_APPLIED: "",
+    EFFECT_STACKED: "",
+    EFFECT_TICK: "",
+    EFFECT_EXPIRED: "",
+    EFFECT_RESISTED: "",
+    OIL_APPLIED: "",
+    OIL_EXPIRED: "",
+
+    ESCAPE_ATTEMPT_SUCCESSFUL: "",
+    ESCAPE_ATTEMPT_FAILED: "",
+    DODGED: "",
+    MISSED: "",
+    STAGGER: "",
+    PLAYER_SIGN_CAST_FAILED: "",
+
+  }
+}
+
 export const playerSilverDamage = (
   player,
-  monsterWeakness,
+  monster,
+  isMonster = false,
   appliedOil = null
 ) => {
   const minDamage = player.attack?.silverAttack[0];
   const maxDamage = player.attack?.silverAttack[1];
   const damage = randomInRange(minDamage, maxDamage);
+  const monsterWeakness = monster.weakness.oil;
+  const monsterDef = monster.defense;
+  const defenseMultiplier = 100 / (monsterDef + 100)
 
   const oilMultiplier = 1.5;
   const critChance = player.crit_chance;
@@ -25,9 +62,9 @@ export const playerSilverDamage = (
   let playerAttackDmg = parseInt(0);
 
   if (isCrit) {
-    playerAttackDmg += damage * critMultiplier;
+    playerAttackDmg += damage * critMultiplier * defenseMultiplier;
   } else {
-    playerAttackDmg += damage;
+    playerAttackDmg += damage * defenseMultiplier;
   }
 
   if (appliedOil && appliedOil.duration > 0 && monsterWeakness.includes(appliedOil.name)) {
@@ -36,7 +73,7 @@ export const playerSilverDamage = (
 
   return {
     playerAttackDmg,
-    log: `${player.name} dealt ${playerAttackDmg} damage ${
+    log: `${player.name} dealt ${parseInt(playerAttackDmg)} damage ${
       appliedOil ? `, with ${appliedOil.name}` : ""
     } ${isCrit ? "(CRIT💥)" : ""}.`,
   };
@@ -94,8 +131,10 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const effectId = "burn"
   const igniIntensity = player.signsIntensity.igni;
   const monsterWeakness = monster.weakness.signs;
+  const monsterDef = monster.defense;
+  const defenseMultiplier = 100 / (monsterDef + 100)
   const baseDamage = 40;
-  const totalDamage = monsterWeakness.includes("Igni") ? baseDamage*igniIntensity*SIGN_WEAKNESS_MULTIPLIER : baseDamage*igniIntensity;
+  const totalDamage = monsterWeakness.includes("Igni") ? baseDamage*igniIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*igniIntensity*defenseMultiplier;
   const effectData = effectsData[effectId];
   const log = () => { 
     let text = `${player.name} used Igni${effectData.icon} and dealt ${totalDamage} ${effectData.damageType} damage`;
@@ -119,10 +158,25 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   }
 
 };
-export const handleYrden = () => {
+export const handleYrden = () => {};
+export const handleAard = (defLowChange = 0.2, player, monster) => {
+    const isDefLow = Math.random() < defLowChange;
+  const aardIntensity = player.signsIntensity.aard;
+  const monsterWeakness = monster.weakness.signs;
+  const monsterDef = monster.defense;
+  const defenseMultiplier = 100 / (monsterDef + 100)
+  const baseDamage = 40;
+  const totalDamage = monsterWeakness.includes("Aard") ? baseDamage*aardIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*aardIntensity*defenseMultiplier;
+  const effectData = effectsData["defense_low"];
 
+  return {
+    damage: parseInt(totalDamage),
+    isDefLow: isDefLow ? { id: effectData.id, duration: effectData.duration } : null,
+    log: `${player.name} used Axii and dealt ${totalDamage} damage ${isDefLow ? `and for ${effectData.duration} turns, ${effectData.applyLog(monster.name)}` : ""}`
+  }
 };
-export const handleAard = () => {};
+
+export const handleAxii = (defLowChange = 0.2, player, monster) => {};
 
 export const handleQuen = (defenseUpChance = 0.05, player, monster) => {
   const isDefenseUp = Math.random() < defenseUpChance;
@@ -137,7 +191,7 @@ export const handleQuen = (defenseUpChance = 0.05, player, monster) => {
     log: `${player.name} use Quen and healed ${totalHeal} vitality ${isDefenseUp ? `and for ${effectData.duration} turns, ${effectData.applyLog(player.name)}` : ""}`
   }
 };
-export const handleAxii = () => {};
+
 
 export const isAlive = (user) => {
   return user.vitality > 0;
@@ -182,44 +236,82 @@ export const updateBuffs = (target, battleState, setBattleState, effectId) => {
 }
 
 
-export const applyEffects = (target, battleState, setBattleState, monsterData,  player, takeDamagePlayer, takeDamageMonster, healPlayer, healMonster) => {
+export const applyEffects = (target, battleState, setBattleState, monsterData,  player, takeDamagePlayer, takeDamageMonster, healPlayer, healMonster, affectMonsterDefense, affectPlayerDefense) => {
   const targetEffectsKey = target === "player" ? "playerDebuffs" : "monsterDebuffs";
+  
+  const targetEffects = battleState[targetEffectsKey];
 
-  battleState[targetEffectsKey].forEach((buff) => {
-    const effectData = effectsData[buff.id];
-    if (effectData.type === "damageOverTime") {
+  targetEffects.forEach((effect) => {
+    const effectId = effect.id;
+    const effectData = effectsData[effectId];
+
+    console.log(effectData);
+    const targetVitality = target === "player" ? player.vitality : monsterData.vitality;
+    const targetMaxVitality = target === "player" ? player.maxVitality : monsterData.max_vitality
+    const durationRemaining = effect.duration;
+
+    const isDOT = effectData.type === "damageOverTime";
+    const isDefenseType = effectData.statAffected === "defense";
+    const isHOT = effectData.type === "healOverTime";
+
+    console.log(isDefenseType);
+
+    const tickDamage = parseInt(targetMaxVitality * effectData.tickDamagePercent || 0);
+    const tickHeal = parseInt(targetMaxVitality * effectData.tickHealPercent || 0);
+
+    const tickLog = 
+      isDOT ? effectData.tickLog(target === "player" ? player.name : monsterData.name, tickDamage) :
+      isHOT ? effectData.tickLog(target === "player" ? player.name : monsterData.name, tickHeal) : ""
+    
+    if (isDOT) {
       if (target === "player") {
-        takeDamagePlayer(player.vitality * effectData.tickDamagePercent);
+        takeDamagePlayer(tickDamage);
         setBattleState((prev) => ({
           ...prev,
-          playerDebuffs: updateDuration(prev.playerDebuffs, effectData.id, -1)
+          playerDebuffs: updateDuration(prev.playerDebuffs, effectId, -1)
         }))
       } else {
-        takeDamageMonster(monsterData.vitality * effectData.tickDamagePercent);
+        takeDamageMonster(tickDamage);
         setBattleState((prev) => ({
           ...prev,
-          monsterDebuffs: updateDuration(prev.monsterDebuffs, effectData.id, -1)
+          monsterDebuffs: updateDuration(prev.monsterDebuffs, effectId, -1)
         }))
       }
     }
 
-    if (effectData.type === "healOverTime") {
-      const healAmount = parseInt(target === "player" ? player.vitality * effectData.tickHealPercent : monsterData.vitality * effectData.tickHealPercent)
+    if (isDefenseType) {
       if (target === "player") {
-        healPlayer(healAmount);
+        affectPlayerDefense(effectData.modifier);
         setBattleState((prev) => ({
           ...prev,
-          playerDebuffs: updateDuration(prev.playerDebuffs, effectData.id, -1)
+          playerDebuffs: updateDuration(prev.playerDebuffs, effectId, -1)
         }))
       } else {
-        healMonster(healAmount);
+        affectMonsterDefense(effectData.modifier, monsterData);
         setBattleState((prev) => ({
           ...prev,
-          monsterDebuffs: updateDuration(prev.monsterDebuffs, effectData.id, -1)
+          monsterDebuffs: updateDuration(prev.monsterDebuffs, effectId, -1)
         }))
       }
     }
 
+    if (isHOT) {
+      if (target === "player") {
+        healPlayer(tickHeal);
+        setBattleState((prev) => ({
+          ...prev,
+          playerDebuffs: updateDuration(prev.playerDebuffs, effectId, -1)
+        }))
+      } else {
+        healMonster(tickHeal);
+        setBattleState((prev) => ({
+          ...prev,
+          monsterDebuffs: updateDuration(prev.monsterDebuffs, effectId, -1)
+        }))
+      }
+    }
+    
+    // console.log(battleState.monsterDebuffs);
   })
 
   setBattleState((prev) => ({
@@ -227,5 +319,6 @@ export const applyEffects = (target, battleState, setBattleState, monsterData,  
     monsterDebuffs: prev.monsterDebuffs.filter(debuff => debuff.duration > 0),
     playerDebuffs: prev.playerDebuffs.filter(debuff => debuff.duration > 0)
   }));
+
 
 }

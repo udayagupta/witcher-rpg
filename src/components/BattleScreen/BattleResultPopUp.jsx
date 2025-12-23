@@ -59,6 +59,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
               You were defeated by{" "}
               <span className="text-red-400">{monsterData.name}</span>. Try again!
             </p>
+            <p className="text-sm my-5 text-neutral-300">Tip: Use oils that monsters are vulnerable to. Check out Monster Bestiary for finding out monster weaknesses.</p>
           </div>
         )}
 

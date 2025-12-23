@@ -8,11 +8,13 @@ import {
   handleQuen,
   updateBuffs,
   applyEffects,
+  handleAxii,
+  handleAard,
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
 
 export const useBattle = (monsterId) => {
-  const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal } = usePlayer();
+  const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense } = usePlayer();
   const [monsterData, setMonsterData] = useState(monstersData[monsterId]);
   const [battleState, setBattleState] = useState({
     appliedOil: null,
@@ -29,6 +31,17 @@ export const useBattle = (monsterId) => {
       ...prev,
       currentTurn: newTurn
     }))
+  };
+
+  const affectMonsterDefense = (modifier) => {
+    const initDefense = monstersData[monsterId].defense;
+
+    setMonsterData((prev) => ({
+      ...prev,
+      defense: prev.defense + (initDefense*modifier)
+    }))
+    
+    console.log(`monster def before: ${initDefense} and after ${monsterData.defense}`)
   }
 
   const handleRanOutOfStamina = (staminaReq) => {
@@ -41,11 +54,18 @@ export const useBattle = (monsterId) => {
     return false;
   }
 
-  const damageMonster = (amount) => {
+  const damageMonster = (amount, monsterDef) => {
+    // const defMultiplier = 100 / (monsterDef + 100)
     setMonsterData((prev) => ({
       ...prev,
-      vitality: Math.max(0, prev.vitality - amount),
+      // vitality: Math.max(0, prev.vitality - (amount*defMultiplier)),
+      vitality: Math.max(0, prev.vitality - amount)
     }));
+  }
+
+  const resetMonsterDef = () => {
+    const initDefense = monstersData[monsterId].defense;
+    setMonsterData(prev => ({...prev, defense: initDefense}));
   }
 
   const applyOil = (oil, id) => {
@@ -81,11 +101,11 @@ export const useBattle = (monsterId) => {
 
     const playerAttack = playerSilverDamage(
       player,
-      monsterData.weakness.oil,
+      monsterData,
       battleState.appliedOil
     );
 
-    damageMonster(playerAttack.playerAttackDmg);
+    damageMonster(parseInt(playerAttack.playerAttackDmg));
     addLog(playerAttack.log);
     changeTurn("monster");
     increaseStamina(10);
@@ -117,16 +137,31 @@ export const useBattle = (monsterId) => {
     changeTurn("monster");
 
   };
-  const handlePlayerAard = () => { };
+  const handlePlayerAard = () => { 
+    if (battleState.currentTurn === "monster") return;
+    if (handleRanOutOfStamina(25)) return;
+    
+    const result = handleAard(1, player, monsterData);
+    const effectId = result.isDefLow ? "defense_low" : null;
+
+    addLog(result.log)
+    changeTurn("monster");
+    damageMonster(result.damage);
+    updateBuffs("monster", battleState, setBattleState, effectId);
+   };
+
   const handlePlayerAxii = () => { };
 
   const playerActions = [
     { name: "Silver Attack", handler: handlePlayerSilverAttack },
     { name: "Igni", handler: handlePlayerIgni },
-    { name: "Yrden", handler: handlePlayerYrden },
     { name: "Quen", handler: handlePlayerQuen },
     { name: "Aard", handler: handlePlayerAard },
+    { name: "Yrden", handler: handlePlayerYrden },
     { name: "Axii", handler: handlePlayerAxii },
+    // { name: "Dodge", handler: handlePlayerDodge },
+    // { name: "Guard Up", handler: handlePlayerGuardUp },
+    // { name: "Steel Sword", handler: handlePlayerSteelAttack }
   ];
 
   const handleMonsterTurn = () => {
@@ -138,15 +173,17 @@ export const useBattle = (monsterId) => {
     updateBuffs("player", battleState, setBattleState, buffId);
 
     takeDamage(dmg.monsterAttackDmg);
-    applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster);
+    applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
   };
 
   const handleTurn = () => {
     if (battleState.currentTurn === "monster" && isAlive(monsterData)) {
-      applyEffects("player", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster);
+      applyEffects("player", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
       const timeout = setTimeout(handleMonsterTurn, 1500);
       return () => clearTimeout(timeout);
     }
+
+    resetMonsterDef();
   };
 
   const handleWin = () => {

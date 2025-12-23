@@ -7,7 +7,7 @@ const ActiveEffects = ({ target, battleState }) => {
   return (
     <ul
       className="currentEffects flex gap-2 mt-2"
-      aria-label={`Active debuffs on ${target === "player" ? "player" : "monster"}`}
+      aria-label={`Active debuffs on ${target}`}
     >
       {(activeEffects.length === 0 && !battleState.appliedOil) && (
         <li className="text-sm w-full h-[56px] flex items-center justify-center p-2 opacity-60">

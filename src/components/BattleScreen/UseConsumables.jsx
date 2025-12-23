@@ -6,7 +6,7 @@ const UseConsumables = ({ applyOil }) => {
 
 
   return (
-    <div className="player-oils-potions flex p-2 gap-3 rounded-md mt-5">
+    <div className="use-consumables flex gap-3 rounded-md mt-5">
       <div className="oils flex-1 border p-2">
         <h4 className="heading witcher-font text-md p-0">Oils</h4>
         <ul className="grid grid-cols-2 gap-2">

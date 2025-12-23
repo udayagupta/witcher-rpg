@@ -50,6 +50,7 @@ export const PlayerProvider = ({ children }) => {
     subLocation: "orchard_fields",
     inBattle: false,
     isTraveling: false,
+    gameMode: "explore",
 
     signsIntensity: {
       igni: 1,
@@ -134,6 +135,14 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
+  const affectPlayerDefense = (modifier) => {
+    const intiDef = player.defense;
+    setPlayer((prev) => ({
+      ...prev,
+      defense: prev.defense + (intiDef*modifier),
+    }))
+  }
+
   const resetVitality = () => {
     setPlayer((prev) => ({
       ...prev,
@@ -161,6 +170,7 @@ export const PlayerProvider = ({ children }) => {
     resetVitality,
     usedASign,
     increaseStamina,
+    affectPlayerDefense,
   };
 
   const reflectEquippedEquipment = (player) => {

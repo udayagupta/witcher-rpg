@@ -11,6 +11,7 @@ import WorldMap from './components/WorldMap/WorldMap.jsx';
 import Regions from './components/Regions/Regions.jsx';
 import ContractsBoard from './components/ContractsBoard/ContractsBoard.jsx';
 import ExploreRegion from './components/Regions/ExploreRegion.jsx';
+import Inventory from './pages/Inventory.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "explore-region", element: <ExploreRegion />},
       { path: "journal", element: <Journal /> },
       { path: "monster-bestiary", element: <MonsterBestiary /> },
+      { path: "inventory", element: <Inventory /> },
       { path: "world-map", element: <WorldMap /> }
     ]
   }
