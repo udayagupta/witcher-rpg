@@ -19,7 +19,7 @@
       { "id": "swallow", "type": "potions", "chance": 0.25, "qty": 1 }
     ],
     "discovered": false,
-    "difficulty": "Medium"
+    "difficulty": "Hard"
   },
   "drowner": {
     "name": "Drowner",

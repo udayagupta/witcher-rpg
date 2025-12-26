@@ -23,7 +23,10 @@ const HealthBar = ({ className = "" }) => {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="text-xs mt-1">{parseInt(vit)} / {max} ❤️</div>
+      <div className="flex text-sm justify-between">
+        <p className="mt-1">{parseInt(vit)} / {max} ❤️</p>
+        <p className="mt-1">{player.defense} 🛡️</p>
+      </div>
     </div>
   );
 };

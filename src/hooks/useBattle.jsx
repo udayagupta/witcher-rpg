@@ -46,7 +46,7 @@ export const useBattle = (monsterId) => {
 
   const handleRanOutOfStamina = (staminaReq) => {
     if (player.stamina < staminaReq) {
-      addLog(`${player.name} does not have enough stamina. Requied: ${staminaReq}`)
+      addLog(`${player.name} does not have enough stamina. Required: ${staminaReq}`)
       return true;
     }
 
@@ -130,7 +130,6 @@ export const useBattle = (monsterId) => {
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
     const healEffect = handleQuen(0.1, player, monsterData);
-    // const effectId = heal.isRegenerate ? ""
 
     addLog(healEffect.log);
     heal(healEffect.heal);
@@ -141,14 +140,12 @@ export const useBattle = (monsterId) => {
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
     
-    const result = handleAard(1, player, monsterData);
-    const effectId = result.isDefLow ? "defense_low" : null;
+    const result = handleAard(player, monsterData);
 
     addLog(result.log)
     changeTurn("monster");
     damageMonster(result.damage);
-    updateBuffs("monster", battleState, setBattleState, effectId);
-   };
+  };
 
   const handlePlayerAxii = () => { };
 
@@ -183,7 +180,6 @@ export const useBattle = (monsterId) => {
       return () => clearTimeout(timeout);
     }
 
-    resetMonsterDef();
   };
 
   const handleWin = () => {

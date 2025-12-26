@@ -14,6 +14,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
     if (!isVictory) return;
     lootGenerated.forEach((loot) => {
       addToInventory(loot.id, loot.qty, loot.type);
+      console.log(loot);
     });
   }, []);
 

@@ -137,7 +137,7 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const totalDamage = monsterWeakness.includes("Igni") ? baseDamage*igniIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*igniIntensity*defenseMultiplier;
   const effectData = effectsData[effectId];
   const log = () => { 
-    let text = `${player.name} used Igni${effectData.icon} and dealt ${totalDamage} ${effectData.damageType} damage`;
+    let text = `${player.name} used Igni${effectData.icon} and dealt ${parseInt(totalDamage)} ${effectData.damageType} damage`;
     const effectExistsAndCanStack = existsAndCanStack(battleState.monsterDebuffs, effectId);
     const effectOnlyExsists = checkIfEffectExists(battleState.monsterDebuffs, effectId);
 
@@ -159,20 +159,18 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
 
 };
 export const handleYrden = () => {};
-export const handleAard = (defLowChange = 0.2, player, monster) => {
-    const isDefLow = Math.random() < defLowChange;
+export const handleAard = (player, monster) => {
+
   const aardIntensity = player.signsIntensity.aard;
   const monsterWeakness = monster.weakness.signs;
   const monsterDef = monster.defense;
   const defenseMultiplier = 100 / (monsterDef + 100)
   const baseDamage = 40;
-  const totalDamage = monsterWeakness.includes("Aard") ? baseDamage*aardIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*aardIntensity*defenseMultiplier;
-  const effectData = effectsData["defense_low"];
+  const totalDamage = parseInt(monsterWeakness.includes("Aard") ? baseDamage*aardIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*aardIntensity*defenseMultiplier);
 
   return {
-    damage: parseInt(totalDamage),
-    isDefLow: isDefLow ? { id: effectData.id, duration: effectData.duration } : null,
-    log: `${player.name} used Axii and dealt ${totalDamage} damage ${isDefLow ? `and for ${effectData.duration} turns, ${effectData.applyLog(monster.name)}` : ""}`
+    damage: totalDamage,
+    log: `${player.name} used Axii and dealt ${(totalDamage)} damage`
   }
 };
 

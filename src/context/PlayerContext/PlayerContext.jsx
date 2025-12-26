@@ -9,6 +9,7 @@ export const PlayerProvider = ({ children }) => {
     fullName: "Geralt of Rivia",
     level: 1,
     currentExp: 0,
+    expToNextLevel: 200,
     vitality: 500,
     maxVitality: 500,
     completedQuests: [],
@@ -157,6 +158,10 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
+  const levelUp = () => {
+    setPlayer(prev => ({...prev, level: prev.level++, currentExp: 0, expToNextLevel: prev.expToNextLevel*1.2}));
+  }
+
   const value = {
     player,
     setPlayer,
@@ -171,6 +176,7 @@ export const PlayerProvider = ({ children }) => {
     usedASign,
     increaseStamina,
     affectPlayerDefense,
+    levelUp,
   };
 
   const reflectEquippedEquipment = (player) => {

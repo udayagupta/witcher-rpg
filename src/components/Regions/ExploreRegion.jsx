@@ -77,6 +77,7 @@ const ExploreRegion = () => {
                     className="w-full object-contain "
                     alt=""
                   />
+                  <p className="witcher-font">💀 {monsterData[monster].difficulty}</p>
                 </li>
               ))}
             </ul>

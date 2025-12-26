@@ -1,6 +1,6 @@
 import React from "react";
 
-const MonsterHealth = ({ current = 0, max = 1, className = "" }) => {
+const MonsterHealth = ({ current = 0, max = 1, className = "", defense }) => {
   const pct = Math.max(0, Math.min(100, (current / max) * 100));
 
   return (
@@ -19,7 +19,10 @@ const MonsterHealth = ({ current = 0, max = 1, className = "" }) => {
           style={{ width: `${pct}%` }}
         />
       </div>
-      <div className="text-xs mt-1">{parseInt(current)} / {max} ⚔️</div>
+      <div className="flex justify-between text-sm">
+        <p className="mt-1">{parseInt(current)} / {max} ❤️</p>
+        <p className="mt-1">{defense} 🛡️</p>
+      </div>
     </div>
   );
 };

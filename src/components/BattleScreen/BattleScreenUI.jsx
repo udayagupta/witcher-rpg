@@ -58,6 +58,7 @@ const BattleScreenUI = ({
             current={monsterData.vitality}
             max={monsterData.max_vitality}
             className="mb-2 font-semibold"
+            defense={monsterData.defense}
           />
           <ActiveEffects battleState={battleState} target={"monser"}/>
           <div className="relative">
