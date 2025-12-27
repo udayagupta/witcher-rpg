@@ -102,7 +102,9 @@ export const useBattle = (monsterId) => {
     const playerAttack = playerSilverDamage(
       player,
       monsterData,
-      battleState.appliedOil
+      true,
+      battleState.appliedOil,
+      battleState
     );
 
     damageMonster(parseInt(playerAttack.playerAttackDmg));
@@ -129,7 +131,7 @@ export const useBattle = (monsterId) => {
   const handlePlayerQuen = () => {
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
-    const healEffect = handleQuen(0.1, player, monsterData);
+    const healEffect = handleQuen(0.1, player, monsterData, battleState);
 
     addLog(healEffect.log);
     heal(healEffect.heal);
@@ -140,7 +142,7 @@ export const useBattle = (monsterId) => {
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
     
-    const result = handleAard(player, monsterData);
+    const result = handleAard(player, monsterData, battleState);
 
     addLog(result.log)
     changeTurn("monster");
@@ -162,7 +164,7 @@ export const useBattle = (monsterId) => {
   ];
 
   const handleMonsterTurn = () => {
-    const dmg = monsterDamage(monsterData, player.defense);
+    const dmg = monsterDamage(monsterData, player.defense, battleState, player);
     const buffId = dmg.buff ? dmg.buff.id : null;
 
     addLog(dmg.log);

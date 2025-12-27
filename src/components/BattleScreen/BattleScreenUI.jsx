@@ -20,7 +20,7 @@ const BattleScreenUI = ({
     <div className="h-full">
       <div className="player-and-monster-f2f flex items-stretch gap-5">
         <div
-          className={`player-screen rounded-md flex-1 w-full p-2 transition duration-300 ${battleState.currentTurn === "player"
+          className={`player-screen bg-neutral-900 rounded-md flex-1 w-full p-2 transition duration-300 ${battleState.currentTurn === "player"
               ? "flashing-border-container"
               : "border border-transparent "
             } mx-3`}
@@ -48,7 +48,7 @@ const BattleScreenUI = ({
         <BattleLogs battleState={battleState}/>
 
         <div
-          className={`monster-screen flex-1 rounded-md p-2 transition duration-300 ${battleState.currentTurn === "monster"
+          className={`monster-screen bg-neutral-900w flex-1 rounded-md p-2 transition duration-300 ${battleState.currentTurn === "monster"
               ? "flashing-border-container"
               : "border border-transparent"
             } mx-3`}
@@ -73,8 +73,8 @@ const BattleScreenUI = ({
       </div>
       
       <UseConsumables applyOil={applyOil}/>
-      <div className="border rounded-md mt-3">
-        <button onClick={exit} className="heading witcher-font w-full">
+      <div className="bg-neutral-900 rounded-md mt-3">
+        <button onClick={exit} className="heading  cursor-pointer witcher-font w-full">
           Flee
         </button>
       </div>

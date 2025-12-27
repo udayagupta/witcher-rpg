@@ -1,4 +1,5 @@
 import { effectsData } from "./effects";
+import { generateLogText, checkIfEffectExists, existsAndCanStack } from "./utils";
 
 const SIGN_WEAKNESS_MULTIPLIER = 2;
 const SILVER_ATTACK_MULTIPLIER = 1.5;
@@ -9,43 +10,12 @@ export const randomInRange = (max, min) => {
 };
 
 
-export const generateLogText = (player, monster, battleState) => {
-  const LOG_TEMPLATES = {
-    // PLAYER_ATTACK -> damage player's attack produced, monster player attacked
-    // MONSTER_ATTACK -> damage monster's attack produced, player.name monster attacked
-    // PLAYER_SIGN_CAST -> which sign
-    PLAYER_ATTACK: "",
-    MONSTER_ATTACK: "",
-    PLAYER_SIGN_CAST: "",
-
-    DAMAGE_DEALT: "",
-    DAMAGE_RECEIVED: "",
-    HEAL_RECEIVED: "",
-    CRITICAL_HIT: "",
-
-    EFFECT_APPLIED: "",
-    EFFECT_STACKED: "",
-    EFFECT_TICK: "",
-    EFFECT_EXPIRED: "",
-    EFFECT_RESISTED: "",
-    OIL_APPLIED: "",
-    OIL_EXPIRED: "",
-
-    ESCAPE_ATTEMPT_SUCCESSFUL: "",
-    ESCAPE_ATTEMPT_FAILED: "",
-    DODGED: "",
-    MISSED: "",
-    STAGGER: "",
-    PLAYER_SIGN_CAST_FAILED: "",
-
-  }
-}
-
 export const playerSilverDamage = (
   player,
   monster,
   isMonster = false,
-  appliedOil = null
+  appliedOil = null,
+  battleState
 ) => {
   const minDamage = player.attack?.silverAttack[0];
   const maxDamage = player.attack?.silverAttack[1];
@@ -71,16 +41,29 @@ export const playerSilverDamage = (
     playerAttackDmg *= oilMultiplier;
   }
 
+  if (isMonster) {
+    playerAttackDmg *= SILVER_ATTACK_MULTIPLIER;
+  }
+
+  const action = {
+    isCrit,
+    damage: parseInt(playerAttackDmg),
+    attackedWith: "Silver Sword",
+    heal: null,
+    withOil: appliedOil,
+    attacker: "player",
+    defender: "monster",
+    effectApplied: null,
+  }
+
   return {
     playerAttackDmg,
-    log: `${player.name} dealt ${parseInt(playerAttackDmg)} damage ${
-      appliedOil ? `, with ${appliedOil.name}` : ""
-    } ${isCrit ? "(CRIT💥)" : ""}.`,
+    log: generateLogText(player, monster, action)
   };
 };
 
 
-export const monsterDamage = (monster, playerDefense) => {
+export const monsterDamage = (monster, playerDefense, battleState, player) => {
   const isCrit = Math.random() < monster.crit_chance / 100;
   const damage = randomInRange(monster.attack[0], monster.attack[1]);
   const monsterBuffs = monster.buffs.length > 0 ? monster.buffs[0] : null;
@@ -99,15 +82,28 @@ export const monsterDamage = (monster, playerDefense) => {
         : damage * defenseMultiplier
     )
   );
+
+  const action = {
+    isCrit,
+    damage: parseInt(monsterAttackDmg),
+    attackedWith: null,
+    heal: null,
+    withOil: null,
+    attacker: "monster",
+    defender: "player",
+    effectApplied: isBuff ? monsterBuffs : null,
+  }
+
   return {
     monsterAttackDmg,
-    log: `${monster.name} attacked for ${parseInt(monsterAttackDmg)} damage ${isCrit ? "(CRIT💥)" : ""} 
-    ${
-      isBuff && monsterBuffs
-        ? `and inflicted ${effectData.name} for ${effectData.duration} turns`
-        : ""
-    }.`,
+    // log: `${monster.name} attacked for ${parseInt(monsterAttackDmg)} damage ${isCrit ? "(CRIT💥)" : ""} 
+    // ${
+    //   isBuff && monsterBuffs
+    //     ? `and inflicted ${effectData.name} for ${effectData.duration} turns`
+    //     : ""
+    // }.`,
     buff: isBuff && monsterBuffs ? { id: monsterBuffs, duration: effectData.duration } : null,
+    log: generateLogText(player, monster, action, battleState)
   };
 };
 
@@ -125,7 +121,6 @@ export const generateLoot = (monsterDrops) => {
 };
 
 
-
 export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const isBurning = Math.random() < burnChance;
   const effectId = "burn"
@@ -136,30 +131,31 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const baseDamage = 40;
   const totalDamage = monsterWeakness.includes("Igni") ? baseDamage*igniIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*igniIntensity*defenseMultiplier;
   const effectData = effectsData[effectId];
-  const log = () => { 
-    let text = `${player.name} used Igni${effectData.icon} and dealt ${parseInt(totalDamage)} ${effectData.damageType} damage`;
-    const effectExistsAndCanStack = existsAndCanStack(battleState.monsterDebuffs, effectId);
-    const effectOnlyExsists = checkIfEffectExists(battleState.monsterDebuffs, effectId);
-
-    if (isBurning && effectOnlyExsists && !effectExistsAndCanStack) {
-      text += ` and ${player.name} tried burning the ${monster.name} but failed as it was already on fire!.` 
-    }
-    if ((isBurning && effectExistsAndCanStack) || (isBurning && !effectOnlyExsists)) {
-      text += ` and for ${effectData.duration} turns, ${effectData.applyLog(monster.name)}`
-    }
-
-    return text;
+  
+  const action = {
+    isCrit: null,
+    damage: parseInt(totalDamage),
+    attackedWith: "Igni Sign 🔥",
+    heal: null,
+    withOil: null,
+    attacker: "player",
+    defender: "monster",
+    effectApplied: isBurning ? "burn" : null,
   }
 
   return {
     damage: parseInt(totalDamage),
     isBurning: isBurning ? { id: effectData.id, duration: effectData.duration } : null,
-    log: log(),
+    log: generateLogText(player, monster, action, battleState)
   }
 
 };
+
+
 export const handleYrden = () => {};
-export const handleAard = (player, monster) => {
+
+
+export const handleAard = (player, monster, battleState) => {
 
   const aardIntensity = player.signsIntensity.aard;
   const monsterWeakness = monster.weakness.signs;
@@ -168,25 +164,50 @@ export const handleAard = (player, monster) => {
   const baseDamage = 40;
   const totalDamage = parseInt(monsterWeakness.includes("Aard") ? baseDamage*aardIntensity*SIGN_WEAKNESS_MULTIPLIER*defenseMultiplier : baseDamage*aardIntensity*defenseMultiplier);
 
+  
+  const action = {
+    isCrit: null,
+    damage: parseInt(totalDamage),
+    attackedWith: "Aard Sign",
+    heal: null,
+    withOil: null,
+    attacker: "player",
+    defender: "monster",
+    effectApplied: null,
+  }
+
   return {
     damage: totalDamage,
-    log: `${player.name} used Axii and dealt ${(totalDamage)} damage`
+    log: generateLogText(player, monster, action, battleState)
   }
 };
 
-export const handleAxii = (defLowChange = 0.2, player, monster) => {};
+export const handleAxii = (defLowChange = 0.2, player, monster, battleState) => {};
 
-export const handleQuen = (defenseUpChance = 0.05, player, monster) => {
+
+export const handleQuen = (defenseUpChance = 0.05, player, monster, battleState) => {
   const isDefenseUp = Math.random() < defenseUpChance;
   const quenIntensity = player.signsIntensity.quen;
   const baseHeal = 40
   const totalHeal = parseInt(baseHeal * quenIntensity);
   const effectData = effectsData["defense_up"];
 
+  
+  const action = {
+    isCrit: null,
+    damage: null,
+    attackedWith: "Quen Sign",
+    heal: parseInt(totalHeal),
+    withOil: null,
+    attacker: "player",
+    defender: null,
+    effectApplied: null,
+  }
+
   return {
     heal: totalHeal,
     isDefenseUp: isDefenseUp ? { id: effectData.id, duration: effectData.duration } : null,
-    log: `${player.name} use Quen and healed ${totalHeal} vitality ${isDefenseUp ? `and for ${effectData.duration} turns, ${effectData.applyLog(player.name)}` : ""}`
+    generatedLog: generateLogText(player, monster, action, battleState)
   }
 };
 
@@ -205,15 +226,7 @@ export const updateDuration = (effects, effectId, durationToAdd) =>
       : effect
 );
 
-export const checkIfEffectExists = (debuffs = [], effectId) => {
-  const exists = debuffs.find((effect) => effect.id === effectId);
-  return exists ? true : false;
-};
 
-export const existsAndCanStack = (effects, effectId) => {
-  const effectData = effectsData[effectId];
-  return (checkIfEffectExists(effects, effectId) && effectData.canStack); 
-}
 
 export const updateBuffs = (target, battleState, setBattleState, effectId) => {
   const targetDebuffs = target === "player" ? battleState.playerDebuffs : battleState.monsterDebuffs;
