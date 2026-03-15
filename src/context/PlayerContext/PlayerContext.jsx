@@ -109,17 +109,16 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
-  const addToInventory = (itemId, qty, itemCategory) => {
-    // ("swallow", 1, "potions")
-    let newList = [];
+const addToInventory = (itemId, qty, itemCategory) => {
+  setPlayer((prev) => {
+    const currentCategoryList = prev.inventory[itemCategory] || [];
     let itemFound = false;
 
-    player["inventory"][itemCategory].map((item) => {
+    let newList = currentCategoryList.map((item) => {
       if (item.id === itemId) {
         itemFound = true;
-        return { ...item, qty: item.qyt + qty };
+        return { ...item, qty: item.qty + qty }; 
       }
-
       return item;
     });
 
@@ -127,14 +126,15 @@ export const PlayerProvider = ({ children }) => {
       newList.push({ id: itemId, qty: qty });
     }
 
-    setPlayer((prev) => ({
+    return {
       ...prev,
       inventory: {
         ...prev.inventory,
         [itemCategory]: newList,
       },
-    }));
-  };
+    };
+  });
+};
 
   const affectPlayerDefense = (modifier) => {
     const intiDef = player.defense;

@@ -1,5 +1,3 @@
-// import { usePlayer } from "../context/PlayerContext/PlayerContext";
-// import { useBattle } from "../hooks/useBattle";
 import { effectsData } from "./effects";
 
 export function formatNumber(number, locale = "en-US", options = {}) {
@@ -26,9 +24,8 @@ export const existsAndCanStack = (effects, effectId) => {
 }
 
 export const generateLogText = (player, monster, action, battleState) => {
-
   let text = [];
-
+  
   const attacker = action?.attacker === "player" ? player : action?.attacker === "monster" ? monster : null;
   const defender = action?.defender === "player" ? player : action?.defender === "monster" ? monster : null;
   const appliedEffectData = action?.effectApplied ? effectsData[action?.effectApplied] : null;
@@ -41,15 +38,21 @@ export const generateLogText = (player, monster, action, battleState) => {
   };
 
   if (attacker && action.withOil) {
-    const oilText = `, with ${action?.appliedOil?.name}`;
+    const oilText = `, with ${action?.withOil?.name}`;
     console.log(oilText);
     text.push(oilText);
   };
 
-  if (attacker && action.heal) {
-    const healText = `${attacker?.name} healed ${action?.heal} vitality ${action.attackedWith ? `with ${action.attackedWith}` : ""}`;
-    console.log(healText);
-    text.push(healText);
+  if (attacker && action.healPoints > 0) {
+    const maxHealPoints = action.healPoints > attacker.maxVitality + action.healPoints ? 0 : action.healPoints ;
+
+    if (attacker.vitality === attacker.maxVitality) {
+      const healText = `${attacker.name} already has max vitality`
+      text.push(healText);
+    } else {
+      const healText = `${attacker?.name} healed ${maxHealPoints} points of vitality using ${action.healedWith}.`
+      text.push(healText);
+    };
   };
 
   if (attacker && appliedEffectData && !checkIfEffectExists(battleState[appliedEffectUserKey], action.appliedEffect) ) {
@@ -70,7 +73,7 @@ export const generateLogText = (player, monster, action, battleState) => {
     text.push(effectText);
   }
 
-  if (isCrit) {
+  if (action.isCrit) {
     const critText = `(CRIT💥)`;
     text.push(critText);
   }

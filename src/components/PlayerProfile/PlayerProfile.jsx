@@ -2,6 +2,7 @@ import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { formatNumber } from "../../utils/utils";
 import itemsData from "../../data/items.json";
 import HealthBar from "./HealthBar";
+import StaminaBar from "./StaminaBar";
 
 export const PlayerProfile = ({ className }) => {
   const { player, heal, damage } = usePlayer();
@@ -42,6 +43,8 @@ export const PlayerProfile = ({ className }) => {
           </div>
 
           <HealthBar className="mt-3" />
+          <StaminaBar className="mt-3" />
+
         </div>
       </div>
 

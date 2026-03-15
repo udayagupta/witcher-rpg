@@ -133,7 +133,7 @@ export const useBattle = (monsterId) => {
     if (handleRanOutOfStamina(25)) return;
     const healEffect = handleQuen(0.1, player, monsterData, battleState);
 
-    addLog(healEffect.log);
+    addLog(healEffect.generatedLog);
     heal(healEffect.heal);
     changeTurn("monster");
 

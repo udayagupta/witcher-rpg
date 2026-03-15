@@ -1,12 +1,13 @@
 import { usePlayer } from '../../context/PlayerContext/PlayerContext'
 import itemsData from "../../data/items.json";
+import { useEffect } from 'react';
 
 const UseConsumables = ({ applyOil }) => {
   const { player } = usePlayer();
 
-  // useEffect(() => {
-  //   console.log(player.inventory.oils);
-  // }, [player])
+  useEffect(() => {
+    console.log(player.inventory.oils);
+  }, [player])
 
   return (
     <div className="use-consumables flex gap-3 rounded-md mt-5">

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import HealthBar from "../PlayerProfile/HealthBar";
+import StaminaBar from "../PlayerProfile/StaminaBar";
 import MonsterHealth from "./MonsterHealth";
 import UseConsumables from "./UseConsumables";
 import ActiveEffects from "./ActiveEffects";
@@ -27,7 +28,8 @@ const BattleScreenUI = ({
         >
           <p className="witcher-font heading ">{player.name}</p>
           <HealthBar className="font-semibold" />
-          <p>{player.stamina}</p>
+          <StaminaBar className="font-semibold mt-4 " />
+          {/* <p>{player.stamina}</p> */}
           <div className="stamina"></div>
 
           <ActiveEffects battleState={battleState} target={"player"}/>

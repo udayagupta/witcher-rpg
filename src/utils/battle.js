@@ -45,6 +45,7 @@ export const playerSilverDamage = (
     playerAttackDmg *= SILVER_ATTACK_MULTIPLIER;
   }
 
+  console.log("applied Oil: ", appliedOil)
   const action = {
     isCrit,
     damage: parseInt(playerAttackDmg),
@@ -96,12 +97,6 @@ export const monsterDamage = (monster, playerDefense, battleState, player) => {
 
   return {
     monsterAttackDmg,
-    // log: `${monster.name} attacked for ${parseInt(monsterAttackDmg)} damage ${isCrit ? "(CRIT💥)" : ""} 
-    // ${
-    //   isBuff && monsterBuffs
-    //     ? `and inflicted ${effectData.name} for ${effectData.duration} turns`
-    //     : ""
-    // }.`,
     buff: isBuff && monsterBuffs ? { id: monsterBuffs, duration: effectData.duration } : null,
     log: generateLogText(player, monster, action, battleState)
   };
@@ -182,7 +177,9 @@ export const handleAard = (player, monster, battleState) => {
   }
 };
 
-export const handleAxii = (defLowChange = 0.2, player, monster, battleState) => {};
+export const handleAxii = (defLowChange = 0.2, player, monster, battleState) => {
+  
+};
 
 
 export const handleQuen = (defenseUpChance = 0.05, player, monster, battleState) => {
@@ -194,11 +191,8 @@ export const handleQuen = (defenseUpChance = 0.05, player, monster, battleState)
 
   
   const action = {
-    isCrit: null,
-    damage: null,
-    attackedWith: "Quen Sign",
-    heal: parseInt(totalHeal),
-    withOil: null,
+    healedWith: "Quen Sign",
+    healPoints: parseInt(totalHeal),
     attacker: "player",
     defender: null,
     effectApplied: null,
@@ -225,8 +219,6 @@ export const updateDuration = (effects, effectId, durationToAdd) =>
         }
       : effect
 );
-
-
 
 export const updateBuffs = (target, battleState, setBattleState, effectId) => {
   const targetDebuffs = target === "player" ? battleState.playerDebuffs : battleState.monsterDebuffs;
