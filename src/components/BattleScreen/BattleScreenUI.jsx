@@ -29,7 +29,6 @@ const BattleScreenUI = ({
           <p className="witcher-font heading ">{player.name}</p>
           <HealthBar className="font-semibold" />
           <StaminaBar className="font-semibold mt-4 " />
-          {/* <p>{player.stamina}</p> */}
           <div className="stamina"></div>
 
           <ActiveEffects battleState={battleState} target={"player"}/>

@@ -16,8 +16,6 @@ export const PlayerProfile = ({ className }) => {
   const crit_chance = player.crit_chance || 0;
   const formattedPlayerCoins = formatNumber(player.coins || 0);
 
-  const inventoryCount = (player.inventory || []).length;
-
   return (
     <section className={`${className} border border-amber-300 player-profile w-full p-4 font-semibold bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg`}>
       <div className="flex items-center gap-4">
@@ -69,15 +67,6 @@ export const PlayerProfile = ({ className }) => {
           <div className="opacity-80 text-sm">Crit. Chance</div>
           <div className="font-semibold text-lg">{crit_chance}% 💥</div>
         </div>
-      </div>
-
-      <div className="mt-4 flex gap-2">
-        <button
-          className="px-3 py-2 border w-full border-amber-300 rounded text-white cursor-pointer font-bold"
-          onClick={() => heal(100)}
-        >
-          Rest 😴 (+100 HP)
-        </button>
       </div>
     </section>
   );

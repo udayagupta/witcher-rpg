@@ -51,6 +51,8 @@
     position: relative;
     border-radius: 4px;
     text-align: center;
+    flex: 1;
+    /* word-break: none; */
 }
 
 .side-bar-link:hover {

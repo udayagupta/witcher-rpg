@@ -25,6 +25,7 @@ const HealthBar = ({ className = "" }) => {
       </div>
       <div className="flex text-sm justify-between">
         <p className="mt-1">{parseInt(vit)} / {max} ❤️</p>
+        
         <p className="mt-1">{player.defense} 🛡️</p>
       </div>
     </div>

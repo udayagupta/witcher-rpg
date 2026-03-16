@@ -12,8 +12,8 @@ export const PlayerProvider = ({ children }) => {
     expToNextLevel: 200,
     vitality: 500,
     maxVitality: 500,
+    activeQuests: {},
     completedQuests: [],
-    activeQuests: [],
     coins: 1200,
     crit_chance: 5,
     base_attack: 15,
@@ -96,45 +96,50 @@ export const PlayerProvider = ({ children }) => {
     setPlayer((prev) => ({
       ...prev,
       completedQuests: [...prev.completedQuests, questId],
-      activeQuests: prev.activeQuests.filter((q) => q !== questId),
+      activeQuests: prev.activeQuests.keys().filter((q) => q !== questId),
     }));
   };
 
   const acceptContract = (questId) => {
-    if (player.activeQuests.includes(questId)) return;
+    if (questId in player.activeQuests) return;
+
+    const updatedActiveQuests = {
+      ...player.activeQuests,
+      [questId]: {status: "active", progress: 0}
+    };
 
     setPlayer((prev) => ({
       ...prev,
-      activeQuests: [...prev.activeQuests, questId],
+      activeQuests: updatedActiveQuests,
     }));
   };
 
-const addToInventory = (itemId, qty, itemCategory) => {
-  setPlayer((prev) => {
-    const currentCategoryList = prev.inventory[itemCategory] || [];
-    let itemFound = false;
+  const addToInventory = (itemId, qty, itemCategory) => {
+    setPlayer((prev) => {
+      const currentCategoryList = prev.inventory[itemCategory] || [];
+      let itemFound = false;
 
-    let newList = currentCategoryList.map((item) => {
-      if (item.id === itemId) {
-        itemFound = true;
-        return { ...item, qty: item.qty + qty }; 
+      let newList = currentCategoryList.map((item) => {
+        if (item.id === itemId) {
+          itemFound = true;
+          return { ...item, qty: item.qty + qty }; 
+        }
+        return item;
+      });
+
+      if (!itemFound) {
+        newList.push({ id: itemId, qty: qty });
       }
-      return item;
+
+      return {
+        ...prev,
+        inventory: {
+          ...prev.inventory,
+          [itemCategory]: newList,
+        },
+      };
     });
-
-    if (!itemFound) {
-      newList.push({ id: itemId, qty: qty });
-    }
-
-    return {
-      ...prev,
-      inventory: {
-        ...prev.inventory,
-        [itemCategory]: newList,
-      },
-    };
-  });
-};
+  };
 
   const affectPlayerDefense = (modifier) => {
     const intiDef = player.defense;
@@ -159,7 +164,7 @@ const addToInventory = (itemId, qty, itemCategory) => {
   };
 
   const levelUp = () => {
-    setPlayer(prev => ({...prev, level: prev.level++, currentExp: 0, expToNextLevel: prev.expToNextLevel*1.2}));
+    setPlayer(prev => ({...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel*1.2}));
   }
 
   const value = {

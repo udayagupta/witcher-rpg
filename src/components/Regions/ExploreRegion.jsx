@@ -6,7 +6,7 @@ import BattleScreen from "../BattleScreen/BattleScreen";
 import itemsData from "../../data/items.json";
 
 const ExploreRegion = () => {
-  const { player, setPlayer } = usePlayer();
+  const { player, setPlayer, heal } = usePlayer();
   const subLocationData =
     locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
@@ -43,7 +43,6 @@ const ExploreRegion = () => {
                   className="items-list-item items-list-item-not-selected"
                 >
                   {itemsData?.resources[item]?.name || itemsData?.foods[item]?.name || item}
-                  {/* {item} */}
                 </li>
               ))}
             </ul>
@@ -99,7 +98,7 @@ const ExploreRegion = () => {
         {subLocationData.merchant && (
           <div>
             <h4 className="text-2xl text-amber-300 witcher-font">
-              {subLocationData.blacksmith.name}
+              {subLocationData.merchant.name}
             </h4>
           </div>
         )}
@@ -110,6 +109,12 @@ const ExploreRegion = () => {
               {subLocationData.armorer.name}
             </h4>
           </div>
+        )}
+
+        {subLocationData.canRest && (
+          <button className="border w-max m-auto p-2 text-lg cursor-pointer rounded border-amber-300 witcher-font" onClick={() => heal(100)}>
+            Rest <span className="pt-sans-font font-semibold text-red-500">+100</span> Vitality
+          </button>
         )}
       </div>
 

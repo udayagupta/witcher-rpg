@@ -4,58 +4,38 @@
     "place_description": "White Orchard is a region and village located in Temeria famous for its fruit orchards, whose boughs burst out white blossoms come spring. The Ismena river flows through the village and continues north.",
     "badge": "./images/white-orchard-badge.png",
     "contracts": [
-      {
-        "questId": 1,
-        "contract_name": "Beast of White Orchard",
-        "monster_id": "griffin",
-        "monster_quantity": 1,
-        "reward": 500,
-        "exp": 200,
-        "short_description": "A griffin has been terrorizing the fields near the Ismena River.",
-        "description": "A Griffin has made its nest near the fields south of the Ismena River. It has been preying on livestock and even attacked a patrol. Villagers are offering a handsome reward for slaying the beast and bringing proof of the kill.",
-        "isCompleted": false
-      },
-      {
-        "questId": 2,
-        "contract_name": "Drowners by the Old Mill",
-        "monster_id": "drowner",
-        "monster_quantity": 3,
-        "reward": 200,
-        "exp": 80,
-        "short_description": "Drowners lurking near the old mill are scaring the fishermen away.",
-        "description": "Several drowners have been sighted along the riverbank near the old mill. Fishermen fear to go near the water after dusk. The village elder seeks someone skilled enough to cleanse the area of the monsters.",
-        "isCompleted": false
-      },
-      {
-        "questId": 3,
-        "contract_name": "Song Beneath the River",
-        "monster_id": "siren",
-        "monster_quantity": 3,
-        "reward": 400,
-        "exp": 100,
-        "short_description": "Sailors report eerie songs luring them toward the river cliffs.",
-        "description": "Sailors traveling the Ismena River report eerie singing that lures them toward the rocks at night. Those who follow never return. The locals suspect a group of sirens nesting near the river cliffs. A reward is offered for their heads.",
-        "isCompleted": false
-      },
-      {
-        "questId": 4,
-        "contract_name": "Devil by the well",
-        "monster_id": "devil-by-the-well",
-        "monster_quantity": 1,
-        "reward": 300,
-        "exp": 100,
-        "short_description": "Villagers of the Abandoned Village claim a vengeful spirit haunts the old well, dragging the living to their deaths",
-        "description": "Villagers report a restless spirit by the old well. It attacks anyone who ventures too close. The elders promise a reward for lifting the curse. None dare fetch water or till the nearby fields, for the ghost's wailing is heard at dawn and dusk. Any witcher brave enough to face the spirit shall be paid 300 crowns upon proof of the wraith’s defeat."
-      }
+      "contract_beast_of_white_orchard",
+      "contract_drowners_by_the_old_mill",
+      "contract_song_beneath_the_river",
+      "contract_devil_by_the_well"
     ],
     "sub_locations": {
-      "woesong_bridge": {
-        "name": "Woesong Bridge 🌉",
-        "monsters_found": ["drowner", "nekker"],
+      "cackler_bridge": {
+        "name": "Cackler Bridge 🌉",
+        "monster_found": ["drowner", "wolf"],
         "merchant": null,
         "blacksmith": null,
-        "armorer": { "name": "Woesong Armorer", "items_in_stock": [] },
-        "resources_to_gather": ["herbs", "river_clay"]
+        "armorer": null,
+        "resources_to_gather": ["herbs"],
+        "canRest": false
+      },
+      "woesong_bridge": {
+        "name": "Woesong Bridge 🌉",
+        "monsters_found": null,
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": "woesong_armorer",
+        "resources_to_gather": null,
+        "canRest": false
+      },
+      "white_orchard_inn": {
+        "name": "White Orchard Inn",
+        "monsters_found": null,
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": null,
+        "canRest": false
       },
       "nilfgaardian_garrison": {
         "name": "Nilfgaardian Garrison ⚔️",
@@ -63,7 +43,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["metal_scrap", "wolf_hide"]
+        "resources_to_gather": ["metal_scrap", "wolf_hide"],
+        "canRest": true
       },
       "abandoned_village": {
         "name": "Abandoned Village 🏚️",
@@ -71,7 +52,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "bones"]
+        "resources_to_gather": ["herbs", "bones"],
+        "canRest": false
       },
       "sawmill": {
         "name": "Sawmill 🪵",
@@ -79,7 +61,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["timber", "wolf_pelt"]
+        "resources_to_gather": ["timber", "wolf_pelt"],
+        "canRest": false
       },
       "broken_cart_pass": {
         "name": "Broken Cart Pass 🛞",
@@ -87,7 +70,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["loot_crates", "herbs"]
+        "resources_to_gather": ["loot_crates", "herbs"],
+        "canRest": false
       },
       "isemen_riverbank": {
         "name": "Isemen Riverbank 🌊",
@@ -95,15 +79,17 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["water_essence", "reeds"]
+        "resources_to_gather": ["water_essence", "reeds"],
+        "canRest": false
       },
       "crossroads_inn": {
         "name": "Crossroads Inn 🍺",
         "monsters_found": null,
-        "merchant": { "name": "Crossroads Merchant", "items_in_stock": [] },
+        "merchant": "crossroads_merchant",
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": null
+        "resources_to_gather": null,
+        "canRest": true
       },
       "hunter_cabin": {
         "name": "Hunter's Cabin 🐺",
@@ -111,7 +97,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["animal_hide", "herbs"]
+        "resources_to_gather": ["animal_hide", "herbs"],
+        "canRest": false
       },
       "orchard_fields": {
         "name": "Orchard Fields 🍎",
@@ -119,7 +106,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["fruit", "herbs"]
+        "resources_to_gather": ["fruit", "herbs"],
+        "canRest": false
       },
       "sawmill_forest_edge": {
         "name": "Sawmill Forest Edge 🌲",
@@ -127,7 +115,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["wood", "herbs"]
+        "resources_to_gather": ["wood", "herbs"],
+        "canRest": false
       }
     },
     "default_sub_location": "woesong_bridge"
@@ -137,28 +126,8 @@
     "place_description": "A war-torn, swampy region south of Novigrad with ruined villages, bogs and bandit-filled roads. Velen is harsh and populated by desperate folk and dangerous beasts.",
     "badge": "./images/velen-badge.png",
     "contracts": [
-      {
-        "questId": 101,
-        "contract_name": "Leshen in Crookback Bog",
-        "monster_id": "leshen",
-        "monster_quantity": 1,
-        "reward": 900,
-        "exp": 400,
-        "short_description": "A Leshen has been seen drawing beasts to trample the peat bogs.",
-        "description": "Locals report an ancient Leshen has returned and is calling animals and roots to protect its domain. Pack animal routes have been destroyed and the farmers fear for their livestock.",
-        "isCompleted": false
-      },
-      {
-        "questId": 102,
-        "contract_name": "Wyvern Nest at Crow's Perch",
-        "monster_id": "wyvern",
-        "monster_quantity": 1,
-        "reward": 600,
-        "exp": 300,
-        "short_description": "A wyvern nesting in the high cliffs has started raiding nearby farms.",
-        "description": "Farmers report missing livestock and a large, dragon-like shadow seen circling the cliffs near Crow's Perch. Bring proof of the wyvern's defeat.",
-        "isCompleted": false
-      }
+      "contract_leshen_in_crookback_bog",
+      "contract_wyvern_nest_at_crows_perch"
     ],
     "sub_locations": {
       "crookback_bog": {
@@ -167,21 +136,24 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "leshen_root"]
+        "resources_to_gather": ["herbs", "leshen_root"],
+        "canRest": false
       },
       "crow_perch_cliffs": {
         "name": "Crow's Perch Cliffs 🪶",
         "monsters_found": ["wyvern"],
         "merchant": null,
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": false
       },
       "dirtroad_crossing": {
         "name": "Dirtroad Crossing 🪔",
         "monsters_found": ["bandit", "wolf"],
-        "merchant": { "name": "Traveling Merchant", "items_in_stock": [] },
+        "merchant": "traveling_merchant",
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": false
       },
       "orcchard_swamp": {
         "name": "Orchard Swamp 🐸",
@@ -189,7 +161,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["swamp_herbs", "reed_fibers"]
+        "resources_to_gather": ["swamp_herbs", "reed_fibers"],
+        "canRest": false
       },
       "ruined_watchtower": {
         "name": "Ruined Watchtower 🏰",
@@ -197,15 +170,17 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["ancient_bricks", "rune_dust"]
+        "resources_to_gather": ["ancient_bricks", "rune_dust"],
+        "canRest": false
       },
       "blackbough_village": {
         "name": "Blackbough Village 🌾",
         "monsters_found": null,
         "merchant": null,
-        "blacksmith": { "name": "Blackbough Blacksmith", "items_in_stock": ["steel_sword_basic"] },
+        "blacksmith": "blackbough_blacksmith",
         "armorer": null,
-        "resources_to_gather": ["grain", "herbs"]
+        "resources_to_gather": ["grain", "herbs"],
+        "canRest": true
       },
       "hanged_mans_tree": {
         "name": "Hanged Man's Tree ⚰️",
@@ -213,15 +188,17 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["bones", "spirit_essence"]
+        "resources_to_gather": ["bones", "spirit_essence"],
+        "canRest": false
       },
       "mulbrydale": {
         "name": "Mulbrydale 🕯️",
         "monsters_found": ["bandit"],
-        "merchant": { "name": "Mulbrydale Innkeeper", "items_in_stock": [] },
+        "merchant": "mulbrydale_innkeeper",
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "boar_hide"]
+        "resources_to_gather": ["herbs", "boar_hide"],
+        "canRest": false
       },
       "lornruk_lighthouse": {
         "name": "Lornruk Lighthouse 🏝️",
@@ -229,7 +206,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["seashells", "draconid_blood"]
+        "resources_to_gather": ["seashells", "draconid_blood"],
+        "canRest": false
       },
       "devil_pit": {
         "name": "Devil's Pit 🔥",
@@ -237,7 +215,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["ore_fragments", "bone_shards"]
+        "resources_to_gather": ["ore_fragments", "bone_shards"],
+        "canRest": false
       },
       "reardon_manor": {
         "name": "Reardon Manor 🏚️",
@@ -245,7 +224,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["silver_candlestick", "linen"]
+        "resources_to_gather": ["silver_candlestick", "linen"],
+        "canRest": false
       },
       "burned_hamlet": {
         "name": "Burned Hamlet 🪓",
@@ -253,7 +233,8 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["charcoal", "metal_scrap"]
+        "resources_to_gather": ["charcoal", "metal_scrap"],
+        "canRest": false
       }
     },
     "default_sub_location": "crow_perch_cliffs"
@@ -263,40 +244,33 @@
     "place_description": "A bustling free city and merchant hub. Novigrad is rife with intrigue, markets, churches and criminal networks — monsters hide in alleys and sewers.",
     "badge": "./images/novigrad-badge.png",
     "contracts": [
-      {
-        "questId": 201,
-        "contract_name": "Sewer Beast",
-        "monster_id": "nekker",
-        "monster_quantity": 5,
-        "reward": 300,
-        "exp": 120,
-        "short_description": "Creatures have taken up residence in the old Novigrad sewers.",
-        "description": "Sewer workers unearthed signs of small, aggressive beasts living beneath Novigrad. Civilians have seen shadowy figures near the drains at night.",
-        "isCompleted": false
-      }
+      "contract_sewer_beast"
     ],
     "sub_locations": {
       "docks": {
         "name": "Novigrad Docks",
         "monsters_found": ["siren", "drowner"],
-        "merchant": { "name": "Dockmaster", "items_in_stock": [] },
+        "merchant": "dockmaster",
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["fish_oil", "reeds"]
+        "resources_to_gather": ["fish_oil", "reeds"],
+        "canRest": false
       },
       "old_sewers": {
         "name": "Old Sewers",
         "monsters_found": ["nekker"],
         "merchant": null,
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": false
       },
       "market_square": {
         "name": "Market Square",
         "monsters_found": null,
-        "merchant": { "name": "Market Merchants", "items_in_stock": [] },
+        "merchant": "market_merchants",
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": true
       }
     },
     "default_sub_location": "docks"
@@ -306,55 +280,39 @@
     "place_description": "A brutal archipelago of windswept isles, famed for warriors, longships and rugged landscape. Sea-monsters and savage beasts make the islands perilous.",
     "badge": "./images/skellige-badge.png",
     "contracts": [
-      {
-        "questId": 301,
-        "contract_name": "Waves of the Wyvern",
-        "monster_id": "wyvern",
-        "monster_quantity": 1,
-        "reward": 700,
-        "exp": 320,
-        "short_description": "A wyvern has nested near a coastal village and attacks passing ships.",
-        "description": "Villagers report a fierce wyvern nesting atop a coastal stack, swooping down to plunder ships and livestock. The chieftain offers coin for its head.",
-        "isCompleted": false
-      },
-      {
-        "questId": 302,
-        "contract_name": "Spirits of the Standing Stones",
-        "monster_id": "noonwraith",
-        "monster_quantity": 1,
-        "reward": 500,
-        "exp": 220,
-        "short_description": "A restless specter haunts the ancient standing stones.",
-        "description": "Islanders whisper of a noonwraith that appears near the old standing stones. Farmers report terrified cattle and a chilling wail at midday.",
-        "isCompleted": false
-      }
+      "contract_waves_of_the_wyvern",
+      "contract_spirits_of_the_standing_stones"
     ],
     "sub_locations": {
       "harral_west": {
         "name": "Harral West",
         "monsters_found": ["wyvern", "nekker"],
-        "resources_to_gather": ["fish_oil", "wyvern_scale"]
+        "resources_to_gather": ["fish_oil", "wyvern_scale"],
+        "canRest": false
       },
       "standing_stones": {
         "name": "Ancient Standing Stones",
         "monsters_found": ["noonwraith"],
         "merchant": null,
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": false
       },
       "longship_harbor": {
         "name": "Longship Harbor",
         "monsters_found": ["siren"],
-        "merchant": { "name": "Harbor Merchant", "items_in_stock": [] },
+        "merchant": "harbor_merchant",
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": false
       },
       "kaer_torlde": {
         "name": "Kaer Torlde",
         "monsters_found": null,
         "merchant": null,
         "blacksmith": null,
-        "armorer": null
+        "armorer": null,
+        "canRest": true
       }
     },
     "default_sub_location": "kaer_torlde"
