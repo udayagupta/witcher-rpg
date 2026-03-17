@@ -80,6 +80,16 @@ const Regions = () => {
                     </strong>
                   </p>
                 </div>
+                <div>
+                  <p>Shops: {" "}
+                    <strong>
+                      {(!currentSubLocation.merchant && !currentSubLocation.armorer && !currentSubLocation.blacksmith) && "None"}
+                      {currentSubLocation.merchant && "Merchant"}
+                      {currentSubLocation.blacksmith && "Blacksmith"}
+                      {currentSubLocation.armorer && "Armorer"}
+                    </strong>
+                  </p>
+                </div>
               </li>
             );
           }

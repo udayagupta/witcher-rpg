@@ -31,11 +31,11 @@
       "white_orchard_inn": {
         "name": "White Orchard Inn",
         "monsters_found": null,
-        "merchant": null,
+        "merchant": "white_orchard_innkeeper",
         "blacksmith": null,
         "armorer": null,
         "resources_to_gather": null,
-        "canRest": false
+        "canRest": true
       },
       "nilfgaardian_garrison": {
         "name": "Nilfgaardian Garrison ⚔️",

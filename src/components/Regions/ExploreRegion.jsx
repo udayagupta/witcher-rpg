@@ -4,11 +4,13 @@ import monsterData from "../../data/monster.json";
 import { useState } from "react";
 import BattleScreen from "../BattleScreen/BattleScreen";
 import itemsData from "../../data/items.json";
+import GatherResources from "./GatherResources";
+import MonsterHunting from "./MonsterHunting";
+import Shops from "./Shops";
 
 const ExploreRegion = () => {
   const { player, setPlayer, heal } = usePlayer();
-  const subLocationData =
-    locationsData[player.currentLocation]["sub_locations"][player.subLocation];
+  const subLocationData = locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
   const [gameMode, setGameMode] = useState("explore");
   const [selectedMonster, setSelectedMonster] = useState(null);
@@ -21,95 +23,23 @@ const ExploreRegion = () => {
     }))
   }
 
-  const changeGameMode = (mode) => {
-    setGameMode(mode);
-  }
+  const changeGameMode = (mode) => { setGameMode(mode); }
 
   const Explore = () => {
     return (
-    <div className="bg-neutral-800 h-full rounded-md">
+    <div className="bg-neutral-800 h-full rounded-md overflow-auto">
       <h3 className="witcher-font text-3xl heading">{subLocationData.name}</h3>
 
       <div className="interactions flex flex-col gap-10 mt-5">
-        <div className="gather-resources">
-          <h4 className="text-amber-300 text-2xl witcher-font">
-            Gather Resources
-          </h4>
-          {subLocationData["resources_to_gather"] ? (
-            <ul className="items-list">
-              {subLocationData["resources_to_gather"]?.map((item) => (
-                <li
-                  key={item}
-                  className="items-list-item items-list-item-not-selected"
-                >
-                  {itemsData?.resources[item]?.name || itemsData?.foods[item]?.name || item}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-xl">
-              No resources to gather, try going somewhere else.
-            </p>
-          )}
+        <GatherResources subLocationData={subLocationData} itemsData={itemsData}/>
+        <MonsterHunting props={{subLocationData, monsterData, setSelectedMonster, setGameMode, setPlayer}}/>
+        <div className="shops px-5 pb-4">
+          <h4 className="witcher-font text-2xl text-amber-300">Shops</h4>
+          {(!subLocationData.merchant && !subLocationData.armorer && !subLocationData.blacksmith) && <p className="mt-2 text-xl">No Shops in this region</p>}
+          <Shops subLocationData={subLocationData} shopType={"blacksmith"}/>
+          <Shops subLocationData={subLocationData} shopType={"merchant"}/>
+          <Shops subLocationData={subLocationData} shopType={"armorer"}/>
         </div>
-        <div className="monster-hunting">
-          <h4 className="text-amber-300 text-2xl witcher-font">
-            Monster Hunting
-          </h4>
-          {subLocationData["monsters_found"] ? (
-            <ul className="flex gap-5 justify-center p-2">
-              {subLocationData["monsters_found"]?.map((monster) => (
-                <li
-                  key={monster}
-                  className="items-list-item items-list-item-not-selected w-[193px] h-[254px] hover:text-amber-300"
-                  onClick={() => {
-                    setSelectedMonster(monster);
-                    setGameMode("battle");
-                    setPlayer(prev => ({...prev, inBattle: true}))
-                  }}
-                >
-                  <p className="witcher-font font-semibold">
-                    {monsterData[monster].name}
-                  </p>
-                  <img
-                    src={`./images/${monster}.png`}
-                    className="w-full object-contain "
-                    alt=""
-                  />
-                  <p className="witcher-font">💀 {monsterData[monster].difficulty}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-xl">
-              No mounsters to hunt, try going somewhere else.
-            </p>
-          )}
-        </div>
-
-        {subLocationData.blacksmith && (
-          <div>
-            <h4 className="text-2xl text-amber-300 witcher-font">
-              {subLocationData.blacksmith.name}
-            </h4>
-          </div>
-        )}
-
-        {subLocationData.merchant && (
-          <div>
-            <h4 className="text-2xl text-amber-300 witcher-font">
-              {subLocationData.merchant.name}
-            </h4>
-          </div>
-        )}
-
-        {subLocationData.armorer && (
-          <div>
-            <h4 className="text-2xl text-amber-300 witcher-font">
-              {subLocationData.armorer.name}
-            </h4>
-          </div>
-        )}
 
         {subLocationData.canRest && (
           <button className="border w-max m-auto p-2 text-lg cursor-pointer rounded border-amber-300 witcher-font" onClick={() => heal(100)}>
