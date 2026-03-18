@@ -6,9 +6,9 @@
     "gold": 350,
     "pricing_multiplier": 1.1,
     "inventory": [
-      { "itemId": "leather_scraps", "quantity": 10, "price": 10 },
-      { "itemId": "armor_repair_kit_novice", "quantity": 5, "price": 25 },
-      { "itemId": "hunter_armor_chest", "quantity": 1, "price": 150 }
+      { "itemId": "leather_scrap", "category": "resources", "quantity": 10, "price": 80 },
+      { "itemId": "viper_basic_armor", "category": "armor", "quantity": 1, "price": 200 },
+      { "itemId": "viper_basic_gauntlets", "category": "armor", "quantity": 1, "price": 120 }
     ]
   },
   "crossroads_merchant": {
@@ -18,9 +18,9 @@
     "gold": 150,
     "pricing_multiplier": 1.0,
     "inventory": [
-      { "itemId": "roasted_chicken", "quantity": 5, "price": 15 },
-      { "itemId": "water", "quantity": -1, "price": 5 },
-      { "itemId": "torch", "quantity": 2, "price": 20 }
+      { "itemId": "bread", "category": "foods", "quantity": 10, "price": 20 },
+      { "itemId": "water", "category": "foods", "quantity": -1, "price": 5 },
+      { "itemId": "hide", "category": "resources", "quantity": 5, "price": 50 }
     ]
   },
   "traveling_merchant": {
@@ -30,9 +30,10 @@
     "gold": 200,
     "pricing_multiplier": 0.9,
     "inventory": [
-      { "itemId": "bread", "quantity": 10, "price": 5 },
-      { "itemId": "empty_bottle", "quantity": 20, "price": 2 },
-      { "itemId": "twine", "quantity": 15, "price": 3 }
+      { "itemId": "bread", "category": "foods", "quantity": 15, "price": 20 },
+      { "itemId": "water", "category": "foods", "quantity": 20, "price": 5 },
+      { "itemId": "metal_scrap", "category": "resources", "quantity": 8, "price": 80 },
+      { "itemId": "swallow", "category": "potions", "quantity": 2, "price": 80 }
     ]
   },
   "blackbough_blacksmith": {
@@ -42,10 +43,9 @@
     "gold": 400,
     "pricing_multiplier": 1.2,
     "inventory": [
-      { "itemId": "iron_ingot", "quantity": 8, "price": 30 },
-      { "itemId": "weapon_repair_kit_novice", "quantity": 5, "price": 25 },
-      { "itemId": "whetstone", "quantity": 10, "price": 15 },
-      { "itemId": "steel_sword_novice", "quantity": 1, "price": 120 }
+      { "itemId": "metal_scrap", "category": "resources", "quantity": 12, "price": 80 },
+      { "itemId": "steel_sword_basic", "category": "steelSwords", "quantity": 2, "price": 120 },
+      { "itemId": "silver_sword_basic", "category": "silverSwords", "quantity": 1, "price": 350 }
     ]
   },
   "mulbrydale_innkeeper": {
@@ -55,9 +55,9 @@
     "gold": 120,
     "pricing_multiplier": 1.0,
     "inventory": [
-      { "itemId": "dwarven_spirit", "quantity": 4, "price": 35 },
-      { "itemId": "ale", "quantity": 15, "price": 8 },
-      { "itemId": "dried_fruit", "quantity": 10, "price": 12 }
+      { "itemId": "water", "category": "foods", "quantity": -1, "price": 5 },
+      { "itemId": "bread", "category": "foods", "quantity": 12, "price": 20 },
+      { "itemId": "raw_meat", "category": "foods", "quantity": 8, "price": 15 }
     ]
   },
   "dockmaster": {
@@ -67,9 +67,9 @@
     "gold": 800,
     "pricing_multiplier": 1.5,
     "inventory": [
-      { "itemId": "fish", "quantity": 25, "price": 8 },
-      { "itemId": "stout_rope", "quantity": 10, "price": 12 },
-      { "itemId": "whale_oil", "quantity": 5, "price": 45 }
+      { "itemId": "raw_meat", "category": "foods", "quantity": 25, "price": 15 },
+      { "itemId": "water", "category": "foods", "quantity": 30, "price": 5 },
+      { "itemId": "leather_scrap", "category": "resources", "quantity": 15, "price": 80 }
     ]
   },
   "market_merchants": {
@@ -79,10 +79,10 @@
     "gold": 1500,
     "pricing_multiplier": 1.3,
     "inventory": [
-      { "itemId": "cherry_cordial", "quantity": 5, "price": 60 },
-      { "itemId": "mandrake_root", "quantity": 3, "price": 80 },
-      { "itemId": "silk", "quantity": 8, "price": 100 },
-      { "itemId": "greater_runestone", "quantity": 1, "price": 500 }
+      { "itemId": "swallow_strong", "category": "potions", "quantity": 3, "price": 200 },
+      { "itemId": "specter_oil", "category": "oils", "quantity": 1, "price": 160 },
+      { "itemId": "draconid_oil", "category": "oils", "quantity": 1, "price": 160 },
+      { "itemId": "lesser_runestone", "category": "resources", "quantity": 2, "price": 300 }
     ]
   },
   "harbor_merchant": {
@@ -92,9 +92,9 @@
     "gold": 600,
     "pricing_multiplier": 1.1,
     "inventory": [
-      { "itemId": "salted_fish", "quantity": 20, "price": 10 },
-      { "itemId": "bear_pelt", "quantity": 2, "price": 150 },
-      { "itemId": "horn_of_mead", "quantity": 10, "price": 25 }
+      { "itemId": "raw_meat", "category": "foods", "quantity": 20, "price": 15 },
+      { "itemId": "hide", "category": "resources", "quantity": 8, "price": 50 },
+      { "itemId": "monster_bone", "category": "resources", "quantity": 5, "price": 40 }
     ]
   },
   "white_orchard_innkeeper": {
@@ -104,10 +104,9 @@
     "gold": 250,
     "pricing_multiplier": 1.0,
     "inventory": [
-      { "itemId": "apple", "quantity": 10, "price": 3 },
-      { "itemId": "bread", "quantity": 15, "price": 5 },
-      { "itemId": "dwarven_spirit", "quantity": 5, "price": 35 },
-      { "itemId": "water", "quantity": -1, "price": 5 }
+      { "itemId": "bread", "category": "foods", "quantity": 20, "price": 20 },
+      { "itemId": "raw_meat", "category": "foods", "quantity": 10, "price": 15 },
+      { "itemId": "water", "category": "foods", "quantity": -1, "price": 5 }
     ]
   }
 }

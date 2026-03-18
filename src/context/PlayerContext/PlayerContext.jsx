@@ -20,22 +20,33 @@ export const PlayerProvider = ({ children }) => {
     base_defense: 20,
     stamina: 100,
 
-    inventory: {
-      steelSwords: [{ id: "steel_sword_basic", qty: 1 }],
-      silverSwords: [{ id: "silver_sword_basic", qty: 1 }],
-      armors: [{ id: "viper_basic_armor", qty: 1 }],
-      gauntlets: [{ id: "viper_basic_gauntlets", qty: 1 }],
-      trousers: [{ id: "viper_basic_trousers", qty: 1 }],
-      boots: [{ id: "viper_basic_boots", qty: 1 }],
-      potions: [],
-      oils: [
-        { id: "hybrid_oil", qty: 5 },
-        { id: "necrophage_oil", qty: 5 },
-        { id: "specter_oil", qty: 5 },
-        { id: "draconid_oil", qty: 5 },
+inventory: {
+      steelSwords: [{ id: "steel_sword_basic", type: "steelSwords", qty: 1 }],
+      silverSwords: [{ id: "silver_sword_basic", type: "silverSwords", qty: 1 }],
+      armors: [{ id: "viper_basic_armor", type: "armor", qty: 1 }],
+      gauntlets: [{ id: "viper_basic_gauntlets", type: "armor", qty: 1 }],
+      trousers: [{ id: "viper_basic_trousers", type: "armor", qty: 1 }],
+      boots: [{ id: "viper_basic_boots", type: "armor", qty: 1 }],
+      potions: [
+        { id: "swallow", type: "potions", qty: 3 }
       ],
-      resources: [],
-      foods: [],
+      oils: [
+        { id: "hybrid_oil", type: "oils", qty: 5 },
+        { id: "necrophage_oil", type: "oils", qty: 5 },
+        { id: "specter_oil", type: "oils", qty: 5 },
+        { id: "draconid_oil", type: "oils", qty: 5 },
+      ],
+      resources: [
+        { id: "leather_scrap", type: "resources", qty: 10 },
+        { id: "metal_scrap", type: "resources", qty: 8 },
+        { id: "hide", type: "resources", qty: 2 },
+        { id: "monster_saliva", type: "resources", qty: 1 }
+      ],
+      foods: [
+        { id: "water", type: "foods", qty: 5 },
+        { id: "bread", type: "foods", qty: 3 },
+        { id: "raw_meat", type: "foods", qty: 2 }
+      ],
     },
 
     equipment: {
@@ -122,13 +133,13 @@ export const PlayerProvider = ({ children }) => {
       let newList = currentCategoryList.map((item) => {
         if (item.id === itemId) {
           itemFound = true;
-          return { ...item, qty: item.qty + qty }; 
+          return { ...item, type: itemCategory, qty: item.qty + qty }; 
         }
         return item;
       });
 
       if (!itemFound) {
-        newList.push({ id: itemId, qty: qty });
+        newList.push({ id: itemId, type: itemCategory, qty: qty });
       }
 
       return {
@@ -186,10 +197,10 @@ export const PlayerProvider = ({ children }) => {
 
   const reflectEquippedEquipment = (player) => {
     const equippedSteelSword = player.equipment.steel_sword
-      ? itemsData["steel_swords"][player.equipment.steel_sword]
+      ? itemsData["steelSwords"][player.equipment.steel_sword]
       : null;
     const equippedSilverSword = player.equipment.silver_sword
-      ? itemsData["silver_swords"][player.equipment.silver_sword]
+      ? itemsData["silverSwords"][player.equipment.silver_sword]
       : null;
 
     const equippedArmor = player.equipment.armor

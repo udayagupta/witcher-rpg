@@ -22,7 +22,7 @@ const ActiveEffects = ({ target, battleState }) => {
           className="relative flex flex-col items-center"
         >
           <img
-            src={`./images/oils/${itemsData["oils"][battleState.appliedOil.id]["img"]}.png`}
+            src={`./images/items/${itemsData["oils"][battleState.appliedOil.id]["img"]}.png`}
             className="h-[36px] w-[36px] object-contain"
             alt={battleState.appliedOil.name || battleState.appliedOil.id}
           />

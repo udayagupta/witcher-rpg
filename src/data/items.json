@@ -1,5 +1,5 @@
 {
-  "steel_swords": {
+  "steelSwords": {
     "kaer_morhen_steel_sword": {
       "id": "kaer_morhen_steel_sword",
       "name": "Kaer Morhen Steel Sword",
@@ -25,7 +25,7 @@
       "description": "An ordinary steel sword. Reliable and cheap."
     }
   },
-  "silver_swords": {
+  "silverSwords": {
     "kaer_morhen_silver_sword": {
       "id": "kaer_morhen_silver_sword",
       "name": "Kaer Morhen Silver Sword",
@@ -223,61 +223,53 @@
     }
   },
   "resources": {
-    "wyvern_scale": {
-      "id": "wyvern_scale",
-      "name": "Wyvern Scale",
+    "monster_bone": {
+      "id": "monster_bone",
+      "name": "Monster Bone",
+      "type": "material",
+      "rarity": "common",
+      "price": 40,
+      "description": "A sturdy bone harvested from a slain beast. Useful for basic crafting."
+    },
+    "monster_blood": {
+      "id": "monster_blood",
+      "name": "Monster Blood",
       "type": "material",
       "rarity": "uncommon",
-      "price": 90,
-      "description": "A tough scale from a wyvern. Useful for crafting."
+      "price": 75,
+      "description": "Thick, dark blood. A staple ingredient in many witcher alchemy recipes."
     },
-    "leshen_root": {
-      "id": "leshen_root",
-      "name": "Leshen Root",
+    "monster_essence": {
+      "id": "monster_essence",
+      "name": "Monster Essence",
       "type": "material",
       "rarity": "rare",
-      "price": 200,
-      "description": "A mysterious root possessing druidic properties; used in alchemy."
+      "price": 150,
+      "description": "Concentrated magical essence dropped by powerful creatures and specters."
     },
-    "ectoplasm": {
-      "id": "ectoplasm",
-      "name": "Ectoplasm",
+    "monster_saliva": {
+      "id": "monster_saliva",
+      "name": "Monster Saliva",
       "type": "material",
-      "rarity": "uncommon",
-      "price": 120,
-      "description": "Remnant of a specter — used in crafting and alchemy."
+      "rarity": "common",
+      "price": 30,
+      "description": "Foul-smelling fluid collected from necrophages and hybrids. Toxic but useful."
     },
-    "foglet_essence": {
-      "id": "foglet_essence",
-      "name": "Foglet Essence",
-      "type": "material",
-      "rarity": "uncommon",
-      "price": 200,
-      "description": "Something to be used in alchemy"
-    },
-    "ghoul_blood": {
-      "id": "ghoul_blood",
-      "name": "Ghoul Blood",
-      "type": "material",
-      "rarity": "uncommon",
-      "price": 200,
-      "description": "It is a guaranteed drop from ghouls, their monster nests, and alghouls that guard them"
-    },
-    "wolf_hide": {
-      "id": "wolf_hide",
-      "name": "Wolf Hide",
+    "hide": {
+      "id": "hide",
+      "name": "Animal Hide",
       "type": "material",
       "rarity": "common",
       "price": 50,
-      "description": "Dropped from wolves"
+      "description": "Cured skin from a beast. Can be dismantled into leather scraps."
     },
-    "werewolf_hide": {
-      "id": "werewolf_hide",
-      "name": "Werewolf Hide",
+    "lesser_runestone": {
+      "id": "lesser_runestone",
+      "name": "Lesser Runestone",
       "type": "material",
       "rarity": "rare",
-      "price": 500,
-      "description": "A rare material dropped from Werewolves"
+      "price": 300,
+      "description": "A weakly glowing stone that can be socketed into witcher gear to enhance combat abilities."
     },
     "metal_scrap": {
       "id": "metal_scrap",
@@ -294,15 +286,170 @@
       "rarity": "common",
       "price": 80,
       "description": "Used in crafting witcher wearables gears."
+    },
+    "griffin_hide": {
+      "id": "griffin_hide",
+      "name": "Griffin Hide",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 40,
+      "description": "Thick, feathered hide. Used in hybrid oils and armor crafting.",
+      "icon": "hide"
+    },
+    "drowner_scale": {
+      "id": "drowner_scale",
+      "name": "Drowner Scale",
+      "type": "material",
+      "rarity": "common",
+      "price": 15,
+      "description": "Slimy but resilient. Crucial for necrophage oils.",
+      "icon": "scale"
+    },
+    "siren_scale": {
+      "id": "siren_scale",
+      "name": "Siren Scale",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 25,
+      "description": "Iridescent scales used to coat blades against hybrids.",
+      "icon": "scale"
+    },
+    "specter_dust": {
+      "id": "specter_dust",
+      "name": "Specter Dust",
+      "type": "material",
+      "rarity": "common",
+      "price": 20,
+      "description": "Remains of a wraith. Needed to bind specter oils.",
+      "icon": "dust"
+    },
+    "leshen_bark": {
+      "id": "leshen_bark",
+      "name": "Leshen Bark",
+      "type": "material",
+      "rarity": "rare",
+      "price": 60,
+      "description": "Harder than steel. Used in top-tier relict oils and heavy armor.",
+      "icon": "bark"
+    },
+    "wyvern_scale": {
+      "id": "wyvern_scale",
+      "name": "Wyvern Scale",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 45,
+      "description": "Tough draconid scale. Essential for draconid oils.",
+      "icon": "scale"
+    },
+    "nekker_skin": {
+      "id": "nekker_skin",
+      "name": "Nekker Skin",
+      "type": "material",
+      "rarity": "common",
+      "price": 10,
+      "description": "Pliable but weak. Used in basic necrophage oils.",
+      "icon": "hide"
+    },
+    "foglet_skin": {
+      "id": "foglet_skin",
+      "name": "Foglet Skin",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 30,
+      "description": "Translucent skin used in advanced necrophage alchemy.",
+      "icon": "hide"
+    },
+    "ghoul_skin": {
+      "id": "ghoul_skin",
+      "name": "Ghoul Skin",
+      "type": "material",
+      "rarity": "common",
+      "price": 15,
+      "description": "Leathery necrophage skin.",
+      "icon": "hide"
+    },
+    "werewolf_hide": {
+      "id": "werewolf_hide",
+      "name": "Werewolf Hide",
+      "type": "material",
+      "rarity": "rare",
+      "price": 80,
+      "description": "Incredibly thick and regenerative. Prized by armorers.",
+      "icon": "hide"
+    },
+    "elemental_stone": {
+      "id": "elemental_stone",
+      "name": "Elemental Stone",
+      "type": "material",
+      "rarity": "rare",
+      "price": 75,
+      "description": "A dense chunk of elemental matter. Used to sharpen blades and brew oils.",
+      "icon": "stone"
+    },
+    "fiend_hide": {
+      "id": "fiend_hide",
+      "name": "Fiend Hide",
+      "type": "material",
+      "rarity": "rare",
+      "price": 100,
+      "description": "Massive, impenetrable hide. Used for the strongest relict oils.",
+      "icon": "hide"
+    },
+    "water_hag_scale": {
+      "id": "water_hag_scale",
+      "name": "Water Hag Scale",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 25,
+      "description": "Brittle, muddy scales.",
+      "icon": "scale"
+    },
+    "harpy_feathers": {
+      "id": "harpy_feathers",
+      "name": "Harpy Feathers",
+      "type": "material",
+      "rarity": "common",
+      "price": 12,
+      "description": "Stiff feathers used in hybrid oils.",
+      "icon": "feather"
+    },
+    "alghoul_skin": {
+      "id": "alghoul_skin",
+      "name": "Alghoul Skin",
+      "type": "material",
+      "rarity": "uncommon",
+      "price": 35,
+      "description": "Tougher and spikier than normal ghoul skin.",
+      "icon": "hide"
     }
   },
   "foods": {
-    "fish": {
-      "id": "fish",
-      "name": "Fish",
-      "type": "common",
-      "price": 40,
-      "description": "A Fish."
+    "raw_meat": {
+      "id": "raw_meat",
+      "name": "Raw Meat",
+      "type": "food",
+      "rarity": "common",
+      "heal": 30,
+      "price": 15,
+      "description": "Tough, raw meat. Restores a small amount of vitality, but it's better if roasted."
+    },
+    "water": {
+      "id": "water",
+      "name": "Water",
+      "type": "food",
+      "rarity": "common",
+      "heal": 20,
+      "price": 5,
+      "description": "A simple flask of spring water. Refreshes the body slightly."
+    },
+    "bread": {
+      "id": "bread",
+      "name": "Loaf of Bread",
+      "type": "food",
+      "rarity": "common",
+      "heal": 50,
+      "price": 20,
+      "description": "Stale but filling. A standard ration for travelers."
     }
   }
 }

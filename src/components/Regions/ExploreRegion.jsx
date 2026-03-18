@@ -9,7 +9,7 @@ import MonsterHunting from "./MonsterHunting";
 import Shops from "./Shops";
 
 const ExploreRegion = () => {
-  const { player, setPlayer, heal } = usePlayer();
+  const { player, setPlayer, heal, addToInventory } = usePlayer();
   const subLocationData = locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
   const [gameMode, setGameMode] = useState("explore");

@@ -10,8 +10,8 @@ export const PlayerProfile = ({ className }) => {
   const steelAtk = player?.attack?.steelAttack ? player.attack.steelAttack.join("-") : "—";
   const silverAtk = player?.attack?.silverAttack ? player.attack.silverAttack.join("-") : "—";
   const defense = player?.defense ?? "—";
-  const silverSwordEquipped = itemsData["silver_swords"][player.equipment?.silver_sword];
-  const steelSwordEquipped = itemsData["steel_swords"][player.equipment?.steel_sword];
+  const silverSwordEquipped = itemsData["silverSwords"][player.equipment?.silver_sword];
+  const steelSwordEquipped = itemsData["steelSwords"][player.equipment?.steel_sword];
 
   const crit_chance = player.crit_chance || 0;
   const formattedPlayerCoins = formatNumber(player.coins || 0);

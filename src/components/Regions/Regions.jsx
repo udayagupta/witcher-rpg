@@ -1,9 +1,24 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react"; 
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { scale: 0.8, opacity: 0 },
+  show: { scale: 1, opacity: 1, transition: { type: "spring", bounce: 0.3 } }
+};
 
 const Regions = () => {
   const { player, setPlayer } = usePlayer();
@@ -18,83 +33,86 @@ const Regions = () => {
     setWillTravelTo(subLocation);
 
     setTimeout(() => {
-      setPlayer((prev) => ({ ...prev, subLocation }));
-      setPlayer((prev) => ({ ...prev, isTraveling: false }));
+      setPlayer((prev) => ({ 
+        ...prev, 
+        subLocation,
+        isTraveling: false 
+      }));
       navigate("/explore-region");
     }, travelTime);
   };
 
   return (
     <section>
-      {player.isTraveling && (
-        <motion.div
-          className="absolute inset-0 flex items-center justify-center bg-black text-amber-300 text-2xl witcher-font z-50"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Traveling to {currentLocationData["sub_locations"][willTravelTo].name}
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {player.isTraveling && (
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center bg-black text-amber-300 text-2xl witcher-font z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Traveling to {currentLocationData["sub_locations"][willTravelTo].name}...
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <h3 className="heading witcher-font">
         {currentLocationData.name} Regions
       </h3>
-      <ul className="items-list">
-        {Object.keys(currentLocationData["sub_locations"]).map(
-          (subLocation) => {
-            const currentSubLocation =
-              currentLocationData["sub_locations"][subLocation];
+
+      <motion.ul 
+        className="items-list grid grid-cols-2 gap-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        {Object.keys(currentLocationData["sub_locations"]).map((subLocation) => {
+            const currentSubLocation = currentLocationData["sub_locations"][subLocation];
+
+            const shopsAvailable = [];
+            if (currentSubLocation.merchant) shopsAvailable.push("Merchant");
+            if (currentSubLocation.blacksmith) shopsAvailable.push("Blacksmith");
+            if (currentSubLocation.armorer) shopsAvailable.push("Armorer");
+
             return (
-              <li
-                className={`items-list-item ${
+              <motion.li
+                variants={itemVariants}
+                className={`p-4 rounded border transition-colors cursor-pointer flex flex-col gap-2 ${
                   subLocation === player.subLocation
-                    ? "items-list-item-selected"
-                    : "items-list-item-not-selected"
+                    ? "border-amber-400 bg-neutral-800"
+                    : "border-neutral-700 bg-neutral-900/50 hover:border-amber-500/50"
                 }`}
                 key={subLocation}
                 onClick={() => changeSubLocation(subLocation, 1500)}
               >
-                <h4 className="text-lg witcher-font text-amber-300">
+                <h4 className="text-xl witcher-font text-amber-300">
                   {currentSubLocation.name}
                 </h4>
-                <div className="capitalize">
-                  <p>
-                    Monsters Found:{" "}
-                    <strong>
-                      {currentSubLocation.monsters_found
-                        ? `${currentSubLocation.monsters_found.join(", ")}`
-                        : "None"}
-                    </strong>
-                  </p>
-                </div>
-                <div className="capitalize">
-                  <p>
-                    Resources Found:{" "}
-                    <strong>
-                      {currentSubLocation.resources_to_gather
-                        ? currentSubLocation.resources_to_gather
-                            .map(formatName)
-                            .join(", ")
-                        : "None"}
-                    </strong>
-                  </p>
-                </div>
-                <div>
-                  <p>Shops: {" "}
-                    <strong>
-                      {(!currentSubLocation.merchant && !currentSubLocation.armorer && !currentSubLocation.blacksmith) && "None"}
-                      {currentSubLocation.merchant && "Merchant"}
-                      {currentSubLocation.blacksmith && "Blacksmith"}
-                      {currentSubLocation.armorer && "Armorer"}
-                    </strong>
-                  </p>
-                </div>
-              </li>
+                
+                <p className="text-sm text-neutral-300">
+                  Monsters: <span className="font-semibold text-neutral-100 capitalize">
+                    {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.join(", ") : "None"}
+                  </span>
+                </p>
+                
+                <p className="text-sm text-neutral-300">
+                  Resources: <span className="font-semibold text-neutral-100 capitalize">
+                    {currentSubLocation.resources_to_gather ? currentSubLocation.resources_to_gather.map(formatName).join(", ") : "None"}
+                  </span>
+                </p>
+
+                <p className="text-sm text-neutral-300">
+                  Shops: <span className="font-semibold text-neutral-100">
+                    {shopsAvailable.length > 0 ? shopsAvailable.join(", ") : "None"}
+                  </span>
+                </p>
+              </motion.li>
             );
           }
         )}
-      </ul>
+      </motion.ul>
     </section>
   );
 };

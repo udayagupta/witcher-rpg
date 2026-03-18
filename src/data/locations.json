@@ -12,11 +12,11 @@
     "sub_locations": {
       "cackler_bridge": {
         "name": "Cackler Bridge 🌉",
-        "monster_found": ["drowner", "wolf"],
+        "monsters_found": ["drowner", "wolf"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs"],
+        "resources_to_gather": ["water"],
         "canRest": false
       },
       "woesong_bridge": {
@@ -43,7 +43,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["metal_scrap", "wolf_hide"],
+        "resources_to_gather": ["metal_scrap", "hide"],
         "canRest": true
       },
       "abandoned_village": {
@@ -52,7 +52,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "bones"],
+        "resources_to_gather": ["water", "monster_bone"],
         "canRest": false
       },
       "sawmill": {
@@ -61,7 +61,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["timber", "wolf_pelt"],
+        "resources_to_gather": ["leather_scrap", "hide"],
         "canRest": false
       },
       "broken_cart_pass": {
@@ -70,7 +70,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["loot_crates", "herbs"],
+        "resources_to_gather": ["bread", "metal_scrap"],
         "canRest": false
       },
       "isemen_riverbank": {
@@ -79,7 +79,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["water_essence", "reeds"],
+        "resources_to_gather": ["water", "monster_saliva"],
         "canRest": false
       },
       "crossroads_inn": {
@@ -97,7 +97,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["animal_hide", "herbs"],
+        "resources_to_gather": ["hide", "raw_meat"],
         "canRest": false
       },
       "orchard_fields": {
@@ -106,7 +106,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["fruit", "herbs"],
+        "resources_to_gather": ["bread", "water"],
         "canRest": false
       },
       "sawmill_forest_edge": {
@@ -115,7 +115,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["wood", "herbs"],
+        "resources_to_gather": ["leather_scrap", "water"],
         "canRest": false
       }
     },
@@ -136,7 +136,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "leshen_root"],
+        "resources_to_gather": ["water", "monster_essence"],
         "canRest": false
       },
       "crow_perch_cliffs": {
@@ -145,6 +145,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": false
       },
       "dirtroad_crossing": {
@@ -153,6 +154,7 @@
         "merchant": "traveling_merchant",
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": ["metal_scrap"],
         "canRest": false
       },
       "orcchard_swamp": {
@@ -161,7 +163,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["swamp_herbs", "reed_fibers"],
+        "resources_to_gather": ["water", "monster_saliva"],
         "canRest": false
       },
       "ruined_watchtower": {
@@ -170,7 +172,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["ancient_bricks", "rune_dust"],
+        "resources_to_gather": ["metal_scrap", "lesser_runestone"],
         "canRest": false
       },
       "blackbough_village": {
@@ -179,7 +181,7 @@
         "merchant": null,
         "blacksmith": "blackbough_blacksmith",
         "armorer": null,
-        "resources_to_gather": ["grain", "herbs"],
+        "resources_to_gather": ["bread", "water"],
         "canRest": true
       },
       "hanged_mans_tree": {
@@ -188,7 +190,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["bones", "spirit_essence"],
+        "resources_to_gather": ["monster_bone", "monster_essence"],
         "canRest": false
       },
       "mulbrydale": {
@@ -197,7 +199,7 @@
         "merchant": "mulbrydale_innkeeper",
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["herbs", "boar_hide"],
+        "resources_to_gather": ["water", "hide"],
         "canRest": false
       },
       "lornruk_lighthouse": {
@@ -206,7 +208,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["seashells", "draconid_blood"],
+        "resources_to_gather": ["water", "monster_blood"],
         "canRest": false
       },
       "devil_pit": {
@@ -215,7 +217,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["ore_fragments", "bone_shards"],
+        "resources_to_gather": ["metal_scrap", "monster_bone"],
         "canRest": false
       },
       "reardon_manor": {
@@ -224,7 +226,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["silver_candlestick", "linen"],
+        "resources_to_gather": ["metal_scrap", "leather_scrap"],
         "canRest": false
       },
       "burned_hamlet": {
@@ -233,7 +235,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["charcoal", "metal_scrap"],
+        "resources_to_gather": ["metal_scrap", "hide"],
         "canRest": false
       }
     },
@@ -253,7 +255,7 @@
         "merchant": "dockmaster",
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": ["fish_oil", "reeds"],
+        "resources_to_gather": ["water", "leather_scrap"],
         "canRest": false
       },
       "old_sewers": {
@@ -262,6 +264,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": false
       },
       "market_square": {
@@ -270,6 +273,7 @@
         "merchant": "market_merchants",
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": true
       }
     },
@@ -287,7 +291,10 @@
       "harral_west": {
         "name": "Harral West",
         "monsters_found": ["wyvern", "nekker"],
-        "resources_to_gather": ["fish_oil", "wyvern_scale"],
+        "resources_to_gather": ["water", "hide"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
         "canRest": false
       },
       "standing_stones": {
@@ -296,6 +303,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": false
       },
       "longship_harbor": {
@@ -304,6 +312,7 @@
         "merchant": "harbor_merchant",
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": false
       },
       "kaer_torlde": {
@@ -312,6 +321,7 @@
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
+        "resources_to_gather": null,
         "canRest": true
       }
     },

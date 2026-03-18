@@ -21,7 +21,7 @@ const Shops = ({ subLocationData, shopType }) => {
 
   return (
     subLocationData[shopType] && (
-      <motion.div initial={{scale: 0, opacity: 0}} animate={{scale: 1, opacity: 1}} className='flex flex-col items-center p-3 w-56 bg-neutral-900/90 rounded-md border border-transparent  hover:border-amber-300 transition-colors'>
+      <motion.div initial={{scale: 0, opacity: 0}} animate={{scale: 1, opacity: 1}} className='flex flex-col items-center p-3 w-56 bg-neutral-900/80 card  hover:border-amber-300 transition-colors'>
       
       <h4 className='text-lg capitalize witcher-font text-amber-300'>
         {shopType}
@@ -29,7 +29,7 @@ const Shops = ({ subLocationData, shopType }) => {
 
       {iconMap[shopType] || <CiShop className={iconClasses} />}
 
-      <p className='text-md playwrite-font text-neutral-300 text-center mb-5 pt-sans-fonts min-h-[48px] flex items-center'>
+      <p className='text-md font-extrabold text-neutral-300 text-center mb-5 pt-sans-fonts min-h-[48px] flex items-center'>
         {shopData.name}
       </p>
 

@@ -34,6 +34,8 @@
     background-image: linear-gradient(oklch(0.205 0 0) 0%, oklch(0.269 0 0) 100%);
 }
 
+
+
 .contracts-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -105,7 +107,7 @@
     }
 
     .card {
-        @apply bg-neutral-900/30 rounded-lg shadow-lg p-4 ;
+        @apply bg-neutral-900/80 border border-neutral-700 rounded-md;
     }
     
     .card:hover {

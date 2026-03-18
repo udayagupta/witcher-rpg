@@ -54,27 +54,37 @@ const MonsterBestiary = () => {
     <section className="h-screen flex pt-sans-font gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
       <div className="w-[65%] overflow-auto">
         <h3 className="text-2xl p-2 witcher-font text-amber-300">Monsters</h3>
-        <ul className="gap-4 p-2 monster-list">
-          {Object.keys(monstersData).map((key, index) => (
-            <li
-              onClick={() => setSelectedMonster(key)}
-              key={index}
-              className={`max-h-max flex flex-col overflow-hidden transition duration-300 cursor-pointer hover:text-amber-300 rounded ${
-                key === selectedMonster
-                  ? "border-2 border-amber-300 bg-neutral-900/20 text-amber-300"
-                  : "border border-neutral-700 bg-neutral-900/10 hover:border-amber-300"
-              }`}
-            >
-              <p className="p-2 witcher-font font-semibold">
-                {monstersData[key].name}
-              </p>
-              <img
-                src={`./images/${key}.png`}
-                className="w-full object-contain"
-                alt={monstersData[key].name}
-              />
-            </li>
-          ))}
+        <ul className="flex flex-wrap gap-4 justify-center items-center p-2 monster-list">
+          {Object.keys(monstersData).map((key) => {
+            const isSelected = key === selectedMonster;
+
+            return (
+              <li
+                key={key}
+                onClick={() => setSelectedMonster(key)}
+                className={`group flex flex-col items-center justify-between w-36 h-32 p-3 cursor-pointer rounded-lg shadow-md transition-all duration-300 ${isSelected
+                    ? "border-2 border-amber-300 bg-neutral-900/40"
+                    : "border border-neutral-700 bg-neutral-900/80 hover:border-amber-300"
+                  }`}
+              >
+                <div className="flex-1 w-full flex items-center justify-center overflow-hidden">
+                  <img
+                    src={`./images/${key}.png`}
+                    alt={monstersData[key].name}
+                    className="w-full h-full object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <p
+                  className={`text-md font-semibold text-center tracking-wide transition-colors leading-tight mt-2 witcher-font ${isSelected
+                      ? "text-amber-300"
+                      : "text-neutral-300 group-hover:text-amber-300"
+                    }`}
+                >
+                  {monstersData[key].name}
+                </p>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className="selected-monster overflow-auto w-[35%]">
