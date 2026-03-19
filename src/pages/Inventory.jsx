@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import itemsData from "../data/items.json";
 import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import { motion } from 'motion/react';
 import RenderCategory from '../components/Inventory/RenderCategory';

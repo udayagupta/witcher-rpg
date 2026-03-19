@@ -81,3 +81,11 @@ export const generateLogText = (player, monster, action, battleState) => {
   return text.join(" ");
 
 }
+
+export const checkIfEquipped = (equipment, itemData) => {
+  return equipment[itemData.slot] === itemData.id;
+}
+
+export const canBeEquipped = (playerLevel, equipment, itemData) => {
+  return (playerLevel >= itemData.level_req && !checkIfEquipped(equipment, itemData)) ? "Equip" : playerLevel < itemData.level_req ? "Level Too Low!" : checkIfEquipped(equipment, itemData) ? "Already Equipped" : "Equip"
+}

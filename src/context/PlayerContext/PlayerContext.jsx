@@ -1,5 +1,6 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import itemsData from "../../data/items.json";
+import { checkIfEquipped } from "../../utils/utils";
 
 const PlayerContext = createContext();
 
@@ -7,7 +8,7 @@ export const PlayerProvider = ({ children }) => {
   const [player, setPlayer] = useState({
     name: "Geralt",
     fullName: "Geralt of Rivia",
-    level: 1,
+    level: 3,
     currentExp: 0,
     expToNextLevel: 200,
     vitality: 500,
@@ -20,13 +21,34 @@ export const PlayerProvider = ({ children }) => {
     base_defense: 20,
     stamina: 100,
 
-inventory: {
-      steelSwords: [{ id: "steel_sword_basic", type: "steelSwords", qty: 1 }],
-      silverSwords: [{ id: "silver_sword_basic", type: "silverSwords", qty: 1 }],
-      armors: [{ id: "viper_basic_armor", type: "armor", qty: 1 }],
-      gauntlets: [{ id: "viper_basic_gauntlets", type: "armor", qty: 1 }],
-      trousers: [{ id: "viper_basic_trousers", type: "armor", qty: 1 }],
-      boots: [{ id: "viper_basic_boots", type: "armor", qty: 1 }],
+   inventory: {
+      steelSwords: [
+        { id: "steel_sword_basic", type: "steelSwords", qty: 1 },
+        { id: "novigrad_longsword", type: "steelSwords", qty: 1 },
+        { id: "gwyhyr", type: "steelSwords", qty: 1 }
+      ],
+      silverSwords: [
+        { id: "silver_sword_basic", type: "silverSwords", qty: 1 },
+        { id: "griffin_silver_sword", type: "silverSwords", qty: 1 },
+        { id: "aerondight", type: "silverSwords", qty: 1 }
+      ],
+      armors: [
+        { id: "viper_basic_armor", type: "armor", qty: 1 },
+        { id: "hunters_armor", type: "armor", qty: 1 },
+        { id: "griffin_armor", type: "armor", qty: 1 },
+        { id: "ursine_heavy_armor", type: "armor", qty: 1 }
+      ],
+      gauntlets: [
+        { id: "viper_basic_gauntlets", type: "armor", qty: 1 },
+        { id: "griffin_gauntlets", type: "armor", qty: 1 }
+      ],
+      trousers: [
+        { id: "viper_basic_trousers", type: "armor", qty: 1 },
+        { id: "ursine_trousers", type: "armor", qty: 1 }
+      ],
+      boots: [
+        { id: "viper_basic_boots", type: "armor", qty: 1 }
+      ],
       potions: [
         { id: "swallow", type: "potions", qty: 3 }
       ],
@@ -116,7 +138,7 @@ inventory: {
 
     const updatedActiveQuests = {
       ...player.activeQuests,
-      [questId]: {status: "active", progress: 0}
+      [questId]: { status: "active", progress: 0 }
     };
 
     setPlayer((prev) => ({
@@ -133,7 +155,7 @@ inventory: {
       let newList = currentCategoryList.map((item) => {
         if (item.id === itemId) {
           itemFound = true;
-          return { ...item, type: itemCategory, qty: item.qty + qty }; 
+          return { ...item, type: itemCategory, qty: item.qty + qty };
         }
         return item;
       });
@@ -156,7 +178,7 @@ inventory: {
     const intiDef = player.defense;
     setPlayer((prev) => ({
       ...prev,
-      defense: prev.defense + (intiDef*modifier),
+      defense: prev.defense + (intiDef * modifier),
     }))
   }
 
@@ -175,7 +197,23 @@ inventory: {
   };
 
   const levelUp = () => {
-    setPlayer(prev => ({...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel*1.2}));
+    setPlayer(prev => ({ ...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel * 1.2 }));
+  }
+
+  const equip = (itemData) => {
+    if (checkIfEquipped(player.equipment, itemData) || (player.level < itemData.level_req)) return false;
+
+    setPlayer((prev) => ({
+      ...prev,
+      equipment: {...prev.equipment, [itemData.slot]: itemData.id}
+    }));
+
+  }
+
+  const consumeItem = (itemId, itemType, qty) => {
+    const items = player.inventory[itemType].some((item) => item.id === itemId && item.qty > qty);
+
+    console.log(items);
   }
 
   const value = {
@@ -193,6 +231,8 @@ inventory: {
     increaseStamina,
     affectPlayerDefense,
     levelUp,
+    equip,
+    consumeItem
   };
 
   const reflectEquippedEquipment = (player) => {
@@ -225,18 +265,21 @@ inventory: {
 
     const steelSwordAttack = [
       player.base_attack +
-        (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
+      (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
       equippedSteelSword
         ? player.base_attack + equippedSteelSword.attack[1]
         : player.base_attack,
     ];
     const silverSwordAttack = [
       player.base_attack +
-        (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
+      (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
       equippedSilverSword
         ? player.base_attack + equippedSilverSword.attack[1]
         : player.base_attack,
     ];
+
+    console.log(`Steel Sword: ${steelSwordAttack[0]}-${steelSwordAttack[1]}`);
+    console.log(`Silver Sword: ${silverSwordAttack[0]}-${silverSwordAttack[1]}`);
 
     return {
       ...player,
@@ -251,7 +294,9 @@ inventory: {
   useEffect(() => {
     const updatedPlayer = reflectEquippedEquipment(player);
     setPlayer((prev) => ({ ...updatedPlayer }));
+    console.log(player.equipment);
   }, [player.equipment]);
+
 
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>
