@@ -1,6 +1,6 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import itemsData from "../../data/items.json";
-import { checkIfEquipped } from "../../utils/utils";
+import { checkIfEquipped, playSound, updateItemsInInventory } from "../../utils/utils";
 
 const PlayerContext = createContext();
 
@@ -131,6 +131,8 @@ export const PlayerProvider = ({ children }) => {
       completedQuests: [...prev.completedQuests, questId],
       activeQuests: prev.activeQuests.keys().filter((q) => q !== questId),
     }));
+
+    playSound("quest_completed");
   };
 
   const acceptContract = (questId) => {
@@ -145,6 +147,9 @@ export const PlayerProvider = ({ children }) => {
       ...prev,
       activeQuests: updatedActiveQuests,
     }));
+
+    playSound("new_quest");
+
   };
 
   const addToInventory = (itemId, qty, itemCategory) => {
@@ -180,6 +185,7 @@ export const PlayerProvider = ({ children }) => {
       ...prev,
       defense: prev.defense + (intiDef * modifier),
     }))
+
   }
 
   const resetVitality = () => {
@@ -198,6 +204,7 @@ export const PlayerProvider = ({ children }) => {
 
   const levelUp = () => {
     setPlayer(prev => ({ ...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel * 1.2 }));
+    playSound("level_up");
   }
 
   const equip = (itemData) => {
@@ -208,12 +215,25 @@ export const PlayerProvider = ({ children }) => {
       equipment: {...prev.equipment, [itemData.slot]: itemData.id}
     }));
 
+    playSound("equip");
+
   }
 
   const consumeItem = (itemId, itemType, qty) => {
-    const items = player.inventory[itemType].some((item) => item.id === itemId && item.qty > qty);
+    const inventoryType = itemType + "s"
+    const validateItem = player.inventory[inventoryType].some((item) => item.id === itemId && item.qty >= qty);
 
-    console.log(items);
+    if (!validateItem) return;
+    
+    setPlayer((prev) => ({
+      ...prev,
+      inventory: {...prev.inventory, [inventoryType]: updateItemsInInventory(prev.inventory[inventoryType], itemId, qty)}
+    }))
+
+    if (itemType === "potion") playSound("potion_drink");
+    if (itemType === "food" && itemId === "water") playSound("drink");
+    if (itemType === "food") playSound("food"); 
+
   }
 
   const value = {
@@ -278,8 +298,8 @@ export const PlayerProvider = ({ children }) => {
         : player.base_attack,
     ];
 
-    console.log(`Steel Sword: ${steelSwordAttack[0]}-${steelSwordAttack[1]}`);
-    console.log(`Silver Sword: ${silverSwordAttack[0]}-${silverSwordAttack[1]}`);
+    // console.log(`Steel Sword: ${steelSwordAttack[0]}-${steelSwordAttack[1]}`);
+    // console.log(`Silver Sword: ${silverSwordAttack[0]}-${silverSwordAttack[1]}`);
 
     return {
       ...player,
@@ -294,8 +314,12 @@ export const PlayerProvider = ({ children }) => {
   useEffect(() => {
     const updatedPlayer = reflectEquippedEquipment(player);
     setPlayer((prev) => ({ ...updatedPlayer }));
-    console.log(player.equipment);
+    // console.log(player.equipment);
   }, [player.equipment]);
+
+  useEffect(() => {
+    console.log(player.inventory);
+  }, [player.inventory]);
 
 
   return (

@@ -18,7 +18,7 @@ const UseConsumables = ({ applyOil }) => {
             const oil = itemsData.oils[item.id]
             return (
               <li key={item.id} onClick={() => applyOil(oil.name, oil.id)} className={` bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent hover:border-amber-300 hover:text-amber-300 transition duration-200 ${item.qty < 1 ? "opacity-70" : "cursor-pointer "}`}>
-                <img src={`./images/items/${oil.img}.png`} className="h-[35px] w-[35px]" alt={`${oil.name} Oil Image`} />
+                <img src={`./images/items/${oil.id}.png`} className="h-[35px] w-[35px]" alt={`${oil.name} Oil Image`} />
                 <p>{oil?.name || item.id}</p>
               </li>
             )

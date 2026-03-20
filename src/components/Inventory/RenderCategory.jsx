@@ -7,7 +7,7 @@ import { canBeEquipped } from '../../utils/utils';
 
 
 const RenderCategory = ({ category }) => {
-  const { player, heal, equip } = usePlayer();
+  const { player, heal, equip, consumeItem } = usePlayer();
 
   const items = category.toRender.flatMap((inventoryKey) => {
     return player.inventory[inventoryKey] || [];
@@ -16,10 +16,12 @@ const RenderCategory = ({ category }) => {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const categoryIcon = {
-    weapons: <GiCrossedSwords />,
+    weapon: <GiCrossedSwords />,
     armor: <GiLeatherArmor />,
-    potions: <GiPotionBall />,
-    resources: <GiHerbsBundle />,
+    potion: <GiPotionBall />,
+    oil: <GiPotionBall />,
+    resource: <GiHerbsBundle />,
+    food: <GiHerbsBundle />
   }
 
   const handleSelectedItem = (item) => {
@@ -31,28 +33,45 @@ const RenderCategory = ({ category }) => {
   }
 
   const onEquip = (itemData) => {
-
     if (!equip(itemData)) return;
+  }
 
-    return (
-      <p className='absolute bg-neutral-900 border border-neutral-700 top-10 p-4 rounded-md text-3xl'>{selectedItem.name} Equipped!</p>
-    )
+  const handleDrink = () => {
+    heal(selectedItem.heal);
+    consumeItem(selectedItem.id, selectedItem.type, 1);
+    onClose();
   }
 
   const levelReq = !(selectedItem?.level_req <= player.level);
 
+  const RenderIcon = ({itemData}) => {
+    return (
+      <>
+        {(itemData.type === "weapon" || itemData.type === "armor") ? (
+          <div className='text-4xl m-auto'>{categoryIcon[itemData.type]}</div>
+        ) : (
+          <div>
+            <img className='h-[70px] w-[70px] m-auto' src={`./images/items/${itemData.id}.png`} alt={`${itemData.name}'s image`} />
+          </div>
+        )}
+      </>
+    )
+  }
+
   return (
     <div className='flex gap-5 mt-5'>
-      <motion.ul className='flex-2 gap-3 grid grid-cols-5'>
+      <motion.ul className={`${items.length === 0 ? "grid grid-cols-1" : "flex-2 gap-3 grid grid-cols-5"} w-full`}>
+        {items.length === 0 && <li className='text-4xl mx-auto mt-8'>No Items with <span className='text-amber-300'>{category.name}</span> category</li>}
         {
           items.map((item) => {
             const itemData = itemsData[item.type][item.id];
             return (
-              <li onClick={() => handleSelectedItem(itemData)} className='relative h-[100px] flex flex-col justify-between p-3 bg-neutral-800/50 border border-neutral-700 rounded-md cursor-pointer hover:border-amber-500 hover:bg-neutral-800 transition-all group' key={item.id}>
-                <span className="absolute bottom-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
+              <li onClick={() => handleSelectedItem(itemData)} className='relative min-h-[100px] flex flex-col justify-between p-3 bg-neutral-800/50 border border-neutral-700 rounded-md cursor-pointer hover:border-amber-500 hover:bg-neutral-800 transition-all group' key={item.id}>
+                <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
                   {item.qty === -1 ? '∞' : `x${item.qty}`}
                 </span>
-                <p>{itemData.name}</p>
+                <RenderIcon itemData={itemData}/>
+                <p className='mt-2'>{itemData.name}</p>
               </li>
             )
           })
@@ -96,14 +115,15 @@ const RenderCategory = ({ category }) => {
                 </p>
               </div>
               <div>
-                  {selectedItem.type === "weapon" || selectedItem.type === "armor" ? (
-                    <p>Level Requirement: {selectedItem.level_req} ({levelReq ? "❎" : "✅"})</p>
-                  ) : 
-                    <p>No Requirements</p>
-                  }
+                {selectedItem.type === "weapon" || selectedItem.type === "armor" ? (
+                  <p>Level Requirement: {selectedItem.level_req} ({levelReq ? "❎" : "✅"})</p>
+                ) :
+                  <p>No Requirements</p>
+                }
               </div>
             </div>
 
+            <RenderIcon itemData={selectedItem}/>
             <p className="text-xl text-neutral-300 italic mb-8 leading-relaxed">
               "{selectedItem.description}"
             </p>
@@ -128,7 +148,7 @@ const RenderCategory = ({ category }) => {
                   <p className="font-bold text-purple-400 tracking-wider">
                     🧪 Blade Coating (Combat Buff)
                   </p>
-                ) : selectedItem.type === "material" ? (
+                ) : selectedItem.type === "resource" ? (
                   <p className="font-bold text-amber-600/80 tracking-wider">
                     🛠️ Crafting & Alchemy Component
                   </p>
@@ -139,13 +159,12 @@ const RenderCategory = ({ category }) => {
             </div>
             {
               (selectedItem.type === "armor" || selectedItem.type === "weapon") && (
-                // <button onClick={() => onEquip(selectedItem)} className='bg-amber-300 cursor-pointer mt-4 rounded-md p-2 text-neutral-950 font-extrabold text-lg'>{checkIfEquipped(player.equipment, selectedItem) ? "Equipped" : "Equip"}</button>
                 <button onClick={() => onEquip(selectedItem)} className='bg-amber-300 cursor-pointer mt-4 rounded-md p-2 text-neutral-950 font-extrabold text-lg'>{canBeEquipped(player.level, player.equipment, selectedItem)}</button>
               )
             }
             {
               (selectedItem.type === "potion" || selectedItem.type === "food") && (
-                <button onClick={() => heal(selectedItem.heal)} className='bg-amber-300 cursor-pointer mt-4 rounded-md p-2 text-neutral-950 font-extrabold text-lg'>{player.vitality === player.maxVitality ? "Already Full" : "Consume"}</button>
+                <button onClick={() => handleDrink()} className='bg-amber-300 cursor-pointer mt-4 rounded-md p-2 text-neutral-950 font-extrabold text-lg'>{player.vitality === player.maxVitality ? "Already Full" : "Consume"}</button>
               )
             }
           </div>

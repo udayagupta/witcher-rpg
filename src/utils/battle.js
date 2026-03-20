@@ -257,7 +257,7 @@ export const applyEffects = (target, battleState, setBattleState, monsterData,  
     const isDefenseType = effectData.statAffected === "defense";
     const isHOT = effectData.type === "healOverTime";
 
-    console.log(isDefenseType);
+    // console.log(isDefenseType);
 
     const tickDamage = parseInt(targetMaxVitality * effectData.tickDamagePercent || 0);
     const tickHeal = parseInt(targetMaxVitality * effectData.tickHealPercent || 0);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
+import { playSound } from "../../utils/utils";
 
 const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const isVictory = battleResult === "player";
@@ -11,6 +12,13 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const xpGained = isVictory ? Math.floor(player.level * 10 + Math.random() * 5) : 0;
 
   useEffect(() => {
+
+    if (isVictory) {
+      playSound("qust_completed");
+    } else {
+      playSound("dead");
+    }
+
     if (!isVictory) return;
     lootGenerated.forEach((loot) => {
       addToInventory(loot.id, loot.qty, loot.type);

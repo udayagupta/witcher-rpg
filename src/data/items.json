@@ -334,7 +334,7 @@
     "monster_bone": {
       "id": "monster_bone",
       "name": "Monster Bone",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 40,
       "description": "A sturdy bone harvested from a slain beast. Useful for basic crafting."
@@ -342,7 +342,7 @@
     "monster_blood": {
       "id": "monster_blood",
       "name": "Monster Blood",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 75,
       "description": "Thick, dark blood. A staple ingredient in many witcher alchemy recipes."
@@ -350,7 +350,7 @@
     "monster_essence": {
       "id": "monster_essence",
       "name": "Monster Essence",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 150,
       "description": "Concentrated magical essence dropped by powerful creatures and specters."
@@ -358,7 +358,7 @@
     "monster_saliva": {
       "id": "monster_saliva",
       "name": "Monster Saliva",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 30,
       "description": "Foul-smelling fluid collected from necrophages and hybrids. Toxic but useful."
@@ -366,7 +366,7 @@
     "hide": {
       "id": "hide",
       "name": "Animal Hide",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 50,
       "description": "Cured skin from a beast. Can be dismantled into leather scraps."
@@ -374,7 +374,7 @@
     "lesser_runestone": {
       "id": "lesser_runestone",
       "name": "Lesser Runestone",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 300,
       "description": "A weakly glowing stone that can be socketed into witcher gear to enhance combat abilities."
@@ -382,7 +382,7 @@
     "metal_scrap": {
       "id": "metal_scrap",
       "name": "Metal Scrap",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 80,
       "description": "Metal scrap used in crafting various witcher gear."
@@ -390,7 +390,7 @@
     "leather_scrap": {
       "id": "leather_scrap",
       "name": "Leather Scrap",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 80,
       "description": "Used in crafting witcher wearables gears."
@@ -398,7 +398,7 @@
     "griffin_hide": {
       "id": "griffin_hide",
       "name": "Griffin Hide",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 40,
       "description": "Thick, feathered hide. Used in hybrid oils and armor crafting.",
@@ -407,7 +407,7 @@
     "drowner_scale": {
       "id": "drowner_scale",
       "name": "Drowner Scale",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 15,
       "description": "Slimy but resilient. Crucial for necrophage oils.",
@@ -416,7 +416,7 @@
     "siren_scale": {
       "id": "siren_scale",
       "name": "Siren Scale",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 25,
       "description": "Iridescent scales used to coat blades against hybrids.",
@@ -425,7 +425,7 @@
     "specter_dust": {
       "id": "specter_dust",
       "name": "Specter Dust",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 20,
       "description": "Remains of a wraith. Needed to bind specter oils.",
@@ -434,7 +434,7 @@
     "leshen_bark": {
       "id": "leshen_bark",
       "name": "Leshen Bark",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 60,
       "description": "Harder than steel. Used in top-tier relict oils and heavy armor.",
@@ -443,7 +443,7 @@
     "wyvern_scale": {
       "id": "wyvern_scale",
       "name": "Wyvern Scale",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 45,
       "description": "Tough draconid scale. Essential for draconid oils.",
@@ -452,7 +452,7 @@
     "nekker_skin": {
       "id": "nekker_skin",
       "name": "Nekker Skin",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 10,
       "description": "Pliable but weak. Used in basic necrophage oils.",
@@ -461,7 +461,7 @@
     "foglet_skin": {
       "id": "foglet_skin",
       "name": "Foglet Skin",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 30,
       "description": "Translucent skin used in advanced necrophage alchemy.",
@@ -470,7 +470,7 @@
     "ghoul_skin": {
       "id": "ghoul_skin",
       "name": "Ghoul Skin",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 15,
       "description": "Leathery necrophage skin.",
@@ -479,7 +479,7 @@
     "werewolf_hide": {
       "id": "werewolf_hide",
       "name": "Werewolf Hide",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 80,
       "description": "Incredibly thick and regenerative. Prized by armorers.",
@@ -488,7 +488,7 @@
     "elemental_stone": {
       "id": "elemental_stone",
       "name": "Elemental Stone",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 75,
       "description": "A dense chunk of elemental matter. Used to sharpen blades and brew oils.",
@@ -497,7 +497,7 @@
     "fiend_hide": {
       "id": "fiend_hide",
       "name": "Fiend Hide",
-      "type": "material",
+      "type": "resource",
       "rarity": "rare",
       "price": 100,
       "description": "Massive, impenetrable hide. Used for the strongest relict oils.",
@@ -506,7 +506,7 @@
     "water_hag_scale": {
       "id": "water_hag_scale",
       "name": "Water Hag Scale",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 25,
       "description": "Brittle, muddy scales.",
@@ -515,7 +515,7 @@
     "harpy_feathers": {
       "id": "harpy_feathers",
       "name": "Harpy Feathers",
-      "type": "material",
+      "type": "resource",
       "rarity": "common",
       "price": 12,
       "description": "Stiff feathers used in hybrid oils.",
@@ -524,7 +524,7 @@
     "alghoul_skin": {
       "id": "alghoul_skin",
       "name": "Alghoul Skin",
-      "type": "material",
+      "type": "resource",
       "rarity": "uncommon",
       "price": 35,
       "description": "Tougher and spikier than normal ghoul skin.",

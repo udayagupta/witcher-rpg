@@ -89,3 +89,21 @@ export const checkIfEquipped = (equipment, itemData) => {
 export const canBeEquipped = (playerLevel, equipment, itemData) => {
   return (playerLevel >= itemData.level_req && !checkIfEquipped(equipment, itemData)) ? "Equip" : playerLevel < itemData.level_req ? "Level Too Low!" : checkIfEquipped(equipment, itemData) ? "Already Equipped" : "Equip"
 }
+
+export const updateItemsInInventory = (items, itemId, qty) => 
+  (items || []).map((item) => 
+    item.id === itemId ?
+      {
+        ...item,
+        qty: item.qty - qty
+      }
+      : 
+      item
+  )
+  .filter((item) => item.qty > 0);
+
+export const playSound = (effect) => {
+  const dir = "./soundEffects/";
+  const audio = new Audio(`${dir}/${effect}.mp3`);
+  audio.play();
+}
