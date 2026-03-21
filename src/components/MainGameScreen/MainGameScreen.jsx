@@ -15,11 +15,11 @@ const MainGameScreen = () => {
   return (
     <main className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white">
       <div className="text-center p-2">
-        <h1 className="text-3xl witcher-font text-amber-300">The Witcher: Text-Based RPG</h1>
+        <h1 className="text-4xl witcher-font text-neutral-100">The Witcher: Text-Based RPG</h1>
       </div>
       <div className="flex gap-4">
         <SideBar />
-        <section className="w-full border border-amber-300 flex flex-5 flex-col gap-3 text-center p-4 main-game-menu bg-neutral-900/30 rounded-lg shadow-lg">
+        <section className="w-full border border-neutral-700  flex flex-5 flex-col gap-3 text-center p-4 main-game-menu bg-neutral-900/30 rounded-lg shadow-lg">
           <h2 className="text-3xl flex justify-center gap-5 witcher-font">
             <span className="font-extrabold">{subCurrentLocation.name}, {currentLocation.name}</span>
             <img

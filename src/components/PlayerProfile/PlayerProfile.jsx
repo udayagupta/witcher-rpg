@@ -22,7 +22,7 @@ export const PlayerProfile = ({ className }) => {
   const xpPercentage = Math.min((currentXp / maxXp) * 100, 100);
 
   return (
-    <section className={`${className} border border-amber-300 player-profile w-full p-4 font-semibold bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg`}>
+    <section className={`${className} border card player-profile w-full p-4 font-semibold bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg`}>
       <div className="flex items-center gap-4">
         <div className="flex-shrink-0">
           <div className="w-20 h-20 rounded-full bg-amber-400 flex items-center justify-center text-neutral-900 font-bold text-xl shadow-inner">

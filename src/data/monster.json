@@ -14,7 +14,10 @@
     "defense": 28,
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest. 'Cept this 'un was carryin' me dead cow 'stead of a scepter. - Griffin attack witness, name unknown",
     "img_url": "",
-    "drops": [{"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}, {"id": "griffin_hide", "type": "resources", "chance": 1.0, "qty": 1}],
+    "drops": [
+      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}, 
+      {"id": "griffin_feathers", "type": "resources", "chance": 1.0, "qty": 2}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -34,7 +37,10 @@
     "defense": 10,
     "bestiary_entry": "When at the water's edge, you gotta be quiet. First of all, so as not to scare the fish. Second - so you don't attract drowners.",
     "img_url": "",
-    "drops": [{"id": "drowner_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "drowner_brain", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "monster_saliva", "type": "resources", "chance": 0.6, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -54,7 +60,10 @@
     "defense": 12,
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once. You understand? Even if it means sailing straight back into a storm.",
     "img_url": "",
-    "drops": [{"id": "siren_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "siren_vocal_cords", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "water", "type": "foods", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Medium",
     "is_monster": true
@@ -74,7 +83,10 @@
     "defense": 14,
     "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday to get out of the sun - they do it to avoid noonwraiths.",
     "img_url": "",
-    "drops": [{"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, 
+      {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Medium",
     "is_monster": true
@@ -94,7 +106,10 @@
     "defense": 18,
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living. Stay in the shade if you value your life.",
     "img_url": "",
-    "drops": [{"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "swallow", "type": "potions", "chance": 0.1, "qty": 1}],
+    "drops": [
+      {"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, 
+      {"id": "swallow", "type": "potions", "chance": 0.1, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -114,7 +129,10 @@
     "defense": 36,
     "bestiary_entry": "An ancient forest guardian turned hostile. Leshens command roots and animals to do their bidding — they are cunning and territorial.",
     "img_url": "",
-    "drops": [{"id": "leshen_bark", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.8, "qty": 1}],
+    "drops": [
+      {"id": "leshen_resin", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "monster_essence", "type": "resources", "chance": 0.8, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -134,7 +152,10 @@
     "defense": 30,
     "bestiary_entry": "Smaller than dragons but far from harmless — wyverns are fast, aggressive, and often nest on cliffs above human settlements.",
     "img_url": "",
-    "drops": [{"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2}, {"id": "wyvern_scale", "type": "resources", "chance": 1.0, "qty": 2}],
+    "drops": [
+      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2}, 
+      {"id": "wyvern_egg", "type": "resources", "chance": 1.0, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Medium",
     "is_monster": true
@@ -154,7 +175,10 @@
     "defense": 6,
     "bestiary_entry": "Small, vicious, and dangerous in packs. Nekkering swarms can overwhelm lone travelers with their numbers and speed.",
     "img_url": "",
-    "drops": [{"id": "nekker_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "nekker_claw", "type": "resources", "chance": 1.0, "qty": 2}, 
+      {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -174,7 +198,10 @@
     "defense": 12,
     "bestiary_entry": "They appear from the mist, strike, and vanish. If you see fog in bright daylight — run, for it's no natural mist.",
     "img_url": "",
-    "drops": [{"id": "foglet_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "foglet_teeth", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -194,7 +221,10 @@
     "defense": 9,
     "bestiary_entry": "Corpse eaters that gather in battlefields and graveyards. Ghouls can heal themselves by consuming flesh mid-fight.",
     "img_url": "",
-    "drops": [{"id": "ghoul_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "ghoul_blood", "type": "resources", "chance": 1.0, "qty": 2}, 
+      {"id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -214,7 +244,10 @@
     "defense": 33,
     "bestiary_entry": "Cursed men who turn into beasts under the full moon. Werewolves heal rapidly and grow stronger as they bleed.",
     "img_url": "",
-    "drops": [{"id": "werewolf_hide", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}],
+    "drops": [
+      {"id": "werewolf_saliva", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -234,7 +267,10 @@
     "defense": 40,
     "bestiary_entry": "Forged from eternal frost by powerful mages. They are slow but hit like falling glaciers and resist most damage.",
     "img_url": "",
-    "drops": [{"id": "elemental_stone", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 1.0, "qty": 2}],
+    "drops": [
+      {"id": "elemental_essence", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "water", "type": "foods", "chance": 1.0, "qty": 2}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -254,7 +290,10 @@
     "defense": 44,
     "bestiary_entry": "Massive, horned beasts that shake the ground with every step. Their third eye can hypnotize prey before tearing it apart.",
     "img_url": "",
-    "drops": [{"id": "fiend_hide", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4}],
+    "drops": [
+      {"id": "fiend_eye", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -274,7 +313,10 @@
     "defense": 14,
     "bestiary_entry": "Ugly, hateful creatures that dwell near swamps and rivers. They fling mud to blind their prey before dragging them under.",
     "img_url": "",
-    "drops": [{"id": "water_hag_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 0.8, "qty": 1}],
+    "drops": [
+      {"id": "water_hag_tooth", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "water", "type": "foods", "chance": 0.8, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -294,7 +336,10 @@
     "defense": 11,
     "bestiary_entry": "Shrieking monsters that attack from above. Harpies strike quickly and retreat, making them hard to pin down.",
     "img_url": "",
-    "drops": [{"id": "harpy_feathers", "type": "resources", "chance": 1.0, "qty": 3}, {"id": "raw_meat", "type": "foods", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "harpy_feathers", "type": "resources", "chance": 1.0, "qty": 3}, 
+      {"id": "raw_meat", "type": "foods", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Easy",
     "is_monster": true
@@ -314,7 +359,10 @@
     "defense": 42,
     "bestiary_entry": "Created to guard ancient ruins. Earth elementals crush their foes with unstoppable force and shrug off most attacks.",
     "img_url": "",
-    "drops": [{"id": "elemental_stone", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
+    "drops": [
+      {"id": "elemental_essence", "type": "resources", "chance": 1.0, "qty": 1}, 
+      {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}
+    ],
     "discovered": false,
     "difficulty": "Hard",
     "is_monster": true
@@ -335,8 +383,8 @@
     "bestiary_entry": "Common predator of the wilds. Wolves travel in packs and can be dangerous when provoked.",
     "img_url": "",
     "drops": [
-      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2 },
-      { "id": "hide", "type": "resources", "chance": 0.6, "qty": 1 }
+      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2},
+      {"id": "hide", "type": "resources", "chance": 0.6, "qty": 1}
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -358,8 +406,8 @@
     "bestiary_entry": "Marauders and thieves who prey on travelers. Often lightly armored but numerous.",
     "img_url": "",
     "drops": [
-      { "id": "bread", "type": "foods", "chance": 1.0, "qty": 1 },
-      { "id": "water", "type": "foods", "chance": 0.5, "qty": 1 }
+      {"id": "bread", "type": "foods", "chance": 1.0, "qty": 1},
+      {"id": "water", "type": "foods", "chance": 0.5, "qty": 1}
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -381,8 +429,8 @@
     "bestiary_entry": "Restless spirits that haunt places of tragedy. Wraiths can sap the life of the unwary.",
     "img_url": "",
     "drops": [
-      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 1 },
-      { "id": "lesser_runestone", "type": "resources", "chance": 0.1, "qty": 1 }
+      {"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2},
+      {"id": "monster_essence", "type": "resources", "chance": 0.6, "qty": 1}
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -404,8 +452,8 @@
     "bestiary_entry": "A stronger, more vicious variant of the ghoul; alghouls hunt in ravaged areas and are more resilient.",
     "img_url": "",
     "drops": [
-      { "id": "monster_blood", "type": "resources", "chance": 1.0, "qty": 2 },
-      { "id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 2 }
+      {"id": "alghoul_bone_marrow", "type": "resources", "chance": 1.0, "qty": 1},
+      {"id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 2}
     ],
     "discovered": false,
     "difficulty": "Medium",

@@ -27,7 +27,7 @@ const ExploreRegion = () => {
 
   const Explore = () => {
     return (
-      <div className="bg-neutral-800 h-full rounded-md overflow-auto">
+      <div className=" h-full rounded-md overflow-auto">
 
         <div className="interactions flex flex-col gap-10 mt-5">
           {subLocationData.canRest && (

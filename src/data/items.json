@@ -339,6 +339,24 @@
       "price": 40,
       "description": "A sturdy bone harvested from a slain beast. Useful for basic crafting."
     },
+    "celandine": {
+      "id": "celandine",
+      "name": "Celandine",
+      "type": "resource",
+      "rarity": "common",
+      "price": 8,
+      "description": "A common yellow flower found in fields and forests. Essential for brewing the Swallow healing potion.",
+      "icon": "flower"
+    },
+    "dwarven_spirit": {
+      "id": "dwarven_spirit",
+      "name": "Dwarven Spirit",
+      "type": "resource",
+      "rarity": "common",
+      "price": 35,
+      "description": "A remarkably strong, harsh dwarven liquor. Used as a base for brewing potions and replenishing alchemy supplies.",
+      "icon": "bottle"
+    },
     "monster_blood": {
       "id": "monster_blood",
       "name": "Monster Blood",
@@ -395,32 +413,32 @@
       "price": 80,
       "description": "Used in crafting witcher wearables gears."
     },
-    "griffin_hide": {
-      "id": "griffin_hide",
-      "name": "Griffin Hide",
+    "griffin_feathers": {
+      "id": "griffin_feathers",
+      "name": "Griffin Feathers",
       "type": "resource",
       "rarity": "uncommon",
       "price": 40,
-      "description": "Thick, feathered hide. Used in hybrid oils and armor crafting.",
-      "icon": "hide"
+      "description": "Stiff feathers harvested from a griffin. Essential for hybrid oils and mastercrafted gear.",
+      "icon": "feather"
     },
-    "drowner_scale": {
-      "id": "drowner_scale",
-      "name": "Drowner Scale",
+    "drowner_brain": {
+      "id": "drowner_brain",
+      "name": "Drowner Brain",
       "type": "resource",
       "rarity": "common",
       "price": 15,
-      "description": "Slimy but resilient. Crucial for necrophage oils.",
-      "icon": "scale"
+      "description": "A spongy, foul-smelling brain. Crucial for brewing Swallow potions.",
+      "icon": "brain"
     },
-    "siren_scale": {
-      "id": "siren_scale",
-      "name": "Siren Scale",
+    "siren_vocal_cords": {
+      "id": "siren_vocal_cords",
+      "name": "Siren Vocal Cords",
       "type": "resource",
       "rarity": "uncommon",
       "price": 25,
-      "description": "Iridescent scales used to coat blades against hybrids.",
-      "icon": "scale"
+      "description": "The delicate vocal cords of a siren. Used in crafting hybrid oils and high-tier swords.",
+      "icon": "vocal_cord"
     },
     "specter_dust": {
       "id": "specter_dust",
@@ -431,86 +449,86 @@
       "description": "Remains of a wraith. Needed to bind specter oils.",
       "icon": "dust"
     },
-    "leshen_bark": {
-      "id": "leshen_bark",
-      "name": "Leshen Bark",
+    "leshen_resin": {
+      "id": "leshen_resin",
+      "name": "Leshen Resin",
       "type": "resource",
       "rarity": "rare",
       "price": 60,
-      "description": "Harder than steel. Used in top-tier relict oils and heavy armor.",
-      "icon": "bark"
+      "description": "Hardened sap from a defeated leshen. Used in top-tier relict oils.",
+      "icon": "resin"
     },
-    "wyvern_scale": {
-      "id": "wyvern_scale",
-      "name": "Wyvern Scale",
+    "wyvern_egg": {
+      "id": "wyvern_egg",
+      "name": "Wyvern Egg",
       "type": "resource",
       "rarity": "uncommon",
       "price": 45,
-      "description": "Tough draconid scale. Essential for draconid oils.",
-      "icon": "scale"
+      "description": "A large, speckled egg harvested from a wyvern. Essential for draconid oils.",
+      "icon": "egg"
     },
-    "nekker_skin": {
-      "id": "nekker_skin",
-      "name": "Nekker Skin",
+    "nekker_claw": {
+      "id": "nekker_claw",
+      "name": "Nekker Claw",
       "type": "resource",
       "rarity": "common",
       "price": 10,
-      "description": "Pliable but weak. Used in basic necrophage oils.",
-      "icon": "hide"
+      "description": "A sharp, curved claw from a nekker. Used in basic ogroid and necrophage alchemy.",
+      "icon": "claw"
     },
-    "foglet_skin": {
-      "id": "foglet_skin",
-      "name": "Foglet Skin",
+    "foglet_teeth": {
+      "id": "foglet_teeth",
+      "name": "Foglet Teeth",
       "type": "resource",
       "rarity": "uncommon",
       "price": 30,
-      "description": "Translucent skin used in advanced necrophage alchemy.",
-      "icon": "hide"
+      "description": "Translucent, razor-sharp teeth used in advanced necrophage alchemy.",
+      "icon": "tooth"
     },
-    "ghoul_skin": {
-      "id": "ghoul_skin",
-      "name": "Ghoul Skin",
+    "ghoul_blood": {
+      "id": "ghoul_blood",
+      "name": "Ghoul's Blood",
       "type": "resource",
       "rarity": "common",
       "price": 15,
-      "description": "Leathery necrophage skin.",
-      "icon": "hide"
+      "description": "Thick, coagulated blood from a ghoul. A common base ingredient for necrophage oils.",
+      "icon": "blood"
     },
-    "werewolf_hide": {
-      "id": "werewolf_hide",
-      "name": "Werewolf Hide",
+    "werewolf_saliva": {
+      "id": "werewolf_saliva",
+      "name": "Werewolf Saliva",
       "type": "resource",
       "rarity": "rare",
       "price": 80,
-      "description": "Incredibly thick and regenerative. Prized by armorers.",
-      "icon": "hide"
+      "description": "Highly concentrated and toxic saliva. Prized for brewing cursed oils.",
+      "icon": "saliva"
     },
-    "elemental_stone": {
-      "id": "elemental_stone",
-      "name": "Elemental Stone",
+    "elemental_essence": {
+      "id": "elemental_essence",
+      "name": "Elemental Essence",
       "type": "resource",
       "rarity": "rare",
       "price": 75,
-      "description": "A dense chunk of elemental matter. Used to sharpen blades and brew oils.",
-      "icon": "stone"
+      "description": "A dense chunk of magical essence dropped by golems and elementals. Used to sharpen blades and brew oils.",
+      "icon": "essence"
     },
-    "fiend_hide": {
-      "id": "fiend_hide",
-      "name": "Fiend Hide",
+    "fiend_eye": {
+      "id": "fiend_eye",
+      "name": "Fiend's Eye",
       "type": "resource",
       "rarity": "rare",
       "price": 100,
-      "description": "Massive, impenetrable hide. Used for the strongest relict oils.",
-      "icon": "hide"
+      "description": "The massive, hypnotic third eye of a fiend. Used for the strongest relict oils.",
+      "icon": "eye"
     },
-    "water_hag_scale": {
-      "id": "water_hag_scale",
-      "name": "Water Hag Scale",
+    "water_hag_tooth": {
+      "id": "water_hag_tooth",
+      "name": "Water Hag Tooth",
       "type": "resource",
       "rarity": "uncommon",
       "price": 25,
-      "description": "Brittle, muddy scales.",
-      "icon": "scale"
+      "description": "A rotten, jagged tooth from a water hag. Used to brew necrophage oils and decoctions.",
+      "icon": "tooth"
     },
     "harpy_feathers": {
       "id": "harpy_feathers",
@@ -521,14 +539,14 @@
       "description": "Stiff feathers used in hybrid oils.",
       "icon": "feather"
     },
-    "alghoul_skin": {
-      "id": "alghoul_skin",
-      "name": "Alghoul Skin",
+    "alghoul_bone_marrow": {
+      "id": "alghoul_bone_marrow",
+      "name": "Alghoul Bone Marrow",
       "type": "resource",
       "rarity": "uncommon",
       "price": 35,
-      "description": "Tougher and spikier than normal ghoul skin.",
-      "icon": "hide"
+      "description": "Extracted from the spiked bones of an alghoul. Highly sought after by alchemists.",
+      "icon": "bone"
     }
   },
   "foods": {

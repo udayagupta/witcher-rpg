@@ -90,8 +90,8 @@ const Regions = () => {
                 {currentSubLocation.name}
               </h4>
               {currentSubLocation.canRest && (
-                <span className="absolute bottom-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
-                  Meditate
+                <span className="absolute bottom-2 right-2 text-xs font-bold text-amber-300 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
+                  Meditate 
                 </span>
               )}
               <p className="text-sm text-neutral-300">

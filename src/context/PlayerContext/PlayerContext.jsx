@@ -21,7 +21,7 @@ export const PlayerProvider = ({ children }) => {
     base_defense: 20,
     stamina: 100,
 
-   inventory: {
+    inventory: {
       steelSwords: [
         { id: "steel_sword_basic", type: "steelSwords", qty: 1 },
         { id: "novigrad_longsword", type: "steelSwords", qty: 1 },
@@ -203,20 +203,47 @@ export const PlayerProvider = ({ children }) => {
     }));
   };
 
-  const levelUp = () => {
-    setPlayer(prev => ({ ...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel * 1.2, base_defense: prev.base_defense*1.2, base_attack: prev.base_attack*1.2 }));
-    playSound("level_up");
-  };
-
   const updateLevelExp = (amount) => {
-    const isLevelUp = player.currentExp + amount >= player.expToNextLevel;
+    setPlayer((prev) => {
+      let currentExp = prev.currentExp + amount;
+      let level = prev.level;
+      let expToNextLevel = prev.expToNextLevel;
+      let base_defense = prev.base_defense;
+      let base_attack = prev.base_attack;
+      let maxVitality = prev.maxVitality;
+      let crit_chance = prev.crit_chance;
 
-    if (isLevelUp) {
-      levelUp();
-    } else {
-      setPlayer((prev) => ({ ...prev, currentExp: prev.currentExp+amount }))
-    }
-  }
+      let didLevelUp = false;
+
+      while (currentExp >= expToNextLevel) {
+        currentExp -= expToNextLevel;
+        level += 1;      
+
+        expToNextLevel = expToNextLevel * 1.2;
+        base_defense = base_defense * 1.2;
+        base_attack = base_attack * 1.2;
+        maxVitality = maxVitality*1.2;
+        crit_chance = crit_chance*1.2;
+
+        didLevelUp = true;
+      }
+
+      if (didLevelUp) {
+        setTimeout(() => playSound("level_up"), 0);
+      }
+
+      return {
+        ...prev,
+        level,
+        maxVitality,
+        currentExp,
+        expToNextLevel,
+        base_defense,
+        base_attack,
+        vitality: didLevelUp ? maxVitality : prev.vitality
+      };
+    });
+  };
 
   const consumeHealthItem = (id, type) => {
     if (player.vitality === player.maxVitality) return;
@@ -225,10 +252,10 @@ export const PlayerProvider = ({ children }) => {
     const healPoints = potionData.heal;
     heal(healPoints);
     consumeItem(id, type, 1);
-    
+
     if (type === "potion") playSound("potion_drink");
     if (type === "food" && id === "water") playSound("drink");
-    if (type === "food") playSound("food"); 
+    if (type === "food") playSound("food");
   }
 
 
@@ -237,7 +264,7 @@ export const PlayerProvider = ({ children }) => {
 
     setPlayer((prev) => ({
       ...prev,
-      equipment: {...prev.equipment, [itemData.slot]: itemData.id}
+      equipment: { ...prev.equipment, [itemData.slot]: itemData.id }
     }));
 
     playSound("equip");
@@ -245,15 +272,15 @@ export const PlayerProvider = ({ children }) => {
   }
 
   const consumeItem = (itemId, itemType, qty) => {
-    
+
     const inventoryType = itemType + "s"
     const validateItem = player.inventory[inventoryType].some((item) => item.id === itemId && item.qty >= qty);
 
     if (!validateItem) return;
-    
+
     setPlayer((prev) => ({
       ...prev,
-      inventory: {...prev.inventory, [inventoryType]: updateItemsInInventory(prev.inventory[inventoryType], itemId, qty)}
+      inventory: { ...prev.inventory, [inventoryType]: updateItemsInInventory(prev.inventory[inventoryType], itemId, qty) }
     }))
 
   }
@@ -272,7 +299,6 @@ export const PlayerProvider = ({ children }) => {
     usedASign,
     increaseStamina,
     affectPlayerDefense,
-    levelUp,
     equip,
     consumeItem,
     consumeHealthItem,
