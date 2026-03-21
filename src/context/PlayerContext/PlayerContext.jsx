@@ -8,8 +8,8 @@ export const PlayerProvider = ({ children }) => {
   const [player, setPlayer] = useState({
     name: "Geralt",
     fullName: "Geralt of Rivia",
-    level: 3,
-    currentExp: 0,
+    level: 1,
+    currentExp: 190,
     expToNextLevel: 200,
     vitality: 500,
     maxVitality: 500,
@@ -95,10 +95,11 @@ export const PlayerProvider = ({ children }) => {
     },
   });
 
-  const heal = (amount) => {
+  const heal = (amount = 0, reset = false) => {
+    if (player.vitality === player.maxVitality) return;
     setPlayer((prev) => ({
       ...prev,
-      vitality: Math.min(prev.vitality + amount, prev.maxVitality),
+      vitality: reset ? prev.maxVitality : Math.min(prev.vitality + amount, prev.maxVitality),
     }));
   };
 
@@ -203,9 +204,33 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const levelUp = () => {
-    setPlayer(prev => ({ ...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel * 1.2 }));
+    setPlayer(prev => ({ ...prev, level: prev.level + 1, currentExp: 0, expToNextLevel: prev.expToNextLevel * 1.2, base_defense: prev.base_defense*1.2, base_attack: prev.base_attack*1.2 }));
     playSound("level_up");
+  };
+
+  const updateLevelExp = (amount) => {
+    const isLevelUp = player.currentExp + amount >= player.expToNextLevel;
+
+    if (isLevelUp) {
+      levelUp();
+    } else {
+      setPlayer((prev) => ({ ...prev, currentExp: prev.currentExp+amount }))
+    }
   }
+
+  const consumeHealthItem = (id, type) => {
+    if (player.vitality === player.maxVitality) return;
+
+    const potionData = itemsData[type + "s"][id];
+    const healPoints = potionData.heal;
+    heal(healPoints);
+    consumeItem(id, type, 1);
+    
+    if (type === "potion") playSound("potion_drink");
+    if (type === "food" && id === "water") playSound("drink");
+    if (type === "food") playSound("food"); 
+  }
+
 
   const equip = (itemData) => {
     if (checkIfEquipped(player.equipment, itemData) || (player.level < itemData.level_req)) return false;
@@ -220,6 +245,7 @@ export const PlayerProvider = ({ children }) => {
   }
 
   const consumeItem = (itemId, itemType, qty) => {
+    
     const inventoryType = itemType + "s"
     const validateItem = player.inventory[inventoryType].some((item) => item.id === itemId && item.qty >= qty);
 
@@ -229,10 +255,6 @@ export const PlayerProvider = ({ children }) => {
       ...prev,
       inventory: {...prev.inventory, [inventoryType]: updateItemsInInventory(prev.inventory[inventoryType], itemId, qty)}
     }))
-
-    if (itemType === "potion") playSound("potion_drink");
-    if (itemType === "food" && itemId === "water") playSound("drink");
-    if (itemType === "food") playSound("food"); 
 
   }
 
@@ -252,7 +274,9 @@ export const PlayerProvider = ({ children }) => {
     affectPlayerDefense,
     levelUp,
     equip,
-    consumeItem
+    consumeItem,
+    consumeHealthItem,
+    updateLevelExp
   };
 
   const reflectEquippedEquipment = (player) => {

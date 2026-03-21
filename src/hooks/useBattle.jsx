@@ -10,11 +10,12 @@ import {
   applyEffects,
   handleAxii,
   handleAard,
+  playerSteelDamage,
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
 
 export const useBattle = (monsterId) => {
-  const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense } = usePlayer();
+  const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense, consumeItem } = usePlayer();
   const [monsterData, setMonsterData] = useState(monstersData[monsterId]);
   const [battleState, setBattleState] = useState({
     appliedOil: null,
@@ -73,7 +74,8 @@ export const useBattle = (monsterId) => {
       ...prev,
       appliedOil: { name: oil, duration: 5, id: id }
     }))
-    addLog(`${player.name} applied ${oil} to it's sword for 5 turns.`)
+    addLog(`${player.name} applied ${oil} to it's sword for 5 turns.`);
+    consumeItem(id, "oil", 1);
   }
 
   const addLog = (log) =>
@@ -102,7 +104,6 @@ export const useBattle = (monsterId) => {
     const playerAttack = playerSilverDamage(
       player,
       monsterData,
-      true,
       battleState.appliedOil,
       battleState
     );
@@ -112,6 +113,30 @@ export const useBattle = (monsterId) => {
     changeTurn("monster");
     increaseStamina(10);
   };
+
+  const handlePlayerSteelAttack = () => {
+    if (battleState.currentTurn === "monster") return;
+    
+    if (battleState.appliedOil) {
+      setBattleState((prev) => ({
+        ...prev,
+        appliedOil: prev.appliedOil.duration > 0 ? { ...prev.appliedOil, duration: prev.appliedOil.duration-1 } : null
+      }))
+    }
+
+    const playerAttack = playerSteelDamage(
+      player,
+      monsterData,
+      battleState.appliedOil,
+      battleState
+    );
+
+    damageMonster(parseInt(playerAttack.playerAttackDmg));
+    addLog(playerAttack.log);
+    changeTurn("monster");
+    increaseStamina(10);
+
+  }
 
   const handlePlayerIgni = () => {
     if (battleState.currentTurn === "monster") return;
@@ -126,7 +151,6 @@ export const useBattle = (monsterId) => {
     updateBuffs("monster", battleState, setBattleState, effectId);
 
   };
-  const handlePlayerYrden = () => { };
 
   const handlePlayerQuen = () => {
     if (battleState.currentTurn === "monster") return;
@@ -138,6 +162,7 @@ export const useBattle = (monsterId) => {
     changeTurn("monster");
 
   };
+  
   const handlePlayerAard = () => { 
     if (battleState.currentTurn === "monster") return;
     if (handleRanOutOfStamina(25)) return;
@@ -149,18 +174,12 @@ export const useBattle = (monsterId) => {
     damageMonster(result.damage);
   };
 
-  const handlePlayerAxii = () => { };
-
   const playerActions = [
     { name: "Silver Attack", handler: handlePlayerSilverAttack },
+    { name: "Steel Sword", handler: handlePlayerSteelAttack },
     { name: "Igni", handler: handlePlayerIgni },
     { name: "Quen", handler: handlePlayerQuen },
     { name: "Aard", handler: handlePlayerAard },
-    { name: "Yrden", handler: handlePlayerYrden },
-    { name: "Axii", handler: handlePlayerAxii },
-    // { name: "Dodge", handler: handlePlayerDodge },
-    // { name: "Guard Up", handler: handlePlayerGuardUp },
-    // { name: "Steel Sword", handler: handlePlayerSteelAttack }
   ];
 
   const handleMonsterTurn = () => {

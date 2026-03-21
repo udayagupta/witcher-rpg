@@ -1,58 +1,68 @@
 import { usePlayer } from '../../context/PlayerContext/PlayerContext'
 import itemsData from "../../data/items.json";
-import { useEffect } from 'react';
 
 const UseConsumables = ({ applyOil }) => {
-  const { player } = usePlayer();
+  const { player, consumeHealthItem } = usePlayer();
 
-  useEffect(() => {
-    console.log(player.inventory.oils);
-  }, [player])
-
-  return (
-    <div className="use-consumables flex gap-3 rounded-md mt-5">
-      <div className="oils flex-1 p-2 bg-neutral-800 rounded-md">
-        <h4 className="heading witcher-font text-md my-2 p-0">Oils</h4>
+  const ConsumableSection = ({ title, inventoryItems, categoryKey, onItemClick }) => {
+    return (
+      <div className={`flex-1 p-2 bg-neutral-800 rounded-md ${categoryKey}`}>
+        <h4 className="heading witcher-font text-md my-2 p-0">{title}</h4>
         <ul className="grid grid-cols-2 gap-2">
-          {player.inventory.oils.map((item) => {
-            const oil = itemsData.oils[item.id]
+          {inventoryItems.map((item) => {
+            const data = itemsData[categoryKey]?.[item.id];
+            if (!data) return null; 
+
             return (
-              <li key={item.id} onClick={() => applyOil(oil.name, oil.id)} className={` bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent hover:border-amber-300 hover:text-amber-300 transition duration-200 ${item.qty < 1 ? "opacity-70" : "cursor-pointer "}`}>
-                <img src={`./images/items/${oil.id}.png`} className="h-[35px] w-[35px]" alt={`${oil.name} Oil Image`} />
-                <p>{oil?.name || item.id}</p>
+              <li 
+                key={item.id} 
+                onClick={() => onItemClick && item.qty > 0 ? onItemClick(data) : null}
+                className={`relative bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent transition duration-200 text-center ${item.qty < 1 ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-amber-300 hover:text-amber-300"}`}
+              >
+                <img 
+                  src={`./images/items/${data.id}.png`} 
+                  className="h-[35px] w-[35px] mb-1 object-contain" 
+                  alt={`${data.name} icon`} 
+                  onError={(e) => e.target.style.display = 'none'}
+                />
+                
+                <p className="text-sm leading-tight">{data.name || item.id}</p>
+                
+                <span className="pt-sans-font absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
+                  {item.qty === -1 ? '∞' : `x${item.qty}`}
+                </span>
               </li>
             )
           })}
         </ul>
       </div>
-      <div className="oils flex-1 p-2 bg-neutral-800 rounded-md">
-        <h4 className="heading witcher-font text-md my-2 p-0">Potions</h4>
-        <ul className="grid grid-cols-2 gap-2">
-          {player.inventory.potions.map((item) => {
-          const potion = itemsData.potions[item.id]
-          return (
-            <li key={item.id} className={`bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent hover:border-amber-300 hover:text-amber-300 transition duration-200 ${item.qty < 1 ? "opacity-70" : "cursor-pointer "}`}>
-              {potion?.name || item.id}
-            </li>
-          )
-        })}
-        </ul>
-      </div>
-      <div className="oils flex-1 p-2 bg-neutral-800 rounded-md">
-        <h4 className="heading witcher-font text-md my-2 p-0">Foods</h4>
-        <ul className="grid grid-cols-2 gap-2">
-          {player.inventory.foods.map((item) => {
-          const food = itemsData.foods[item.id]
-          return (
-            <li key={item.id} className={`bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent hover:border-amber-300 hover:text-amber-300 transition duration-200 ${item.qty < 1 ? "opacity-70" : "cursor-pointer "}`}>
-              {food?.name || item.id}
-            </li>
-          )
-        })}
-        </ul>
-      </div>
+    );
+  };
+
+  return (
+    <div className="use-consumables flex gap-3 rounded-md mt-5">
+      <ConsumableSection 
+        title="Oils" 
+        inventoryItems={player.inventory.oils} 
+        categoryKey="oils"
+        onItemClick={(oilData) => applyOil(oilData.name, oilData.id)} 
+      />
+      
+      <ConsumableSection 
+        title="Potions" 
+        inventoryItems={player.inventory.potions} 
+        categoryKey="potions"
+        onItemClick={(potionData) => consumeHealthItem(potionData.id, "potion")} 
+      />
+      
+      <ConsumableSection 
+        title="Foods" 
+        inventoryItems={player.inventory.foods} 
+        categoryKey="foods"
+        onItemClick={(foodData) => consumeHealthItem(foodData.id, "food")}
+      />
     </div>
   )
 }
 
-export default UseConsumables
+export default UseConsumables;

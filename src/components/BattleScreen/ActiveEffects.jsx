@@ -1,4 +1,3 @@
-import itemsData from "../../data/items.json";
 import { effectsData } from "../../utils/effects";
 
 const ActiveEffects = ({ target, battleState }) => {
@@ -22,7 +21,7 @@ const ActiveEffects = ({ target, battleState }) => {
           className="relative flex flex-col items-center"
         >
           <img
-            src={`./images/items/${itemsData["oils"][battleState.appliedOil.id]["img"]}.png`}
+            src={`./images/items/${battleState.appliedOil.id}.png`}
             className="h-[36px] w-[36px] object-contain"
             alt={battleState.appliedOil.name || battleState.appliedOil.id}
           />

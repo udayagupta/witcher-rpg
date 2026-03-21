@@ -1,4 +1,3 @@
-import React from "react";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 
 const HealthBar = ({ className = "" }) => {
@@ -18,6 +17,7 @@ const HealthBar = ({ className = "" }) => {
         aria-valuenow={vit}
         aria-label="Player vitality"
       >
+        
         <div
           className="h-full bg-red-500 transition-all duration-300"
           style={{ width: `${pct}%` }}

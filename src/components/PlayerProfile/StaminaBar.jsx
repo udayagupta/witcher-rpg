@@ -9,8 +9,9 @@ const StaminaBar = ({ className = "" }) => {
 
   return (
     <div className={className}>
+      <p className="text-sm mb-1">Stamina {parseInt(stamina)} / {max} 🏃‍♂️</p>
       <div
-        className="w-full h-2 bg-neutral-700 rounded overflow-hidden border-2 border-yellow-700"
+        className="w-full h-2 bg-neutral-600 rounded overflow-hidden "
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={max}
@@ -18,13 +19,10 @@ const StaminaBar = ({ className = "" }) => {
         aria-label="Player Stamina"
       >
         <div
-          className="h-full bg-yellow-500 transition-all duration-300"
+          className="h-full bg-yellow-300 transition-all duration-300"
           style={{ width: `${pct}%` }}
         />
       </div>
-      {/* <div className="flex text-xs justify-between">
-        <p className="mt-1">{parseInt(stamina)} / {max} 🏃‍♂️</p>
-      </div> */}
     </div>
   );
 };

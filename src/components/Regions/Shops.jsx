@@ -21,7 +21,7 @@ const Shops = ({ subLocationData, shopType }) => {
 
   return (
     subLocationData[shopType] && (
-      <motion.div initial={{scale: 0, opacity: 0}} animate={{scale: 1, opacity: 1}} className='flex flex-col items-center p-3 w-56 bg-neutral-900/80 card  hover:border-amber-300 transition-colors'>
+      <motion.div  initial={{scale: 0, opacity: 0}} animate={{scale: 1, opacity: 1}} className='flex flex-col items-center p-3 w-56 bg-neutral-900/80 card  hover:border-amber-300 transition-colors'>
       
       <h4 className='text-lg capitalize witcher-font text-amber-300'>
         {shopType}

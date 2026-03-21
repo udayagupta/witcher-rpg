@@ -7,7 +7,7 @@ import { canBeEquipped } from '../../utils/utils';
 
 
 const RenderCategory = ({ category }) => {
-  const { player, heal, equip, consumeItem } = usePlayer();
+  const { player, equip, consumeHealthItem } = usePlayer();
 
   const items = category.toRender.flatMap((inventoryKey) => {
     return player.inventory[inventoryKey] || [];
@@ -37,8 +37,7 @@ const RenderCategory = ({ category }) => {
   }
 
   const handleDrink = () => {
-    heal(selectedItem.heal);
-    consumeItem(selectedItem.id, selectedItem.type, 1);
+    consumeHealthItem(selectedItem.id, selectedItem.type);
     onClose();
   }
 
@@ -66,7 +65,7 @@ const RenderCategory = ({ category }) => {
           items.map((item) => {
             const itemData = itemsData[item.type][item.id];
             return (
-              <li onClick={() => handleSelectedItem(itemData)} className='relative min-h-[100px] flex flex-col justify-between p-3 bg-neutral-800/50 border border-neutral-700 rounded-md cursor-pointer hover:border-amber-500 hover:bg-neutral-800 transition-all group' key={item.id}>
+              <li onClick={() => handleSelectedItem(itemData)} className='relative min-h-[100px] flex flex-col justify-between p-3 card cursor-pointer hover:border-amber-300 transition-all group' key={item.id}>
                 <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
                   {item.qty === -1 ? '∞' : `x${item.qty}`}
                 </span>

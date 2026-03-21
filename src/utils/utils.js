@@ -105,5 +105,6 @@ export const updateItemsInInventory = (items, itemId, qty) =>
 export const playSound = (effect) => {
   const dir = "./soundEffects/";
   const audio = new Audio(`${dir}/${effect}.mp3`);
+  audio.volume = 0.25
   audio.play();
 }

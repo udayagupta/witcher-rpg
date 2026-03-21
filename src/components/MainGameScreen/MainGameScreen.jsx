@@ -21,14 +21,13 @@ const MainGameScreen = () => {
         <SideBar />
         <section className="w-full border border-amber-300 flex flex-5 flex-col gap-3 text-center p-4 main-game-menu bg-neutral-900/30 rounded-lg shadow-lg">
           <h2 className="text-3xl flex justify-center gap-5 witcher-font">
-            <span className="font-semibold">{player.name}</span> is in <span className="text-amber-300 font-extrabold">{subCurrentLocation.name}, {currentLocation.name}</span>
+            <span className="font-extrabold">{subCurrentLocation.name}, {currentLocation.name}</span>
             <img
               className="h-[40px] w-[40px] ml-2"
               src={currentLocation.badge}
               alt={currentLocation.name}
             />
           </h2>
-          {/* <p className="text-xl opacity-90">{currentLocation.place_description}</p> */}
           <div className="relative overflow-hidden h-full">
             <motion.div
               key={location.pathname}

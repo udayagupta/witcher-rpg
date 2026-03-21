@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "motion/react"; 
+import { motion, AnimatePresence } from "motion/react";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
@@ -33,10 +33,10 @@ const Regions = () => {
     setWillTravelTo(subLocation);
 
     setTimeout(() => {
-      setPlayer((prev) => ({ 
-        ...prev, 
+      setPlayer((prev) => ({
+        ...prev,
         subLocation,
-        isTraveling: false 
+        isTraveling: false
       }));
       navigate("/explore-region");
     }, travelTime);
@@ -62,55 +62,58 @@ const Regions = () => {
         {currentLocationData.name} Regions
       </h3>
 
-      <motion.ul 
+      <motion.ul
         className="items-list grid grid-cols-2 gap-4"
         variants={containerVariants}
         initial="hidden"
         animate="show"
       >
         {Object.keys(currentLocationData["sub_locations"]).map((subLocation) => {
-            const currentSubLocation = currentLocationData["sub_locations"][subLocation];
+          const currentSubLocation = currentLocationData["sub_locations"][subLocation];
 
-            const shopsAvailable = [];
-            if (currentSubLocation.merchant) shopsAvailable.push("Merchant");
-            if (currentSubLocation.blacksmith) shopsAvailable.push("Blacksmith");
-            if (currentSubLocation.armorer) shopsAvailable.push("Armorer");
+          const shopsAvailable = [];
+          if (currentSubLocation.merchant) shopsAvailable.push("Merchant");
+          if (currentSubLocation.blacksmith) shopsAvailable.push("Blacksmith");
+          if (currentSubLocation.armorer) shopsAvailable.push("Armorer");
 
-            return (
-              <motion.li
-                variants={itemVariants}
-                className={`p-4 rounded border transition-colors cursor-pointer flex flex-col gap-2 ${
-                  subLocation === player.subLocation
-                    ? "border-amber-400 bg-neutral-800"
-                    : "border-neutral-700 bg-neutral-900/50 hover:border-amber-500/50"
+          return (
+            <motion.li
+              variants={itemVariants}
+              className={`p-4 relative rounded border transition-colors cursor-pointer flex flex-col gap-2 ${subLocation === player.subLocation
+                  ? "border-amber-400 bg-neutral-800"
+                  : "border-neutral-700 bg-neutral-900/50 hover:border-amber-500/50"
                 }`}
-                key={subLocation}
-                onClick={() => changeSubLocation(subLocation, 1500)}
-              >
-                <h4 className="text-xl witcher-font text-amber-300">
-                  {currentSubLocation.name}
-                </h4>
-                
-                <p className="text-sm text-neutral-300">
-                  Monsters: <span className="font-semibold text-neutral-100 capitalize">
-                    {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.join(", ") : "None"}
-                  </span>
-                </p>
-                
-                <p className="text-sm text-neutral-300">
-                  Resources: <span className="font-semibold text-neutral-100 capitalize">
-                    {currentSubLocation.resources_to_gather ? currentSubLocation.resources_to_gather.map(formatName).join(", ") : "None"}
-                  </span>
-                </p>
+              key={subLocation}
+              onClick={() => changeSubLocation(subLocation, 1500)}
+            >
+              <h4 className="text-xl witcher-font text-amber-300">
+                {currentSubLocation.name}
+              </h4>
+              {currentSubLocation.canRest && (
+                <span className="absolute bottom-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
+                  Meditate
+                </span>
+              )}
+              <p className="text-sm text-neutral-300">
+                Monsters: <span className="font-semibold text-neutral-100 capitalize">
+                  {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.join(", ") : "None"}
+                </span>
+              </p>
 
-                <p className="text-sm text-neutral-300">
-                  Shops: <span className="font-semibold text-neutral-100">
-                    {shopsAvailable.length > 0 ? shopsAvailable.join(", ") : "None"}
-                  </span>
-                </p>
-              </motion.li>
-            );
-          }
+              <p className="text-sm text-neutral-300">
+                Resources: <span className="font-semibold text-neutral-100 capitalize">
+                  {currentSubLocation.resources_to_gather ? currentSubLocation.resources_to_gather.map(formatName).join(", ") : "None"}
+                </span>
+              </p>
+
+              <p className="text-sm text-neutral-300">
+                Shops: <span className="font-semibold text-neutral-100">
+                  {shopsAvailable.length > 0 ? shopsAvailable.join(", ") : "None"}
+                </span>
+              </p>
+            </motion.li>
+          );
+        }
         )}
       </motion.ul>
     </section>

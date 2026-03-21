@@ -13,7 +13,6 @@ export const randomInRange = (max, min) => {
 export const playerSilverDamage = (
   player,
   monster,
-  isMonster = false,
   appliedOil = null,
   battleState
 ) => {
@@ -41,8 +40,10 @@ export const playerSilverDamage = (
     playerAttackDmg *= oilMultiplier;
   }
 
-  if (isMonster) {
+  if (monster.is_monster) {
     playerAttackDmg *= SILVER_ATTACK_MULTIPLIER;
+  } else {
+    playerAttackDmg *= 0.5
   }
 
   console.log("applied Oil: ", appliedOil)
@@ -56,6 +57,63 @@ export const playerSilverDamage = (
     defender: "monster",
     effectApplied: null,
   }
+
+  return {
+    playerAttackDmg,
+    log: generateLogText(player, monster, action)
+  };
+};
+
+export const playerSteelDamage = (
+  player,
+  monster,
+  appliedOil = null,
+  battleState
+) => {
+
+  const minDamage = player.attack?.steelAttack[0];
+  const maxDamage = player.attack?.steelAttack[1];
+  const damage = randomInRange(minDamage, maxDamage);
+  
+  const monsterWeakness = monster.weakness.oil;
+  const monsterDef = monster.defense;
+  const defenseMultiplier = 100 / (monsterDef + 100);
+
+  const oilMultiplier = 1.5;
+  const critChance = player.crit_chance;
+  const critMultiplier = 2;
+  const isCrit = Math.random() < critChance / 100;
+
+  let playerAttackDmg = parseInt(0);
+
+  if (isCrit) {
+    playerAttackDmg += damage * critMultiplier * defenseMultiplier;
+  } else {
+    playerAttackDmg += damage * defenseMultiplier;
+  }
+
+  if (appliedOil && appliedOil.duration > 0 && monsterWeakness.includes(appliedOil.name)) {
+    playerAttackDmg *= oilMultiplier;
+  }
+
+  if (!monster.is_monster) {
+    playerAttackDmg *= STEEL_ATTACK_MULTIPLIER;
+  } else {
+    playerAttackDmg *= 0.5;
+  }
+
+  console.log("applied Oil: ", appliedOil);
+  
+  const action = {
+    isCrit,
+    damage: parseInt(playerAttackDmg),
+    attackedWith: "Steel Sword", 
+    heal: null,
+    withOil: appliedOil,
+    attacker: "player",
+    defender: "monster",
+    effectApplied: null,
+  };
 
   return {
     playerAttackDmg,

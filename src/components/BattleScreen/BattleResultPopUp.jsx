@@ -6,15 +6,17 @@ import { playSound } from "../../utils/utils";
 
 const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const isVictory = battleResult === "player";
-  const { player, addToInventory } = usePlayer();
+  const { player, addToInventory, updateLevelExp } = usePlayer();
 
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? Math.floor(player.level * 10 + Math.random() * 5) : 0;
 
+
   useEffect(() => {
 
     if (isVictory) {
-      playSound("qust_completed");
+      playSound("quest_completed");
+      updateLevelExp(xpGained);
     } else {
       playSound("dead");
     }

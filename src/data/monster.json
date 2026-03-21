@@ -16,7 +16,8 @@
     "img_url": "",
     "drops": [{"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}, {"id": "griffin_hide", "type": "resources", "chance": 1.0, "qty": 1}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "drowner": {
     "name": "Drowner",
@@ -35,7 +36,8 @@
     "img_url": "",
     "drops": [{"id": "drowner_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "siren": {
     "name": "Siren",
@@ -54,7 +56,8 @@
     "img_url": "",
     "drops": [{"id": "siren_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Medium"
+    "difficulty": "Medium",
+    "is_monster": true
   },
   "devil-by-the-well": {
     "name": "Devil by the well",
@@ -73,7 +76,8 @@
     "img_url": "",
     "drops": [{"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Medium"
+    "difficulty": "Medium",
+    "is_monster": true
   },
   "noonwraith": {
     "name": "Noonwraith",
@@ -92,7 +96,8 @@
     "img_url": "",
     "drops": [{"id": "specter_dust", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "swallow", "type": "potions", "chance": 0.1, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "leshen": {
     "name": "Leshen",
@@ -111,7 +116,8 @@
     "img_url": "",
     "drops": [{"id": "leshen_bark", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.8, "qty": 1}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "wyvern": {
     "name": "Wyvern",
@@ -130,7 +136,8 @@
     "img_url": "",
     "drops": [{"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2}, {"id": "wyvern_scale", "type": "resources", "chance": 1.0, "qty": 2}],
     "discovered": false,
-    "difficulty": "Medium"
+    "difficulty": "Medium",
+    "is_monster": true
   },
   "nekker": {
     "name": "Nekker",
@@ -149,7 +156,8 @@
     "img_url": "",
     "drops": [{"id": "nekker_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "foglet": {
     "name": "Foglet",
@@ -168,7 +176,8 @@
     "img_url": "",
     "drops": [{"id": "foglet_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "ghoul": {
     "name": "Ghoul",
@@ -187,7 +196,8 @@
     "img_url": "",
     "drops": [{"id": "ghoul_skin", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "werewolf": {
     "name": "Werewolf",
@@ -206,7 +216,8 @@
     "img_url": "",
     "drops": [{"id": "werewolf_hide", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "ice_elemental": {
     "name": "Ice Elemental",
@@ -225,7 +236,8 @@
     "img_url": "",
     "drops": [{"id": "elemental_stone", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 1.0, "qty": 2}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "fiend": {
     "name": "Fiend",
@@ -244,7 +256,8 @@
     "img_url": "",
     "drops": [{"id": "fiend_hide", "type": "resources", "chance": 1.0, "qty": 1}, {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "water_hag": {
     "name": "Water Hag",
@@ -263,7 +276,8 @@
     "img_url": "",
     "drops": [{"id": "water_hag_scale", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "water", "type": "foods", "chance": 0.8, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "harpy": {
     "name": "Harpy",
@@ -282,7 +296,8 @@
     "img_url": "",
     "drops": [{"id": "harpy_feathers", "type": "resources", "chance": 1.0, "qty": 3}, {"id": "raw_meat", "type": "foods", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "earth_elemental": {
     "name": "Earth Elemental",
@@ -301,7 +316,8 @@
     "img_url": "",
     "drops": [{"id": "elemental_stone", "type": "resources", "chance": 1.0, "qty": 2}, {"id": "monster_essence", "type": "resources", "chance": 0.5, "qty": 1}],
     "discovered": false,
-    "difficulty": "Hard"
+    "difficulty": "Hard",
+    "is_monster": true
   },
   "wolf": {
     "name": "Wolf",
@@ -323,7 +339,8 @@
       { "id": "hide", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": false
   },
   "bandit": {
     "name": "Bandit",
@@ -345,7 +362,8 @@
       { "id": "water", "type": "foods", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": false
   },
   "wraith": {
     "name": "Wraith",
@@ -367,7 +385,8 @@
       { "id": "lesser_runestone", "type": "resources", "chance": 0.1, "qty": 1 }
     ],
     "discovered": false,
-    "difficulty": "Easy"
+    "difficulty": "Easy",
+    "is_monster": true
   },
   "alghoul": {
     "name": "Alghoul",
@@ -389,6 +408,7 @@
       { "id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 2 }
     ],
     "discovered": false,
-    "difficulty": "Medium"
+    "difficulty": "Medium",
+    "is_monster": true
   }
 }

@@ -8,12 +8,10 @@ Battle monsters, cast signs, apply oils, and manage buffs & debuffs through an i
 ## 🧙‍♂️ Features
 
 * **Turn-based combat system** – switch between player and monster turns.
-<!-- * **Monster scaling** – monsters dynamically level up based on player level. -->
 * **Buffs & Debuffs** – effects with duration, stacking rules, and automatic expiration.
-* **Witcher Signs** – cast *Igni*, *Quen*, *Yrden*, *Aard*, and *Axii*, consuming stamina.
+* **Witcher Signs** – cast *Igni*, *Quen*, and *Aard*, consuming stamina.
 * **Battle logs** – detailed combat narration for every action.
 * **Context-driven player state** – persistent data via React Context.
-<!-- * **Animated UI** – flashing borders for turns, dynamic health bars, and smooth scroll for logs. -->
 
 ---
 
