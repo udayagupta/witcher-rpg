@@ -3,7 +3,7 @@ import { useBattle } from "../../hooks/useBattle";
 import BattleResultPopUp from "./BattleResultPopUp";
 
 const BattleScreen = ({ monsterId, exit, handleGameMode }) => {
-  const { battleState, setBattleState, playerActions, addLog, monsterData, applyOil } = useBattle(monsterId);
+  const { battleState, playerActions, monsterData, applyOil } = useBattle(monsterId);
 
   return (
     <div className="h-full">

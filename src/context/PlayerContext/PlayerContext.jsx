@@ -4,6 +4,60 @@ import { checkIfEquipped, playSound, updateItemsInInventory } from "../../utils/
 
 const PlayerContext = createContext();
 
+const calculateDerivedStats = (player) => {
+    const equippedSteelSword = player.equipment.steel_sword
+      ? itemsData["steelSwords"][player.equipment.steel_sword]
+      : null;
+    const equippedSilverSword = player.equipment.silver_sword
+      ? itemsData["silverSwords"][player.equipment.silver_sword]
+      : null;
+
+    const equippedArmor = player.equipment.armor
+      ? itemsData["armor"][player.equipment.armor]
+      : null;
+    const equippedGauntlets = player.equipment.gauntlets
+      ? itemsData["armor"][player.equipment.gauntlets]
+      : null;
+    const equippedTrousers = player.equipment.trousers
+      ? itemsData["armor"][player.equipment.trousers]
+      : null;
+    const equippedBoots = player.equipment.boots
+      ? itemsData["armor"][player.equipment.boots]
+      : null;
+
+    const totalDefense =
+      player.base_defense +
+      (equippedArmor ? equippedArmor.defense : 0) +
+      (equippedGauntlets ? equippedGauntlets.defense : 0) +
+      (equippedTrousers ? equippedTrousers.defense : 0) +
+      (equippedBoots ? equippedBoots.defense : 0);
+
+    const steelSwordAttack = [
+      player.base_attack +
+      (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
+      equippedSteelSword
+        ? player.base_attack + equippedSteelSword.attack[1]
+        : player.base_attack,
+    ];
+
+    const silverSwordAttack = [
+      player.base_attack +
+      (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
+      equippedSilverSword
+        ? player.base_attack + equippedSilverSword.attack[1]
+        : player.base_attack,
+    ];
+
+    return {
+      ...player,
+      defense: totalDefense,
+      attack: {
+        steelAttack: steelSwordAttack,
+        silverAttack: silverSwordAttack,
+      },
+    };
+  };
+
 export const PlayerProvider = ({ children }) => {
   const [player, setPlayer] = useState({
     name: "Geralt",
@@ -81,7 +135,7 @@ export const PlayerProvider = ({ children }) => {
     },
 
     currentLocation: "white_orchard",
-    subLocation: "orchard_fields",
+    subLocation: "white_orchard_inn",
     inBattle: false,
     isTraveling: false,
     gameMode: "explore",
@@ -94,6 +148,8 @@ export const PlayerProvider = ({ children }) => {
       aard: 1,
     },
   });
+
+  const derivedStats = calculateDerivedStats(player);
 
   const heal = (amount = 0, reset = false) => {
     if (player.vitality === player.maxVitality) return;
@@ -114,16 +170,17 @@ export const PlayerProvider = ({ children }) => {
     setPlayer((prev) => ({ ...prev, coins: prev.coins + amount }));
   };
 
+
+  const spendCoins = (amount) => {
+    if (amount > player.coins) return false;
+    setPlayer((prev) => ({ ...prev, coins: prev.coins - amount }));
+  };
+
   const usedASign = (staminaReq) => {
     setPlayer((prev) => ({
       ...prev,
       stamina: Math.max(0, prev.stamina - staminaReq),
     }));
-  };
-
-  const spendCoins = (amount) => {
-    if (amount > player.coins) return false;
-    setPlayer((prev) => ({ ...prev, coins: prev.coins - amount }));
   };
 
   const completeQuest = (questId) => {
@@ -154,6 +211,8 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const addToInventory = (itemId, qty, itemCategory) => {
+    console.log(itemId, qty, itemCategory);
+    console.log(player.inventory[itemCategory]);
     setPlayer((prev) => {
       const currentCategoryList = prev.inventory[itemCategory] || [];
       let itemFound = false;
@@ -204,6 +263,7 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const updateLevelExp = (amount) => {
+    const upgradeMultiplier = 1.1
     setPlayer((prev) => {
       let currentExp = prev.currentExp + amount;
       let level = prev.level;
@@ -219,11 +279,11 @@ export const PlayerProvider = ({ children }) => {
         currentExp -= expToNextLevel;
         level += 1;      
 
-        expToNextLevel = expToNextLevel * 1.2;
-        base_defense = base_defense * 1.2;
-        base_attack = base_attack * 1.2;
-        maxVitality = maxVitality*1.2;
-        crit_chance = crit_chance*1.2;
+        expToNextLevel = Math.round(expToNextLevel * upgradeMultiplier);
+        base_defense = Math.round(base_defense * upgradeMultiplier);
+        base_attack = Math.round(base_attack * upgradeMultiplier);
+        maxVitality = Math.round(maxVitality * upgradeMultiplier);
+        crit_chance = Math.round(crit_chance * upgradeMultiplier);
 
         didLevelUp = true;
       }
@@ -258,7 +318,6 @@ export const PlayerProvider = ({ children }) => {
     if (type === "food") playSound("food");
   }
 
-
   const equip = (itemData) => {
     if (checkIfEquipped(player.equipment, itemData) || (player.level < itemData.level_req)) return false;
 
@@ -285,8 +344,13 @@ export const PlayerProvider = ({ children }) => {
 
   }
 
+  const fullPlayerObject = {
+    ...player,
+    ...derivedStats
+  }
+
   const value = {
-    player,
+    player: fullPlayerObject,
     setPlayer,
     heal,
     addCoins,
@@ -304,73 +368,6 @@ export const PlayerProvider = ({ children }) => {
     consumeHealthItem,
     updateLevelExp
   };
-
-  const reflectEquippedEquipment = (player) => {
-    const equippedSteelSword = player.equipment.steel_sword
-      ? itemsData["steelSwords"][player.equipment.steel_sword]
-      : null;
-    const equippedSilverSword = player.equipment.silver_sword
-      ? itemsData["silverSwords"][player.equipment.silver_sword]
-      : null;
-
-    const equippedArmor = player.equipment.armor
-      ? itemsData["armor"][player.equipment.armor]
-      : null;
-    const equippedGauntlets = player.equipment.gauntlets
-      ? itemsData["armor"][player.equipment.gauntlets]
-      : null;
-    const equippedTrousers = player.equipment.trousers
-      ? itemsData["armor"][player.equipment.trousers]
-      : null;
-    const equippedBoots = player.equipment.boots
-      ? itemsData["armor"][player.equipment.boots]
-      : null;
-
-    const totalDefense =
-      player.base_defense +
-      (equippedArmor ? equippedArmor.defense : 0) +
-      (equippedGauntlets ? equippedGauntlets.defense : 0) +
-      (equippedTrousers ? equippedTrousers.defense : 0) +
-      (equippedBoots ? equippedBoots.defense : 0);
-
-    const steelSwordAttack = [
-      player.base_attack +
-      (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
-      equippedSteelSword
-        ? player.base_attack + equippedSteelSword.attack[1]
-        : player.base_attack,
-    ];
-    const silverSwordAttack = [
-      player.base_attack +
-      (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
-      equippedSilverSword
-        ? player.base_attack + equippedSilverSword.attack[1]
-        : player.base_attack,
-    ];
-
-    // console.log(`Steel Sword: ${steelSwordAttack[0]}-${steelSwordAttack[1]}`);
-    // console.log(`Silver Sword: ${silverSwordAttack[0]}-${silverSwordAttack[1]}`);
-
-    return {
-      ...player,
-      defense: totalDefense,
-      attack: {
-        steelAttack: steelSwordAttack,
-        silverAttack: silverSwordAttack,
-      },
-    };
-  };
-
-  useEffect(() => {
-    const updatedPlayer = reflectEquippedEquipment(player);
-    setPlayer((prev) => ({ ...updatedPlayer }));
-    // console.log(player.equipment);
-  }, [player.equipment]);
-
-  useEffect(() => {
-    console.log(player.inventory);
-  }, [player.inventory]);
-
 
   return (
     <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>

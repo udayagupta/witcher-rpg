@@ -25,7 +25,8 @@ export const existsAndCanStack = (effects, effectId) => {
 
 export const generateLogText = (player, monster, action, battleState) => {
   let text = [];
-  
+
+  console.log(battleState);
   const attacker = action?.attacker === "player" ? player : action?.attacker === "monster" ? monster : null;
   const defender = action?.defender === "player" ? player : action?.defender === "monster" ? monster : null;
   const appliedEffectData = action?.effectApplied ? effectsData[action?.effectApplied] : null;
@@ -39,7 +40,7 @@ export const generateLogText = (player, monster, action, battleState) => {
 
   if (attacker && action.withOil) {
     const oilText = `, with ${action?.withOil?.name}`;
-    console.log(oilText);
+    // console.log(oilText);
     text.push(oilText);
   };
 
@@ -57,19 +58,19 @@ export const generateLogText = (player, monster, action, battleState) => {
 
   if (attacker && appliedEffectData && !checkIfEffectExists(battleState[appliedEffectUserKey], action.appliedEffect) ) {
     const effectText = `, ${appliedEffectData.applyLog(defender.name)}`;
-    console.log(effectText);
+    // console.log(effectText);
     text.push(effectText);
   };
 
   if (attacker && appliedEffectData && checkIfEffectExists(battleState[appliedEffectUserKey], action.appliedEffect) && !existsAndCanStack(battleState[appliedEffectUserKey], action.appliedEffect)) {
     const effectText = `, ${attacker.name} tried applying ${appliedEffectData.name} on ${defender.name} but failed!`
-    console.log(effectText);
+    // console.log(effectText);
     text.push(effectText);
   };
 
   if (attacker && appliedEffectData && checkIfEffectExists(battleState[appliedEffectUserKey], action.appliedEffect) && existsAndCanStack) {
     const effectText = `, ${attacker.name} applied ${appliedEffectData.name} again on ${defender.name} for more ${appliedEffectData.duration} turns`;
-    console.log(effectText);
+    // console.log(effectText);
     text.push(effectText);
   }
 
@@ -103,7 +104,7 @@ export const updateItemsInInventory = (items, itemId, qty) =>
   .filter((item) => item.qty > 0);
 
 export const playSound = (effect) => {
-  const dir = "./soundEffects/";
+  const dir = "./soundEffects";
   const audio = new Audio(`${dir}/${effect}.mp3`);
   audio.volume = 0.25
   audio.play();

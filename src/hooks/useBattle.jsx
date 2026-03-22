@@ -1,16 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import {
-  playerSilverDamage,
   isAlive,
   monsterDamage,
   handleIgni,
   handleQuen,
   updateBuffs,
   applyEffects,
-  handleAxii,
   handleAard,
-  playerSteelDamage,
+  playerSwordDamage,
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
 
@@ -64,10 +62,6 @@ export const useBattle = (monsterId) => {
     }));
   }
 
-  const resetMonsterDef = () => {
-    const initDefense = monstersData[monsterId].defense;
-    setMonsterData(prev => ({...prev, defense: initDefense}));
-  }
 
   const applyOil = (oil, id) => {
     setBattleState((prev) => ({
@@ -78,11 +72,12 @@ export const useBattle = (monsterId) => {
     consumeItem(id, "oil", 1);
   }
 
-  const addLog = (log) =>
+  const addLog = useCallback((log) => {
     setBattleState((prev) => ({
       ...prev,
       battleLogs: [...prev.battleLogs, log],
     }));
+  }, []);
 
   const healMonster = (amount) => {
     setMonsterData((prev) => ({
@@ -91,52 +86,27 @@ export const useBattle = (monsterId) => {
     }))
   }
 
-  const handlePlayerSilverAttack = () => {
+ const handleSwordAttack = (swordType) => {
     if (battleState.currentTurn === "monster") return;
     
-    if (battleState.appliedOil) {
-      setBattleState((prev) => ({
-        ...prev,
-        appliedOil: prev.appliedOil.duration > 0 ? { ...prev.appliedOil, duration: prev.appliedOil.duration-1 } : null
-      }))
+    let currentOil = battleState.appliedOil;
+    if (currentOil) {
+      currentOil = currentOil.duration > 1 
+        ? { ...currentOil, duration: currentOil.duration - 1 } 
+        : null;
+        
+      setBattleState(prev => ({ ...prev, appliedOil: currentOil }));
     }
 
-    const playerAttack = playerSilverDamage(
-      player,
-      monsterData,
-      battleState.appliedOil,
-      battleState
-    );
+    const damageCalc = swordType === "silver" 
+      ? playerSwordDamage(player, monsterData, "silver", currentOil, battleState)
+      : playerSwordDamage(player, monsterData, "steel", currentOil, battleState);
 
-    damageMonster(parseInt(playerAttack.playerAttackDmg));
-    addLog(playerAttack.log);
-    changeTurn("monster");
+    damageMonster(damageCalc.playerAttackDmg);
+    addLog(damageCalc.log);
     increaseStamina(10);
+    changeTurn("monster");
   };
-
-  const handlePlayerSteelAttack = () => {
-    if (battleState.currentTurn === "monster") return;
-    
-    if (battleState.appliedOil) {
-      setBattleState((prev) => ({
-        ...prev,
-        appliedOil: prev.appliedOil.duration > 0 ? { ...prev.appliedOil, duration: prev.appliedOil.duration-1 } : null
-      }))
-    }
-
-    const playerAttack = playerSteelDamage(
-      player,
-      monsterData,
-      battleState.appliedOil,
-      battleState
-    );
-
-    damageMonster(parseInt(playerAttack.playerAttackDmg));
-    addLog(playerAttack.log);
-    changeTurn("monster");
-    increaseStamina(10);
-
-  }
 
   const handlePlayerIgni = () => {
     if (battleState.currentTurn === "monster") return;
@@ -175,37 +145,41 @@ export const useBattle = (monsterId) => {
   };
 
   const playerActions = [
-    { name: "Silver Attack", handler: handlePlayerSilverAttack },
-    { name: "Steel Sword", handler: handlePlayerSteelAttack },
+    { name: "Silver Attack", handler: () => handleSwordAttack("silver") },
+    { name: "Steel Sword", handler: () => handleSwordAttack("steel") },
     { name: "Igni", handler: handlePlayerIgni },
     { name: "Quen", handler: handlePlayerQuen },
     { name: "Aard", handler: handlePlayerAard },
   ];
 
-  const handleMonsterTurn = () => {
-    const dmg = monsterDamage(monsterData, player.defense, battleState, player);
-    const buffId = dmg.buff ? dmg.buff.id : null;
 
-    addLog(dmg.log);
-    changeTurn("player");
-    updateBuffs("player", battleState, setBattleState, buffId);
-
-    takeDamage(dmg.monsterAttackDmg);
-    applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
-  };
-
-  const handleTurn = () => {
-    if (battleState.currentTurn === "monster" && isAlive(monsterData)) {
+  useEffect(() => {
+    if (battleState.currentTurn !== "monster" || !isAlive(monsterData) || battleState.battleResult) return;
+    
+    const executeMonsterTurn = () => {
+      applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
       applyEffects("player", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
-      const timeout = setTimeout(handleMonsterTurn, 1500);
-      return () => clearTimeout(timeout);
-    }
+      
+      const dmg = monsterDamage(monsterData, player.defense, battleState, player);
+      takeDamage(dmg.monsterAttackDmg);
+      addLog(dmg.log);
 
-  };
+      const buffId = dmg.buff ? dmg.buff.id : null;
+      updateBuffs("player", battleState, setBattleState, buffId);
+      changeTurn("player");
+    };
 
-  const handleWin = () => {
+    const timeout = setTimeout(executeMonsterTurn, 1500);
+    return () => clearTimeout(timeout);
+    
+  }, [battleState.currentTurn, monsterData]);
+
+  useEffect(() => {
+    if (battleState.battleResult) return;
+
     const monsterAlive = isAlive(monsterData);
     const playerAlive = isAlive(player);
+
     if (!monsterAlive && playerAlive) {
       setBattleState((prev) => ({ ...prev, battleResult: "player" }));
       setPlayer((prev) => ({ ...prev, inBattle: false }));
@@ -218,10 +192,9 @@ export const useBattle = (monsterId) => {
       increaseStamina(100);
       setPlayer((prev) => ({ ...prev, inBattle: false }));
     }
-  };
 
-  useEffect(handleTurn, [battleState.currentTurn]);
-  useEffect(handleWin, [monsterData.vitality, player.vitality]);
+  }, [player.vitality, monsterData.vitality]);
+
 
   return { battleState, setBattleState, playerActions, addLog, monsterData, applyOil };
 };
