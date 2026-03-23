@@ -44,20 +44,6 @@ const RenderCategory = ({ category }) => {
 
   const levelReq = !(selectedItem?.level_req <= player.level);
 
-  const RenderIcon = ({itemData}) => {
-    return (
-      <>
-        {(itemData.type === "weapon" || itemData.type === "armor") ? (
-          <div className='text-4xl m-auto'>{categoryIcon[itemData.type]}</div>
-        ) : (
-          <div>
-            <img className='h-[70px] w-[70px] m-auto' src={`./images/items/${itemData.id}.png`} alt={`${itemData.name}'s image`} />
-          </div>
-        )}
-      </>
-    )
-  }
-
   return (
     <div className='flex gap-5 mt-5'>
       <motion.ul className={`${items.length === 0 ? "grid grid-cols-1" : "flex-2 gap-3 grid grid-cols-5"} w-full`}>

@@ -211,8 +211,6 @@ export const PlayerProvider = ({ children }) => {
   };
 
   const addToInventory = (itemId, qty, itemCategory) => {
-    console.log(itemId, qty, itemCategory);
-    console.log(player.inventory[itemCategory]);
     setPlayer((prev) => {
       const currentCategoryList = prev.inventory[itemCategory] || [];
       let itemFound = false;

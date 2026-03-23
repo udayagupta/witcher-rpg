@@ -3,22 +3,24 @@ import { motion } from 'motion/react';
 
 const MonsterHunting = ({ props }) => {
   const { subLocationData, setSelectedMonster, setGameMode, setPlayer, monsterData } = props;
+  const oversizedMonsters = ["wolf", "bandit"];
 
   return (
     <div className="monster-hunting">
       <h4 className="text-amber-300 text-2xl witcher-font">
         Monster Hunting
       </h4>
-      
+
       {subLocationData["monsters_found"] ? (
         <ul className="flex flex-wrap gap-6 justify-center p-4 mt-2">
           {subLocationData["monsters_found"]?.map((monster) => {
             const currentMonster = monsterData[monster];
-            
-            const difficultyColor = 
+            const isOversized = oversizedMonsters.includes(monster);
+
+            const difficultyColor =
               currentMonster.difficulty === "Hard" ? "text-red-500" :
-              currentMonster.difficulty === "Medium" ? "text-amber-500" :
-              "text-green-500";
+                currentMonster.difficulty === "Medium" ? "text-amber-500" :
+                  "text-green-500";
 
             return (
               <motion.li
@@ -27,7 +29,7 @@ const MonsterHunting = ({ props }) => {
                 animate={{ scale: 1, opacity: 1 }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
-                
+
                 className="group flex flex-col items-center justify-between w-48 h-64 p-4 cursor-pointer bg-neutral-900/80 border border-neutral-700 hover:border-red-900/80 rounded-lg shadow-lg hover:shadow-red-900/20 transition-all"
                 onClick={() => {
                   setSelectedMonster(monster);
@@ -38,14 +40,19 @@ const MonsterHunting = ({ props }) => {
                 <p className="witcher-font text-xl font-semibold text-neutral-200 group-hover:text-red-400 transition-colors tracking-wide z-10">
                   {currentMonster.name}
                 </p>
-                
+
                 <div className="flex-1 w-full flex items-center justify-center overflow-visible mt-2 mb-2 relative">
                   <div className="absolute inset-0 bg-red-900/0 rounded-full blur-xl group-hover:bg-red-900/20 transition-colors duration-500"></div>
-                  
+
                   <img
                     src={`./images/${monster}.png`}
                     alt={currentMonster.name}
-                    className="w-full h-full object-contain scale-125 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] group-hover:scale-150 transition-transform duration-300 relative z-10"
+                    className={`w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] transition-transform duration-300 relative z-10
+                      ${isOversized
+                          ? "scale-90 group-hover:scale-110"
+                          : "scale-125 group-hover:scale-150"
+                        }
+                    `}
                   />
                 </div>
 
