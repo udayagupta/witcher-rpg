@@ -1,5 +1,6 @@
 import { usePlayer } from '../../context/PlayerContext/PlayerContext'
 import itemsData from "../../data/items.json";
+import Icon from "../Icon";
 
 const UseConsumables = ({ applyOil }) => {
   const { player, consumeHealthItem } = usePlayer();
@@ -19,12 +20,7 @@ const UseConsumables = ({ applyOil }) => {
                 onClick={() => onItemClick && item.qty > 0 ? onItemClick(data) : null}
                 className={`relative bg-neutral-900 witcher-font rounded-md p-2 py-3 flex flex-col justify-center items-center border-2 border-transparent transition duration-200 text-center ${item.qty < 1 ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-amber-300 hover:text-amber-300"}`}
               >
-                <img 
-                  src={`./images/items/${data.id}.png`} 
-                  className="h-[35px] w-[35px] mb-1 object-contain" 
-                  alt={`${data.name} icon`} 
-                  onError={(e) => e.target.style.display = 'none'}
-                />
+                <Icon id={item.id} type={item.type} size={"35px"}/>
                 
                 <p className="text-sm leading-tight">{data.name || item.id}</p>
                 

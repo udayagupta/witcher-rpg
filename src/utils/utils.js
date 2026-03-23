@@ -109,3 +109,25 @@ export const playSound = (effect) => {
   audio.volume = 0.25
   audio.play();
 }
+
+export const updateShopInventory = (inventory, itemData, qty) => {
+  const currentInventory = inventory || []
+  const existingItem = currentInventory.find((i) => i.id == itemData.id);
+
+  if (existingItem) {
+    return currentInventory.map((item) => {
+      if (itemData.id === item.id) {
+        if (item.qty === -1) return item;
+
+        return { ...item, qty: item.qty + qty }
+      }
+      return item;
+    }).filter((item) => item.qty === -1 || item.qty > 0);
+  };
+
+  if (qty > 0) {
+    return [ ...currentInventory, { id: itemData.id, category: itemData.type !== "armor" ? itemData.type+"s" : "armor", qty: qty, price: itemData.price } ];
+  }
+
+  return currentInventory;
+}

@@ -4,6 +4,7 @@ import itemsData from "../../data/items.json";
 import { motion } from 'motion/react';
 import { GiCrossedSwords, GiLeatherArmor, GiPotionBall, GiHerbsBundle } from "react-icons/gi";
 import { canBeEquipped } from '../../utils/utils';
+import Icon from '../Icon';
 
 
 const RenderCategory = ({ category }) => {
@@ -69,7 +70,7 @@ const RenderCategory = ({ category }) => {
                 <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
                   {item.qty === -1 ? '∞' : `x${item.qty}`}
                 </span>
-                <RenderIcon itemData={itemData}/>
+                <Icon id={itemData.id} type={itemData.type} size={"60px"}/>
                 <p className='mt-2'>{itemData.name}</p>
               </li>
             )
@@ -122,7 +123,7 @@ const RenderCategory = ({ category }) => {
               </div>
             </div>
 
-            <RenderIcon itemData={selectedItem}/>
+            <Icon id={selectedItem.id} type={selectedItem.type} size={"60px"}/>
             <p className="text-xl text-neutral-300 italic mb-8 leading-relaxed">
               "{selectedItem.description}"
             </p>

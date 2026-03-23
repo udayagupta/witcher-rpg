@@ -35,10 +35,8 @@ Battle monsters, cast signs, apply oils, and manage buffs & debuffs through an i
 * **Signs** – magical abilities consuming stamina:
 
   * **Igni**: Fire damage over time
-  * **Quen**: Temporary defense buff
-  * **Yrden**: Slows enemies
-  * **Aard**: Knockback effect
-  * **Axii**: Reduces enemy guard or charm effects
+  * **Quen**: Heals the player
+  * **Aard**: Damages the monster
 
 ### Turn System
 
@@ -64,7 +62,7 @@ npm install
 npm run dev
 ```
 
-Open your browser at:
+Open browser at:
 👉 `http://localhost:5173`
 
 ---
@@ -72,7 +70,6 @@ Open your browser at:
 ## 🧠 Future Improvements
 
 * Add inventory and alchemy system.
-* Implement monster-specific abilities.
 * Add player leveling and experience gain.
 * Introduce persistent save/load functionality.
 * Refine UI animations and background music.

@@ -34,7 +34,7 @@ const GatherResources = ({ subLocationData, itemsData }) => {
         </ul>
       ) : (
         <p className="text-xl text-neutral-400 mt-4 italic">
-          No monsters to hunt here. Try searching somewhere else.
+          No resources to gather here. Try searching somewhere else.
         </p>
       )}
     </div>

@@ -3,9 +3,9 @@ import { PlayerProfile } from "../PlayerProfile/PlayerProfile";
 import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 
 const NAV_LINKS = [
+  { path: "/explore-region", label: "Explore Region ⛰️" },
   { path: "/", label: "Regions Map 🏞️" },
   { path: "/inventory", label: "Inventory 📦" },
-  { path: "/explore-region", label: "Explore Region ⛰️" },
   { path: "/world-map", label: "World Map 🗺️" },
   { path: "/contracts-board", label: "Contracts Board 🪧" },
   { path: "/journal", label: "Journal 📜" },
