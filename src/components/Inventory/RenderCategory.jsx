@@ -1,14 +1,20 @@
 import { useState } from 'react'
-import { usePlayer } from '../../context/PlayerContext/PlayerContext';
+// import { usePlayer } from '../../context/PlayerContext/PlayerContext';
 import itemsData from "../../data/items.json";
 import { motion } from 'motion/react';
 import { GiCrossedSwords, GiLeatherArmor, GiPotionBall, GiHerbsBundle } from "react-icons/gi";
 import { canBeEquipped } from '../../utils/utils';
 import Icon from '../Icon';
+import { usePlayerStore, usePlayer } from '../../store/usePlayerStore';
 
 
 const RenderCategory = ({ category }) => {
-  const { player, equip, consumeHealthItem } = usePlayer();
+  // const { player, equip, consumeHealthItem } = usePlayer();
+
+  // Zustand states
+  const player = usePlayer();
+  const equip = usePlayerStore((state) => state.equip);
+  const consumeHealthItem = usePlayerStore((state) => state.consumeHealthItem);
 
   const items = category.toRender.flatMap((inventoryKey) => {
     return player.inventory[inventoryKey] || [];
@@ -56,7 +62,7 @@ const RenderCategory = ({ category }) => {
                 <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
                   {item.qty === -1 ? '∞' : `x${item.qty}`}
                 </span>
-                <Icon id={itemData.id} type={itemData.type} size={"60px"}/>
+                <Icon id={itemData.id} type={itemData.type} size={60}/>
                 <p className='mt-2'>{itemData.name}</p>
               </li>
             )

@@ -1,11 +1,14 @@
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { formatNumber } from "../../utils/utils";
 import itemsData from "../../data/items.json";
 import HealthBar from "./HealthBar";
-import StaminaBar from "./StaminaBar";
+import { usePlayer } from "../../store/usePlayerStore";
 
 export const PlayerProfile = ({ className }) => {
-  const { player } = usePlayer();
+  // const { player } = usePlayer();
+
+  // Zustand state
+  const player = usePlayer();
 
   const steelAtk = player?.attack?.steelAttack ? player.attack.steelAttack.join("-") : "—";
   const silverAtk = player?.attack?.silverAttack ? player.attack.silverAttack.join("-") : "—";
@@ -60,7 +63,7 @@ export const PlayerProfile = ({ className }) => {
           </div>
 
           <div className="mt-4 space-y-2">
-            <HealthBar />
+            <HealthBar vitality={player.vitality} maxVitality={player.maxVitality}/>
           </div>
 
         </div>

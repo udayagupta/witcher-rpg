@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import shopsData from "../../data/shops.json";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import itemsData from "../../data/items.json";
 import { updateShopInventory } from '../../utils/utils';
 import Icon from '../Icon';
+import { usePlayer, usePlayerStore } from '../../store/usePlayerStore';
 
-const ShopMode = ({ mode, shopType, currentShopData, setCurrentShopData }) => {
-  const { player, addCoins, spendCoins, addToInventory, consumeItem } = usePlayer();
+const ShopMode = ({ mode, shopType, currentShopData }) => {
+  // const { player, addCoins, spendCoins, addToInventory, consumeItem } = usePlayer();
+
+  // Zustand state
+  const player = usePlayer();
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
+  const addCoins = usePlayerStore((state) => state.addCoins);
+  const spendCoins = usePlayerStore((state) => state.spendCoins);
+  const addToInventory = usePlayerStore((state) => state.addToInventory);
+  const consumeItem = usePlayerStore((state) => state.consumeItem);
 
   const playerInventoryKeys = {
     merchant: ["foods", "resources"],
@@ -16,44 +25,55 @@ const ShopMode = ({ mode, shopType, currentShopData, setCurrentShopData }) => {
 
   const shopItemsToRender = mode === "buy" ? (currentShopData.inventory || []) : playerInventoryKeys[shopType].flatMap(key => { return player.inventory[key] || [] });
 
-
   const trade = (e, mode, itemData) => {
     e.stopPropagation();
-    const price = mode === "buy" ? itemData.price * currentShopData.pricing_multiplier : itemData.price
+    const price = Math.round(mode === "buy" ? itemData.price * currentShopData.pricing_multiplier : itemData.price)
+    
     if (mode === "buy" && player.coins < price) return;
     if (mode === "sell" && currentShopData.gold < price) return;
+    
     console.log(currentShopData.pricing_multiplier);
+
     const qtyChange = mode === "buy" ? -1 : +1; 
 
     if (mode === "buy") {
       spendCoins(price);
-      addToInventory(itemData.id, qtyChange, itemData.type);
-      setCurrentShopData((prev) => ({
-        ...prev,
-        gold: prev.gold + price,
-        inventory: updateShopInventory(prev.inventory, itemData, qtyChange),
+      addToInventory(itemData.id, 1, itemData.type);
+
+      setPlayer((prev) => ({
+        shops: {
+          ...prev.shops,
+          [currentShopData.merchant_id]: {
+            ...currentShopData,
+            gold: currentShopData.gold + price,
+            inventory: updateShopInventory(currentShopData.inventory, itemData, qtyChange)
+          }
+        }
       }))
 
     } else {
       addCoins(price);
-      consumeItem(itemData.id, itemData.type, qtyChange);
-      setCurrentShopData((prev) => ({
-        ...prev,
-        gold: prev.gold - price,
-        inventory: updateShopInventory(prev.inventory, itemData, qtyChange),
+      consumeItem(itemData.id, itemData.type, 1);
+
+      setPlayer((prev) => ({
+        shops: {
+          ...prev.shops,
+          [currentShopData.merchant_id]: {
+            ...currentShopData,
+            gold: currentShopData.gold - price,
+            inventory: updateShopInventory(currentShopData.inventory, itemData, qtyChange)
+          }
+        }
       }))
     }
   }
-
-  useEffect(() => {
-    console.log(currentShopData);
-  }, [currentShopData]);
-  
 
   return (
     <ul className="grid grid-cols-2 gap-3 overflow-y-auto pr-2 custom-scrollbar content-start">
       {shopItemsToRender.map((item) => {
         const itemData = itemsData[mode === "buy" ? item.category : item.type][item.id];
+        if (!itemData) return null;
+
         const price = mode === "buy" ? item.price * currentShopData.pricing_multiplier : itemData.price;
         return (
           <li
@@ -71,7 +91,7 @@ const ShopMode = ({ mode, shopType, currentShopData, setCurrentShopData }) => {
             </p>
 
             <div className="">
-              <Icon id={itemData.id} type={itemData.type} size={"50px"}/>
+              <Icon id={itemData.id} type={itemData.type} size={50}/>
             </div>
 
 

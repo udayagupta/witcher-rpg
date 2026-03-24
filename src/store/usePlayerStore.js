@@ -1,8 +1,62 @@
 import { create } from "zustand";
-import { persist } from "zustand";
+import { persist } from "zustand/middleware";
 import initialShopsData from "../data/shops.json";
 import { updateItemsInInventory, checkIfEquipped } from "../utils/utils";
 import itemsData from "../data/items.json";
+
+const calculateDerivedStats = (player) => {
+  const equippedSteelSword = player.equipment.steel_sword
+    ? itemsData["steelSwords"][player.equipment.steel_sword]
+    : null;
+  const equippedSilverSword = player.equipment.silver_sword
+    ? itemsData["silverSwords"][player.equipment.silver_sword]
+    : null;
+
+  const equippedArmor = player.equipment.armor
+    ? itemsData["armor"][player.equipment.armor]
+    : null;
+  const equippedGauntlets = player.equipment.gauntlets
+    ? itemsData["armor"][player.equipment.gauntlets]
+    : null;
+  const equippedTrousers = player.equipment.trousers
+    ? itemsData["armor"][player.equipment.trousers]
+    : null;
+  const equippedBoots = player.equipment.boots
+    ? itemsData["armor"][player.equipment.boots]
+    : null;
+
+  const totalDefense =
+    player.base_defense +
+    (equippedArmor ? equippedArmor.defense : 0) +
+    (equippedGauntlets ? equippedGauntlets.defense : 0) +
+    (equippedTrousers ? equippedTrousers.defense : 0) +
+    (equippedBoots ? equippedBoots.defense : 0);
+
+  const steelSwordAttack = [
+    player.base_attack +
+    (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
+    equippedSteelSword
+      ? player.base_attack + equippedSteelSword.attack[1]
+      : player.base_attack,
+  ];
+
+  const silverSwordAttack = [
+    player.base_attack +
+    (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
+    equippedSilverSword
+      ? player.base_attack + equippedSilverSword.attack[1]
+      : player.base_attack,
+  ];
+
+  return {
+    ...player,
+    defense: totalDefense,
+    attack: {
+      steelAttack: steelSwordAttack,
+      silverAttack: silverSwordAttack,
+    },
+  };
+};
 
 export const usePlayerStore = create(
   persist(
@@ -79,6 +133,7 @@ export const usePlayerStore = create(
 
       currentLocation: "white_orchard",
       subLocation: "white_orchard_inn",
+
       inBattle: false,
       isTraveling: false,
       gameMode: "explore",
@@ -92,6 +147,15 @@ export const usePlayerStore = create(
       },
 
       shops: initialShopsData,
+
+      setPlayer: (updater) => set((state) => {
+        return typeof updater === "function" ? updater(state) : updater; 
+      }),
+
+      changeLocation: (currentLocation, subLocation) => 
+        set((state) => ({
+          currentLocation, subLocation 
+        })),
 
       takeDamage: (amount) =>
         set((state) => ({
@@ -156,7 +220,12 @@ export const usePlayerStore = create(
 
         if (state.vitality === state.maxVitality) return false;
 
-        const potionData = itemsData[type + "s"][id];
+        const typeMap = {
+          potion: "potions",
+          food: "foods"
+        }
+
+        const potionData = itemsData[typeMap[type]][id];
         if (!potionData || !potionData.heal) return false;
 
         const healPoints = potionData.heal;
@@ -187,18 +256,21 @@ export const usePlayerStore = create(
         set((state) => {
           const currentCategoryList = state.inventory[itemCategory] || [];
           let itemFound = false;
+          console.log({itemId, qty, itemCategory});
 
           let newList = currentCategoryList.map((item) => {
             if (item.id === itemId) {
               itemFound = true;
-              return { ...item, qty: state.qty + qty };
+              return { ...item, qty: item.qty + qty };
             }
             return item;
           });
 
           if (!itemFound) {
-            newList.push({ id: itemId, type: itemCategory, qty: qty });
+            newList.push({ id: itemId, qty: qty, type: itemCategory});
           }
+
+          console.log(newList);
 
           return {
             inventory: {
@@ -254,6 +326,7 @@ export const usePlayerStore = create(
             maxVitality = Math.round(maxVitality * upgradeMultiplier);
             crit_chance = Math.round(crit_chance * upgradeMultiplier);
 
+
             didLevelUp = true;
           }
 
@@ -273,3 +346,10 @@ export const usePlayerStore = create(
     },
   ),
 );
+
+
+export const usePlayer = () => {
+  const rawPlayerStats = usePlayerStore((state) => state);
+  const calculatedPlayerStats = calculateDerivedStats(rawPlayerStats);
+  return calculatedPlayerStats;
+}

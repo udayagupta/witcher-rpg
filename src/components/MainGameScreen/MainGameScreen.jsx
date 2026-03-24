@@ -1,15 +1,18 @@
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
-import { Outlet, useNavigation, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import SideBar from "./SideBar";
+import { usePlayer } from "../../store/usePlayerStore";
 
 const MainGameScreen = () => {
-  const { player } = usePlayer();
+  // const { player } = usePlayer();
+  
+  // Zustand state
+  const player = usePlayer();
+
   const currentLocation = locationsData[player.currentLocation];
   const subCurrentLocation = locationsData[player.currentLocation]["sub_locations"][player.subLocation];
-  const navigation = useNavigation();
-  const isNavigating = Boolean(navigation.location);
   const location = useLocation();
 
   return (
@@ -21,7 +24,7 @@ const MainGameScreen = () => {
         <SideBar />
         <section className="w-full border border-neutral-700  flex flex-5 flex-col gap-3 text-center p-4 main-game-menu bg-neutral-900/30 rounded-lg shadow-lg">
           <h2 className="text-3xl flex justify-center gap-5 witcher-font">
-            <span className="font-extrabold">{subCurrentLocation.name}, {currentLocation.name}</span>
+            <span className="font-extrabold"><span className="text-amber-300">{subCurrentLocation.name}</span>, {currentLocation.name}</span>
             <img
               className="h-[40px] w-[40px] ml-2"
               src={currentLocation.badge}

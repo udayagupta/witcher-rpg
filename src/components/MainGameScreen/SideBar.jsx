@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { PlayerProfile } from "../PlayerProfile/PlayerProfile";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+import { usePlayer } from "../../store/usePlayerStore";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 
 const NAV_LINKS = [
   { path: "/explore-region", label: "Explore Region ⛰️" },
@@ -14,7 +15,10 @@ const NAV_LINKS = [
 ];
 
 const SideBar = () => {
-  const { player } = usePlayer();
+  // const { player } = usePlayer();
+
+  // Zustand state
+  const player = usePlayer();
 
   const getNavClasses = ({ isActive }) => {
     return `side-bar-link card hover:border-amber-300 ${isActive ? "text-amber-300 border-amber-300" : ""} ${

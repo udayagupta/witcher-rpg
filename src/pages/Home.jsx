@@ -1,8 +1,8 @@
 import { usePlayer } from "../context/PlayerContext/PlayerContext";
 // import { Regions } from "../../"
+import { usePlayer } from "../store/usePlayerStore";
 
 export const Home = () => {
-  const { player } = usePlayer();
 
   return (
     <div>

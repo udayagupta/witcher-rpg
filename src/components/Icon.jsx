@@ -5,15 +5,15 @@ const Icon = ({ id, type, size }) => {
 
   const  [imageError, setImageError] = useState(false);
   
-  const iconClass = `m-auto h-[${size}] w-[${size}] my-2`
+  const iconClass = `m-auto my-2`
 
   const categoryIcon = {
-    weapon: <GiCrossedSwords className={iconClass}/>,
-    armor: <GiLeatherArmor className={iconClass}/>,
-    potion: <GiPotionBall className={iconClass}/>,
-    oil: <GiPotionBall className={iconClass}/>,
-    resource: <GiHerbsBundle className={iconClass}/>,
-    food: <GiHerbsBundle className={iconClass}/>
+    weapon: <GiCrossedSwords size={size} className={iconClass}/>,
+    armor: <GiLeatherArmor size={size} className={iconClass}/>,
+    potion: <GiPotionBall size={size} className={iconClass}/>,
+    oil: <GiPotionBall size={size} className={iconClass}/>,
+    resource: <GiHerbsBundle size={size} className={iconClass}/>,
+    food: <GiHerbsBundle size={size} className={iconClass}/>
   }
 
   if (imageError) {
@@ -25,7 +25,7 @@ const Icon = ({ id, type, size }) => {
   }
 
   return (
-    <img src={`./images/items/${id}.png`} className={`m-auto my-2 h-[${size}] w-[${size}]`} alt="" onError={() => setImageError(true)}/>
+    <img src={`./images/items/${id}.png`} style={{height: `${size}px`, width: `${size}px`}} className={`m-auto my-2`} alt="" onError={() => setImageError(true)}/>
   )
 }
 

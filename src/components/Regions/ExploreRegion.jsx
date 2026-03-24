@@ -1,4 +1,4 @@
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import monsterData from "../../data/monster.json";
 import { useState } from "react";
@@ -7,9 +7,14 @@ import itemsData from "../../data/items.json";
 import GatherResources from "./GatherResources";
 import MonsterHunting from "./MonsterHunting";
 import Shops from "./Shops";
+import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const ExploreRegion = () => {
-  const { player, setPlayer, heal } = usePlayer();
+  // const { player, setPlayer, heal } = usePlayer();
+  const player = usePlayer();
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
+  const heal = usePlayerStore((state) => state.heal);
+  
   const subLocationData = locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
   const [gameMode, setGameMode] = useState("explore");

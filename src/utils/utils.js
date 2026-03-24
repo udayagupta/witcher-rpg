@@ -131,3 +131,8 @@ export const updateShopInventory = (inventory, itemData, qty) => {
 
   return currentInventory;
 }
+
+export const calculateMonsterExp = (baseExp) => {
+  const variance = 0.9 + (Math.random() * 0.2); 
+  return Math.round(baseExp * variance);
+};

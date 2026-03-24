@@ -26,7 +26,7 @@ export const playerSwordDamage = (
   const defenseMultiplier = 100 / (monster.defense + 100);
 
   const oilMultiplier = 1.5;
-  const critMultiplier = player.crit_chance;
+  const critMultiplier = 1.5;
   const isCrit = Math.random() < (player.crit_chance / 100);
 
   let playerAttackDmg = 0;
@@ -233,7 +233,7 @@ export const updateBuffs = (target, battleState, setBattleState, effectId) => {
 }
 
 
-export const applyEffects = (target, battleState, setBattleState, monsterData,  player, takeDamagePlayer, takeDamageMonster, healPlayer, healMonster, affectMonsterDefense, affectPlayerDefense) => {
+export const applyEffects = (target, battleState, setBattleState, monsterData,  player, takeDamagePlayer, takeDamageMonster, healPlayer, healMonster) => {
   const targetEffectsKey = target === "player" ? "playerDebuffs" : "monsterDebuffs";
   const targetEffects = battleState[targetEffectsKey];
 

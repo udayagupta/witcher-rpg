@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import HealthBar from "../PlayerProfile/HealthBar";
 import StaminaBar from "../PlayerProfile/StaminaBar";
 import MonsterHealth from "./MonsterHealth";
 import UseConsumables from "./UseConsumables";
 import ActiveEffects from "./ActiveEffects";
 import BattleLogs from "./BattleLogs";
+import { usePlayer } from "../../store/usePlayerStore";
 
 const BattleScreenUI = ({
   battleState,
@@ -15,7 +14,9 @@ const BattleScreenUI = ({
   exit,
   applyOil
 }) => {
-  const { player } = usePlayer();
+
+  // Zustand state
+  const player = usePlayer();
 
   return (
     <div className="h-full">
@@ -27,7 +28,7 @@ const BattleScreenUI = ({
             } mx-3`}
         >
           <p className="witcher-font heading ">{player.name}</p>
-          <HealthBar className="font-semibold" />
+          <HealthBar className="font-semibold" vitality={player.vitality} maxVitality={player.maxVitality}/>
           <StaminaBar className="font-semibold mt-4 " />
           <div className="stamina"></div>
 

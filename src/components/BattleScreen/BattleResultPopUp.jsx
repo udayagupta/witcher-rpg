@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
-import { playSound } from "../../utils/utils";
+import { calculateMonsterExp, playSound } from "../../utils/utils";
+import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const isVictory = battleResult === "player";
-  const { player, addToInventory, updateLevelExp } = usePlayer();
+  // const { player, addToInventory, updateLevelExp } = usePlayer();
+
+  // Zustand state
+  const player = usePlayer();
+  const addToInventory = usePlayerStore((state) => state.addToInventory);
+  const updateLevelExp = usePlayerStore((state) => state.updateLevelExp);
 
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
-  const xpGained = isVictory ? Math.floor(player.level * 10 + Math.random() * 5) : 0;
+  const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
 
 
   useEffect(() => {
@@ -26,6 +32,10 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
       addToInventory(loot.id, loot.qty, loot.type);
     });
   }, []);
+
+  useEffect(() => {
+    console.log(lootGenerated);
+  }, [lootGenerated]);
 
   return (
     battleResult && (<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">

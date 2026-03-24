@@ -1,9 +1,10 @@
 import { motion, AnimatePresence } from "motion/react";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -21,7 +22,10 @@ const itemVariants = {
 };
 
 const Regions = () => {
-  const { player, setPlayer } = usePlayer();
+  // const { player, setPlayer } = usePlayer();
+  const player = usePlayer();
+  const changeLocation = usePlayerStore((state) => state.changeLocation);
+  const setPlayer = usePlayerStore((state) => state.setPlayer)
   const navigate = useNavigate();
   const playerLocation = player.currentLocation;
   const currentLocationData = locationsData[playerLocation];
@@ -29,18 +33,26 @@ const Regions = () => {
 
   const changeSubLocation = (subLocation, travelTime = 1000) => {
     if (player.subLocation === subLocation) return;
-    setPlayer((prev) => ({ ...prev, isTraveling: true }));
+    // setPlayer((prev) => ({ ...prev, isTraveling: true }));
+    setPlayer({ isTraveling: true });
     setWillTravelTo(subLocation);
 
     setTimeout(() => {
-      setPlayer((prev) => ({
-        ...prev,
-        subLocation,
-        isTraveling: false
-      }));
+      // setPlayer((prev) => ({
+      //   ...prev,
+      //   subLocation,
+      //   isTraveling: false
+      // }));
+      // setPlayer({ })
+      changeLocation(playerLocation, subLocation);
+      setPlayer({ isTraveling: false });
       navigate("/explore-region");
     }, travelTime);
   };
+
+  // useEffect(() => {
+  //   console.log(player);
+  // }, []);
 
   return (
     <section>

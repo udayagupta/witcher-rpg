@@ -2,11 +2,15 @@ import { useState } from "react";
 import locationsData from "../../data/locations.json";
 import contracts from "../../data/contracts.json";
 import monstersData from "../../data/monster.json";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const ContractsBoard = () => {
   const [selectedContract, setSelectedContract] = useState("");
-  const { player, acceptContract } = usePlayer();
+  // const { player, acceptContract } = usePlayer();
+  const player = usePlayer();
+  const acceptContract = usePlayerStore((state) => state.acceptContract);
+
   const contractsIds = locationsData[player.currentLocation].contracts;
 
   const ContractCard = () => {

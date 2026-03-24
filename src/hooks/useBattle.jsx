@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { usePlayer } from "../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import {
   isAlive,
   monsterDamage,
@@ -11,9 +11,19 @@ import {
   playerSwordDamage,
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
+import { usePlayer, usePlayerStore } from "../store/usePlayerStore";
 
 export const useBattle = (monsterId) => {
-  const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense, consumeItem } = usePlayer();
+  const player = usePlayer();
+  const takeDamage = usePlayerStore((state) => state.takeDamage);
+  const resetVitality = usePlayerStore((state) => state.resetVitality);
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
+  const usedASign = usePlayerStore((state) => state.usedASign);
+  const increaseStamina = usePlayerStore((state) => state.increaseStamina);
+  const heal = usePlayerStore((state) => state.heal);
+  const consumeItem = usePlayerStore((state) => state.consumeItem);
+  // const setPlayer
+  // const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense, consumeItem } = usePlayer();
   const [monsterData, setMonsterData] = useState(monstersData[monsterId]);
   const [battleState, setBattleState] = useState({
     appliedOil: null,
@@ -157,8 +167,8 @@ export const useBattle = (monsterId) => {
     if (battleState.currentTurn !== "monster" || !isAlive(monsterData) || battleState.battleResult) return;
     
     const executeMonsterTurn = () => {
-      applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
-      applyEffects("player", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster, affectMonsterDefense, affectPlayerDefense);
+      applyEffects("monster", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster);
+      applyEffects("player", battleState, setBattleState, monsterData, player, takeDamage, damageMonster, heal, healMonster);
       
       const dmg = monsterDamage(monsterData, player.defense, battleState, player);
       takeDamage(dmg.monsterAttackDmg);
@@ -182,7 +192,8 @@ export const useBattle = (monsterId) => {
 
     if (!monsterAlive && playerAlive) {
       setBattleState((prev) => ({ ...prev, battleResult: "player" }));
-      setPlayer((prev) => ({ ...prev, inBattle: false }));
+      // setPlayer((prev) => ({ ...prev, inBattle: false }));
+      setPlayer({ inBattle: false });
       increaseStamina(100);
     }
 
@@ -190,7 +201,8 @@ export const useBattle = (monsterId) => {
       setBattleState((prev) => ({ ...prev, battleResult: "monster" }));
       resetVitality();
       increaseStamina(100);
-      setPlayer((prev) => ({ ...prev, inBattle: false }));
+      // setPlayer((prev) => ({ ...prev, inBattle: false }));
+      setPlayer({ inBattle: false });
     }
 
   }, [player.vitality, monsterData.vitality]);

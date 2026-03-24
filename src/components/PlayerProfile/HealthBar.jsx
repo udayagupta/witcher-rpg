@@ -1,9 +1,13 @@
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+import { usePlayer } from "../../store/usePlayerStore";
 
-const HealthBar = ({ className = "" }) => {
-  const { player } = usePlayer();
-  const vit = player?.vitality ?? 0;
-  const max = player?.maxVitality ?? 1;
+const HealthBar = ({ className = "", vitality, maxVitality }) => {
+
+  // Zustand state
+  const player = usePlayer();
+
+  const vit = vitality ?? 0;
+  const max = maxVitality ?? 1;
   const pct = Math.max(0, Math.min(100, (vit / max) * 100));
 
   return (

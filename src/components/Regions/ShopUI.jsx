@@ -2,13 +2,17 @@ import { CiShop } from "react-icons/ci";
 import { GiBlacksmith, GiLeatherArmor, GiBeerStein } from "react-icons/gi";
 import shopsData from "../../data/shops.json";
 import { motion } from "motion/react";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { useState } from "react";
 import ShopMode from "./ShopMode";
+import { usePlayer } from "../../store/usePlayerStore";
 
 const ShopUI = ({ shopId, close }) => {
-  const [currentShopData, setCurrentShopData] = useState(shopsData[shopId]);
+  
+  // zustand state
+  const player = usePlayer();
 
+  const currentShopData = player.shops[shopId] || shopsData[shopId];
   const iconClasses = "text-9xl text-amber-200/70 mb-4 mt-2 px-6";
   const [shopMode, setShopMode] = useState("buy");
 
@@ -47,7 +51,7 @@ const ShopUI = ({ shopId, close }) => {
             <button onClick={() => handleShopMode("sell")} className={`p-1 px-8 cursor-pointer rounded-md ${shopMode === "sell" ? "bg-amber-300 text-neutral-800" : "bg-neutral-800"}`}>Sell</button>
           </div>
 
-          <ShopMode mode={shopMode} shopType={currentShopData.type} currentShopData={currentShopData} setCurrentShopData={setCurrentShopData}/>
+          <ShopMode mode={shopMode} shopType={currentShopData.type} currentShopData={currentShopData} />
 
         </div>
 

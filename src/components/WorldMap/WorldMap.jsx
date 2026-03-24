@@ -1,11 +1,15 @@
 import locationsData from "../../data/locations.json";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
+import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const WorldMap = () => {
-  const { player, setPlayer } = usePlayer();
+  // const { player, setPlayer } = usePlayer();
+  const player = usePlayer();
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
+  
   const [willTravelTo, setWillTravelTo] = useState("");
   const navigate = useNavigate();
 

@@ -1,8 +1,9 @@
 import React from "react";
-import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
+import { usePlayer } from "../../store/usePlayerStore";
 
 const StaminaBar = ({ className = "" }) => {
-  const { player } = usePlayer();
+  const player = usePlayer();
   const stamina = player?.stamina ?? 0;
   const max = 100;
   const pct = Math.max(0, Math.min(100, (stamina / max) * 100));
