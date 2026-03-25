@@ -1,64 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import locationsData from "../../data/locations.json";
 import contracts from "../../data/contracts.json";
 import monstersData from "../../data/monster.json";
 // import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
+import ContractCard from "./ContractCard";
 
 const ContractsBoard = () => {
   const [selectedContract, setSelectedContract] = useState("");
   // const { player, acceptContract } = usePlayer();
   const player = usePlayer();
-  const acceptContract = usePlayerStore((state) => state.acceptContract);
 
   const contractsIds = locationsData[player.currentLocation].contracts;
-
-  const ContractCard = () => {
-    if (!selectedContract) {
-      return (
-        <div className="flex flex-col justify-center items-center h-full text-neutral-300">
-          <p>Select a contract to view details.</p>
-        </div>
-      );
-    };
-
-    const selectedContractData = contracts[selectedContract];
-    const contractMonster = selectedContractData.target_monster;
-
-    const activeQuestInfo = player.activeQuests[selectedContract];
-    const isCompleted = activeQuestInfo?.status === "completed";
-    
-    return (
-      <div className={`flex flex-col gap-3 rounded p-4 bg-neutral-900/30 h-full text-white overflow-auto`}>
-        <h3 className="text-center text-3xl text-amber-300 witcher-font">
-          {selectedContractData.name}
-        </h3>
-        <p className="text-center text-lg opacity-90">{selectedContractData.description}</p>
-        <div className="flex  flex-col text-left mt-2 text-md">
-          <p className="flex-1" title="Monster quantity">
-            Monster: <span className="font-semibold">{monstersData[contractMonster].name}</span> (x{selectedContractData.target_qty})
-          </p>
-          <p className="flex-1">Reward: <span className="font-semibold">{selectedContractData.reward_coins} crowns</span></p>
-        </div>
-        <div className="accept-choice mt-3">
-          <button
-            onClick={() => acceptContract(selectedContract)}
-            disabled={!!activeQuestInfo}
-            className={`px-4 py-1 rounded font-bold  transition ${
-              selectedContract in player.activeQuests ? "opacity-70" : "text-neutral-900 bg-amber-500 hover:bg-amber-400 cursor-pointer"
-            }`}
-          >
-            {activeQuestInfo ? `Progress: ${activeQuestInfo.progress} / ${selectedContractData.target_qty}` : "Accept"}
-          </button>
-        </div>
-        {isCompleted && (
-            <button className="px-4 py-2 rounded font-bold text-neutral-900 bg-green-500 hover:bg-green-400 cursor-pointer transition">
-              Turn In Contract
-            </button>
-          )}
-      </div>
-    );
-  };
 
   const selectContract = (contract) => {
     setSelectedContract(contract);
@@ -87,7 +40,7 @@ const ContractsBoard = () => {
       </div>
 
       <div className="flex-1 border border-amber-300 rounded-lg selected-contract w-1/3 overflow-auto">
-        <ContractCard />
+        <ContractCard selectedContract={selectedContract}/>
       </div>
     </section>
   );

@@ -66,7 +66,7 @@
       },
       "broken_cart_pass": {
         "name": "Broken Cart Pass 🛞",
-        "monsters_found": ["bandit", "nekker"],
+        "monsters_found": ["bandit", "nekker", "devil-by-the-well"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,

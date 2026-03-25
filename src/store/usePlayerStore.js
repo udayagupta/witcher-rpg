@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware";
 import initialShopsData from "../data/shops.json";
 import { updateItemsInInventory, checkIfEquipped } from "../utils/utils";
 import itemsData from "../data/items.json";
+import contractsData from "../data/contracts.json";
 
 const calculateDerivedStats = (player) => {
   const equippedSteelSword = player.equipment.steel_sword
@@ -295,13 +296,55 @@ export const usePlayerStore = create(
         set((state) => {
           if (questId in state.activeQuests) return state;
 
+          const contractData = contractsData[questId];
+
           const updatedQuests = {
             ...state.activeQuests,
-            [questId]: { status: "active", progress: 0 },
+            [questId]: { status: "active", progress: 0, required: contractData.target_qty, monsterId: contractData.target_monster },
           };
 
           return { activeQuests: updatedQuests };
         }),
+
+      updateQuests: (monsterId) => set((state) => {
+        const currentActiveQuests = { ...state.activeQuests };
+        let madeProgress = false;
+        console.log(monsterId);
+
+        Object.entries(currentActiveQuests).forEach(([questId, questData]) => {
+          if (questData.monsterId === monsterId && questData.progress < questData.required) {
+            const newProgress = questData.progress + 1;
+
+            console.log("Before Update: ", currentActiveQuests[questId]);
+
+            currentActiveQuests[questId] = {
+                ...questData,
+                progress: newProgress,
+                status: newProgress >= questData.required ? "completed" : "active"
+              }
+
+            madeProgress = true;
+
+            console.log("After Update: ", currentActiveQuests[questId]);
+
+          }
+        })
+
+        if (!madeProgress) return state;
+
+        return { activeQuests: currentActiveQuests };
+
+      }),
+
+      turnInQuest: (contractId) => {
+        const { activeQuests, addCoins, updateLevelExp, completeQuest } = get();
+        if (!(contractId in activeQuests)) return;
+
+        const contractData = contractsData[contractId];
+        addCoins(contractData.reward_coins);
+        updateLevelExp(contractData.reward_exp);
+        completeQuest(contractId);
+      },
 
       updateLevelExp: (amount) =>
         set((state) => {

@@ -24,7 +24,7 @@ const Inventory = () => {
 
   return (
     <motion.div className='h-full'>
-      <h4 className='witcher-font text-2xl text-amber-300'>Inventory</h4>
+      <h4 className='witcher-font text-3xl text-amber-300'>Inventory</h4>
 
       <div className='categories flex gap-4 mt-3'>
         {categoryBtns.map((btn) => (

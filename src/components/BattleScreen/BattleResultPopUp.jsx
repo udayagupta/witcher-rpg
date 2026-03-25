@@ -13,6 +13,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const player = usePlayer();
   const addToInventory = usePlayerStore((state) => state.addToInventory);
   const updateLevelExp = usePlayerStore((state) => state.updateLevelExp);
+  const updateQuests = usePlayerStore((state) => state.updateQuests);
 
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
@@ -23,6 +24,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
     if (isVictory) {
       playSound("quest_completed");
       updateLevelExp(xpGained);
+      updateQuests(monsterData.id);
     } else {
       playSound("dead");
     }
@@ -63,8 +65,8 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
             {lootGenerated.length > 0 ? (
               <ul className="mt-3 flex flex-col gap-1 text-sm">
                 <p className="text-neutral-400 italic mb-1">Loot received:</p>
-                {lootGenerated.map((loot, index) => (
-                  <li key={index} className="heading text-amber-200">
+                {lootGenerated.map((loot) => (
+                  <li key={loot.id} className="heading text-amber-200">
                     {items[loot.type][loot.id].name} x {loot.qty}
                   </li>
                 ))}

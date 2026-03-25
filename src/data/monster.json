@@ -1,5 +1,6 @@
 {
   "griffin": {
+    "id": "griffin",
     "name": "Griffin",
     "species": "Hybrid",
     "vitality": 1200,
@@ -21,6 +22,7 @@
     "is_monster": true
   },
   "drowner": {
+    "id": "drowner",
     "name": "Drowner",
     "species": "Necrophage",
     "vitality": 500,
@@ -42,6 +44,7 @@
     "is_monster": true
   },
   "siren": {
+    "id": "siren",
     "name": "Siren",
     "species": "Hybrid",
     "vitality": 600,
@@ -63,6 +66,7 @@
     "is_monster": true
   },
   "devil-by-the-well": {
+    "id": "devil-by-the-well",
     "name": "Devil by the well",
     "species": "Specter",
     "vitality": 700,
@@ -84,6 +88,7 @@
     "is_monster": true
   },
   "noonwraith": {
+    "id": "noonwraith",
     "name": "Noonwraith",
     "species": "Specter",
     "vitality": 850,
@@ -105,6 +110,7 @@
     "is_monster": true
   },
   "leshen": {
+    "id": "leshen",
     "name": "Leshen",
     "species": "Cursed Woodland Spirit",
     "vitality": 1400,
@@ -126,6 +132,7 @@
     "is_monster": true
   },
   "wyvern": {
+    "id": "wyvern",
     "name": "Wyvern",
     "species": "Draconid",
     "vitality": 1100,
@@ -147,6 +154,7 @@
     "is_monster": true
   },
   "nekker": {
+    "id": "nekker",
     "name": "Nekker",
     "species": "Cursed Beast",
     "vitality": 300,
@@ -168,6 +176,7 @@
     "is_monster": true
   },
   "foglet": {
+    "id": "foglet",
     "name": "Foglet",
     "species": "Necrophage",
     "vitality": 650,
@@ -189,6 +198,7 @@
     "is_monster": true
   },
   "ghoul": {
+    "id": "ghoul",
     "name": "Ghoul",
     "species": "Necrophage",
     "vitality": 450,
@@ -210,6 +220,7 @@
     "is_monster": true
   },
   "werewolf": {
+    "id": "werewolf",
     "name": "Werewolf",
     "species": "Cursed One",
     "vitality": 1300,
@@ -231,6 +242,7 @@
     "is_monster": true
   },
   "ice_elemental": {
+    "id": "ice_elemental",
     "name": "Ice Elemental",
     "species": "Elemental",
     "vitality": 1500,
@@ -252,6 +264,7 @@
     "is_monster": true
   },
   "fiend": {
+    "id": "fiend",
     "name": "Fiend",
     "species": "Relict",
     "vitality": 1600,
@@ -273,6 +286,7 @@
     "is_monster": true
   },
   "water_hag": {
+    "id": "water_hag",
     "name": "Water Hag",
     "species": "Necrophage",
     "vitality": 700,
@@ -294,6 +308,7 @@
     "is_monster": true
   },
   "harpy": {
+    "id": "harpy",
     "name": "Harpy",
     "species": "Hybrid",
     "vitality": 550,
@@ -315,6 +330,7 @@
     "is_monster": true
   },
   "earth_elemental": {
+    "id": "earth_elemental",
     "name": "Earth Elemental",
     "species": "Elemental",
     "vitality": 1700,
@@ -336,6 +352,7 @@
     "is_monster": true
   },
   "wolf": {
+    "id": "wolf",
     "name": "Wolf",
     "species": "Beast",
     "vitality": 220,
@@ -357,6 +374,7 @@
     "is_monster": false
   },
   "bandit": {
+    "id": "bandit",
     "name": "Bandit",
     "species": "Human",
     "vitality": 300,
@@ -378,6 +396,7 @@
     "is_monster": false
   },
   "wraith": {
+    "id": "wraith",
     "name": "Wraith",
     "species": "Specter",
     "vitality": 650,
@@ -399,6 +418,7 @@
     "is_monster": true
   },
   "alghoul": {
+    "id": "alghoul",
     "name": "Alghoul",
     "species": "Necrophage",
     "vitality": 820,
