@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
 import { calculateMonsterExp, playSound } from "../../utils/utils";
@@ -7,7 +6,6 @@ import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const isVictory = battleResult === "player";
-  // const { player, addToInventory, updateLevelExp } = usePlayer();
 
   // Zustand state
   const player = usePlayer();

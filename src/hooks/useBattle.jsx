@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from "react";
-// import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import {
   isAlive,
   monsterDamage,
@@ -14,6 +13,7 @@ import monstersData from "../data/monster.json";
 import { usePlayer, usePlayerStore } from "../store/usePlayerStore";
 
 export const useBattle = (monsterId) => {
+
   const player = usePlayer();
   const takeDamage = usePlayerStore((state) => state.takeDamage);
   const resetVitality = usePlayerStore((state) => state.resetVitality);
@@ -22,8 +22,7 @@ export const useBattle = (monsterId) => {
   const increaseStamina = usePlayerStore((state) => state.increaseStamina);
   const heal = usePlayerStore((state) => state.heal);
   const consumeItem = usePlayerStore((state) => state.consumeItem);
-  // const setPlayer
-  // const { player, takeDamage, resetVitality, setPlayer, usedASign, increaseStamina, heal, affectPlayerDefense, consumeItem } = usePlayer();
+
   const [monsterData, setMonsterData] = useState(monstersData[monsterId]);
   const [battleState, setBattleState] = useState({
     appliedOil: null,

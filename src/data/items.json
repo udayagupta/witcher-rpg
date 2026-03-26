@@ -348,6 +348,15 @@
       "description": "A common yellow flower found in fields and forests. Essential for brewing the Swallow healing potion.",
       "icon": "flower"
     },
+    "white_myrtle": {
+      "id": "white_myrtle",
+      "name": "White Myrtle",
+      "type": "resource",
+      "rarity": "common",
+      "price": 10,
+      "description": "A very common white flower found in field and forests, very essential for brewing Witcher Potions.",
+      "icon": "flower"
+    },
     "dwarven_spirit": {
       "id": "dwarven_spirit",
       "name": "Dwarven Spirit",
@@ -547,6 +556,54 @@
       "price": 35,
       "description": "Extracted from the spiked bones of an alghoul. Highly sought after by alchemists.",
       "icon": "bone"
+    },
+    "dog_tallow": {
+      "id": "dog_tallow",
+      "name": "Dog Tallow",
+      "type": "resource",
+      "rarity": "common",
+      "price": 18,
+      "description": "Dog tallow is an alchemy ingredient in The Witcher 3: Wild Hunt that is needed to craft many blade oils"
+    },
+    "bear_fat": {
+      "id": "bear_fat",
+      "name": "Bear Fat",
+      "type": "resource",
+      "rarity": "common",
+      "price": 35,
+      "description": "Bear fat is an alchemy ingredient that is needed to craft many blade oils."
+    },
+    "arenaria": {
+      "id": "arenaria",
+      "name": "Arenaria",
+      "type": "resource",
+      "rarity": "common",
+      "price": 5,
+      "description": "A white-flower used in crafting various Witcher Oils."
+    },
+    "ergot_seeds": {
+      "id": "ergot_seeds",
+      "name": "Ergot Seeds",
+      "type": "resource",
+      "rarity": "common",
+      "price": 8,
+      "description": "A resources used in cooking various Witcher Oils/Gears."
+    },
+    "mistletoe": {
+      "id": "mistletoe",
+      "name": "Mistletoe",
+      "type": "resource",
+      "rarity": "common",
+      "price": 5,
+      "description": "A resources used in cooking various Witcher Oils/Gears."
+    },
+    "puffball": {
+      "id": "puffball",
+      "name": "Puffball",
+      "type": "resource",
+      "rarity": "common",
+      "price": 5,
+      "description": "A resources used in cooking various Witcher Oils/Gears."
     }
   },
   "foods": {

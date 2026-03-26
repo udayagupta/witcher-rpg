@@ -6,6 +6,7 @@ import { GiCrossedSwords, GiLeatherArmor, GiPotionBall, GiHerbsBundle } from "re
 import { canBeEquipped } from '../../utils/utils';
 import Icon from '../Icon';
 import { usePlayerStore, usePlayer } from '../../store/usePlayerStore';
+import ItemCard from './ItemCard';
 
 
 const RenderCategory = ({ category }) => {
@@ -58,12 +59,12 @@ const RenderCategory = ({ category }) => {
           items.map((item) => {
             const itemData = itemsData[item.type][item.id];
             return (
-              <li onClick={() => handleSelectedItem(itemData)} className='relative min-h-[100px] flex flex-col justify-between p-3 card cursor-pointer hover:border-amber-300 transition-all group' key={item.id}>
-                <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700">
-                  {item.qty === -1 ? '∞' : `x${item.qty}`}
-                </span>
-                <Icon id={itemData.id} type={itemData.type} size={60}/>
-                <p className='mt-2'>{itemData.name}</p>
+              <li
+                key={item.id}
+                onClick={() => handleSelectedItem(itemData)}
+                className="relative min-h-[140px] flex flex-col justify-between p-3 card cursor-pointer hover:border-amber-300 transition-all group bg-neutral-800/50 border border-neutral-700 rounded-md"
+              >
+                <ItemCard itemData={itemData} item={item}/>
               </li>
             )
           })
@@ -115,7 +116,7 @@ const RenderCategory = ({ category }) => {
               </div>
             </div>
 
-            <Icon id={selectedItem.id} type={selectedItem.type} size={"60px"}/>
+            <Icon id={selectedItem.id} type={selectedItem.type} size={"60px"} />
             <p className="text-xl text-neutral-300 italic mb-8 leading-relaxed">
               "{selectedItem.description}"
             </p>

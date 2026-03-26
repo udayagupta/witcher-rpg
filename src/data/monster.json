@@ -367,7 +367,8 @@
     "img_url": "",
     "drops": [
       {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2},
-      {"id": "hide", "type": "resources", "chance": 0.6, "qty": 1}
+      {"id": "hide", "type": "resources", "chance": 0.6, "qty": 1},
+      {"id": "dog_tallow", "type": "resources", "chance": 0.6, "qty": 2}
     ],
     "discovered": false,
     "difficulty": "Easy",

@@ -76,6 +76,7 @@ export const usePlayerStore = create(
       base_attack: 15,
       base_defense: 20,
       stamina: 100,
+      recipesUnlocked: [],
 
       inventory: {
         steelSwords: [
@@ -115,6 +116,7 @@ export const usePlayerStore = create(
           { id: "metal_scrap", type: "resources", qty: 8 },
           { id: "hide", type: "resources", qty: 2 },
           { id: "monster_saliva", type: "resources", qty: 1 },
+          { id: "white_myrtle", type: "resources", qty: 1 },
         ],
         foods: [
           { id: "water", type: "foods", qty: 5 },

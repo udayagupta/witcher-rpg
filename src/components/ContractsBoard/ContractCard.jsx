@@ -1,4 +1,3 @@
-import React from 'react';
 import { usePlayer, usePlayerStore } from '../../store/usePlayerStore';
 import contracts from "../../data/contracts.json";
 import monstersData from "../../data/monster.json";
@@ -8,11 +7,18 @@ const ContractCard = ({ selectedContract }) => {
   const acceptContract = usePlayerStore((state) => state.acceptContract);
   const turnInQuest = usePlayerStore((state) => state.turnInQuest);
 
-
   if (!selectedContract) {
     return (
       <div className="flex flex-col justify-center items-center h-full text-neutral-300">
         <p>Select a contract to view details.</p>
+      </div>
+    );
+  }
+
+  if (player.completedQuests?.includes(selectedContract)) {
+    return (
+      <div className="flex flex-col justify-center items-center h-full text-neutral-300">
+        <p>Contract completed. Select another contract.</p>
       </div>
     );
   }
@@ -39,27 +45,36 @@ const ContractCard = ({ selectedContract }) => {
         </p>
       </div>
 
-      <div className="accept-choice mt-3">
-        <button
-          onClick={() => acceptContract(selectedContract)}
-          disabled={!!activeQuestInfo}
-          className={`px-4 py-1 rounded font-bold transition ${
-            activeQuestInfo 
-              ? "opacity-70 bg-neutral-700 cursor-not-allowed" 
-              : "text-neutral-900 bg-amber-300 hover:bg-amber-400 cursor-pointer"
-          }`}
-        >
-          {(activeQuestInfo && activeQuestInfo.status !== "completed") ? `Progress: ${activeQuestInfo.progress} / ${activeQuestInfo.required}` : "Accept"}
-        </button>
-      </div>
+      <div className="mt-3 flex flex-col gap-2">        
+        {!activeQuestInfo && (
+          <button
+            onClick={() => acceptContract(selectedContract)}
+            className="px-4 py-2 rounded font-bold transition text-neutral-900 bg-amber-500 hover:bg-amber-400 cursor-pointer"
+          >
+            Accept Contract
+          </button>
+        )}
 
-      {isCompleted && (
-        <button onClick={() => turnInQuest(selectedContract)} className="px-4 py-2 rounded font-bold text-neutral-900 bg-green-500 hover:bg-green-400 cursor-pointer transition">
-          Turn In Contract
-        </button>
-      )}
+        {(activeQuestInfo && !isCompleted) && (
+          <div
+            className="px-4 py-2 rounded font-bold transition opacity-70 bg-neutral-700 cursor-not-allowed text-neutral-300"
+          >
+            Progress: {activeQuestInfo.progress} / {activeQuestInfo.required}
+          </div>
+        )}
+
+        {isCompleted && (
+          <button 
+            onClick={() => turnInQuest(selectedContract)} 
+            className="px-4 py-2 rounded font-bold text-neutral-900 bg-green-500 hover:bg-green-400 cursor-pointer transition shadow-[0_0_15px_rgba(34,197,94,0.4)]"
+          >
+            Turn In Contract
+          </button>
+        )}
+
+      </div>
     </div>
   );
 };
 
-export default ContractCard
+export default ContractCard;

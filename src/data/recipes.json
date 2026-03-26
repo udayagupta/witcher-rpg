@@ -1,0 +1,63 @@
+{
+  "hybrid_oil": {
+    "id": "hybrid_oil",
+    "type": "oil",
+    "name": "Hybrid Oil",
+    "yields": { "id": "hybrid_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resource", "qty": 1 },
+      { "id": "white_myrtle", "type": "resource", "qty": 4 }
+    ]
+  },
+  "necrophage_oil": {
+    "id": "necrophage_oil",
+    "type": "oil",
+    "name": "Necrophage Oil",
+    "yields": { "id": "necrophage_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resource", "qty": 1 },
+      { "id": "blowball", "type": "resource", "qty": 4 }
+    ]
+  },
+  "specter_oil": {
+    "id": "specter_oil",
+    "type": "oil",
+    "name": "Specter Oil",
+    "yields": { "id": "specter_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "bear_fat", "type": "resource", "qty": 1 },
+      { "id": "arenaria", "type": "resource", "qty": 4 }
+    ]
+  },
+  "draconid_oil": {
+    "id": "draconid_oil",
+    "type": "oil",
+    "name": "Draconid Oil",
+    "yields": { "id": "draconid_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resource", "qty": 1 },
+      { "id": "ergot_seeds", "type": "resource", "qty": 4 }
+    ]
+  },
+  "relict_oil": {
+    "id": "relict_oil",
+    "type": "oil",
+    "name": "Relict Oil",
+    "yields": { "id": "relict_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resource", "qty": 1 },
+      { "id": "mistletoe", "type": "resource", "qty": 5 }
+    ]
+  },
+  "elemental_oil": {
+  "id": "elemental_oil",
+  "type": "oil",
+  "name": "Elementa Oil",
+  "yields": { "id": "elementa_oil", "type": "oil", "qty": 1 },
+  "ingredients": [
+    { "id": "dog_tallow", "type": "resource", "qty": 1 },
+    { "id": "puffball", "type": "resource", "qty": 4 }
+  ]
+}
+
+}
