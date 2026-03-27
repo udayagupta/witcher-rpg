@@ -28,7 +28,7 @@ const RecipeCard = ({ recipeData }) => {
                 className='relative flex flex-col h-full w-full justify-between items-center text-center p-2 cursor-pointer transition-all group bg-neutral-900 border border-neutral-700 rounded-md'
                 key={ingredient.id}
               >
-                <div className='flex flex-1 items-center justify-center'>
+                <div className='flex flex-1 items-center justify-center aspect-square'>
                   <Icon id={ingredient.id} type={ingredient.type} size={35} />
                 </div>                
                 <p className='text-sm text-neutral-300 w-full truncate my-1 px-1'>

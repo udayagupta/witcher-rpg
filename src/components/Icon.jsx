@@ -25,7 +25,7 @@ const Icon = ({ id, type, size }) => {
   }
 
   return (
-    <img src={`./images/items/${id}.png`} style={{height: `${size}px`, width: `${size}px`}} className={`m-auto my-2`} alt="" onError={() => setImageError(true)}/>
+    <img src={`./images/items/${id}.png`} style={{height: `${size}px`, width: `${size}px`}} className={`m-auto my-2 object-contain  `} alt="" onError={() => setImageError(true)}/>
   )
 }
 

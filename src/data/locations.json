@@ -7,12 +7,14 @@
       "contract_beast_of_white_orchard",
       "contract_drowners_by_the_old_mill",
       "contract_song_beneath_the_river",
-      "contract_devil_by_the_well"
+      "contract_devil_by_the_well",
+      "contract_griffin_school_gear",
+      "contract_feline_school_gear"
     ],
     "sub_locations": {
       "cackler_bridge": {
         "name": "Cackler Bridge 🌉",
-        "monsters_found": ["drowner", "wolf"],
+        "monsters_found": ["drowner", "wolf", "bear"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -127,7 +129,8 @@
     "badge": "./images/velen-badge.png",
     "contracts": [
       "contract_leshen_in_crookback_bog",
-      "contract_wyvern_nest_at_crows_perch"
+      "contract_wyvern_nest_at_crows_perch",
+      "contract_wolven_school_gear"
     ],
     "sub_locations": {
       "crookback_bog": {
@@ -195,7 +198,7 @@
       },
       "mulbrydale": {
         "name": "Mulbrydale 🕯️",
-        "monsters_found": ["bandit"],
+        "monsters_found": ["bandit", "bear"],
         "merchant": "mulbrydale_innkeeper",
         "blacksmith": null,
         "armorer": null,
@@ -231,7 +234,7 @@
       },
       "burned_hamlet": {
         "name": "Burned Hamlet 🪓",
-        "monsters_found": ["bandit"],
+        "monsters_found": ["bandit", "wolf"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -251,7 +254,7 @@
     "sub_locations": {
       "docks": {
         "name": "Novigrad Docks",
-        "monsters_found": ["siren", "drowner"],
+        "monsters_found": ["siren", "drowner", "bear", "mage_hunter", "witch_hunter"],
         "merchant": "dockmaster",
         "blacksmith": null,
         "armorer": null,
@@ -269,7 +272,7 @@
       },
       "market_square": {
         "name": "Market Square",
-        "monsters_found": null,
+        "monsters_found": ["mage_hunter", "witch_hunter"],
         "merchant": "market_merchants",
         "blacksmith": null,
         "armorer": null,
@@ -285,12 +288,13 @@
     "badge": "./images/skellige-badge.png",
     "contracts": [
       "contract_waves_of_the_wyvern",
-      "contract_spirits_of_the_standing_stones"
+      "contract_spirits_of_the_standing_stones",
+      "contract_ursine_school_gear"
     ],
     "sub_locations": {
       "harral_west": {
         "name": "Harral West",
-        "monsters_found": ["wyvern", "nekker"],
+        "monsters_found": ["wyvern", "nekker", "pirate"],
         "resources_to_gather": ["water", "hide"],
         "merchant": null,
         "blacksmith": null,
@@ -308,7 +312,7 @@
       },
       "longship_harbor": {
         "name": "Longship Harbor",
-        "monsters_found": ["siren"],
+        "monsters_found": ["siren", "pirate", "witch_hunter"],
         "merchant": "harbor_merchant",
         "blacksmith": null,
         "armorer": null,
@@ -317,7 +321,7 @@
       },
       "kaer_torlde": {
         "name": "Kaer Torlde",
-        "monsters_found": null,
+        "monsters_found": ["bear"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,

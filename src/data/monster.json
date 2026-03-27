@@ -14,10 +14,15 @@
     "bestiary_entry": "Aye, half-eagle, half tomcat, just like on the lord's crest...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3}, 
-      {"id": "griffin_feathers", "type": "resources", "chance": 1.0, "qty": 2},
-      {"id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2},
-      {"id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3 },
+      {
+        "id": "griffin_feathers",
+        "type": "resources",
+        "chance": 1.0,
+        "qty": 2
+      },
+      { "id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -38,9 +43,9 @@
     "bestiary_entry": "When at the water's edge, you gotta be quiet...",
     "img_url": "",
     "drops": [
-      {"id": "drowner_brain", "type": "resources", "chance": 1.0, "qty": 1}, 
-      {"id": "monster_saliva", "type": "resources", "chance": 0.6, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1}
+      { "id": "drowner_brain", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.6, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -61,9 +66,9 @@
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once...",
     "img_url": "",
     "drops": [
-      {"id": "water", "type": "foods", "chance": 0.5, "qty": 1},
-      {"id": "monster_saliva", "type": "resources", "chance": 0.7, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.4, "qty": 1}
+      { "id": "water", "type": "foods", "chance": 0.5, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.7, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.4, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Medium",
@@ -84,7 +89,7 @@
     "bestiary_entry": "Despite what is commonly thought, peasants do not interrupt their labors at midday...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2}
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2 }
     ],
     "discovered": false,
     "difficulty": "Medium",
@@ -105,8 +110,8 @@
     "bestiary_entry": "A specter born of tragic events — appears at midday to torment the living...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2}, 
-      {"id": "swallow", "type": "potions", "chance": 0.1, "qty": 1}
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2 },
+      { "id": "swallow", "type": "potions", "chance": 0.1, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -127,8 +132,8 @@
     "bestiary_entry": "An ancient forest guardian turned hostile...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2},
-      {"id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2}
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -149,10 +154,10 @@
     "bestiary_entry": "Smaller than dragons but far from harmless...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2}, 
-      {"id": "venom_extract", "type": "resources", "chance": 0.7, "qty": 1},
-      {"id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2},
-      {"id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2 },
+      { "id": "venom_extract", "type": "resources", "chance": 0.7, "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.8, "qty": 2 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Medium",
@@ -173,9 +178,9 @@
     "bestiary_entry": "Small, vicious, and dangerous in packs...",
     "img_url": "",
     "drops": [
-      {"id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 1},
-      {"id": "monster_bone", "type": "resources", "chance": 0.5, "qty": 1},
-      {"id": "monster_brain", "type": "resources", "chance": 0.5, "qty": 1}
+      { "id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.5, "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -196,8 +201,8 @@
     "bestiary_entry": "They appear from the mist, strike, and vanish...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 0.8, "qty": 1},
-      {"id": "monster_saliva", "type": "resources", "chance": 0.6, "qty": 1}
+      { "id": "monster_essence", "type": "resources", "chance": 0.8, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -218,9 +223,9 @@
     "bestiary_entry": "Corpse eaters that gather in battlefields and graveyards...",
     "img_url": "",
     "drops": [
-      {"id": "monster_blood", "type": "resources", "chance": 1.0, "qty": 1}, 
-      {"id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 1},
-      {"id": "monster_saliva", "type": "resources", "chance": 0.4, "qty": 1}
+      { "id": "monster_blood", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.4, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -241,10 +246,10 @@
     "bestiary_entry": "Cursed men who turn into beasts under the full moon...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3},
-      {"id": "monster_saliva", "type": "resources", "chance": 1.0, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2},
-      {"id": "hide", "type": "resources", "chance": 0.5, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 3 },
+      { "id": "monster_saliva", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2 },
+      { "id": "hide", "type": "resources", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -265,8 +270,8 @@
     "bestiary_entry": "Forged from eternal frost by powerful mages...",
     "img_url": "",
     "drops": [
-      {"id": "water", "type": "foods", "chance": 1.0, "qty": 2},
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 1}
+      { "id": "water", "type": "foods", "chance": 1.0, "qty": 2 },
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -287,10 +292,10 @@
     "bestiary_entry": "Massive, horned beasts that shake the ground with every step...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4},
-      {"id": "monster_bone", "type": "resources", "chance": 1.0, "qty": 2},
-      {"id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2},
-      {"id": "monster_brain", "type": "resources", "chance": 0.4, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4 },
+      { "id": "monster_bone", "type": "resources", "chance": 1.0, "qty": 2 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2 },
+      { "id": "monster_brain", "type": "resources", "chance": 0.4, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -311,9 +316,9 @@
     "bestiary_entry": "Ugly, hateful creatures that dwell near swamps and rivers...",
     "img_url": "",
     "drops": [
-      {"id": "water", "type": "foods", "chance": 0.8, "qty": 1},
-      {"id": "monster_saliva", "type": "resources", "chance": 1.0, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1}
+      { "id": "water", "type": "foods", "chance": 0.8, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -334,9 +339,9 @@
     "bestiary_entry": "Shrieking monsters that attack from above...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 0.5, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 1},
-      {"id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 0.5, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.6, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -357,7 +362,7 @@
     "bestiary_entry": "Created to guard ancient ruins...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2}
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 2 }
     ],
     "discovered": false,
     "difficulty": "Hard",
@@ -378,11 +383,11 @@
     "bestiary_entry": "Common predator of the wilds...",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2},
-      {"id": "wolf_liver", "type": "resources", "chance": 1.0, "qty": 1},
-      {"id": "dog_tallow", "type": "resources", "chance": 0.6, "qty": 2},
-      {"id": "wolf_pelt", "type": "resources", "chance": 0.5, "qty": 1},
-      {"id": "hide", "type": "resources", "chance": 0.3, "qty": 1}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 2 },
+      { "id": "wolf_liver", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "dog_tallow", "type": "resources", "chance": 0.6, "qty": 2 },
+      { "id": "wolf_pelt", "type": "resources", "chance": 0.5, "qty": 1 },
+      { "id": "hide", "type": "resources", "chance": 0.3, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -403,10 +408,15 @@
     "bestiary_entry": "Marauders and thieves who prey on travelers...",
     "img_url": "",
     "drops": [
-      {"id": "bread", "type": "foods", "chance": 1.0, "qty": 1},
-      {"id": "water", "type": "foods", "chance": 0.5, "qty": 1},
-      {"id": "metal_scrap", "type": "resources", "chance": 0.6, "qty": 1},
-      {"id": "leather_scrap", "type": "resources", "chance": 0.4, "qty": 1}
+      { "id": "bread", "type": "foods", "chance": 1.0, "qty": 1 },
+      { "id": "water", "type": "foods", "chance": 0.5, "qty": 1 },
+      { "id": "metal_scrap", "type": "resources", "chance": 0.6, "qty": 1 },
+      { "id": "leather_scrap", "type": "resources", "chance": 0.4, "qty": 1 },
+      { "id": "iron_ore", "type": "resources", "chance": 0.35, "qty": 1 },
+      { "id": "iron_ingot", "type": "resources", "chance": 0.2, "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "chance": 0.15, "qty": 1 },
+      { "id": "silver_ore", "type": "resources", "chance": 0.1, "qty": 1 },
+      { "id": "silver_ingot", "type": "resources", "chance": 0.05, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -427,7 +437,7 @@
     "bestiary_entry": "Restless spirits that haunt places of tragedy...",
     "img_url": "",
     "drops": [
-      {"id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 1}
+      { "id": "monster_essence", "type": "resources", "chance": 1.0, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Easy",
@@ -448,9 +458,9 @@
     "bestiary_entry": "A stronger, more vicious variant of the ghoul...",
     "img_url": "",
     "drops": [
-      {"id": "monster_bone", "type": "resources", "chance": 1.0, "qty": 1},
-      {"id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2},
-      {"id": "monster_saliva", "type": "resources", "chance": 0.5, "qty": 1}
+      { "id": "monster_bone", "type": "resources", "chance": 1.0, "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "chance": 0.8, "qty": 2 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Medium",
@@ -471,10 +481,11 @@
     "bestiary_entry": "Bears are massive, muscle-bound predators. Best to give them a wide berth unless you're prepared for a brutal, heavy-hitting fight.",
     "img_url": "",
     "drops": [
-      {"id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4},
-      {"id": "bear_fat", "type": "resources", "chance": 0.8, "qty": 1},
-      {"id": "hide", "type": "resources", "chance": 0.6, "qty": 1},
-      {"id": "monster_bone", "type": "resources", "chance": 0.4, "qty": 2}
+      { "id": "raw_meat", "type": "foods", "chance": 1.0, "qty": 4 },
+      { "id": "bear_fat", "type": "resources", "chance": 0.8, "qty": 1 },
+      { "id": "hide", "type": "resources", "chance": 0.6, "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "chance": 0.4, "qty": 2 },
+      { "id": "dog_tallow", "type": "resources", "chance": 0.4, "qty": 2 }
     ],
     "discovered": false,
     "difficulty": "Medium",
@@ -495,12 +506,93 @@
     "bestiary_entry": "Warrior endregas defend the colony's borders. They are heavily armored, relentlessly aggressive, and secrete a potent venom.",
     "img_url": "",
     "drops": [
-      {"id": "venom_extract", "type": "resources", "chance": 1.0, "qty": 2},
-      {"id": "monster_essence", "type": "resources", "chance": 0.4, "qty": 1},
-      {"id": "monster_saliva", "type": "resources", "chance": 0.5, "qty": 1}
+      { "id": "venom_extract", "type": "resources", "chance": 1.0, "qty": 2 },
+      { "id": "monster_essence", "type": "resources", "chance": 0.4, "qty": 1 },
+      { "id": "monster_saliva", "type": "resources", "chance": 0.5, "qty": 1 }
     ],
     "discovered": false,
     "difficulty": "Medium",
     "is_monster": true
+  },
+  "witch_hunter": {
+    "id": "witch_hunter",
+    "name": "Witch Hunter",
+    "species": "Human",
+    "vitality": 450,
+    "max_vitality": 450,
+    "crit_chance": 8,
+    "base_exp": 55,
+    "weakness": { "oil": [], "signs": ["Igni", "Aard"] },
+    "buffs": ["bleed"],
+    "attack": [25, 45],
+    "defense": 15,
+    "bestiary_entry": "Fanatical zealots dedicated to eradicating mages and non-humans. They are well-funded, heavily armored, and carry confiscated goods.",
+    "img_url": "",
+    "drops": [
+      { "id": "bread", "type": "foods", "chance": 1.0, "qty": 1 },
+      { "id": "water", "type": "foods", "chance": 0.5, "qty": 1 },
+      { "id": "metal_scrap", "type": "resources", "chance": 0.5, "qty": 2 },
+      { "id": "iron_ingot", "type": "resources", "chance": 0.4, "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "chance": 0.3, "qty": 1 },
+      { "id": "silver_ingot", "type": "resources", "chance": 0.1, "qty": 1 }
+    ],
+    "discovered": false,
+    "difficulty": "Medium",
+    "is_monster": false
+  },
+  "mage_hunter": {
+    "id": "mage_hunter",
+    "name": "Mage Hunter",
+    "species": "Human",
+    "vitality": 650,
+    "max_vitality": 650,
+    "crit_chance": 12,
+    "base_exp": 85,
+    "weakness": { "oil": [], "signs": ["Aard"] },
+    "buffs": ["bleed", "stun"],
+    "attack": [35, 65],
+    "defense": 22,
+    "bestiary_entry": "Elite, heavily armed assassins trained specifically to track and kill sorcerers. They carry high-quality steel and confiscated magical components.",
+    "img_url": "",
+    "drops": [
+      { "id": "water", "type": "foods", "chance": 0.8, "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "chance": 0.6, "qty": 2 },
+      { "id": "silver_ingot", "type": "resources", "chance": 0.4, "qty": 1 },
+      {
+        "id": "lesser_runestone",
+        "type": "resources",
+        "chance": 0.15,
+        "qty": 1
+      }
+    ],
+    "discovered": false,
+    "difficulty": "Hard",
+    "is_monster": false
+  },
+  "pirate": {
+    "id": "pirate",
+    "name": "Pirate",
+    "species": "Human",
+    "vitality": 320,
+    "max_vitality": 320,
+    "crit_chance": 8,
+    "base_exp": 35,
+    "weakness": { "oil": [], "signs": ["Igni"] },
+    "buffs": ["bleed"],
+    "attack": [20, 40],
+    "defense": 10,
+    "bestiary_entry": "Scourge of the coasts. They hoard stolen cargo and plundered treasures in their island hideouts, making their camps highly profitable to raid.",
+    "img_url": "",
+    "drops": [
+      { "id": "raw_meat", "type": "foods", "chance": 0.7, "qty": 1 },
+      { "id": "water", "type": "foods", "chance": 0.6, "qty": 1 },
+      { "id": "metal_scrap", "type": "resources", "chance": 0.5, "qty": 2 },
+      { "id": "iron_ore", "type": "resources", "chance": 0.4, "qty": 2 },
+      { "id": "silver_ore", "type": "resources", "chance": 0.3, "qty": 2 },
+      { "id": "silver_ingot", "type": "resources", "chance": 0.15, "qty": 1 }
+    ],
+    "discovered": false,
+    "difficulty": "Easy",
+    "is_monster": false
   }
 }

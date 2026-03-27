@@ -76,7 +76,7 @@ export const usePlayerStore = create(
       base_attack: 15,
       base_defense: 20,
       stamina: 100,
-      recipesUnlocked: ["necrophage_oil", "swallow", "griffin_silver_sword", "viper_steel_sword"],
+      recipesUnlocked: ["necrophage_oil", "swallow", "griffin_silver_sword", "viper_steel_sword", "steel_ingot", "silver_ingot", "iron_ingot"],
 
       inventory: {
         steelSwords: [
@@ -162,6 +162,8 @@ export const usePlayerStore = create(
         set((state) => ({
           currentLocation, subLocation 
         })),
+
+      unlockRecipes: (recipeIds) => set((state) => ({ recipesUnlocked: [...state.recipesUnlocked, ...recipeIds] })),
 
       takeDamage: (amount) =>
         set((state) => ({
@@ -288,8 +290,8 @@ export const usePlayerStore = create(
 
       completeQuest: (questId) =>
         set((state) => {
-          const { [questId]: removedQuest, ...remainingActiveQuests } =
-            state.activeQuests;
+          const { [questId]: removedQuest, ...remainingActiveQuests } = state.activeQuests;
+
 
           return {
             completedQuests: [...state.completedQuests, questId],
@@ -346,6 +348,9 @@ export const usePlayerStore = create(
         if (!(contractId in activeQuests)) return;
 
         const contractData = contractsData[contractId];
+        if (contractData.reward_recipe) {
+          unlockRecipes(contractData.reward_recipe)
+        }
         addCoins(contractData.reward_coins);
         updateLevelExp(contractData.reward_exp);
         completeQuest(contractId);

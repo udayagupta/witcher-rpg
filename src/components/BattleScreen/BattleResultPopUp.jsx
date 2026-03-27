@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
 import { calculateMonsterExp, playSound } from "../../utils/utils";
-import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
+import { usePlayerStore } from "../../store/usePlayerStore";
+import Icon from "../Icon";
 
 const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const isVictory = battleResult === "player";
 
   // Zustand state
-  const player = usePlayer();
   const addToInventory = usePlayerStore((state) => state.addToInventory);
   const updateLevelExp = usePlayerStore((state) => state.updateLevelExp);
   const updateQuests = usePlayerStore((state) => state.updateQuests);
@@ -16,26 +16,27 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
 
+  const hasProcessedRewards = useRef(false);
+
 
   useEffect(() => {
+
+    if (hasProcessedRewards.current) return;
 
     if (isVictory) {
       playSound("quest_completed");
       updateLevelExp(xpGained);
       updateQuests(monsterData.id);
+
+      lootGenerated.forEach((loot) => {
+        addToInventory(loot.id, loot.qty, loot.type);
+      });
     } else {
       playSound("dead");
     }
 
-    if (!isVictory) return;
-    lootGenerated.forEach((loot) => {
-      addToInventory(loot.id, loot.qty, loot.type);
-    });
-  }, []);
-
-  useEffect(() => {
-    console.log(lootGenerated);
-  }, [lootGenerated]);
+    hasProcessedRewards.current = true;
+  }, [isVictory, xpGained, monsterData.id, lootGenerated, updateLevelExp, addToInventory]);
 
   return (
     battleResult && (<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
@@ -61,14 +62,20 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
             </p>
 
             {lootGenerated.length > 0 ? (
-              <ul className="mt-3 flex flex-col gap-1 text-sm">
+              <div>
                 <p className="text-neutral-400 italic mb-1">Loot received:</p>
-                {/* {lootGenerated.map((loot) => (
-                  <li key={loot.id} className="heading text-amber-200">
-                    {items[loot.type][loot.id].name} x {loot.qty}
-                  </li>
-                ))} */}
-              </ul>
+                <ul className="mt-3 flex gap-1 text-sm justify-center">
+                  {lootGenerated.map((loot) => (
+                    <li key={loot.id} className="relative p-2 w-[100px] h-[100px] heading text-amber-200 card">
+                      <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700 z-10">
+                        {loot.qty === -1 ? '∞' : `x${loot.qty}`}
+                      </span>
+                      <Icon id={loot.id} type={loot.type} size={45} />
+                      <p className="text-xs">{items[loot.type][loot.id].name}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ) : (
               <p className="text-neutral-500 italic mt-3">No loot received.</p>
             )}
@@ -86,8 +93,8 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
         <button
           onClick={() => handleGameMode("explore")}
           className={`cursor-pointer mt-5 mx-auto block witcher-font px-4 py-2 rounded-md text-sm border transition ${isVictory
-              ? "border-amber-300 hover:bg-amber-300 hover:text-black"
-              : "border-red-500 hover:bg-red-500 hover:text-black"
+            ? "border-amber-300 hover:bg-amber-300 hover:text-black"
+            : "border-red-500 hover:bg-red-500 hover:text-black"
             }`}
         >
           Continue

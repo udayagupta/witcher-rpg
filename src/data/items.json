@@ -635,6 +635,22 @@
       "rarity": "common",
       "price": 5,
       "description": "A yellow-flower found in wild, used for crafting."
+    },
+    "iron_ore": {
+      "id": "iron_ore",
+      "name": "Iron Ore",
+      "type": "resource",
+      "rarity": "common",
+      "price": 8,
+      "description": "Raw, unrefined iron extracted from the earth. Needs to be smelted into an ingot by a blacksmith before it can be used in forging."
+    },
+    "silver_ore": {
+      "id": "silver_ore",
+      "name": "Silver Ore",
+      "type": "resource",
+      "rarity": "uncommon",
+      "price": 30,
+      "description": "Glinting chunks of raw silver, often found deep underground. A crucial component for crafting monster-slaying weaponry once properly smelted."
     }
   },
   "foods": {

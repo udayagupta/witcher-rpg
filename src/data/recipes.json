@@ -223,5 +223,32 @@
       { "id": "monster_brain", "type": "resources", "qty": 1 },
       { "id": "celandine", "type": "resources", "qty": 5 }
     ]
+  },
+  "iron_ingot": {
+    "id": "iron_ingot",
+    "type": "resource",
+    "subType": "resources",
+    "name": "Iron Ingot",
+    "yields": { "id": "iron_ingot", "type": "resources", "qty": 1 },
+    "ingredients": [{ "id": "iron_ore", "type": "resources", "qty": 2 }]
+  },
+  "silver_ingot": {
+    "id": "silver_ingot",
+    "type": "resource",
+    "subType": "resources",
+    "name": "Silver Ingot",
+    "yields": { "id": "silver_ingot", "type": "resources", "qty": 1 },
+    "ingredients": [{ "id": "silver_ore", "type": "resources", "qty": 3 }]
+  },
+  "steel_ingot": {
+    "id": "steel_ingot",
+    "type": "resource",
+    "subType": "resources",
+    "name": "Steel Ingot",
+    "yields": { "id": "steel_ingot", "type": "resources", "qty": 1 },
+    "ingredients": [
+      { "id": "iron_ingot", "type": "resources", "qty": 1 },
+      { "id": "metal_scrap", "type": "resources", "qty": 2 }
+    ]
   }
 }

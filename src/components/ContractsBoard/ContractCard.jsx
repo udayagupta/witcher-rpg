@@ -1,6 +1,8 @@
 import { usePlayer, usePlayerStore } from '../../store/usePlayerStore';
 import contracts from "../../data/contracts.json";
 import monstersData from "../../data/monster.json";
+import recipesData from "../../data/recipes.json";
+
 
 const ContractCard = ({ selectedContract }) => {
   const player = usePlayer();
@@ -35,17 +37,37 @@ const ContractCard = ({ selectedContract }) => {
         {selectedContractData.name}
       </h3>
       <p className="text-center text-lg opacity-90">{selectedContractData.description}</p>
-      
-      <div className="flex flex-col text-left mt-2 text-md">
+
+      <div className="flex flex-col gap-1.5 text-left mt-2 text-md text-neutral-300">
+
         <p className="flex-1" title="Monster quantity">
-          Monster: <span className="font-semibold">{monstersData[contractMonster].name}</span> (x{selectedContractData.target_qty})
+          Target: <span className="font-semibold text-neutral-100">{monstersData[contractMonster]?.name}</span> (x{selectedContractData.target_qty})
         </p>
+
         <p className="flex-1">
-          Reward: <span className="font-semibold">{selectedContractData.reward_coins} crowns</span>
+          Reward: <span className="font-semibold text-amber-400">{selectedContractData.reward_coins} crowns</span>
         </p>
+
+        {/* Changed to a div to handle flex-wrap and items-center properly */}
+        <div className='flex flex-wrap items-center gap-2 mt-0.5'>
+          <span>Unlocks:</span>
+          {selectedContractData.reward_recipe ? (
+            selectedContractData.reward_recipe.map((r) => (
+              <span
+                key={r}
+                className='bg-amber-900/30 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-md text-xs font-bold tracking-wide shadow-sm'
+              >
+                {recipesData[r]?.name}
+              </span>
+            ))
+          ) : (
+            <span className="font-semibold text-neutral-500">None</span>
+          )}
+        </div>
+
       </div>
 
-      <div className="mt-3 flex flex-col gap-2">        
+      <div className="mt-3 flex flex-col gap-2">
         {!activeQuestInfo && (
           <button
             onClick={() => acceptContract(selectedContract)}
@@ -64,8 +86,8 @@ const ContractCard = ({ selectedContract }) => {
         )}
 
         {isCompleted && (
-          <button 
-            onClick={() => turnInQuest(selectedContract)} 
+          <button
+            onClick={() => turnInQuest(selectedContract)}
             className="px-4 py-2 rounded font-bold text-neutral-900 bg-green-500 hover:bg-green-400 cursor-pointer transition shadow-[0_0_15px_rgba(34,197,94,0.4)]"
           >
             Turn In Contract
