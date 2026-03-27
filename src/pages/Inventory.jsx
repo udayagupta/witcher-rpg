@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-// import { usePlayer } from "../context/PlayerContext/PlayerContext";
 import { motion } from 'motion/react';
 import RenderCategory from '../components/Inventory/RenderCategory';
 
 
 const Inventory = () => {
-  // const { player } = usePlayer();
   const [currentlyDisplaying, setCurrentlyDisplaying] = useState({ name: "Weapons", id: "weapons", toRender: ["silverSwords", "steelSwords"] });
 
   const categoryBtnClass = `text-amber-300 bg-neutral-800 cursor-pointer font-extrabold p-2 rounded-md flex-1 transition hover:bg-amber-300 hover:text-neutral-800`;

@@ -102,7 +102,7 @@
       },
       "orchard_fields": {
         "name": "Orchard Fields 🍎",
-        "monsters_found": ["griffin", "harpy"],
+        "monsters_found": ["griffin", "harpy", "endrega_warrior"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -141,7 +141,7 @@
       },
       "crow_perch_cliffs": {
         "name": "Crow's Perch Cliffs 🪶",
-        "monsters_found": ["wyvern"],
+        "monsters_found": ["wyvern", "endrega_warrior"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -260,7 +260,7 @@
       },
       "old_sewers": {
         "name": "Old Sewers",
-        "monsters_found": ["nekker"],
+        "monsters_found": ["nekker", "endrega_warrior"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,

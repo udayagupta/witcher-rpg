@@ -136,3 +136,13 @@ export const calculateMonsterExp = (baseExp) => {
   const variance = 0.9 + (Math.random() * 0.2); 
   return Math.round(baseExp * variance);
 };
+
+export const getPlayerQty = (playerInventory, ingredient) => {
+  const playerItem = playerInventory[ingredient.type].find((item) => item.id === ingredient.id);
+
+  return playerItem?.qty || 0;
+}
+
+export const validateIngredients = (playerInventory, ingredients) => {
+  return ingredients.every((ingredient) => getPlayerQty(playerInventory, ingredient) >= ingredient.qty);
+}

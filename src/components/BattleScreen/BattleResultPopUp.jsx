@@ -63,11 +63,11 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
             {lootGenerated.length > 0 ? (
               <ul className="mt-3 flex flex-col gap-1 text-sm">
                 <p className="text-neutral-400 italic mb-1">Loot received:</p>
-                {lootGenerated.map((loot) => (
+                {/* {lootGenerated.map((loot) => (
                   <li key={loot.id} className="heading text-amber-200">
                     {items[loot.type][loot.id].name} x {loot.qty}
                   </li>
-                ))}
+                ))} */}
               </ul>
             ) : (
               <p className="text-neutral-500 italic mt-3">No loot received.</p>

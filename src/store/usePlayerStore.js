@@ -76,7 +76,7 @@ export const usePlayerStore = create(
       base_attack: 15,
       base_defense: 20,
       stamina: 100,
-      recipesUnlocked: [],
+      recipesUnlocked: ["necrophage_oil", "swallow", "griffin_silver_sword", "viper_steel_sword"],
 
       inventory: {
         steelSwords: [
@@ -117,6 +117,9 @@ export const usePlayerStore = create(
           { id: "hide", type: "resources", qty: 2 },
           { id: "monster_saliva", type: "resources", qty: 1 },
           { id: "white_myrtle", type: "resources", qty: 1 },
+          { id: "griffin_feathers", type: "resources", qty: 2 },
+          { id: "silver_ingot", type: "resources", qty: 3 },
+          { id: "monster_brain", type: "resources", qty: 3 },
         ],
         foods: [
           { id: "water", type: "foods", qty: 5 },

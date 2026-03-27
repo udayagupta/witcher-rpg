@@ -12,7 +12,7 @@ import Regions from './components/Regions/Regions.jsx';
 import ContractsBoard from './components/ContractsBoard/ContractsBoard.jsx';
 import ExploreRegion from './components/Regions/ExploreRegion.jsx';
 import Inventory from './pages/Inventory.jsx';
-import Alchemy from './components/Alchemy/Alchemy.jsx';
+import CraftingAlchemy from './components/CraftingAlchemy/CraftingAlchemy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       { path: "monster-bestiary", element: <MonsterBestiary /> },
       { path: "inventory", element: <Inventory /> },
       { path: "world-map", element: <WorldMap /> },
-      { path: "alchemy", element: <Alchemy /> },
+      { path: "crafting-alchemy", element: <CraftingAlchemy /> },
     ]
   }
 ])

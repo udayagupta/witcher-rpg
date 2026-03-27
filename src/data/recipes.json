@@ -2,62 +2,226 @@
   "hybrid_oil": {
     "id": "hybrid_oil",
     "type": "oil",
+    "subType": "oils",
     "name": "Hybrid Oil",
     "yields": { "id": "hybrid_oil", "type": "oil", "qty": 1 },
     "ingredients": [
-      { "id": "dog_tallow", "type": "resource", "qty": 1 },
-      { "id": "white_myrtle", "type": "resource", "qty": 4 }
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "white_myrtle", "type": "resources", "qty": 4 }
     ]
   },
   "necrophage_oil": {
     "id": "necrophage_oil",
     "type": "oil",
+    "subType": "oils",
     "name": "Necrophage Oil",
     "yields": { "id": "necrophage_oil", "type": "oil", "qty": 1 },
     "ingredients": [
-      { "id": "dog_tallow", "type": "resource", "qty": 1 },
-      { "id": "blowball", "type": "resource", "qty": 4 }
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "blowball", "type": "resources", "qty": 4 }
     ]
   },
   "specter_oil": {
     "id": "specter_oil",
     "type": "oil",
+    "subType": "oils",
     "name": "Specter Oil",
     "yields": { "id": "specter_oil", "type": "oil", "qty": 1 },
     "ingredients": [
-      { "id": "bear_fat", "type": "resource", "qty": 1 },
-      { "id": "arenaria", "type": "resource", "qty": 4 }
+      { "id": "bear_fat", "type": "resources", "qty": 1 },
+      { "id": "arenaria", "type": "resources", "qty": 4 }
     ]
   },
   "draconid_oil": {
     "id": "draconid_oil",
     "type": "oil",
+    "subType": "oils",
     "name": "Draconid Oil",
     "yields": { "id": "draconid_oil", "type": "oil", "qty": 1 },
     "ingredients": [
-      { "id": "dog_tallow", "type": "resource", "qty": 1 },
-      { "id": "ergot_seeds", "type": "resource", "qty": 4 }
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "ergot_seeds", "type": "resources", "qty": 4 }
     ]
   },
   "relict_oil": {
     "id": "relict_oil",
     "type": "oil",
+    "subType": "oils",
     "name": "Relict Oil",
     "yields": { "id": "relict_oil", "type": "oil", "qty": 1 },
     "ingredients": [
-      { "id": "dog_tallow", "type": "resource", "qty": 1 },
-      { "id": "mistletoe", "type": "resource", "qty": 5 }
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "mistletoe", "type": "resources", "qty": 5 }
     ]
   },
   "elemental_oil": {
-  "id": "elemental_oil",
-  "type": "oil",
-  "name": "Elementa Oil",
-  "yields": { "id": "elementa_oil", "type": "oil", "qty": 1 },
-  "ingredients": [
-    { "id": "dog_tallow", "type": "resource", "qty": 1 },
-    { "id": "puffball", "type": "resource", "qty": 4 }
-  ]
-}
-
+    "id": "elemental_oil",
+    "type": "oil",
+    "subType": "oils",
+    "name": "Elementa Oil",
+    "yields": { "id": "elementa_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "puffball", "type": "resources", "qty": 4 }
+    ]
+  },
+  "griffin_silver_sword": {
+    "id": "griffin_silver_sword",
+    "name": "Griffin Silver Sword",
+    "type": "weapon",
+    "subType": "silverSwords",
+    "yields": { "id": "griffin_silver_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "griffin_feathers", "type": "resources", "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "qty": 1 },
+      { "id": "silver_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "griffin_steel_sword": {
+    "id": "griffin_steel_sword",
+    "name": "Griffin Steel Sword",
+    "type": "weapon",
+    "subType": "steelSwords",
+    "yields": { "id": "griffin_steel_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "griffin_feathers", "type": "resources", "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "feline_steel_sword": {
+    "id": "feline_steel_sword",
+    "name": "Feline Steel Sword",
+    "type": "weapon",
+    "subType": "steelSwords",
+    "yields": { "id": "feline_steel_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "leather_scraps", "type": "resources", "qty": 2 },
+      { "id": "monster_saliva", "type": "resources", "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "qty": 2 },
+      { "id": "iron_ingot", "type": "resources", "qty": 1 }
+    ]
+  },
+  "feline_silver_sword": {
+    "id": "feline_silver_sword",
+    "name": "Feline Silver Sword",
+    "type": "weapon",
+    "subType": "silverSwords",
+    "yields": { "id": "feline_silver_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "leather_scraps", "type": "resources", "qty": 1 },
+      { "id": "monster_essence", "type": "resources", "qty": 2 },
+      { "id": "silver_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "ursine_steel_sword": {
+    "id": "ursine_steel_sword",
+    "name": "Ursine Steel Sword",
+    "type": "weapon",
+    "subType": "steelSwords",
+    "yields": { "id": "ursine_steel_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "bear_fat", "type": "resources", "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "qty": 4 }
+    ]
+  },
+  "ursine_silver_sword": {
+    "id": "ursine_silver_sword",
+    "name": "Ursine Silver Sword",
+    "type": "weapon",
+    "subType": "silverSwords",
+    "yields": { "id": "ursine_silver_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "bear_fat", "type": "resources", "qty": 1 },
+      { "id": "monster_bone", "type": "resources", "qty": 2 },
+      { "id": "silver_ingot", "type": "resources", "qty": 4 }
+    ]
+  },
+  "wolven_steel_sword": {
+    "id": "wolven_steel_sword",
+    "name": "Wolven Steel Sword",
+    "type": "weapon",
+    "subType": "steelSwords",
+    "yields": { "id": "wolven_steel_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "wolf_liver", "type": "resources", "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "qty": 2 },
+      { "id": "steel_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "wolven_silver_sword": {
+    "id": "wolven_silver_sword",
+    "name": "Wolven Silver Sword",
+    "type": "weapon",
+    "subType": "silverSwords",
+    "yields": { "id": "wolven_silver_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "wolf_liver", "type": "resources", "qty": 1 },
+      { "id": "monster_blood", "type": "resources", "qty": 1 },
+      { "id": "silver_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "viper_steel_sword": {
+    "id": "viper_steel_sword",
+    "name": "Viper Steel Sword",
+    "type": "weapon",
+    "subType": "steelSwords",
+    "yields": { "id": "viper_steel_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "venom_extract", "type": "resources", "qty": 2 },
+      { "id": "monster_bone", "type": "resources", "qty": 1 },
+      { "id": "steel_ingot", "type": "resources", "qty": 2 }
+    ]
+  },
+  "viper_silver_sword": {
+    "id": "viper_silver_sword",
+    "name": "Viper Silver Sword",
+    "type": "weapon",
+    "subType": "silverSwords",
+    "yields": { "id": "viper_silver_sword", "type": "weapon", "qty": 1 },
+    "ingredients": [
+      { "id": "venom_extract", "type": "resources", "qty": 2 },
+      { "id": "monster_bone", "type": "resources", "qty": 2 },
+      { "id": "silver_ingot", "type": "resources", "qty": 3 }
+    ]
+  },
+  "swallow": {
+    "id": "swallow",
+    "type": "potion",
+    "subType": "potions",
+    "name": "Swallow",
+    "yields": { "id": "swallow", "type": "potion", "qty": 1 },
+    "ingredients": [
+      { "id": "dwarven_spirit", "type": "resources", "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "qty": 1 },
+      { "id": "celandine", "type": "resources", "qty": 5 }
+    ]
+  },
+  "enhanced_swallow": {
+    "id": "enhanced_swallow",
+    "type": "potion",
+    "subType": "potions",
+    "name": "Enhanced Swallow",
+    "yields": { "id": "enhanced_swallow", "type": "potion", "qty": 1 },
+    "ingredients": [
+      { "id": "swallow", "type": "resources", "qty": 1 },
+      { "id": "dwarven_spirit", "type": "resources", "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "qty": 1 },
+      { "id": "celandine", "type": "resources", "qty": 5 }
+    ]
+  },
+  "superior_swallow": {
+    "id": "superior_swallow",
+    "type": "potion",
+    "subType": "potions",
+    "name": "Superior Swallow",
+    "yields": { "id": "superior_swallow", "type": "potion", "qty": 1 },
+    "ingredients": [
+      { "id": "enhanced_swallow", "type": "resources", "qty": 1 },
+      { "id": "dwarven_spirit", "type": "resources", "qty": 1 },
+      { "id": "monster_brain", "type": "resources", "qty": 1 },
+      { "id": "celandine", "type": "resources", "qty": 5 }
+    ]
+  }
 }

@@ -23,15 +23,6 @@ const RenderCategory = ({ category }) => {
 
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const categoryIcon = {
-    weapon: <GiCrossedSwords />,
-    armor: <GiLeatherArmor />,
-    potion: <GiPotionBall />,
-    oil: <GiPotionBall />,
-    resource: <GiHerbsBundle />,
-    food: <GiHerbsBundle />
-  }
-
   const handleSelectedItem = (item) => {
     setSelectedItem(item);
   }

@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { path: "/contracts-board", label: "Contracts Board 🪧" },
   { path: "/journal", label: "Journal 📜" },
   { path: "/monster-bestiary", label: "Monster Bestiary 🐦‍🔥" },
-  { path: "/alchemy", label: "Alchemy 🧪" },
+  { path: "/crafting-alchemy", label: "Crafting & Alchemy 🧪" },
 ];
 
 const SideBar = () => {

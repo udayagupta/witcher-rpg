@@ -47,6 +47,54 @@
       "durability": 100,
       "price": 1500,
       "description": "Forged by dwarven smiths in Mahakam. Razor-sharp and incredibly light."
+    },
+    "griffin_steel_sword": {
+      "id": "griffin_steel_sword",
+      "name": "Griffin Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "epic",
+      "level_req": 11,
+      "attack": [100, 130],
+      "durability": 100,
+      "price": 1100,
+      "description": "A balanced steel blade forged by the Griffin School, designed to channel magical energy effectively."
+    },
+    "wolven_steel_sword": {
+      "id": "wolven_steel_sword",
+      "name": "Wolven Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "epic",
+      "level_req": 14,
+      "attack": [130, 160],
+      "durability": 100,
+      "price": 1300,
+      "description": "A versatile steel sword from the Wolf School, offering a perfect balance of speed and power."
+    },
+    "feline_steel_sword": {
+      "id": "feline_steel_sword",
+      "name": "Feline Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "epic",
+      "level_req": 17,
+      "attack": [150, 190],
+      "durability": 100,
+      "price": 1500,
+      "description": "A lightweight, deadly steel sword from the Feline School, favoring flurry attacks and quick strikes."
+    },
+    "ursine_steel_sword": {
+      "id": "ursine_steel_sword",
+      "name": "Ursine Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "epic",
+      "level_req": 20,
+      "attack": [190, 240],
+      "durability": 100,
+      "price": 1800,
+      "description": "A heavy, brutal steel sword from the Bear School, meant for devastating, armor-crushing blows."
     }
   },
   "silverSwords": {
@@ -80,8 +128,8 @@
       "type": "weapon",
       "slot": "silver_sword",
       "rarity": "rare",
-      "level_req": 6,
-      "attack": [80, 115],
+      "level_req": 11,
+      "attack": [130, 170],
       "durability": 100,
       "price": 950,
       "description": "A beautifully balanced silver sword carrying the sigil of the Griffin School."
@@ -97,6 +145,42 @@
       "durability": 100,
       "price": 3000,
       "description": "A legendary blade bestowed by the Lady of the Lake. Its edge never dulls."
+    },
+    "ursine_silver_sword": {
+      "id": "ursine_silver_sword",
+      "name": "Ursine Silver Sword",
+      "type": "weapon",
+      "slot": "silver_sword",
+      "rarity": "epic",
+      "level_req": 20,
+      "attack": [230, 290],
+      "durability": 100,
+      "price": 2500,
+      "description": "A massive silver sword capable of cleaving through the thickest monster hides with raw kinetic force."
+    },
+    "feline_silver_sword": {
+      "id": "feline_silver_sword",
+      "name": "Feline Silver Sword",
+      "type": "weapon",
+      "slot": "silver_sword",
+      "rarity": "epic",
+      "level_req": 17,
+      "attack": [180, 230],
+      "durability": 100,
+      "price": 2000,
+      "description": "A swift silver blade that slices through necrophages and beasts with lethal, bleeding precision."
+    },
+    "wolven_silver_sword": {
+      "id": "wolven_silver_sword",
+      "name": "Wolven Silver Sword",
+      "type": "weapon",
+      "slot": "silver_sword",
+      "rarity": "epic",
+      "level_req": 14,
+      "attack": [160, 200],
+      "durability": 100,
+      "price": 1800,
+      "description": "The standard issue silver sword for witchers of Kaer Morhen. Deadly and dependable."
     }
   },
   "armor": {
@@ -255,16 +339,16 @@
       "price": 80,
       "description": "A basic witcher potion that accelerates vitality regeneration. Use in combat to quickly recover health."
     },
-    "swallow_strong": {
-      "id": "swallow_strong",
-      "name": "Strong Swallow",
+    "enhanced_swallow": {
+      "id": "enhanced_swallow",
+      "name": "Enhanced Swallow",
       "type": "potion",
       "rarity": "uncommon",
       "heal": 300,
       "price": 200,
       "description": "A reinforced Swallow with a stronger healing effect. Restores a larger amount of vitality over a short period."
     },
-    "swallow_superior": {
+    "superior_swallow": {
       "id": "swallow_superior",
       "name": "Superior Swallow",
       "type": "potion",
@@ -440,123 +524,6 @@
       "description": "A spongy, foul-smelling brain. Crucial for brewing Swallow potions.",
       "icon": "brain"
     },
-    "siren_vocal_cords": {
-      "id": "siren_vocal_cords",
-      "name": "Siren Vocal Cords",
-      "type": "resource",
-      "rarity": "uncommon",
-      "price": 25,
-      "description": "The delicate vocal cords of a siren. Used in crafting hybrid oils and high-tier swords.",
-      "icon": "vocal_cord"
-    },
-    "specter_dust": {
-      "id": "specter_dust",
-      "name": "Specter Dust",
-      "type": "resource",
-      "rarity": "common",
-      "price": 20,
-      "description": "Remains of a wraith. Needed to bind specter oils.",
-      "icon": "dust"
-    },
-    "leshen_resin": {
-      "id": "leshen_resin",
-      "name": "Leshen Resin",
-      "type": "resource",
-      "rarity": "rare",
-      "price": 60,
-      "description": "Hardened sap from a defeated leshen. Used in top-tier relict oils.",
-      "icon": "resin"
-    },
-    "wyvern_egg": {
-      "id": "wyvern_egg",
-      "name": "Wyvern Egg",
-      "type": "resource",
-      "rarity": "uncommon",
-      "price": 45,
-      "description": "A large, speckled egg harvested from a wyvern. Essential for draconid oils.",
-      "icon": "egg"
-    },
-    "nekker_claw": {
-      "id": "nekker_claw",
-      "name": "Nekker Claw",
-      "type": "resource",
-      "rarity": "common",
-      "price": 10,
-      "description": "A sharp, curved claw from a nekker. Used in basic ogroid and necrophage alchemy.",
-      "icon": "claw"
-    },
-    "foglet_teeth": {
-      "id": "foglet_teeth",
-      "name": "Foglet Teeth",
-      "type": "resource",
-      "rarity": "uncommon",
-      "price": 30,
-      "description": "Translucent, razor-sharp teeth used in advanced necrophage alchemy.",
-      "icon": "tooth"
-    },
-    "ghoul_blood": {
-      "id": "ghoul_blood",
-      "name": "Ghoul's Blood",
-      "type": "resource",
-      "rarity": "common",
-      "price": 15,
-      "description": "Thick, coagulated blood from a ghoul. A common base ingredient for necrophage oils.",
-      "icon": "blood"
-    },
-    "werewolf_saliva": {
-      "id": "werewolf_saliva",
-      "name": "Werewolf Saliva",
-      "type": "resource",
-      "rarity": "rare",
-      "price": 80,
-      "description": "Highly concentrated and toxic saliva. Prized for brewing cursed oils.",
-      "icon": "saliva"
-    },
-    "elemental_essence": {
-      "id": "elemental_essence",
-      "name": "Elemental Essence",
-      "type": "resource",
-      "rarity": "rare",
-      "price": 75,
-      "description": "A dense chunk of magical essence dropped by golems and elementals. Used to sharpen blades and brew oils.",
-      "icon": "essence"
-    },
-    "fiend_eye": {
-      "id": "fiend_eye",
-      "name": "Fiend's Eye",
-      "type": "resource",
-      "rarity": "rare",
-      "price": 100,
-      "description": "The massive, hypnotic third eye of a fiend. Used for the strongest relict oils.",
-      "icon": "eye"
-    },
-    "water_hag_tooth": {
-      "id": "water_hag_tooth",
-      "name": "Water Hag Tooth",
-      "type": "resource",
-      "rarity": "uncommon",
-      "price": 25,
-      "description": "A rotten, jagged tooth from a water hag. Used to brew necrophage oils and decoctions.",
-      "icon": "tooth"
-    },
-    "harpy_feathers": {
-      "id": "harpy_feathers",
-      "name": "Harpy Feathers",
-      "type": "resource",
-      "rarity": "common",
-      "price": 12,
-      "description": "Stiff feathers used in hybrid oils.",
-      "icon": "feather"
-    },
-    "alghoul_bone_marrow": {
-      "id": "alghoul_bone_marrow",
-      "name": "Alghoul Bone Marrow",
-      "type": "resource",
-      "rarity": "uncommon",
-      "price": 35,
-      "description": "Extracted from the spiked bones of an alghoul. Highly sought after by alchemists.",
-      "icon": "bone"
-    },
     "dog_tallow": {
       "id": "dog_tallow",
       "name": "Dog Tallow",
@@ -603,7 +570,71 @@
       "type": "resource",
       "rarity": "common",
       "price": 5,
-      "description": "A resources used in cooking various Witcher Oils/Gears."
+      "description": "A resources used in crafting various Witcher Oils/Gears."
+    },
+    "monster_brain": {
+      "id": "monster_brain",
+      "name": "Monster Brain",
+      "type": "resource",
+      "rarity": "common",
+      "price": 15,
+      "description": "A resources used in crafting various Witcher Oils/Gears."
+    },
+    "iron_ingot": {
+      "id": "iron_ingot",
+      "name": "Iron Ingot",
+      "type": "resource",
+      "rarity": "common",
+      "price": 10,
+      "description": "A basic, heavily utilized metal used in forging standard armor and weaponry."
+    },
+    "steel_ingot": {
+      "id": "steel_ingot",
+      "name": "Steel Ingot",
+      "type": "resource",
+      "rarity": "common",
+      "price": 15,
+      "description": "A refined metal alloy forming the sturdy backbone of many human-forged swords and armors."
+    },
+    "silver_ingot": {
+      "id": "silver_ingot",
+      "name": "Silver Ingot",
+      "type": "resource",
+      "rarity": "uncommon",
+      "price": 40,
+      "description": "An essential forging component primarily used to craft monster-slaying blades."
+    },
+    "wolf_pelt": {
+      "id": "wolf_pelt",
+      "name": "Wolf Pelt",
+      "type": "resource",
+      "rarity": "common",
+      "price": 12,
+      "description": "Thick fur harvested from a wolf. Useful for crafting basic armor components and rugged gear."
+    },
+    "venom_extract": {
+      "id": "venom_extract",
+      "name": "Venom Extract",
+      "type": "resource",
+      "rarity": "uncommon",
+      "price": 25,
+      "description": "Highly toxic fluid extracted from venomous creatures. A crucial ingredient for Viper school gear and deadly blade oils."
+    },
+    "wolf_liver": {
+      "id": "wolf_liver",
+      "name": "Wolf Liver",
+      "type": "resource",
+      "rarity": "common",
+      "price": 10,
+      "description": "A nutrient-rich organ harvested from a wolf. Often used in alchemy to brew beast-specific oils and potions."
+    },
+    "blowball": {
+      "id": "blowball",
+      "name": "Blowball",
+      "type": "resource",
+      "rarity": "common",
+      "price": 5,
+      "description": "A yellow-flower found in wild, used for crafting."
     }
   },
   "foods": {

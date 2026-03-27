@@ -6,6 +6,7 @@
     "target_qty": 1,
     "reward_coins": 500,
     "reward_exp": 200,
+    "recipe_reward": null,
     "short_description": "A griffin has been terrorizing the fields near the Ismena River.",
     "description": "A Griffin has made its nest near the fields south of the Ismena River. It has been preying on livestock and even attacked a patrol. Villagers are offering a handsome reward for slaying the beast and bringing proof of the kill."
   },
@@ -16,6 +17,7 @@
     "target_qty": 3,
     "reward_coins": 200,
     "reward_exp": 80,
+    "recipe_reward": null,
     "short_description": "Drowners lurking near the old mill are scaring the fishermen away.",
     "description": "Several drowners have been sighted along the riverbank near the old mill. Fishermen fear to go near the water after dusk. The village elder seeks someone skilled enough to cleanse the area of the monsters."
   },
@@ -26,6 +28,7 @@
     "target_qty": 3,
     "reward_coins": 400,
     "reward_exp": 100,
+    "recipe_reward": null,
     "short_description": "Sailors report eerie songs luring them toward the river cliffs.",
     "description": "Sailors traveling the Ismena River report eerie singing that lures them toward the rocks at night. Those who follow never return. The locals suspect a group of sirens nesting near the river cliffs. A reward is offered for their heads."
   },
@@ -36,6 +39,7 @@
     "target_qty": 1,
     "reward_coins": 300,
     "reward_exp": 100,
+    "recipe_reward": null,
     "short_description": "Villagers of the Abandoned Village claim a vengeful spirit haunts the old well, dragging the living to their deaths.",
     "description": "Villagers report a restless spirit by the old well. It attacks anyone who ventures too close. The elders promise a reward for lifting the curse. None dare fetch water or till the nearby fields, for the ghost's wailing is heard at dawn and dusk. Any witcher brave enough to face the spirit shall be paid 300 crowns upon proof of the wraith’s defeat."
   },
@@ -46,6 +50,7 @@
     "target_qty": 1,
     "reward_coins": 900,
     "reward_exp": 400,
+    "recipe_reward": null,
     "short_description": "A Leshen has been seen drawing beasts to trample the peat bogs.",
     "description": "Locals report an ancient Leshen has returned and is calling animals and roots to protect its domain. Pack animal routes have been destroyed and the farmers fear for their livestock."
   },
@@ -56,6 +61,7 @@
     "target_qty": 1,
     "reward_coins": 600,
     "reward_exp": 300,
+    "recipe_reward": null,
     "short_description": "A wyvern nesting in the high cliffs has started raiding nearby farms.",
     "description": "Farmers report missing livestock and a large, dragon-like shadow seen circling the cliffs near Crow's Perch. Bring proof of the wyvern's defeat."
   },
@@ -66,6 +72,7 @@
     "target_qty": 5,
     "reward_coins": 300,
     "reward_exp": 120,
+    "recipe_reward": null,
     "short_description": "Creatures have taken up residence in the old Novigrad sewers.",
     "description": "Sewer workers unearthed signs of small, aggressive beasts living beneath Novigrad. Civilians have seen shadowy figures near the drains at night."
   },
@@ -76,6 +83,7 @@
     "target_qty": 1,
     "reward_coins": 700,
     "reward_exp": 320,
+    "recipe_reward": null,
     "short_description": "A wyvern has nested near a coastal village and attacks passing ships.",
     "description": "Villagers report a fierce wyvern nesting atop a coastal stack, swooping down to plunder ships and livestock. The chieftain offers coin for its head."
   },
@@ -86,7 +94,52 @@
     "target_qty": 1,
     "reward_coins": 500,
     "reward_exp": 220,
+    "recipe_reward": null,
     "short_description": "A restless specter haunts the ancient standing stones.",
     "description": "Islanders whisper of a noonwraith that appears near the old standing stones. Farmers report terrified cattle and a chilling wail at midday."
+  },
+  "contract_griffin_school_gear": {
+    "name": "Scavenger Hunt: Griffin School Gear",
+    "type": "monster_hunt",
+    "target_monster": "griffin",
+    "target_qty": 8,
+    "reward_coins": 800,
+    "reward_exp": 400,
+    "recipe_reward": ["griffin_steel_sword", "griffin_silver_sword"],
+    "short_description": "Hunt down a flock of griffins to recover the lost diagrams of the Griffin School.",
+    "description": "A famous Witcher of the Griffin School was lost in these parts years ago. His gear diagrams are said to be scattered in a mountain pass now guarded by a vicious flock of griffins. Clear out 8 of the beasts to safely recover the steel and silver sword crafting recipes."
+  },
+  "contract_feline_school_gear": {
+    "name": "Scavenger Hunt: Feline School Gear",
+    "type": "monster_hunt",
+    "target_monster": "alghoul",
+    "target_qty": 8,
+    "reward_coins": 850,
+    "reward_exp": 450,
+    "recipe_reward": ["feline_steel_sword", "feline_silver_sword"],
+    "short_description": "Clear out an alghoul nest to retrieve Cat School diagrams.",
+    "description": "An old expedition carrying Cat School sword diagrams was overrun by necrophages near some elven ruins. Slay 8 alghouls infesting the area to reclaim the lost feline sword recipes."
+  },
+  "contract_ursine_school_gear": {
+    "name": "Scavenger Hunt: Bear School Gear",
+    "type": "monster_hunt",
+    "target_monster": "bear",
+    "target_qty": 10,
+    "reward_coins": 900,
+    "reward_exp": 500,
+    "recipe_reward": ["ursine_steel_sword", "ursine_silver_sword"],
+    "short_description": "Hunt down massive bears in the high peaks to find Ursine School gear.",
+    "description": "The heavy, devastating swords of the Bear School are hidden in a cave system deep in the mountains. Survive the harsh environment by hunting 10 territorial bears to secure the diagrams."
+  },
+  "contract_wolven_school_gear": {
+    "name": "Scavenger Hunt: Wolf School Gear",
+    "type": "monster_hunt",
+    "target_monster": "wolf",
+    "target_qty": 15,
+    "reward_coins": 750,
+    "reward_exp": 400,
+    "recipe_reward": ["wolven_steel_sword", "wolven_silver_sword"],
+    "short_description": "Survive a massive wolf pack to uncover Kaer Morhen's ancient diagrams.",
+    "description": "Old diagrams belonging to the School of the Wolf were dropped near a dense forest during a rout. A massive pack of wolves has claimed the area. Thin their numbers by hunting 15 wolves to retrieve your school's sword recipes."
   }
 }
