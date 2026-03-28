@@ -48,7 +48,6 @@ const MonsterHunting = ({ props }) => {
                   <img
                     src={`./images/${monster}.png`}
                     alt={currentMonster.name}
-                    // Added an onError fallback just in case an image is missing
                     onError={(e) => {
                       e.target.src = "https://via.placeholder.com/150/171717/FFFFFF?text=No+Image"; 
                     }}

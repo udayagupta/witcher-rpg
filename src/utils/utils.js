@@ -1,5 +1,10 @@
 import { effectsData } from "./effects";
 
+
+export const randomInRange = (max, min) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 export function formatNumber(number, locale = "en-US", options = {}) {
   try {
     return new Intl.NumberFormat(locale, options).format(number);
@@ -147,9 +152,13 @@ export const validateIngredients = (playerInventory, ingredients) => {
   return ingredients.every((ingredient) => getPlayerQty(playerInventory, ingredient) >= ingredient.qty);
 }
 
-// export const consumeIngredients = (playerInventory, ingredients) => {
-//   const newPlayerInventory = { ...playerInventory };
-//   ingredients.forEach((ingredient) => {
-//     newPlayerInventory[ingredient.type][ingredient.id]
-//   })
-// } 
+export const generateResources = (drops) => {
+  let loot = [];
+
+  drops.forEach((drop) => {
+    const roll = Math.random() < drop.chance;
+    if (roll) loot.push({ id: drop.id, type: drop.type, qty: randomInRange(1, drop.maxQty) })
+  })
+
+  return loot;
+}

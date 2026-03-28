@@ -1,13 +1,11 @@
 import { effectsData } from "./effects";
 import { generateLogText, checkIfEffectExists, existsAndCanStack } from "./utils";
+import { randomInRange } from "./utils";
 
 const SIGN_WEAKNESS_MULTIPLIER = 2;
 const SILVER_ATTACK_MULTIPLIER = 1.5;
 const STEEL_ATTACK_MULTIPLIER = 1.5;
 
-export const randomInRange = (max, min) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
 
 export const playerSwordDamage = (
   player,
@@ -103,19 +101,16 @@ export const monsterDamage = (monster, playerDefense, battleState, player) => {
   };
 };
 
-export const generateLoot = (monsterDrops) => {
+export const generateLoot = (drops) => {
   let loot = [];
 
-  monsterDrops.forEach((drop) => {
+  drops.forEach((drop) => {
     const chance = Math.random() < drop.chance;
     if (chance) loot.push({ id: drop.id, qty: drop.qty, type: drop.type });
   });
 
-  // console.log(loot);
-
   return loot;
 };
-
 
 export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
   const isBurning = Math.random() < burnChance;
@@ -237,7 +232,6 @@ export const applyEffects = (target, battleState, setBattleState, monsterData,  
   const targetEffectsKey = target === "player" ? "playerDebuffs" : "monsterDebuffs";
   const targetEffects = battleState[targetEffectsKey];
 
-  console.log(targetEffects);
   if (!targetEffects || targetEffects.length === 0) return;
 
   const targetMaxVitality = target === "player" ? player.vitality : monsterData.vitality;

@@ -102,7 +102,7 @@ const Regions = () => {
 
               <p className="text-sm text-neutral-300">
                 Resources: <span className="font-semibold text-neutral-100 capitalize">
-                  {currentSubLocation.resources_to_gather ? currentSubLocation.resources_to_gather.map(formatName).join(", ") : "None"}
+                  {currentSubLocation.resources_to_gather ? currentSubLocation.resources_to_gather.map(item => formatName(item.id)).join(", ") : "None"}
                 </span>
               </p>
 

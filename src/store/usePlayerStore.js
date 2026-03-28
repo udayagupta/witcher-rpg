@@ -193,7 +193,7 @@ export const usePlayerStore = create(
 
       unlockRecipes: (recipeIds) =>
         set((state) => ({
-          recipesUnlocked: [...state.recipesUnlocked, ...recipeIds],
+          recipesUnlocked: [ ...new Set([ ...state.recipesUnlocked, ...recipeIds ])],
         })),
 
       takeDamage: (amount) =>
