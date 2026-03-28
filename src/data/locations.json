@@ -263,7 +263,7 @@
       },
       "old_sewers": {
         "name": "Old Sewers",
-        "monsters_found": ["nekker", "endrega_warrior"],
+        "monsters_found": ["nekker", "endrega_warrior", "ekimmara"],
         "merchant": null,
         "blacksmith": null,
         "armorer": null,
@@ -272,7 +272,7 @@
       },
       "market_square": {
         "name": "Market Square",
-        "monsters_found": ["mage_hunter", "witch_hunter"],
+        "monsters_found": ["mage_hunter", "witch_hunter", "ekimmara"],
         "merchant": "market_merchants",
         "blacksmith": null,
         "armorer": null,

@@ -43,6 +43,17 @@
       { "id": "ergot_seeds", "type": "resources", "qty": 4 }
     ]
   },
+  "beast_oil": {
+    "id": "beast_oil",
+    "type": "oil",
+    "subType": "oils",
+    "name": "Beast Oil",
+    "yields": { "id": "beast_oil", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "wolf_liver", "type": "resources", "qty": 1 }
+    ]
+  },
   "relict_oil": {
     "id": "relict_oil",
     "type": "oil",
@@ -63,6 +74,17 @@
     "ingredients": [
       { "id": "dog_tallow", "type": "resources", "qty": 1 },
       { "id": "puffball", "type": "resources", "qty": 4 }
+    ]
+  },
+  "hanged_mans_venom": {
+    "id": "hanged_mans_venom",
+    "type": "oil",
+    "subType": "oils",
+    "name": "Hanged Man's Venom",
+    "yields": { "id": "hanged_mans_venom", "type": "oil", "qty": 1 },
+    "ingredients": [
+      { "id": "dog_tallow", "type": "resources", "qty": 1 },
+      { "id": "arenaria", "type": "resources", "qty": 4 }
     ]
   },
   "griffin_silver_sword": {

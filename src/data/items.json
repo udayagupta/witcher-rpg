@@ -95,6 +95,18 @@
       "durability": 100,
       "price": 1800,
       "description": "A heavy, brutal steel sword from the Bear School, meant for devastating, armor-crushing blows."
+    },
+    "viper_steel_sword": {
+      "id": "viper_steel_sword",
+      "name": "Viper Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "rare",
+      "level_req": 2,
+      "attack": [50, 70],
+      "durability": 150,
+      "price": 600,
+      "description": "A lethal blade from the School of the Viper. Its deeply grooved fuller is perfectly designed to hold potent toxins and venoms."
     }
   },
   "silverSwords": {
@@ -133,6 +145,18 @@
       "durability": 100,
       "price": 950,
       "description": "A beautifully balanced silver sword carrying the sigil of the Griffin School."
+    },
+    "viper_silver_sword": {
+      "id": "viper_silver_sword",
+      "name": "Viper Silver Sword",
+      "type": "weapon",
+      "slot": "silver_sword",
+      "rarity": "rare",
+      "level_req": 2,
+      "attack": [45, 65],
+      "durability": 150,
+      "price": 650,
+      "description": "A finely crafted blade from the School of the Viper. Its edge glimmers with a faint, toxic sheen."
     },
     "aerondight": {
       "id": "aerondight",
@@ -412,7 +436,44 @@
       "rarity": "rare",
       "price": 500,
       "description": "Effective versus Elementals."
+    },
+    "beast_oil": {
+      "id": "beast_oil",
+      "name": "Beast Oil",
+      "img": "beast",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 130,
+      "description": "Applied to steel swords — increases damage against beasts."
+    },
+    "cursed_oil": {
+      "id": "cursed_oil",
+      "name": "Cursed Oil",
+      "img": "cursed",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 140,
+      "description": "Applied to silver swords — increases damage against cursed ones."
+    },
+    "hanged_mans_venom": {
+      "id": "hanged_mans_venom",
+      "name": "Hanged Man's Venom",
+      "img": "hanged_man",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 130,
+      "description": "Applied to steel swords — increases damage against humans and nonhumans."
+    },
+    "vampire_oil": {
+      "id": "vampire_oil",
+      "name": "Vampire Oil",
+      "img": "vampire",
+      "type": "oil",
+      "rarity": "uncommon",
+      "price": 150,
+      "description": "Applied to silver swords — increases damage against vampires."
     }
+
   },
   "resources": {
     "monster_bone": {

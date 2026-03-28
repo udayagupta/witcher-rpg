@@ -3,7 +3,9 @@ import { motion } from 'motion/react';
 
 const MonsterHunting = ({ props }) => {
   const { subLocationData, setSelectedMonster, setGameMode, setPlayer, monsterData } = props;
-  const oversizedMonsters = ["wolf", "bandit"];
+  
+  // Added witch_hunter to prevent it from bursting out of the container
+  const oversizedMonsters = ["wolf", "bandit", "witch_hunter"];
 
   return (
     <div className="monster-hunting">
@@ -29,7 +31,6 @@ const MonsterHunting = ({ props }) => {
                 animate={{ scale: 1, opacity: 1 }}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3 }}
-
                 className="group flex flex-col items-center justify-between w-48 h-64 p-4 cursor-pointer bg-neutral-900/80 border border-neutral-700 hover:border-red-900/80 rounded-lg shadow-lg hover:shadow-red-900/20 transition-all"
                 onClick={() => {
                   setSelectedMonster(monster);
@@ -37,7 +38,7 @@ const MonsterHunting = ({ props }) => {
                   setPlayer(prev => ({ ...prev, inBattle: true }));
                 }}
               >
-                <p className="witcher-font text-xl font-semibold text-neutral-200 group-hover:text-red-400 transition-colors tracking-wide z-10">
+                <p className="witcher-font text-xl font-semibold text-neutral-200 group-hover:text-red-400 transition-colors tracking-wide z-10 text-center">
                   {currentMonster.name}
                 </p>
 
@@ -47,10 +48,15 @@ const MonsterHunting = ({ props }) => {
                   <img
                     src={`./images/${monster}.png`}
                     alt={currentMonster.name}
+                    // Added an onError fallback just in case an image is missing
+                    onError={(e) => {
+                      e.target.src = "https://via.placeholder.com/150/171717/FFFFFF?text=No+Image"; 
+                    }}
+                    // Adjusted the scaling classes to be much gentler
                     className={`w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] transition-transform duration-300 relative z-10
                       ${isOversized
-                          ? "scale-90 group-hover:scale-110"
-                          : "scale-125 group-hover:scale-150"
+                          ? "scale-90 group-hover:scale-100" 
+                          : "scale-105 group-hover:scale-110" 
                         }
                     `}
                   />

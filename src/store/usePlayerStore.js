@@ -35,7 +35,7 @@ const calculateDerivedStats = (player) => {
 
   const steelSwordAttack = [
     player.base_attack +
-    (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
+      (equippedSteelSword ? equippedSteelSword.attack[0] : 0),
     equippedSteelSword
       ? player.base_attack + equippedSteelSword.attack[1]
       : player.base_attack,
@@ -43,7 +43,7 @@ const calculateDerivedStats = (player) => {
 
   const silverSwordAttack = [
     player.base_attack +
-    (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
+      (equippedSilverSword ? equippedSilverSword.attack[0] : 0),
     equippedSilverSword
       ? player.base_attack + equippedSilverSword.attack[1]
       : player.base_attack,
@@ -76,7 +76,15 @@ export const usePlayerStore = create(
       base_attack: 15,
       base_defense: 20,
       stamina: 100,
-      recipesUnlocked: ["necrophage_oil", "swallow", "griffin_silver_sword", "viper_steel_sword", "steel_ingot", "silver_ingot", "iron_ingot"],
+      recipesUnlocked: [
+        "necrophage_oil",
+        "swallow",
+        "griffin_silver_sword",
+        "viper_steel_sword",
+        "steel_ingot",
+        "silver_ingot",
+        "iron_ingot",
+      ],
 
       inventory: {
         steelSwords: [
@@ -110,6 +118,7 @@ export const usePlayerStore = create(
           { id: "necrophage_oil", type: "oils", qty: 5 },
           { id: "specter_oil", type: "oils", qty: 5 },
           { id: "draconid_oil", type: "oils", qty: 5 },
+          { id: "hanged_mans_venom", type: "oils", qty: 5 },
         ],
         resources: [
           { id: "leather_scrap", type: "resources", qty: 10 },
@@ -154,16 +163,38 @@ export const usePlayerStore = create(
 
       shops: initialShopsData,
 
-      setPlayer: (updater) => set((state) => {
-        return typeof updater === "function" ? updater(state) : updater; 
-      }),
+      setPlayer: (updater) =>
+        set((state) => {
+          return typeof updater === "function" ? updater(state) : updater;
+        }),
 
-      changeLocation: (currentLocation, subLocation) => 
+      meditate: () => set((state) => {}),
+
+      craftItem: (recipeData) => {
+        const { consumeItem, addToInventory } = get();
+
+        recipeData.ingredients.forEach((ingredient) => {
+          const ingredientData = itemsData[ingredient.type][ingredient.id];
+          consumeItem(ingredientData.id, ingredientData.type, ingredient.qty);
+        });
+
+        addToInventory(
+          recipeData.yields.id,
+          recipeData.yields.qty,
+          recipeData.subType,
+        );
+      },
+
+      changeLocation: (currentLocation, subLocation) =>
         set((state) => ({
-          currentLocation, subLocation 
+          currentLocation,
+          subLocation,
         })),
 
-      unlockRecipes: (recipeIds) => set((state) => ({ recipesUnlocked: [...state.recipesUnlocked, ...recipeIds] })),
+      unlockRecipes: (recipeIds) =>
+        set((state) => ({
+          recipesUnlocked: [...state.recipesUnlocked, ...recipeIds],
+        })),
 
       takeDamage: (amount) =>
         set((state) => ({
@@ -230,8 +261,8 @@ export const usePlayerStore = create(
 
         const typeMap = {
           potion: "potions",
-          food: "foods"
-        }
+          food: "foods",
+        };
 
         const potionData = itemsData[typeMap[type]][id];
         if (!potionData || !potionData.heal) return false;
@@ -264,21 +295,20 @@ export const usePlayerStore = create(
         set((state) => {
           const currentCategoryList = state.inventory[itemCategory] || [];
           let itemFound = false;
-          console.log({itemId, qty, itemCategory});
 
           let newList = currentCategoryList.map((item) => {
             if (item.id === itemId) {
               itemFound = true;
+              console.log(`new item: ${(itemId, qty, itemCategory)}`);
               return { ...item, qty: item.qty + qty };
             }
             return item;
           });
 
           if (!itemFound) {
-            newList.push({ id: itemId, qty: qty, type: itemCategory});
+            newList.push({ id: itemId, qty: qty, type: itemCategory });
+            console.log(`new item: ${(itemId, qty, itemCategory)}`);
           }
-
-          console.log(newList);
 
           return {
             inventory: {
@@ -290,8 +320,8 @@ export const usePlayerStore = create(
 
       completeQuest: (questId) =>
         set((state) => {
-          const { [questId]: removedQuest, ...remainingActiveQuests } = state.activeQuests;
-
+          const { [questId]: removedQuest, ...remainingActiveQuests } =
+            state.activeQuests;
 
           return {
             completedQuests: [...state.completedQuests, questId],
@@ -307,41 +337,51 @@ export const usePlayerStore = create(
 
           const updatedQuests = {
             ...state.activeQuests,
-            [questId]: { status: "active", progress: 0, required: contractData.target_qty, monsterId: contractData.target_monster },
+            [questId]: {
+              status: "active",
+              progress: 0,
+              required: contractData.target_qty,
+              monsterId: contractData.target_monster,
+            },
           };
 
           return { activeQuests: updatedQuests };
         }),
 
-      updateQuests: (monsterId) => set((state) => {
-        const currentActiveQuests = { ...state.activeQuests };
-        let madeProgress = false;
-        console.log(monsterId);
+      updateQuests: (monsterId) =>
+        set((state) => {
+          const currentActiveQuests = { ...state.activeQuests };
+          let madeProgress = false;
+          console.log(monsterId);
 
-        Object.entries(currentActiveQuests).forEach(([questId, questData]) => {
-          if (questData.monsterId === monsterId && questData.progress < questData.required) {
-            const newProgress = questData.progress + 1;
+          Object.entries(currentActiveQuests).forEach(
+            ([questId, questData]) => {
+              if (
+                questData.monsterId === monsterId &&
+                questData.progress < questData.required
+              ) {
+                const newProgress = questData.progress + 1;
 
-            console.log("Before Update: ", currentActiveQuests[questId]);
+                console.log("Before Update: ", currentActiveQuests[questId]);
 
-            currentActiveQuests[questId] = {
-                ...questData,
-                progress: newProgress,
-                status: newProgress >= questData.required ? "completed" : "active"
+                currentActiveQuests[questId] = {
+                  ...questData,
+                  progress: newProgress,
+                  status:
+                    newProgress >= questData.required ? "completed" : "active",
+                };
+
+                madeProgress = true;
+
+                console.log("After Update: ", currentActiveQuests[questId]);
               }
+            },
+          );
 
-            madeProgress = true;
+          if (!madeProgress) return state;
 
-            console.log("After Update: ", currentActiveQuests[questId]);
-
-          }
-        })
-
-        if (!madeProgress) return state;
-
-        return { activeQuests: currentActiveQuests };
-
-      }),
+          return { activeQuests: currentActiveQuests };
+        }),
 
       turnInQuest: (contractId) => {
         const { activeQuests, addCoins, updateLevelExp, completeQuest } = get();
@@ -349,7 +389,7 @@ export const usePlayerStore = create(
 
         const contractData = contractsData[contractId];
         if (contractData.reward_recipe) {
-          unlockRecipes(contractData.reward_recipe)
+          unlockRecipes(contractData.reward_recipe);
         }
         addCoins(contractData.reward_coins);
         updateLevelExp(contractData.reward_exp);
@@ -379,7 +419,6 @@ export const usePlayerStore = create(
             maxVitality = Math.round(maxVitality * upgradeMultiplier);
             crit_chance = Math.round(crit_chance * upgradeMultiplier);
 
-
             didLevelUp = true;
           }
 
@@ -400,9 +439,8 @@ export const usePlayerStore = create(
   ),
 );
 
-
 export const usePlayer = () => {
   const rawPlayerStats = usePlayerStore((state) => state);
   const calculatedPlayerStats = calculateDerivedStats(rawPlayerStats);
   return calculatedPlayerStats;
-}
+};

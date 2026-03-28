@@ -146,3 +146,10 @@ export const getPlayerQty = (playerInventory, ingredient) => {
 export const validateIngredients = (playerInventory, ingredients) => {
   return ingredients.every((ingredient) => getPlayerQty(playerInventory, ingredient) >= ingredient.qty);
 }
+
+// export const consumeIngredients = (playerInventory, ingredients) => {
+//   const newPlayerInventory = { ...playerInventory };
+//   ingredients.forEach((ingredient) => {
+//     newPlayerInventory[ingredient.type][ingredient.id]
+//   })
+// } 

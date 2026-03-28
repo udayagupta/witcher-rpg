@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
-// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
@@ -22,7 +21,7 @@ const itemVariants = {
 };
 
 const Regions = () => {
-  // const { player, setPlayer } = usePlayer();
+
   const player = usePlayer();
   const changeLocation = usePlayerStore((state) => state.changeLocation);
   const setPlayer = usePlayerStore((state) => state.setPlayer)
@@ -33,26 +32,15 @@ const Regions = () => {
 
   const changeSubLocation = (subLocation, travelTime = 1000) => {
     if (player.subLocation === subLocation) return;
-    // setPlayer((prev) => ({ ...prev, isTraveling: true }));
     setPlayer({ isTraveling: true });
     setWillTravelTo(subLocation);
 
     setTimeout(() => {
-      // setPlayer((prev) => ({
-      //   ...prev,
-      //   subLocation,
-      //   isTraveling: false
-      // }));
-      // setPlayer({ })
       changeLocation(playerLocation, subLocation);
       setPlayer({ isTraveling: false });
       navigate("/explore-region");
     }, travelTime);
   };
-
-  // useEffect(() => {
-  //   console.log(player);
-  // }, []);
 
   return (
     <section>
@@ -108,7 +96,7 @@ const Regions = () => {
               )}
               <p className="text-sm text-neutral-300">
                 Monsters: <span className="font-semibold text-neutral-100 capitalize">
-                  {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.join(", ") : "None"}
+                  {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.map(formatName).join(", ") : "None"}
                 </span>
               </p>
 

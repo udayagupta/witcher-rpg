@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Icon from '../Icon';
 import itemsData from "../../data/items.json";
 import { getPlayerQty } from '../../utils/utils';
@@ -5,6 +6,11 @@ import { usePlayer } from '../../store/usePlayerStore';
 
 const RecipeCard = ({ recipeData }) => {
   const player = usePlayer();
+
+  useEffect(() => {
+    console.log(recipeData);
+    console.log(recipeData.id, itemsData[recipeData.subtype]);
+  }, [recipeData,]);
 
   return (
     <div className=''>

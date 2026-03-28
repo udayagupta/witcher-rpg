@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
 import { calculateMonsterExp, playSound } from "../../utils/utils";
@@ -16,7 +16,18 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
 
+  const loadingTips = [
+    "Use oils that monsters are vulnerable to. Check out the Bestiary to find out monster weaknesses.",
+    "Struggling with a contract? Try hunting easier monsters to level up and boost your base stats.",
+    "Potions like Swallow can regenerate your Vitality during tough battles. Keep your inventory stocked.",
+    "Crafting better Witcher gear is essential for survival. Gather resources and upgrade often."
+  ];
+
   const hasProcessedRewards = useRef(false);
+
+  const randomTip = useMemo(() => {
+    return loadingTips[Math.floor(Math.random() * loadingTips.length)];
+  }, []);
 
 
   useEffect(() => {
@@ -41,7 +52,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   return (
     battleResult && (<div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
       <div
-        className={`relative bg-neutral-900/95 border-2 rounded-xl p-6 w-[360px] shadow-xl animate-fade-in ${isVictory ? "border-amber-300" : "border-red-600"
+        className={`relative bg-neutral-900/95 border-2 rounded-xl p-6 min-w-[360px] shadow-xl animate-fade-in ${isVictory ? "border-amber-300" : "border-red-600"
           }`}
       >
         <h3
@@ -67,7 +78,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
                 <ul className="mt-3 flex gap-1 text-sm justify-center">
                   {lootGenerated.map((loot) => (
                     <li key={loot.id} className="relative p-2 w-[100px] h-[100px] heading text-amber-200 card">
-                      <span className="absolute top-2 right-2 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700 z-10">
+                      <span className="absolute top-1 right-1 text-xs font-bold text-neutral-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-700 z-10">
                         {loot.qty === -1 ? '∞' : `x${loot.qty}`}
                       </span>
                       <Icon id={loot.id} type={loot.type} size={45} />
@@ -86,7 +97,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
               You were defeated by{" "}
               <span className="text-red-400">{monsterData.name}</span>. Try again!
             </p>
-            <p className="text-sm my-5 text-neutral-300">Tip: Use oils that monsters are vulnerable to. Check out Monster Bestiary for finding out monster weaknesses.</p>
+            <p className="text-sm my-5 text-neutral-300">{randomTip}</p>
           </div>
         )}
 
