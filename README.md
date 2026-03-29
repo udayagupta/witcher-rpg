@@ -11,7 +11,7 @@ Battle monsters, cast signs, apply oils, and manage buffs & debuffs through an i
 * **Buffs & Debuffs** – effects with duration, stacking rules, and automatic expiration.
 * **Witcher Signs** – cast *Igni*, *Quen*, and *Aard*, consuming stamina.
 * **Battle logs** – detailed combat narration for every action.
-* **Context-driven player state** – persistent data via React Context.
+* **Context-driven player state** – persistent data via Zustand.
 
 ---
 
@@ -24,6 +24,7 @@ Battle monsters, cast signs, apply oils, and manage buffs & debuffs through an i
 | Styling  | Tailwind CSS                                             |
 | Data     | Static JSON files                                        |
 | Logic    | Modular JS utility functions                             |
+| State    | State Management using Zustand Library                   |
 
 ---
 
@@ -69,9 +70,6 @@ Open browser at:
 
 ## 🧠 Future Improvements
 
-* Add inventory and alchemy system.
-* Add player leveling and experience gain.
-* Introduce persistent save/load functionality.
 * Refine UI animations and background music.
 
 ---
@@ -82,6 +80,7 @@ Open browser at:
 * Sound effects from [Voicy](https://www.voicy.network/search/witcher-3-sound-effects).  
 * Icons from [React Icons](https://react-icons.github.io/react-icons/).
 * Framer Motion for animations: [Framer Motion](https://www.framer.com/motion/).
+* Zustand for State management: [Zustand](https://zustand.docs.pmnd.rs/learn/getting-started/introduction)
 
 ---
 
