@@ -71,6 +71,7 @@ Open browser at:
 ## 🧠 Future Improvements
 
 * Refine UI animations and background music.
+* Responsive Design.
 
 ---
 
