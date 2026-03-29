@@ -85,6 +85,7 @@ export const usePlayerStore = create(
         "silver_ingot",
         "iron_ingot",
       ],
+      discoveredMonsters: ["drowner", "nekker", "siren"],
 
       inventory: {
         steelSwords: [
@@ -168,7 +169,37 @@ export const usePlayerStore = create(
           return typeof updater === "function" ? updater(state) : updater;
         }),
 
-      meditate: () => set((state) => {}),
+      meditate: () =>
+        set((state) => {
+          const restockedShops = structuredClone(initialShopsData);
+
+          Object.keys(state.shops).forEach((shopId) => {
+            const currentInventory = state.shops[shopId].inventory || [];
+            const restockedInventory = restockedShops[shopId].inventory || [];
+
+            currentInventory.forEach((currItem) => {
+              const idx = restockedInventory.findIndex(
+                (item) => item.id === currItem.id,
+              );
+
+              if (idx === -1) {
+                restockedInventory.push(currItem);
+              } else {
+                restockedInventory[idx].qty = Math.max(
+                  currItem.qty,
+                  restockedInventory[idx].qty,
+                );
+              }
+            });
+
+            restockedShops[shopId].gold = initialShopsData[shopId].gold;
+          });
+
+          return {
+            vitality: state.maxVitality,
+            shops: restockedShops,
+          };
+        }),
 
       craftItem: (recipeData) => {
         const { consumeItem, addToInventory } = get();
@@ -193,7 +224,9 @@ export const usePlayerStore = create(
 
       unlockRecipes: (recipeIds) =>
         set((state) => ({
-          recipesUnlocked: [ ...new Set([ ...state.recipesUnlocked, ...recipeIds ])],
+          recipesUnlocked: [
+            ...new Set([...state.recipesUnlocked, ...recipeIds]),
+          ],
         })),
 
       takeDamage: (amount) =>
@@ -384,7 +417,13 @@ export const usePlayerStore = create(
         }),
 
       turnInQuest: (contractId) => {
-        const { activeQuests, addCoins, updateLevelExp, completeQuest } = get();
+        const {
+          activeQuests,
+          addCoins,
+          updateLevelExp,
+          completeQuest,
+          unlockRecipes,
+        } = get();
         if (!(contractId in activeQuests)) return;
 
         const contractData = contractsData[contractId];
@@ -435,6 +474,10 @@ export const usePlayerStore = create(
     }),
     {
       name: "witcher-save-game",
+      partialize: (state) => {
+        const { inBattle, ...stateToSave } = state;
+        return stateToSave;
+      },
     },
   ),
 );

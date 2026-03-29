@@ -118,7 +118,7 @@
     "subType": "steelSwords",
     "yields": { "id": "feline_steel_sword", "type": "weapon", "qty": 1 },
     "ingredients": [
-      { "id": "leather_scraps", "type": "resources", "qty": 2 },
+      { "id": "leather_scrap", "type": "resources", "qty": 2 },
       { "id": "monster_saliva", "type": "resources", "qty": 1 },
       { "id": "steel_ingot", "type": "resources", "qty": 2 },
       { "id": "iron_ingot", "type": "resources", "qty": 1 }
@@ -131,7 +131,7 @@
     "subType": "silverSwords",
     "yields": { "id": "feline_silver_sword", "type": "weapon", "qty": 1 },
     "ingredients": [
-      { "id": "leather_scraps", "type": "resources", "qty": 1 },
+      { "id": "leather_scrap", "type": "resources", "qty": 1 },
       { "id": "monster_essence", "type": "resources", "qty": 2 },
       { "id": "silver_ingot", "type": "resources", "qty": 3 }
     ]

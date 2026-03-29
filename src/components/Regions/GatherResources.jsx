@@ -3,10 +3,13 @@ import { usePlayerStore } from '../../store/usePlayerStore';
 import { generateResources } from '../../utils/utils';
 import Icon from '../Icon';
 import items from "../../data/items.json";
+import { usePlayer } from '../../store/usePlayerStore';
 
 const GatherResources = ({ subLocationData, itemsData }) => {
+  
+  const player = usePlayer();
+  
   const SCAVENGE_TIME = 10;
-
   const addToInventory = usePlayerStore((state) => state.addToInventory);
   const [gatherResourcesState, setGatherResourcesState] = useState({
     cooldown: 0,
@@ -40,16 +43,13 @@ const GatherResources = ({ subLocationData, itemsData }) => {
   useEffect(() => {
     if (gatherResourcesState.cooldown === 0 && gatherResourcesState.togglePopUp && gatherResourcesState.generatedLoot.length === 0) {
       const newLoot = generateResources(subLocationData["resources_to_gather"]);
-      console.log(newLoot);
 
       setGatherResourcesState((prev) => ({
         ...prev,
         generatedLoot: newLoot,
       }));
 
-      newLoot.forEach((loot) => {
-        addToInventory(loot.id, loot.qty, loot.type);
-      })
+      newLoot.forEach((loot) => { addToInventory(loot.id, loot.qty, loot.type); })
       
     };
   }, [gatherResourcesState.cooldown, gatherResourcesState.togglePopUp])

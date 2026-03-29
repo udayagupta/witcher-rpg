@@ -3,6 +3,7 @@ import Icon from '../Icon';
 import itemsData from "../../data/items.json";
 import { getPlayerQty } from '../../utils/utils';
 import { usePlayer } from '../../store/usePlayerStore';
+import IngredientCard from './IngredientCard';
 
 const RecipeCard = ({ recipeData }) => {
   const player = usePlayer();
@@ -30,19 +31,8 @@ const RecipeCard = ({ recipeData }) => {
             const itemData = itemsData[ingredient.type][ingredient.id];
             const playerQty = getPlayerQty(player.inventory, ingredient);
             return (
-              <li
-                className='relative flex flex-col h-full w-full justify-between items-center text-center p-2 cursor-pointer transition-all group bg-neutral-900 border border-neutral-700 rounded-md'
-                key={ingredient.id}
-              >
-                <div className='flex flex-1 items-center justify-center aspect-square'>
-                  <Icon id={ingredient.id} type={ingredient.type} size={35} />
-                </div>                
-                <p className='text-sm text-neutral-300 w-full truncate my-1 px-1'>
-                  {itemData?.name}
-                </p>
-                <p className={`w-full border-t border-neutral-700/50 pt-1 ${playerQty >= ingredient.qty ? "text-green-300" : "text-red-400"} font-bold text-sm`}>
-                  {playerQty} / {ingredient.qty}
-                </p>
+              <li key={ingredient.id}>
+                <IngredientCard ingredient={ingredient} ingredientData={itemData} playerQty={playerQty}/>
               </li>
             )
           })

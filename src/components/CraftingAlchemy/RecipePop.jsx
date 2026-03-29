@@ -3,6 +3,7 @@ import Icon from '../Icon';
 import { getPlayerQty, validateIngredients } from '../../utils/utils';
 import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
+import IngredientCard from "./IngredientCard";
 
 const RecipePop = ({ recipeData, playerInventory, onClose }) => {
   const recipeItemData = itemsData[recipeData.subType][recipeData.id];
@@ -81,21 +82,13 @@ const RecipePop = ({ recipeData, playerInventory, onClose }) => {
         </h5>
         <ul className='grid grid-cols-2 w-full gap-3 text-sm'>
           {
-            recipeData.ingredients.map((ingredient, idx) => {
+            recipeData.ingredients.map((ingredient) => {
               const ingredientData = itemsData[ingredient.type][ingredient.id];
               const playerQty = getPlayerQty(playerInventory, ingredient);
 
               return (
-                <li key={idx} className='relative flex flex-col h-full w-full justify-between items-center text-center p-2 cursor-pointer transition-all group bg-neutral-800/40 hover:bg-neutral-800 border border-neutral-700/60 hover:border-neutral-500 rounded-md'>
-                  <div className='flex flex-1 items-center justify-center aspect-square mb-2'>
-                    <Icon id={ingredient.id} type={ingredient.type} size={40} />
-                  </div>
-                  <p className='text-xs text-neutral-300 w-full truncate mb-2 px-1' title={ingredientData?.name}>
-                    {ingredientData?.name}
-                  </p>
-                  <p className={`w-full border-t border-neutral-700/50 py-2 ${playerQty >= ingredient.qty ? "text-green-400" : "text-red-400"} font-bold text-xs tracking-wider bg-neutral-900/50 rounded-b-sm`}>
-                    {playerQty} / {ingredient.qty}
-                  </p>
+                <li key={ingredient.id}>
+                  <IngredientCard ingredient={ingredient} ingredientData={ingredientData} playerQty={playerQty}/>
                 </li>
               )
             })

@@ -13,8 +13,8 @@ const ExploreRegion = () => {
   // const { player, setPlayer, heal } = usePlayer();
   const player = usePlayer();
   const setPlayer = usePlayerStore((state) => state.setPlayer);
-  const heal = usePlayerStore((state) => state.heal);
   const resetVitality = usePlayerStore((state) => state.resetVitality);
+  const meditate = usePlayerStore((state) => state.meditate);
   
   const subLocationData = locationsData[player.currentLocation]["sub_locations"][player.subLocation];
 
@@ -43,7 +43,7 @@ const ExploreRegion = () => {
           <button
             className="border flex flex-col items-center w-max m-auto px-6 py-3 card cursor-pointer rounded hover:border-amber-300 transition"
             onClick={() => {
-              resetVitality();
+              meditate();
             }}
           >
             <span className="text-2xl witcher-font text-amber-300 tracking-wider">Meditate</span>

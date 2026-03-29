@@ -1,6 +1,5 @@
 import { effectsData } from "./effects";
 
-
 export const randomInRange = (max, min) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -161,4 +160,34 @@ export const generateResources = (drops) => {
   })
 
   return loot;
+}
+
+
+export const generateResourcesMap = (locationsData) => {
+  let resourcesMap = {};
+
+  Object.values(locationsData).forEach((region) => {
+    Object.values(region.sub_locations).forEach((sub_location) => {
+      const resources = sub_location.resources_to_gather;
+
+      if (resources) {
+        resources.forEach((resource) => {
+          if (!resourcesMap[resource.id]) {
+            resourcesMap[resource.id] = new Set();
+          }
+
+          resourcesMap[resource.id].add(`${sub_location.name} (${region.name})`);
+        })
+      }
+
+    })
+  })
+
+  const finalMap = {};
+  Object.keys(resourcesMap).forEach((key) => {
+    finalMap[key] = Array.from(resourcesMap[key]);
+  });
+
+  return finalMap;
+
 }
