@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { usePlayer } from '../../store/usePlayerStore';
 
 const MonsterHunting = ({ props }) => {
   const { subLocationData, setSelectedMonster, setGameMode, setPlayer, monsterData } = props;
-  
-  // Added witch_hunter to prevent it from bursting out of the container
+  const player = usePlayer();
   const oversizedMonsters = ["wolf", "bandit", "witch_hunter"];
 
   return (
@@ -18,7 +18,7 @@ const MonsterHunting = ({ props }) => {
           {subLocationData["monsters_found"]?.map((monster) => {
             const currentMonster = monsterData[monster];
             const isOversized = oversizedMonsters.includes(monster);
-
+            const isDiscovered = player.discoveredMonsters.includes(currentMonster.id);
             const difficultyColor =
               currentMonster.difficulty === "Hard" ? "text-red-500" :
                 currentMonster.difficulty === "Medium" ? "text-amber-500" :
@@ -39,7 +39,7 @@ const MonsterHunting = ({ props }) => {
                 }}
               >
                 <p className="witcher-font text-xl font-semibold text-neutral-200 group-hover:text-red-400 transition-colors tracking-wide z-10 text-center">
-                  {currentMonster.name}
+                  {isDiscovered ? currentMonster.name : "Unidentified"}
                 </p>
 
                 <div className="flex-1 w-full flex items-center justify-center overflow-visible mt-2 mb-2 relative">
@@ -51,8 +51,7 @@ const MonsterHunting = ({ props }) => {
                     onError={(e) => {
                       e.target.src = "https://via.placeholder.com/150/171717/FFFFFF?text=No+Image"; 
                     }}
-                    // Adjusted the scaling classes to be much gentler
-                    className={`w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] transition-transform duration-300 relative z-10
+                    className={`w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'} transition-transform duration-300 relative z-10
                       ${isOversized
                           ? "scale-90 group-hover:scale-100" 
                           : "scale-105 group-hover:scale-110" 

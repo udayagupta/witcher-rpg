@@ -101,7 +101,7 @@ const Regions = () => {
               )}
               <p className="text-sm text-neutral-300">
                 Monsters: <span className="font-semibold text-neutral-100 capitalize">
-                  {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.map(formatName).join(", ") : "None"}
+                  {currentSubLocation.monsters_found ? currentSubLocation.monsters_found.map((id) => player.discoveredMonsters.includes(id) ? formatName(id) : "???").join(", ") : "None"}
                 </span>
               </p>
 

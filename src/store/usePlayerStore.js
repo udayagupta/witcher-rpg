@@ -216,6 +216,14 @@ export const usePlayerStore = create(
         );
       },
 
+      discoverMonster: (id) => set((state) => {
+        if (state.discoveredMonsters.includes(id)) return state;
+
+        return {
+          discoveredMonsters: [ ...state.discoveredMonsters, id]
+        };
+      }),
+
       changeLocation: (currentLocation, subLocation) =>
         set((state) => ({
           currentLocation,

@@ -18,6 +18,8 @@ const BattleScreenUI = ({
   // Zustand state
   const player = usePlayer();
 
+  const isDiscovered = player.discoveredMonsters.includes(monsterData.id);
+
   return (
     <div className="h-full">
       <div className="player-and-monster-f2f flex items-stretch gap-5">
@@ -55,7 +57,7 @@ const BattleScreenUI = ({
               : "border border-transparent"
             } mx-3`}
         >
-          <p className="witcher-font heading ">{monsterData.name}</p>
+          <p className="witcher-font heading ">{isDiscovered ? monsterData.name : "Unidentified Monster"}</p>
           <MonsterHealth
             current={monsterData.vitality}
             max={monsterData.max_vitality}
@@ -67,7 +69,7 @@ const BattleScreenUI = ({
             <img
               src={`./images/${monsterId}.png`}
               alt=""
-              className="w-full object-contain"
+              className={`w-full object-contain ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'}`}
             />
             <div className="layer animations absolute inset-0 flex items-center justify-center z-50"></div>
           </div>

@@ -1,4 +1,3 @@
-import React, { useMemo } from 'react';
 import Icon from '../Icon';
 import { generateResourcesMap } from '../../utils/utils';
 import locations from "../../data/locations.json";

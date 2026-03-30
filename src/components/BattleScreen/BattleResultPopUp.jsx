@@ -12,6 +12,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const addToInventory = usePlayerStore((state) => state.addToInventory);
   const updateLevelExp = usePlayerStore((state) => state.updateLevelExp);
   const updateQuests = usePlayerStore((state) => state.updateQuests);
+  const discoverMonster = usePlayerStore((state) => state.discoverMonster);
 
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
@@ -38,7 +39,8 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
       playSound("quest_completed");
       updateLevelExp(xpGained);
       updateQuests(monsterData.id);
-
+      discoverMonster(monsterData.id);
+      
       lootGenerated.forEach((loot) => {
         addToInventory(loot.id, loot.qty, loot.type);
       });
