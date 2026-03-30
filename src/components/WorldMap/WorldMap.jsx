@@ -31,7 +31,7 @@ const WorldMap = () => {
   };
 
   return (
-    <section className="card w-full h-full">
+    <section className="w-full h-full">
       {player.isTraveling && (
         <motion.div
           className="absolute inset-0 flex items-center justify-center bg-black/90 text-amber-300 text-2xl witcher-font z-50"

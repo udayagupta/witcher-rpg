@@ -57,15 +57,17 @@ const ExploreRegion = () => {
         <GatherResources subLocationData={subLocationData} itemsData={itemsData} />
         <MonsterHunting props={{ subLocationData, monsterData, setSelectedMonster, setGameMode, setPlayer }} />
         
-        <div className="shops px-5 pb-4">
+        <div className="shops flex items-center flex-col px-5 pb-4">
           <h4 className="witcher-font text-2xl text-amber-300">Shops</h4>
           {(!subLocationData.merchant && !subLocationData.armorer && !subLocationData.blacksmith) && (
             <p className="mt-2 text-xl">No Shops in this region</p>
           )}
           
-          <Shops subLocationData={subLocationData} shopType={"blacksmith"} />
-          <Shops subLocationData={subLocationData} shopType={"merchant"} />
-          <Shops subLocationData={subLocationData} shopType={"armorer"} />
+          <div className="mt-5">
+            <Shops subLocationData={subLocationData} shopType={"blacksmith"} />
+            <Shops subLocationData={subLocationData} shopType={"merchant"} />
+            <Shops subLocationData={subLocationData} shopType={"armorer"} />
+          </div>
         </div>
 
       </div>

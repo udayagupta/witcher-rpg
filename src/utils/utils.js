@@ -173,10 +173,11 @@ export const generateResourcesMap = (locationsData) => {
       if (resources) {
         resources.forEach((resource) => {
           if (!resourcesMap[resource.id]) {
-            resourcesMap[resource.id] = new Set();
+            resourcesMap[resource.id] = { locations: new Set(), worldMap: new Set() }
           }
 
-          resourcesMap[resource.id].add(`${sub_location.name} (${region.name})`);
+          resourcesMap[resource.id]["locations"].add(`${sub_location.name} (${region.name})`);
+          resourcesMap[resource.id]["worldMap"].add(`${region.id}|${sub_location.id}`);
         })
       }
 
@@ -185,7 +186,8 @@ export const generateResourcesMap = (locationsData) => {
 
   const finalMap = {};
   Object.keys(resourcesMap).forEach((key) => {
-    finalMap[key] = Array.from(resourcesMap[key]);
+    // finalMap[key] = Array.from(resourcesMap[key]);
+    finalMap[key] = { locations: Array.from(resourcesMap[key]["locations"]), worldMap: Array.from(resourcesMap[key]["worldMap"]) }
   });
 
   return finalMap;

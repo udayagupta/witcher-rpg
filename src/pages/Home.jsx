@@ -1,6 +1,4 @@
-import { usePlayer } from "../context/PlayerContext/PlayerContext";
-// import { Regions } from "../../"
-import { usePlayer } from "../store/usePlayerStore";
+import Regions from "../components/Regions/Regions";
 
 export const Home = () => {
 

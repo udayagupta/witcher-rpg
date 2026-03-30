@@ -1,5 +1,6 @@
 {
   "white_orchard": {
+    "id": "white_orchard",
     "name": "White Orchard",
     "place_description": "White Orchard is a region and village located in Temeria famous for its fruit orchards, whose boughs burst out white blossoms come spring. The Ismena river flows through the village and continues north.",
     "badge": "./images/white-orchard-badge.png",
@@ -13,6 +14,7 @@
     ],
     "sub_locations": {
       "cackler_bridge": {
+        "id": "cackler_bridge",
         "name": "Cackler Bridge 🌉",
         "monsters_found": ["drowner", "wolf", "bear"],
         "merchant": null,
@@ -25,6 +27,7 @@
         "canRest": false
       },
       "woesong_bridge": {
+        "id": "woesong_bridge",
         "name": "Woesong Bridge 🌉",
         "monsters_found": null,
         "merchant": null,
@@ -34,6 +37,7 @@
         "canRest": false
       },
       "white_orchard_inn": {
+        "id": "white_orchard_inn",
         "name": "White Orchard Inn",
         "monsters_found": null,
         "merchant": "white_orchard_innkeeper",
@@ -43,6 +47,7 @@
         "canRest": true
       },
       "nilfgaardian_garrison": {
+        "id": "nilfgaardian_garrison",
         "name": "Nilfgaardian Garrison ⚔️",
         "monsters_found": null,
         "merchant": null,
@@ -56,6 +61,7 @@
         "canRest": true
       },
       "abandoned_village": {
+        "id": "abandoned_village",
         "name": "Abandoned Village 🏚️",
         "monsters_found": ["ghoul", "noonwraith", "alghoul"],
         "merchant": null,
@@ -69,6 +75,7 @@
         "canRest": false
       },
       "sawmill": {
+        "id": "sawmill",
         "name": "Sawmill 🪵",
         "monsters_found": ["wolf", "drowner"],
         "merchant": null,
@@ -81,6 +88,7 @@
         "canRest": false
       },
       "broken_cart_pass": {
+        "id": "broken_cart_pass",
         "name": "Broken Cart Pass 🛞",
         "monsters_found": ["bandit", "nekker", "devil-by-the-well"],
         "merchant": null,
@@ -94,6 +102,7 @@
         "canRest": false
       },
       "isemen_riverbank": {
+        "id": "isemen_riverbank",
         "name": "Isemen Riverbank 🌊",
         "monsters_found": ["drowner", "siren", "nekker"],
         "merchant": null,
@@ -107,6 +116,7 @@
         "canRest": false
       },
       "crossroads_inn": {
+        "id": "crossroads_inn",
         "name": "Crossroads Inn 🍺",
         "monsters_found": null,
         "merchant": "crossroads_merchant",
@@ -116,6 +126,7 @@
         "canRest": true
       },
       "hunter_cabin": {
+        "id": "hunter_cabin",
         "name": "Hunter's Cabin 🐺",
         "monsters_found": ["wolf", "bandit"],
         "merchant": null,
@@ -129,6 +140,7 @@
         "canRest": false
       },
       "orchard_fields": {
+        "id": "orchard_fields",
         "name": "Orchard Fields 🍎",
         "monsters_found": ["griffin", "harpy", "endrega_warrior"],
         "merchant": null,
@@ -143,6 +155,7 @@
         "canRest": false
       },
       "sawmill_forest_edge": {
+        "id": "sawmill_forest_edge",
         "name": "Sawmill Forest Edge 🌲",
         "monsters_found": ["wolf", "nekker"],
         "merchant": null,
@@ -159,6 +172,7 @@
     "default_sub_location": "white_orchard_inn"
   },
   "velen": {
+    "id": "velen",
     "name": "Velen",
     "place_description": "A war-torn, swampy region south of Novigrad with ruined villages, bogs and bandit-filled roads. Velen is harsh and populated by desperate folk and dangerous beasts.",
     "badge": "./images/velen-badge.png",
@@ -169,6 +183,7 @@
     ],
     "sub_locations": {
       "crookback_bog": {
+        "id": "crookback_bog",
         "name": "Crookback Bog 🌫️",
         "monsters_found": ["leshen", "nekker"],
         "merchant": null,
@@ -182,6 +197,7 @@
         "canRest": false
       },
       "crow_perch_cliffs": {
+        "id": "crow_perch_cliffs",
         "name": "Crow's Perch Cliffs 🪶",
         "monsters_found": ["wyvern", "endrega_warrior"],
         "merchant": null,
@@ -191,6 +207,7 @@
         "canRest": false
       },
       "dirtroad_crossing": {
+        "id": "dirtroad_crossing",
         "name": "Dirtroad Crossing 🪔",
         "monsters_found": ["bandit", "wolf"],
         "merchant": "traveling_merchant",
@@ -203,6 +220,7 @@
         "canRest": false
       },
       "orcchard_swamp": {
+        "id": "orcchard_swamp",
         "name": "Orchard Swamp 🐸",
         "monsters_found": ["drowner", "foglet", "nekker"],
         "merchant": null,
@@ -216,6 +234,7 @@
         "canRest": false
       },
       "ruined_watchtower": {
+        "id": "ruined_watchtower",
         "name": "Ruined Watchtower 🏰",
         "monsters_found": ["ghoul", "wraith", "alghoul"],
         "merchant": null,
@@ -229,6 +248,7 @@
         "canRest": false
       },
       "blackbough_village": {
+        "id": "blackbough_village",
         "name": "Blackbough Village 🌾",
         "monsters_found": null,
         "merchant": null,
@@ -241,6 +261,7 @@
         "canRest": true
       },
       "hanged_mans_tree": {
+        "id": "hanged_mans_tree",
         "name": "Hanged Man's Tree ⚰️",
         "monsters_found": ["wraith", "ghoul"],
         "merchant": null,
@@ -254,6 +275,7 @@
         "canRest": false
       },
       "mulbrydale": {
+        "id": "mulbrydale",
         "name": "Mulbrydale 🕯️",
         "monsters_found": ["bandit", "bear"],
         "merchant": "mulbrydale_innkeeper",
@@ -267,6 +289,7 @@
         "canRest": false
       },
       "lornruk_lighthouse": {
+        "id": "lornruk_lighthouse",
         "name": "Lornruk Lighthouse 🏝️",
         "monsters_found": ["harpy", "siren"],
         "merchant": null,
@@ -280,6 +303,7 @@
         "canRest": false
       },
       "devil_pit": {
+        "id": "devil_pit",
         "name": "Devil's Pit 🔥",
         "monsters_found": ["ghoul", "alghoul"],
         "merchant": null,
@@ -293,6 +317,7 @@
         "canRest": false
       },
       "reardon_manor": {
+        "id": "reardon_manor",
         "name": "Reardon Manor 🏚️",
         "monsters_found": ["noonwraith"],
         "merchant": null,
@@ -306,6 +331,7 @@
         "canRest": false
       },
       "burned_hamlet": {
+        "id": "burned_hamlet",
         "name": "Burned Hamlet 🪓",
         "monsters_found": ["bandit", "wolf"],
         "merchant": null,
@@ -321,6 +347,7 @@
     "default_sub_location": "crow_perch_cliffs"
   },
   "novigrad": {
+    "id": "novigrad",
     "name": "Novigrad",
     "place_description": "A bustling free city and merchant hub. Novigrad is rife with intrigue, markets, churches and criminal networks — monsters hide in alleys and sewers.",
     "badge": "./images/novigrad-badge.png",
@@ -329,6 +356,7 @@
     ],
     "sub_locations": {
       "docks": {
+        "id": "docks",
         "name": "Novigrad Docks",
         "monsters_found": ["siren", "drowner", "bear", "mage_hunter", "witch_hunter"],
         "merchant": "dockmaster",
@@ -342,6 +370,7 @@
         "canRest": false
       },
       "old_sewers": {
+        "id": "old_sewers",
         "name": "Old Sewers",
         "monsters_found": ["nekker", "endrega_warrior", "ekimmara"],
         "merchant": null,
@@ -354,6 +383,7 @@
         "canRest": false
       },
       "market_square": {
+        "id": "market_square",
         "name": "Market Square",
         "monsters_found": ["mage_hunter", "witch_hunter", "ekimmara"],
         "merchant": "market_merchants",
@@ -366,6 +396,7 @@
     "default_sub_location": "docks"
   },
   "skellige": {
+    "id": "skellige",
     "name": "Skellige",
     "place_description": "A brutal archipelago of windswept isles, famed for warriors, longships and rugged landscape. Sea-monsters and savage beasts make the islands perilous.",
     "badge": "./images/skellige-badge.png",
@@ -376,6 +407,7 @@
     ],
     "sub_locations": {
       "harral_west": {
+        "id": "harral_west",
         "name": "Harral West",
         "monsters_found": ["wyvern", "nekker", "pirate"],
         "resources_to_gather": [
@@ -389,6 +421,7 @@
         "canRest": false
       },
       "standing_stones": {
+        "id": "standing_stones",
         "name": "Ancient Standing Stones",
         "monsters_found": ["noonwraith"],
         "merchant": null,
@@ -401,6 +434,7 @@
         "canRest": false
       },
       "longship_harbor": {
+        "id": "longship_harbor",
         "name": "Longship Harbor",
         "monsters_found": ["siren", "pirate", "witch_hunter"],
         "merchant": "harbor_merchant",
@@ -413,6 +447,7 @@
         "canRest": false
       },
       "kaer_torlde": {
+        "id": "kaer_torlde",
         "name": "Kaer Torlde",
         "monsters_found": ["bear"],
         "merchant": null,

@@ -1,13 +1,10 @@
-// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import { formatNumber } from "../../utils/utils";
 import itemsData from "../../data/items.json";
 import HealthBar from "./HealthBar";
 import { usePlayer } from "../../store/usePlayerStore";
 
 export const PlayerProfile = ({ className }) => {
-  // const { player } = usePlayer();
 
-  // Zustand state
   const player = usePlayer();
 
   const steelAtk = player?.attack?.steelAttack ? player.attack.steelAttack.join("-") : "—";
@@ -70,7 +67,7 @@ export const PlayerProfile = ({ className }) => {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 gap-3 mt-5 text-sm">
+      <div className="lg:grid lg:grid-cols-2 flex flex-col  gap-2 mt-5 text-sm">
         <div className="p-2 bg-neutral-900/40 rounded border border-neutral-700/50" title="Steel Sword Damage">
           <div className="opacity-70 text-xs uppercase tracking-wider">{steelSwordEquipped.name}</div>
           <div className="font-semibold text-lg text-gray-300">{steelAtk} ⚔️</div>

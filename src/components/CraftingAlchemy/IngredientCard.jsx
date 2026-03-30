@@ -4,10 +4,11 @@ import { generateResourcesMap } from '../../utils/utils';
 import locations from "../../data/locations.json";
 import { Tooltip } from 'react-tooltip';
 
-const IngredientCard = ({ ingredient, ingredientData, playerQty }) => {
-  const locationMap = useMemo(() => generateResourcesMap(locations), []);
-  const foundLocations = locationMap[ingredient.id] || [];
+const locationMap = generateResourcesMap(locations);
 
+const IngredientCard = ({ ingredient, ingredientData, playerQty }) => {
+
+  const foundLocations = locationMap[ingredient.id]?.locations || [];
   const tooltipId = `tooltip-${ingredient.id}`;
 
   return (
