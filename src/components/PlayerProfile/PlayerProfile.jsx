@@ -3,6 +3,13 @@ import itemsData from "../../data/items.json";
 import HealthBar from "./HealthBar";
 import { usePlayer } from "../../store/usePlayerStore";
 
+const schoolEmoji = {
+  wolf: "🐺",
+  cat: "😾",
+  griffin: "🦅",
+  bear: "🐻"
+}
+
 export const PlayerProfile = ({ className }) => {
 
   const player = usePlayer();
@@ -25,8 +32,8 @@ export const PlayerProfile = ({ className }) => {
     <section className={`${className} border card player-profile w-full p-4 font-semibold bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg`}>
       <div className="flex items-center gap-4">
         <div className="flex-shrink-0">
-          <div className="w-20 h-20 rounded-full bg-amber-400 flex items-center justify-center text-neutral-900 font-bold text-xl shadow-inner">
-            {player.name?.charAt(0) ?? "G"}
+          <div className="w-20 h-20 rounded-full flex items-center justify-center text-neutral-900 font-bold  shadow-inner">
+            <p className="text-6xl">{schoolEmoji[player.school]}</p>
           </div>
         </div>
 
@@ -34,7 +41,7 @@ export const PlayerProfile = ({ className }) => {
           <div className="flex items-start justify-between">
             
             <div className="w-full">
-              <h2 className="text-2xl font-extrabold witcher-font tracking-wide">{player.fullName}</h2>
+              <h2 className="text-2xl font-extrabold witcher-font tracking-wide">{player.name}</h2>
               
               <div className="flex justify-between items-end mt-1">
                 <div className="w-1/2">

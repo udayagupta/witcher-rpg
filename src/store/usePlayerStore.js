@@ -62,75 +62,50 @@ const calculateDerivedStats = (player) => {
 export const usePlayerStore = create(
   persist(
     (set, get) => ({
+      isCharacterCreated: false,
       name: "Geralt",
-      fullName: "Geralt of Rivia",
       level: 1,
-      currentExp: 190,
+      currentExp: 0,
       expToNextLevel: 200,
       vitality: 500,
       maxVitality: 500,
       activeQuests: {},
       completedQuests: [],
-      coins: 1200,
+      coins: 500,
       crit_chance: 5,
       base_attack: 15,
       base_defense: 20,
       stamina: 100,
       recipesUnlocked: [
-        "necrophage_oil",
+        "hanged_mans_venom",
+        "hybrid_oil",
         "swallow",
-        "griffin_silver_sword",
-        "viper_steel_sword",
         "steel_ingot",
         "silver_ingot",
         "iron_ingot",
       ],
-      discoveredMonsters: ["drowner", "nekker", "siren"],
+      discoveredMonsters: [],
 
       inventory: {
         steelSwords: [
           { id: "steel_sword_basic", type: "steelSwords", qty: 1 },
-          { id: "novigrad_longsword", type: "steelSwords", qty: 1 },
-          { id: "gwyhyr", type: "steelSwords", qty: 1 },
         ],
         silverSwords: [
           { id: "silver_sword_basic", type: "silverSwords", qty: 1 },
-          { id: "griffin_silver_sword", type: "silverSwords", qty: 1 },
-          { id: "aerondight", type: "silverSwords", qty: 1 },
         ],
         armors: [
           { id: "viper_basic_armor", type: "armor", qty: 1 },
-          { id: "hunters_armor", type: "armor", qty: 1 },
-          { id: "griffin_armor", type: "armor", qty: 1 },
-          { id: "ursine_heavy_armor", type: "armor", qty: 1 },
         ],
         gauntlets: [
           { id: "viper_basic_gauntlets", type: "armor", qty: 1 },
-          { id: "griffin_gauntlets", type: "armor", qty: 1 },
         ],
         trousers: [
           { id: "viper_basic_trousers", type: "armor", qty: 1 },
-          { id: "ursine_trousers", type: "armor", qty: 1 },
         ],
         boots: [{ id: "viper_basic_boots", type: "armor", qty: 1 }],
         potions: [{ id: "swallow", type: "potions", qty: 3 }],
-        oils: [
-          { id: "hybrid_oil", type: "oils", qty: 5 },
-          { id: "necrophage_oil", type: "oils", qty: 5 },
-          { id: "specter_oil", type: "oils", qty: 5 },
-          { id: "draconid_oil", type: "oils", qty: 5 },
-          { id: "hanged_mans_venom", type: "oils", qty: 5 },
-        ],
-        resources: [
-          { id: "leather_scrap", type: "resources", qty: 10 },
-          { id: "metal_scrap", type: "resources", qty: 8 },
-          { id: "hide", type: "resources", qty: 2 },
-          { id: "monster_saliva", type: "resources", qty: 1 },
-          { id: "white_myrtle", type: "resources", qty: 1 },
-          { id: "griffin_feathers", type: "resources", qty: 2 },
-          { id: "silver_ingot", type: "resources", qty: 3 },
-          { id: "monster_brain", type: "resources", qty: 3 },
-        ],
+        oils: [],
+        resources: [],
         foods: [
           { id: "water", type: "foods", qty: 5 },
           { id: "bread", type: "foods", qty: 3 },
@@ -163,6 +138,68 @@ export const usePlayerStore = create(
       },
 
       shops: initialShopsData,
+
+      createCharacter: (name, school) =>
+        set((state) => {
+          const baseTrait = {
+            name,
+            school,
+            isCharacterCreated: true,
+          };
+
+          switch (school) {
+            case "wolf":
+              return {
+                ...baseTrait,
+                base_attack: state.base_attack * 1.05,
+                base_defense: state.base_defense * 1.05,
+                crit_chance: state.crit_chance * 1.05,
+                discoveredMonsters: ["wolf"],
+                signsIntensity: {
+                  ...state.signsIntensity,
+                  igni: state.signsIntensity.igni * 1.05,
+                  quen: state.signsIntensity.quen * 1.05,
+                  yrden: state.signsIntensity.yrden * 1.05,
+                  aard: state.signsIntensity.aard * 1.05,
+                  axii: state.signsIntensity.axii * 1.05,
+                }
+              };
+
+            case "cat":
+              return {
+                ...baseTrait,
+                crit_change: state.crit_chance * 1.15,
+                base_defense: state.base_defense * 0.9,
+                discoveredMonsters: ["bandit", "witch_hunter", "mage_hunter"]
+              };
+
+            case "griffin":
+              return {
+                ...baseTrait,
+                signsIntensity: {
+                  ...state.signsIntensity,
+                  igni: state.signsIntensity.igni * 1.2,
+                  quen: state.signsIntensity.quen * 1.2,
+                  yrden: state.signsIntensity.yrden * 1.2,
+                  aard: state.signsIntensity.aard * 1.2,
+                  axii: state.signsIntensity.axii * 1.2,
+                },
+                discoveredMonsters: ["griffin"]
+              };
+
+            case "bear":
+              return {
+                ...baseTrait,
+                base_defense: state.base_defense * 1.3,
+                maxVitality: state.maxVitality * 1.2,
+                vitality: state.vitality * 1.2,
+                discoveredMonsters: ["bear"]
+              };
+
+            default:
+              return baseTrait;
+          }
+        }),
 
       setPlayer: (updater) =>
         set((state) => {
@@ -216,13 +253,14 @@ export const usePlayerStore = create(
         );
       },
 
-      discoverMonster: (id) => set((state) => {
-        if (state.discoveredMonsters.includes(id)) return state;
+      discoverMonster: (id) =>
+        set((state) => {
+          if (state.discoveredMonsters.includes(id)) return state;
 
-        return {
-          discoveredMonsters: [ ...state.discoveredMonsters, id]
-        };
-      }),
+          return {
+            discoveredMonsters: [...state.discoveredMonsters, id],
+          };
+        }),
 
       changeLocation: (currentLocation, subLocation) =>
         set((state) => ({

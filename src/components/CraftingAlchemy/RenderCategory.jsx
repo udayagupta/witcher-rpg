@@ -18,10 +18,6 @@ const RenderCategory = ({ category }) => {
 
   const handleClose = () => { setSelectedRecipe(null) }
 
-  // useEffect(() => {
-  //   console.log(selectedRecipe);
-  // }, [selectedRecipe])
-
   return (
     <div>
       <ul className='mt-3 flex gap-5'>
@@ -36,6 +32,11 @@ const RenderCategory = ({ category }) => {
             )
           })
         }
+        { categoryRecipes.length === 0 && (
+          <div className='text-center flex w-full'>
+            <p className='mx-auto text-2xl mt-5 font-bold'>No <span className='text-amber-300'>{category.name}</span> Recipes was found!</p>
+          </div>
+        )}
       </ul>
       {selectedRecipe && (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2'>
