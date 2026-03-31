@@ -1,17 +1,5 @@
 {
   "steelSwords": {
-    "kaer_morhen_steel_sword": {
-      "id": "kaer_morhen_steel_sword",
-      "name": "Kaer Morhen Steel Sword",
-      "type": "weapon",
-      "slot": "steel_sword",
-      "rarity": "rare",
-      "level_req": 5,
-      "attack": [60, 85],
-      "durability": 100,
-      "price": 800,
-      "description": "A well-tempered steel blade from Kaer Morhen. Good vs humans and beasts."
-    },
     "steel_sword_basic": {
       "id": "steel_sword_basic",
       "name": "Basic Steel Sword",
@@ -23,30 +11,6 @@
       "durability": 100,
       "price": 120,
       "description": "An ordinary steel sword. Reliable and cheap."
-    },
-    "novigrad_longsword": {
-      "id": "novigrad_longsword",
-      "name": "Novigradian Longsword",
-      "type": "weapon",
-      "slot": "steel_sword",
-      "rarity": "uncommon",
-      "level_req": 3,
-      "attack": [35, 55],
-      "durability": 100,
-      "price": 250,
-      "description": "Standard issue for temple guards. Heavy, but deals a solid blow."
-    },
-    "gwyhyr": {
-      "id": "gwyhyr",
-      "name": "Mahakaman Gwyhyr",
-      "type": "weapon",
-      "slot": "steel_sword",
-      "rarity": "rare",
-      "level_req": 12,
-      "attack": [95, 130],
-      "durability": 100,
-      "price": 1500,
-      "description": "Forged by dwarven smiths in Mahakam. Razor-sharp and incredibly light."
     },
     "griffin_steel_sword": {
       "id": "griffin_steel_sword",
@@ -107,21 +71,20 @@
       "durability": 150,
       "price": 600,
       "description": "A lethal blade from the School of the Viper. Its deeply grooved fuller is perfectly designed to hold potent toxins and venoms."
+    },
+    "witchers_steel_sword": {
+      "id": "witchers_steel_sword",
+      "name": "Witcher's Steel Sword",
+      "type": "weapon",
+      "slot": "steel_sword",
+      "rarity": "common",
+      "level_req": 1,
+      "attack": [22, 26],
+      "price": 27,
+      "description": "Forged from meteoric iron and perfectly balanced for a mutated grip. While silver is for monsters, this blade is strictly for the mundane beasts of the world—both four-legged and two"
     }
   },
   "silverSwords": {
-    "kaer_morhen_silver_sword": {
-      "id": "kaer_morhen_silver_sword",
-      "name": "Kaer Morhen Silver Sword",
-      "type": "weapon",
-      "slot": "silver_sword",
-      "rarity": "rare",
-      "level_req": 5,
-      "attack": [70, 100],
-      "durability": 100,
-      "price": 1200,
-      "description": "Forged to fight monsters — silver cuts through many unnatural defenses."
-    },
     "silver_sword_basic": {
       "id": "silver_sword_basic",
       "name": "Basic Silver Sword",
@@ -205,6 +168,16 @@
       "durability": 100,
       "price": 1800,
       "description": "The standard issue silver sword for witchers of Kaer Morhen. Deadly and dependable."
+    },
+    "witchers_silver_sword": {
+      "id": "witchers_silver_sword",
+      "name": "Witcher's Silver Sword",
+      "type": "weapon",
+      "slot": "silver_sword",
+      "rarity": "common",
+      "attack": [60, 75],
+      "price": 108,
+      "description": "A specialized blade plated in alchemical silver. Too fragile for parrying halberds, but devastatingly lethal to creatures born of the Conjunction."
     }
   },
   "armor": {
@@ -214,35 +187,11 @@
       "type": "armor",
       "slot": "armor",
       "rarity": "rare",
-      "level_req": 5,
-      "defense": 50,
+      "level_req": 1,
+      "defense": 15,
       "durability": 100,
-      "price": 900,
+      "price": 90,
       "description": "Sturdy armor issued at Kaer Morhen. Excellent protection without too much weight."
-    },
-    "kaer_morhen_trousers": {
-      "id": "kaer_morhen_trousers",
-      "name": "Kaer Morhen Trousers",
-      "type": "armor",
-      "slot": "trousers",
-      "rarity": "rare",
-      "level_req": 5,
-      "defense": 22,
-      "durability": 100,
-      "price": 350,
-      "description": "Durable trousers used by witchers-in-training."
-    },
-    "kaer_morhen_boots": {
-      "id": "kaer_morhen_boots",
-      "name": "Kaer Morhen Boots",
-      "type": "armor",
-      "slot": "boots",
-      "rarity": "rare",
-      "level_req": 5,
-      "defense": 18,
-      "durability": 100,
-      "price": 220,
-      "description": "Boots worn by witchers — comfortable and protective."
     },
     "viper_basic_armor": {
       "id": "viper_basic_armor",
@@ -256,9 +205,9 @@
       "price": 200,
       "description": "Sturdy leather armor reinforced with metal plates, favored by witchers of the Viper School."
     },
-    "viper_basic_gauntlets": {
-      "id": "viper_basic_gauntlets",
-      "name": "Viper Basic Gauntlets",
+    "viper_gauntlets": {
+      "id": "viper_gauntlets",
+      "name": "Viper Gauntlets",
       "type": "armor",
       "slot": "gauntlets",
       "rarity": "common",
@@ -268,9 +217,9 @@
       "price": 120,
       "description": "Simple but durable gloves that improve grip and slightly boost protection."
     },
-    "viper_basic_trousers": {
-      "id": "viper_basic_trousers",
-      "name": "Viper Basic Trousers",
+    "viper_trousers": {
+      "id": "viper_trousers",
+      "name": "Viper Trousers",
       "type": "armor",
       "slot": "trousers",
       "rarity": "common",
@@ -280,9 +229,9 @@
       "price": 150,
       "description": "Lightweight trousers that allow for flexibility in combat without sacrificing too much protection."
     },
-    "viper_basic_boots": {
-      "id": "viper_basic_boots",
-      "name": "Viper Basic Boots",
+    "viper_boots": {
+      "id": "viper_boots",
+      "name": "Viper Boots",
       "type": "armor",
       "slot": "boots",
       "rarity": "common",
@@ -316,9 +265,9 @@
       "price": 250,
       "description": "Thick leather and brass gauntlets designed for weaving signs quickly."
     },
-    "ursine_heavy_armor": {
-      "id": "ursine_heavy_armor",
-      "name": "Ursine Heavy Armor",
+    "ursine_armor": {
+      "id": "ursine_armor",
+      "name": "Ursine Armor",
       "type": "armor",
       "slot": "armor",
       "rarity": "rare",
@@ -351,6 +300,40 @@
       "durability": 100,
       "price": 220,
       "description": "Standard padded armor worn by professional trackers and hunters in Velen."
+    },
+    "hunting_gauntlets": {
+      "id": "hunting_gauntlets",
+      "name": "Hunting Gauntlets",
+      "type": "armor",
+      "slot": "gauntlets",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 1,
+      "durability": 100,
+      "price": 20,
+      "description": "Supple calfskin gloves reinforced with studded knuckles. Keeps your grip firm even when bathed in drowner blood."
+    },
+    "hunting_trousers": {
+      "id": "hunters_trousers",
+      "name": "Hunting Trousers",
+      "type": "armor",
+      "slot": "trousers",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 4,
+      "price": 70,
+      "description": "Thick canvas and leather trousers. Durable enough to survive a trek through brambles, and flexible enough for a pirouette"
+    },
+    "hunting_boots": {
+      "id": "hunters_boots",
+      "name": "Hunting Boots",
+      "type": "armor",
+      "slot": "boots",
+      "rarity": "common",
+      "level_req": 1,
+      "defense": 1,
+      "price": 30,
+      "description": "Thick canvas and leather trousers. Durable enough to survive a trek through brambles, and flexible enough for a pirouette"
     }
   },
   "potions": {

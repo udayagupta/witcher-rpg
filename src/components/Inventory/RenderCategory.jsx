@@ -1,8 +1,6 @@
 import { useState } from 'react'
-// import { usePlayer } from '../../context/PlayerContext/PlayerContext';
 import itemsData from "../../data/items.json";
 import { motion } from 'motion/react';
-import { GiCrossedSwords, GiLeatherArmor, GiPotionBall, GiHerbsBundle } from "react-icons/gi";
 import { canBeEquipped } from '../../utils/utils';
 import Icon from '../Icon';
 import { usePlayerStore, usePlayer } from '../../store/usePlayerStore';
@@ -10,9 +8,7 @@ import ItemCard from './ItemCard';
 
 
 const RenderCategory = ({ category }) => {
-  // const { player, equip, consumeHealthItem } = usePlayer();
 
-  // Zustand states
   const player = usePlayer();
   const equip = usePlayerStore((state) => state.equip);
   const consumeHealthItem = usePlayerStore((state) => state.consumeHealthItem);

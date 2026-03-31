@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import shopsData from "../../data/shops.json";
-// import { usePlayer } from "../../context/PlayerContext/PlayerContext";
 import itemsData from "../../data/items.json";
 import { updateShopInventory } from '../../utils/utils';
 import Icon from '../Icon';
 import { usePlayer, usePlayerStore } from '../../store/usePlayerStore';
 
 const ShopMode = ({ mode, shopType, currentShopData }) => {
-  // const { player, addCoins, spendCoins, addToInventory, consumeItem } = usePlayer();
 
   // Zustand state
   const player = usePlayer();
@@ -53,7 +49,8 @@ const ShopMode = ({ mode, shopType, currentShopData }) => {
 
     } else {
       addCoins(price);
-      consumeItem(itemData.id, itemData.type, 1);
+      // (itemData.id, itemData.type, 1);
+      consumeItem(itemData, 1);
 
       setPlayer((prev) => ({
         shops: {

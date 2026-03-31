@@ -1,16 +1,15 @@
 import itemsData from "../../data/items.json";
 import Icon from '../Icon';
 import { getPlayerQty, validateIngredients } from '../../utils/utils';
-import { useEffect } from "react";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import IngredientCard from "./IngredientCard";
 
 const RecipePop = ({ recipeData, playerInventory, onClose }) => {
+  
   const recipeItemData = itemsData[recipeData.subType][recipeData.id];
   const canCraft = validateIngredients(playerInventory, recipeData.ingredients);
 
   const craftItem = usePlayerStore((state) => state.craftItem);
-
 
   return (
     <div className="relative text-2xl bg-neutral-900 border border-neutral-700 flex w-[680px] min-h-[350px] p-5 rounded-lg shadow-2xl text-white">

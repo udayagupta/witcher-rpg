@@ -11,6 +11,7 @@ import {
 } from "../utils/battle";
 import monstersData from "../data/monster.json";
 import { usePlayer, usePlayerStore } from "../store/usePlayerStore";
+import items from "../data/items.json";
 
 export const useBattle = (monsterId) => {
 
@@ -41,17 +42,6 @@ export const useBattle = (monsterId) => {
     }))
   };
 
-  const affectMonsterDefense = (modifier) => {
-    const initDefense = monstersData[monsterId].defense;
-
-    setMonsterData((prev) => ({
-      ...prev,
-      defense: prev.defense + (initDefense*modifier)
-    }))
-    
-    console.log(`monster def before: ${initDefense} and after ${monsterData.defense}`)
-  }
-
   const handleRanOutOfStamina = (staminaReq) => {
     if (player.stamina < staminaReq) {
       addLog(`${player.name} does not have enough stamina. Required: ${staminaReq}`)
@@ -63,22 +53,21 @@ export const useBattle = (monsterId) => {
   }
 
   const damageMonster = (amount, monsterDef) => {
-    // const defMultiplier = 100 / (monsterDef + 100)
     setMonsterData((prev) => ({
       ...prev,
-      // vitality: Math.max(0, prev.vitality - (amount*defMultiplier)),
       vitality: Math.max(0, prev.vitality - amount)
     }));
   }
 
-
   const applyOil = (oil, id) => {
+    const oilData = items["oils"][id];
     setBattleState((prev) => ({
       ...prev,
       appliedOil: { name: oil, duration: 5, id: id }
     }))
     addLog(`${player.name} applied ${oil} to it's sword for 5 turns.`);
-    consumeItem(id, "oil", 1);
+    // (id, "oil", 1);
+    consumeItem(oilData, 1);
   }
 
   const addLog = useCallback((log) => {

@@ -13,6 +13,8 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
   const updateLevelExp = usePlayerStore((state) => state.updateLevelExp);
   const updateQuests = usePlayerStore((state) => state.updateQuests);
   const discoverMonster = usePlayerStore((state) => state.discoverMonster);
+  const updateMonsterStats = usePlayerStore((state) => state.updateMonsterStats);
+  const setPlayer = usePlayerStore((state) => state.setPlayer);
 
   const [lootGenerated] = useState(() => generateLoot(monsterData.drops));
   const xpGained = isVictory ? calculateMonsterExp(monsterData.base_exp) : 0;
@@ -40,12 +42,13 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
       updateLevelExp(xpGained);
       updateQuests(monsterData.id);
       discoverMonster(monsterData.id);
-      
+      updateMonsterStats(monsterData.id, monsterData.is_monster);
       lootGenerated.forEach((loot) => {
         addToInventory(loot.id, loot.qty, loot.type);
       });
     } else {
       playSound("dead");
+      setPlayer((prev) => ({ ...prev, stats: { ...state.prev, totalDeaths: prev.stats.totalDeaths + 1 }}))
     }
 
     hasProcessedRewards.current = true;

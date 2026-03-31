@@ -1,7 +1,11 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import initialShopsData from "../data/shops.json";
-import { updateItemsInInventory, checkIfEquipped } from "../utils/utils";
+import {
+  updateItemsInInventory,
+  checkIfEquipped,
+  getInventoryKey,
+} from "../utils/utils";
 import itemsData from "../data/items.json";
 import contractsData from "../data/contracts.json";
 
@@ -32,6 +36,8 @@ const calculateDerivedStats = (player) => {
     (equippedGauntlets ? equippedGauntlets.defense : 0) +
     (equippedTrousers ? equippedTrousers.defense : 0) +
     (equippedBoots ? equippedBoots.defense : 0);
+
+  // console.log({equippedArmor, equippedGauntlets, equippedTrousers, equippedBoots})
 
   const steelSwordAttack = [
     player.base_attack +
@@ -71,7 +77,7 @@ export const usePlayerStore = create(
       maxVitality: 500,
       activeQuests: {},
       completedQuests: [],
-      coins: 500,
+      coins: 250,
       crit_chance: 5,
       base_attack: 15,
       base_defense: 20,
@@ -79,6 +85,7 @@ export const usePlayerStore = create(
       recipesUnlocked: [
         "hanged_mans_venom",
         "hybrid_oil",
+        "necrophage_oil",
         "swallow",
         "steel_ingot",
         "silver_ingot",
@@ -86,23 +93,30 @@ export const usePlayerStore = create(
       ],
       discoveredMonsters: [],
 
+      stats: {
+        totalCoins: 250,
+        totalSpending: 0,
+        monsterDefeated: {
+          human: 0,
+          nonHuman: 0,
+        },
+        monstersBasedStats: {},
+        totalDeaths: 0,
+        activeQuests: 0,
+        completedQuests: 0,
+      },
+
       inventory: {
         steelSwords: [
-          { id: "steel_sword_basic", type: "steelSwords", qty: 1 },
+          { id: "witchers_steel_sword", type: "steelSwords", qty: 1 },
         ],
         silverSwords: [
-          { id: "silver_sword_basic", type: "silverSwords", qty: 1 },
+          { id: "witchers_silver_sword", type: "silverSwords", qty: 1 },
         ],
-        armors: [
-          { id: "viper_basic_armor", type: "armor", qty: 1 },
-        ],
-        gauntlets: [
-          { id: "viper_basic_gauntlets", type: "armor", qty: 1 },
-        ],
-        trousers: [
-          { id: "viper_basic_trousers", type: "armor", qty: 1 },
-        ],
-        boots: [{ id: "viper_basic_boots", type: "armor", qty: 1 }],
+        armors: [{ id: "kaer_morhen_armor", type: "armor", qty: 1 }],
+        gauntlets: [{ id: "hunting_gauntlets", type: "armor", qty: 1 }],
+        trousers: [{ id: "hunting_trousers", type: "armor", qty: 1 }],
+        boots: [{ id: "hunting_boots", type: "armor", qty: 1 }],
         potions: [{ id: "swallow", type: "potions", qty: 3 }],
         oils: [],
         resources: [],
@@ -114,12 +128,12 @@ export const usePlayerStore = create(
       },
 
       equipment: {
-        steel_sword: "steel_sword_basic",
-        silver_sword: "silver_sword_basic",
-        armor: "viper_basic_armor",
-        gauntlets: "viper_basic_gauntlets",
-        trousers: "viper_basic_trousers",
-        boots: "viper_basic_boots",
+        steel_sword: "witchers_steel_sword",
+        silver_sword: "witchers_silver_sword",
+        armor: "kaer_morhen_armor",
+        gauntlets: "hunting_gauntlets",
+        trousers: "hunting_trousers",
+        boots: "hunting_boots",
       },
 
       currentLocation: "white_orchard",
@@ -151,9 +165,9 @@ export const usePlayerStore = create(
             case "wolf":
               return {
                 ...baseTrait,
-                base_attack: state.base_attack * 1.05,
-                base_defense: state.base_defense * 1.05,
-                crit_chance: state.crit_chance * 1.05,
+                base_attack: Math.round(state.base_attack * 1.05),
+                base_defense: Math.round(state.base_defense * 1.05),
+                crit_chance: Math.round(state.crit_chance + 5),
                 discoveredMonsters: ["wolf"],
                 signsIntensity: {
                   ...state.signsIntensity,
@@ -162,15 +176,15 @@ export const usePlayerStore = create(
                   yrden: state.signsIntensity.yrden * 1.05,
                   aard: state.signsIntensity.aard * 1.05,
                   axii: state.signsIntensity.axii * 1.05,
-                }
+                },
               };
 
             case "cat":
               return {
                 ...baseTrait,
-                crit_change: state.crit_chance * 1.15,
-                base_defense: state.base_defense * 0.9,
-                discoveredMonsters: ["bandit", "witch_hunter", "mage_hunter"]
+                crit_chance: Math.round(state.crit_chance + 15),
+                base_defense: Math.round(state.base_defense * 0.9),
+                discoveredMonsters: ["bandit", "witch_hunter", "mage_hunter"],
               };
 
             case "griffin":
@@ -184,7 +198,7 @@ export const usePlayerStore = create(
                   aard: state.signsIntensity.aard * 1.2,
                   axii: state.signsIntensity.axii * 1.2,
                 },
-                discoveredMonsters: ["griffin"]
+                discoveredMonsters: ["griffin"],
               };
 
             case "bear":
@@ -193,7 +207,7 @@ export const usePlayerStore = create(
                 base_defense: state.base_defense * 1.3,
                 maxVitality: state.maxVitality * 1.2,
                 vitality: state.vitality * 1.2,
-                discoveredMonsters: ["bear"]
+                discoveredMonsters: ["bear"],
               };
 
             default:
@@ -229,7 +243,8 @@ export const usePlayerStore = create(
               }
             });
 
-            restockedShops[shopId].gold = initialShopsData[shopId].gold;
+            restockedShops[shopId].gold =
+              restockedShops[shopId].gold + initialShopsData[shopId].gold;
           });
 
           return {
@@ -243,7 +258,7 @@ export const usePlayerStore = create(
 
         recipeData.ingredients.forEach((ingredient) => {
           const ingredientData = itemsData[ingredient.type][ingredient.id];
-          consumeItem(ingredientData.id, ingredientData.type, ingredient.qty);
+          consumeItem(ingredientData, ingredient.qty);
         });
 
         addToInventory(
@@ -288,12 +303,22 @@ export const usePlayerStore = create(
       addCoins: (amount) =>
         set((state) => ({
           coins: state.coins + amount,
+          stats: {
+            ...state.stats,
+            totalCoins: state.stats.totalCoins + amount,
+          },
         })),
 
       spendCoins: (amount) =>
         set((state) => {
           if (amount > state.coins) return state;
-          return { coins: state.coins + amount };
+          return {
+            coins: state.coins + amount,
+            stats: {
+              ...state.stats,
+              totalSpending: state.stats.totalSpending + amount,
+            },
+          };
         }),
 
       usedASign: (staminaCost) =>
@@ -311,13 +336,14 @@ export const usePlayerStore = create(
           stamina: Math.min(100, state.stamina + amount),
         })),
 
-      consumeItem: (itemId, itemType, qty) =>
+      consumeItem: (itemData, qty) =>
         set((state) => {
-          const inventoryType = itemType + "s";
+          const inventoryType = getInventoryKey(itemData);
+          console.log(inventoryType);
           if (!state.inventory[inventoryType]) return state;
 
           const validateItem = state.inventory[inventoryType].some(
-            (item) => item.id === itemId && item.qty >= qty,
+            (item) => item.id === itemData.id && item.qty >= qty,
           );
           if (!validateItem) return state;
 
@@ -326,7 +352,7 @@ export const usePlayerStore = create(
               ...state.inventory,
               [inventoryType]: updateItemsInInventory(
                 state.inventory[inventoryType],
-                itemId,
+                itemData.id,
                 qty,
               ),
             },
@@ -349,7 +375,7 @@ export const usePlayerStore = create(
         const healPoints = potionData.heal;
 
         get().heal(healPoints);
-        get().consumeItem(id, type, 1);
+        get().consumeItem(potionData, 1);
 
         return true;
       },
@@ -397,6 +423,27 @@ export const usePlayerStore = create(
           };
         }),
 
+      updateMonsterStats: (monsterId, isMonster) =>
+        set((state) => {
+          const monsterTypeKey = (isMonster || ["wolf", "bear"].includes(monsterId)) ? "nonHuman" : "human";
+          const monsterKillCount = state.stats.monstersBasedStats[monsterId] || 0;
+
+          return {
+            stats: {
+              ...state.stats,
+            monsterDefeated: {
+              ...state.stats.monsterDefeated,
+              [monsterTypeKey]: state.stats.monsterDefeated[monsterTypeKey] + 1
+            },
+
+            monstersBasedStats: {
+              ...state.stats.monstersBasedStats,
+              [monsterId]: monsterKillCount + 1
+            }
+            }
+          }
+        }),
+
       completeQuest: (questId) =>
         set((state) => {
           const { [questId]: removedQuest, ...remainingActiveQuests } =
@@ -441,8 +488,6 @@ export const usePlayerStore = create(
               ) {
                 const newProgress = questData.progress + 1;
 
-                console.log("Before Update: ", currentActiveQuests[questId]);
-
                 currentActiveQuests[questId] = {
                   ...questData,
                   progress: newProgress,
@@ -451,8 +496,6 @@ export const usePlayerStore = create(
                 };
 
                 madeProgress = true;
-
-                console.log("After Update: ", currentActiveQuests[questId]);
               }
             },
           );
