@@ -175,7 +175,8 @@
       "type": "weapon",
       "slot": "silver_sword",
       "rarity": "common",
-      "attack": [60, 75],
+      "level_req": 1,
+      "attack": [55, 65],
       "price": 108,
       "description": "A specialized blade plated in alchemical silver. Too fragile for parrying halberds, but devastatingly lethal to creatures born of the Conjunction."
     }
@@ -325,7 +326,7 @@
       "description": "Thick canvas and leather trousers. Durable enough to survive a trek through brambles, and flexible enough for a pirouette"
     },
     "hunting_boots": {
-      "id": "hunters_boots",
+      "id": "hunting_boots",
       "name": "Hunting Boots",
       "type": "armor",
       "slot": "boots",

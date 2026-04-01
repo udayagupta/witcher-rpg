@@ -313,7 +313,7 @@ export const usePlayerStore = create(
         set((state) => {
           if (amount > state.coins) return state;
           return {
-            coins: state.coins + amount,
+            coins: state.coins - amount,
             stats: {
               ...state.stats,
               totalSpending: state.stats.totalSpending + amount,

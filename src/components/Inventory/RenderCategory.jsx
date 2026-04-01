@@ -103,7 +103,7 @@ const RenderCategory = ({ category }) => {
               </div>
             </div>
 
-            <Icon id={selectedItem.id} type={selectedItem.type} size={"60px"} />
+            <Icon id={selectedItem.id} type={selectedItem.type} size={80} />
             <p className="text-xl text-neutral-300 italic mb-8 leading-relaxed">
               "{selectedItem.description}"
             </p>

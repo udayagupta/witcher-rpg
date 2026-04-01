@@ -11,7 +11,7 @@ const ItemCard = ({ itemData, item }) => {
 
       {/* Icon & Name Section */}
       <div className="flex flex-col items-center mt-1">
-        <Icon id={itemData.id} type={itemData.type} size={50} />
+        <Icon id={itemData.id} type={itemData.type} size={itemData.type === "armor" ? 80 : 50} />
         <p className="mt-2 text-sm font-semibold text-neutral-200 text-center leading-tight truncate w-full" title={itemData.name}>
           {itemData.name}
         </p>

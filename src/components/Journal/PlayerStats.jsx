@@ -7,20 +7,6 @@ const PlayerStats = () => {
   const player = usePlayer();
   const playerStats = usePlayerStore((state) => state.stats);
 
-  // const basicStats =
-  //   [
-  //     { key: "totalCoins", name: "Total Coins Collected" },
-  //     { key: "totalSpending", name: "Total Coins Spending" },
-  //     { key: "totalDeaths", name: "Total Deaths" },
-  //     { key: "activeQuests", name: "Total Active Contracts" },
-  //     { key: "completedQuests", name: "Total Completed Contracts" }
-  //   ]
-
-  // const monsterTypeKillings = [
-  //   { key: "human", name: "Human Kills" },
-  //   { key: "nonHuman", name: "Non-Human Kills" }
-  // ]
-
   const basicStatsTable = {
     caption: "Basic Stats",
     theads: ["Stat", "Total"],

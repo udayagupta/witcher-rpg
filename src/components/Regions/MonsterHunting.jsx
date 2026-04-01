@@ -1,11 +1,10 @@
-import React from 'react';
 import { motion } from 'motion/react';
 import { usePlayer } from '../../store/usePlayerStore';
 
 const MonsterHunting = ({ props }) => {
   const { subLocationData, setSelectedMonster, setGameMode, setPlayer, monsterData } = props;
   const player = usePlayer();
-  const oversizedMonsters = ["wolf", "bandit", "witch_hunter"];
+  const oversizedMonsters = [];
 
   return (
     <div className="monster-hunting">

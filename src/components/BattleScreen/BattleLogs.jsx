@@ -19,7 +19,7 @@ const BattleLogs = ({ battleState }) => {
       <h3 className="heading witcher-font">Battle Logs</h3>
       <ul
         id="battleLogs"
-        className="overflow-auto py-1 flex flex-col gap-1 max-h-[450px]"
+        className="overflow-auto py-1 h-full flex flex-col gap-1 max-h-[450px]"
       >
         {battleState.battleLogs.map((log, index) => (
           <li

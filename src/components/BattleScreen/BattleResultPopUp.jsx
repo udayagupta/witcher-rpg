@@ -48,7 +48,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
       });
     } else {
       playSound("dead");
-      setPlayer((prev) => ({ ...prev, stats: { ...state.prev, totalDeaths: prev.stats.totalDeaths + 1 }}))
+      setPlayer((prev) => ({ ...prev, stats: { ...prev.stats, totalDeaths: prev.stats.totalDeaths + 1 }}))
     }
 
     hasProcessedRewards.current = true;

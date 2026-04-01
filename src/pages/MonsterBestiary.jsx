@@ -123,7 +123,7 @@ const MonsterBestiary = () => {
           {Object.keys(monstersData).map((key) => {
             const isSelected = key === selectedMonster;
             const isDiscovered = player.discoveredMonsters.includes(key);
-            // if (!isDiscovered) return;
+            if (!isDiscovered) return;
             return (
               <li
                 key={key}
