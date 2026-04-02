@@ -1,12 +1,9 @@
-// import { usePlayer } from '../../context/PlayerContext/PlayerContext'
 import itemsData from "../../data/items.json";
 import Icon from "../Icon";
 import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
 const UseConsumables = ({ applyOil }) => {
-  // const { player, consumeHealthItem } = usePlayer();
-  
-  // Zustand state
+
   const player = usePlayer();
   const consumeHealthItem = usePlayerStore((state) => state.consumeHealthItem);
 

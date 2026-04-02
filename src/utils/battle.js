@@ -48,6 +48,12 @@ export const playerSwordDamage = (
     playerAttackDmg *= 0.5;
   };
 
+  const isCharmed = battleState.playerDebuffs.some((debuff) => debuff.id === "charm");
+
+  if (isCharmed) {
+    playerAttackDmg = Math.max(1, Math.floor(playerAttackDmg * 0.75));
+  }
+
   const action = {
     isCrit,
     damage: Math.round(playerAttackDmg),
@@ -56,7 +62,7 @@ export const playerSwordDamage = (
     withOil: appliedOil,
     attacker: "player",
     defender: "monster",
-    effectApplied: null
+    effectApplied: isCharmed ? "charm" : null,
   };
 
   return { playerAttackDmg, log: generateLogText(player, monster, action, battleState) }

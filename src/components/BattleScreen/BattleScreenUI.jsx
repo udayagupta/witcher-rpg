@@ -66,10 +66,11 @@ const BattleScreenUI = ({
           />
           <ActiveEffects battleState={battleState} target={"monser"}/>
           <div className="relative">
+            {/* ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'} */}
             <img
               src={`./images/${monsterId}.png`}
               alt=""
-              className={`w-full object-contain ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'}`}
+              className={`w-full object-contain`}
             />
             <div className="layer animations absolute inset-0 flex items-center justify-center z-50"></div>
           </div>

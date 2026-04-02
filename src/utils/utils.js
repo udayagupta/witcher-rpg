@@ -51,8 +51,8 @@ export const generateLogText = (player, monster, action, battleState) => {
     ? "playerDebuffs"
     : "monsterDebuffs";
 
-  if (attacker && action.damage) {
-    const atkText = `${attacker?.name} dealt ${action?.damage} to ${defender?.name} ${action.attackedWith ? `with ${action.attackedWith}` : ""}`;
+  if ((attacker && action.damage) || (attacker && attacker === "player" && action.effectApplied === "charm")) {
+    const atkText = `${attacker?.name} dealt ${action?.damage} to ${defender?.name} ${action.attackedWith ? `with ${action.attackedWith}` : ""} ${action?.effectApplied === "charm" ? "(Damage reduced due to being charmed)" : ""}`;
     console.log(atkText);
     text.push(atkText);
   }

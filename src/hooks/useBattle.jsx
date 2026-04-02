@@ -66,7 +66,6 @@ export const useBattle = (monsterId) => {
       appliedOil: { name: oil, duration: 5, id: id }
     }))
     addLog(`${player.name} applied ${oil} to it's sword for 5 turns.`);
-    // (id, "oil", 1);
     consumeItem(oilData, 1);
   }
 
@@ -99,6 +98,7 @@ export const useBattle = (monsterId) => {
     const damageCalc = swordType === "silver" 
       ? playerSwordDamage(player, monsterData, "silver", currentOil, battleState)
       : playerSwordDamage(player, monsterData, "steel", currentOil, battleState);
+
 
     damageMonster(damageCalc.playerAttackDmg);
     addLog(damageCalc.log);
@@ -180,7 +180,6 @@ export const useBattle = (monsterId) => {
 
     if (!monsterAlive && playerAlive) {
       setBattleState((prev) => ({ ...prev, battleResult: "player" }));
-      // setPlayer((prev) => ({ ...prev, inBattle: false }));
       setPlayer({ inBattle: false });
       increaseStamina(100);
     }
@@ -189,7 +188,6 @@ export const useBattle = (monsterId) => {
       setBattleState((prev) => ({ ...prev, battleResult: "monster" }));
       resetVitality();
       increaseStamina(100);
-      // setPlayer((prev) => ({ ...prev, inBattle: false }));
       setPlayer({ inBattle: false });
     }
 

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import locationsData from "../../data/locations.json";
 import { formatName } from "../../utils/utils";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlayer, usePlayerStore } from "../../store/usePlayerStore";
 
@@ -30,6 +30,8 @@ const Regions = () => {
   const currentLocationData = locationsData[playerLocation];
   const [willTravelTo, setWillTravelTo] = useState("");
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const changeSubLocation = (subLocation, travelTime = 1000) => {
     if (player.subLocation === subLocation) return;
     setPlayer({ isTraveling: true });
@@ -41,6 +43,41 @@ const Regions = () => {
       navigate("/explore-region");
     }, travelTime);
   };
+
+//   const filteredSubLocations = useMemo(() => {
+//   return Object.keys(currentLocationData["sub_locations"]).filter((subLoc) => {
+//     const query = searchQuery.toLowerCase();
+//     const currentSubLocation = currentLocationData["sub_locations"][subLoc];
+
+//     return (
+//       currentSubLocation.id?.toLowerCase().includes(query) ||
+//       currentSubLocation.name.toLowerCase().includes(query) ||
+//       currentSubLocation.monsters_found?.some(monster => monster.toLowerCase().includes(query)) ||
+//       currentSubLocation.resources_to_gather?.some(resource => resource.id.toLowerCase().includes(query)) ||
+//       (currentSubLocation.canRest && query.includes("rest")) ||
+//       (currentSubLocation.merchant && query.includes("merchant")) ||
+//       (currentSubLocation.blacksmith && query.includes("blacksmith")) ||
+//       (currentSubLocation.armorer && query.includes("armorer"))
+//     );
+//   });
+// }, [searchQuery, currentLocationData]);
+
+// const filteredSubLocations = Object.keys(currentLocationData["sub_locations"]).filter((subLoc) => {
+//     const query = searchQuery.toLowerCase();
+//     const currentSubLocation = currentLocationData["sub_locations"][subLoc];
+
+//     return (
+//       currentSubLocation.id?.toLowerCase().includes(query) ||
+//       currentSubLocation.name?.toLowerCase().includes(query) ||
+//       currentSubLocation.monsters_found?.some(monster => monster.toLowerCase().includes(query)) ||
+//       currentSubLocation.resources_to_gather?.some(resource => resource.id?.toLowerCase().includes(query)) ||
+//       // Flipped the includes check so partial typing works!
+//       (currentSubLocation.canRest && "rest".includes(query)) ||
+//       (currentSubLocation.merchant && "merchant".includes(query)) ||
+//       (currentSubLocation.blacksmith && "blacksmith".includes(query)) ||
+//       (currentSubLocation.armorer && "armorer".includes(query))
+//     )
+//   })
 
   return (
     <section>
@@ -67,8 +104,12 @@ const Regions = () => {
         {currentLocationData.name} Regions
       </h3>
 
+      <div className="w-max mb-5">
+        <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" name="" id="" placeholder="Search..." className="py-2 px-5 witcher-font border rounded-md border-neutral-700 active:outline-none active:border-amber-300 focus:outline-none focus:border-amber-300" />
+      </div>
+
       <motion.ul
-        className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-2"
+        className="grid grid-cols-1 lg:grid-cols-3 gap-4"
         variants={containerVariants}
         initial="hidden"
         animate="show"

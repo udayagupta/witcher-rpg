@@ -13,6 +13,8 @@ const SelectedMonsterCard = ({ selectedMonster, player }) => {
     );
   }
 
+
+
   const selectedMonsterData = monstersData[selectedMonster];
   const isDiscovered = player.discoveredMonsters.includes(selectedMonster);
 
@@ -109,25 +111,44 @@ const SelectedMonsterCard = ({ selectedMonster, player }) => {
   );
 };
 
-// 2. MAIN COMPONENT
 const MonsterBestiary = () => {
   const [selectedMonster, setSelectedMonster] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const player = usePlayer();
+
+  const filteredMonsters = Object.values(monstersData).filter((monsterData) => {
+    const query = searchQuery.toLowerCase();
+
+    return (
+      monsterData.name.toLowerCase().includes(query) ||
+      monsterData.species.toLowerCase().includes(query) ||
+      monsterData.difficulty.toLowerCase().includes(query) ||
+
+      monsterData.weakness.oil.some(oil => oil.toLowerCase().includes(query)) ||
+      monsterData.weakness.signs.some(sign => sign.toLowerCase().includes(query)) ||
+
+      monsterData.drops.some((drop) => drop.id.toLowerCase().includes(query) )
+    );
+  });
 
   return (
     <section className="h-[120vh] flex gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
 
       <div className="w-[65%] overflow-y-auto custom-scrollbar pr-2">
         <h3 className="text-3xl p-2 witcher-font text-amber-300 border-b border-neutral-700 mb-4">Discovered Monsters</h3>
+
+        <div className="w-max mb-4">
+          <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" name="" id="" placeholder="Search..." className="py-2 px-5 witcher-font border rounded-md border-neutral-700 active:outline-none active:border-amber-300 focus:outline-none focus:border-amber-300" />
+        </div>
         <ul className="flex flex-wrap gap-4 justify-center items-start p-2">
-          {Object.keys(monstersData).map((key) => {
-            const isSelected = key === selectedMonster;
-            const isDiscovered = player.discoveredMonsters.includes(key);
+          {filteredMonsters.map((key) => {
+            const isSelected = key.id === selectedMonster;
+            const isDiscovered = player.discoveredMonsters.includes(key.id);
             if (!isDiscovered) return;
             return (
               <li
-                key={key}
-                onClick={() => setSelectedMonster(key)}
+                key={key.id}
+                onClick={() => setSelectedMonster(key.id)}
                 className={`group flex flex-col items-center justify-between w-32 h-36 p-3 cursor-pointer rounded-lg shadow-md transition-all duration-300 ${isSelected
                   ? "border-2 border-amber-300 bg-neutral-900"
                   : "border border-neutral-700 bg-neutral-900/60 hover:border-amber-300 hover:bg-neutral-800"
@@ -135,8 +156,8 @@ const MonsterBestiary = () => {
               >
                 <div className="flex-1 w-full flex items-center justify-center overflow-hidden">
                   <img
-                    src={`./images/${key}.png`}
-                    alt={monstersData[key].name}
+                    src={`./images/${key.id}.png`}
+                    alt={monstersData[key.id].name}
                     className={`w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'}`}
                   />
                 </div>
@@ -144,7 +165,7 @@ const MonsterBestiary = () => {
                   className={`text-sm font-semibold text-center tracking-wide leading-tight mt-3 witcher-font ${isSelected ? "text-amber-300" : "text-neutral-300 group-hover:text-amber-300"
                     }`}
                 >
-                  {isDiscovered ? monstersData[key].name : "???"}
+                  {isDiscovered ? monstersData[key.id].name : "???"}
                 </p>
               </li>
             );

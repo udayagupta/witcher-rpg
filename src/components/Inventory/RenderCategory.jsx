@@ -6,7 +6,6 @@ import Icon from '../Icon';
 import { usePlayerStore, usePlayer } from '../../store/usePlayerStore';
 import ItemCard from './ItemCard';
 
-
 const RenderCategory = ({ category }) => {
 
   const player = usePlayer();
@@ -18,6 +17,7 @@ const RenderCategory = ({ category }) => {
   });
 
   const [selectedItem, setSelectedItem] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSelectedItem = (item) => {
     setSelectedItem(item);
@@ -38,12 +38,26 @@ const RenderCategory = ({ category }) => {
 
   const levelReq = !(selectedItem?.level_req <= player.level);
 
+  const filteredItems = items.filter((item) => {
+    const query = searchQuery.toLowerCase();
+    const itemData = itemsData[item.type][item.id];
+    return (
+      itemData.name.toLowerCase().includes(query) ||
+      itemData.id.toLowerCase().includes(query) ||
+      itemData.type.toLowerCase().includes(query) ||
+      itemData.rarity.toLowerCase().includes(query)
+    )
+  })
+
   return (
-    <div className='flex gap-5 mt-5'>
+    <div className='flex gap-5 flex-col mt-5'>
+      <div className="w-max">
+        <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" name="" id="" placeholder="Search..." className="py-2 px-5 font-semibold tracking-wide border rounded-md border-neutral-700 active:outline-none active:border-amber-300 focus:outline-none focus:border-amber-300" />
+      </div>
       <motion.ul className={`${items.length === 0 ? "grid grid-cols-1" : "flex-2 gap-3 grid grid-cols-5"} w-full`}>
         {items.length === 0 && <li className='text-4xl mx-auto mt-8'>No Items with <span className='text-amber-300'>{category.name}</span> category</li>}
         {
-          items.map((item) => {
+          filteredItems.map((item) => {
             const itemData = itemsData[item.type][item.id];
             return (
               <li
@@ -51,15 +65,15 @@ const RenderCategory = ({ category }) => {
                 onClick={() => handleSelectedItem(itemData)}
                 className="relative min-h-[140px] flex flex-col justify-between p-3 card cursor-pointer hover:border-amber-300 transition-all group bg-neutral-800/50 border border-neutral-700 rounded-md"
               >
-                <ItemCard itemData={itemData} item={item}/>
+                <ItemCard itemData={itemData} item={item} />
               </li>
             )
           })
         }
       </motion.ul>
       {selectedItem && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2">
-          <div className='relative bg-neutral-900 border border-neutral-700 flex flex-col w-[650px] min-h-[350px] p-8 rounded-lg shadow-2xl text-white'>
+        <div initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 1 }} className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2">
+          <motion.div initial={{scaleX: 0, opacity: 0}} animate={{scaleX: 1, opacity: 1}} className='relative bg-neutral-900 border border-neutral-700 flex flex-col w-[650px] min-h-[350px] p-8 rounded-lg shadow-2xl text-white'>
 
             <button
               onClick={onClose}
@@ -147,7 +161,7 @@ const RenderCategory = ({ category }) => {
                 <button onClick={() => handleDrink()} className='bg-amber-300 cursor-pointer mt-4 rounded-md p-2 text-neutral-950 font-extrabold text-lg'>{player.vitality === player.maxVitality ? "Already Full" : "Consume"}</button>
               )
             }
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

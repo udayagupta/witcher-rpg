@@ -60,7 +60,7 @@
     "crit_chance": 7,
     "base_exp": 65,
     "weakness": { "oil": ["Hybrid Oil"], "signs": ["Aard", "Igni"] },
-    "buffs": [],
+    "buffs": ["charm"],
     "attack": [30, 50],
     "defense": 12,
     "bestiary_entry": "Out at sea, if you hear a beautiful woman singing, turn the ship around at once...",
