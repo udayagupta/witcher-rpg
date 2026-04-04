@@ -12,7 +12,7 @@ const RecipePop = ({ recipeData, playerInventory, onClose }) => {
   const craftItem = usePlayerStore((state) => state.craftItem);
 
   return (
-    <div className="relative text-2xl bg-neutral-900 border border-neutral-700 flex w-[680px] min-h-[350px] p-5 rounded-lg shadow-2xl text-white">
+    <div className="relative text-2xl bg-neutral-900 border border-neutral-700 flex flex-col mt-5 lg:flex-row max-w-[680px] min-h-[350px] p-5 rounded-lg shadow-2xl text-white">
       
       {/* Close Button */}
       <button 
@@ -75,11 +75,13 @@ const RecipePop = ({ recipeData, playerInventory, onClose }) => {
 
       <div className="w-px bg-neutral-700/60 my-2 mx-2"></div>
 
+      {/* Right Panel - Ingredients */}
       <div className='flex-1 h-full pl-3 pt-6'>
         <h5 className="text-sm text-neutral-400 uppercase tracking-wider mb-3 font-semibold border-b border-neutral-700/50 pb-2">
           Required Materials
         </h5>
-        <ul className='grid grid-cols-2 w-full gap-3 text-sm'>
+        {/* grid grid-cols-2 */}
+        <ul className='flex flex-col lg:grid lg:grid-cols-2 w-full gap-3 text-sm'>
           {
             recipeData.ingredients.map((ingredient) => {
               const ingredientData = itemsData[ingredient.type][ingredient.id];

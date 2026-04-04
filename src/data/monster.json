@@ -335,7 +335,7 @@
     "weakness": { "oil": ["Hybrid Oil"], "signs": ["Aard"] },
     "buffs": ["bleed"],
     "attack": [30, 50],
-    "defense": 11,
+    "defense": 20,
     "bestiary_entry": "Shrieking monsters that attack from above...",
     "img_url": "",
     "drops": [

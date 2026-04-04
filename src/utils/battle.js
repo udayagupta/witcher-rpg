@@ -1,5 +1,5 @@
 import { effectsData } from "./effects";
-import { generateLogText, checkIfEffectExists, existsAndCanStack } from "./utils";
+import { generateLogText, checkIfEffectExists, existsAndCanStack, playSound } from "./utils";
 import { randomInRange } from "./utils";
 
 const SIGN_WEAKNESS_MULTIPLIER = 2;
@@ -65,6 +65,7 @@ export const playerSwordDamage = (
     effectApplied: isCharmed ? "charm" : null,
   };
 
+  playSound("sword_slash");
   return { playerAttackDmg, log: generateLogText(player, monster, action, battleState) }
 }
 
@@ -140,6 +141,8 @@ export const handleIgni = (burnChance = 0.1, player, monster, battleState) => {
     effectApplied: isBurning ? "burn" : null,
   }
 
+  playSound("igni");
+
   return {
     damage: parseInt(totalDamage),
     isBurning: isBurning ? { id: effectData.id, duration: effectData.duration } : null,
@@ -169,6 +172,8 @@ export const handleAard = (player, monster, battleState) => {
     defender: "monster",
     effectApplied: null,
   }
+
+  playSound("aard");
 
   return {
     damage: totalDamage,

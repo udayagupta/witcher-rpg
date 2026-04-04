@@ -20,7 +20,7 @@ const RenderCategory = ({ category }) => {
 
   return (
     <div>
-      <ul className='mt-3 flex gap-5'>
+      <ul className='mt-3 flex gap-5 flex-wrap lg:flex-none justify-center lg:justify-normal'>
         {
           categoryRecipes.map((recipe) => {
             const recipeData = recipesData[recipe];

@@ -6,7 +6,7 @@ const ContractCard = ({ contractData, activeContractData, mode }) => {
   const currentProgress = isCompleted ? contractData.target_qty : (activeContractData?.progress || 0);
 
   return (
-    <div className={`border ${isCompleted ? "border-green-300" : "border-neutral-600"}  rounded-md items-center p-4 flex flex-col w-[300px]`}>
+    <div className={`border ${isCompleted ? "border-green-300" : "border-neutral-600"}  rounded-md items-center p-4 flex flex-col max-w-[300px]`}>
       
       <div className="flex flex-col items-center w-full">
         <p className="font-bold text-lg text-amber-300 witcher-font text-center">

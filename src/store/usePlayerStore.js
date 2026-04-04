@@ -5,6 +5,7 @@ import {
   updateItemsInInventory,
   checkIfEquipped,
   getInventoryKey,
+  playSound,
 } from "../utils/utils";
 import itemsData from "../data/items.json";
 import contractsData from "../data/contracts.json";
@@ -249,6 +250,7 @@ export const usePlayerStore = create(
 
           return {
             vitality: state.maxVitality,
+            stamina: 100,
             shops: restockedShops,
           };
         }),
@@ -260,6 +262,8 @@ export const usePlayerStore = create(
           const ingredientData = itemsData[ingredient.type][ingredient.id];
           consumeItem(ingredientData, ingredient.qty);
         });
+
+        if (recipeData.type === "potion") playSound("potion_crafted");
 
         addToInventory(
           recipeData.yields.id,
@@ -376,6 +380,11 @@ export const usePlayerStore = create(
 
         get().heal(healPoints);
         get().consumeItem(potionData, 1);
+
+        if (potionData.type === "potion") playSound("potion_drink");
+        if (potionData.type === "food" && potionData.id === "water") {playSound("drink")};
+        if (potionData.type === "food" && potionData.id !== "water") playSound("food");
+
 
         return true;
       },

@@ -107,7 +107,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
         )}
 
         <button
-          onClick={() => handleGameMode("explore")}
+          onClick={() => {handleGameMode("explore"); playSound("equip")}}
           className={`cursor-pointer mt-5 mx-auto block witcher-font px-4 py-2 rounded-md text-sm border transition ${isVictory
             ? "border-amber-300 hover:bg-amber-300 hover:text-black"
             : "border-red-500 hover:bg-red-500 hover:text-black"

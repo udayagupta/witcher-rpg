@@ -66,7 +66,7 @@ const ShopMode = ({ mode, shopType, currentShopData }) => {
   }
 
   return (
-    <ul className="grid grid-cols-2 gap-3 overflow-y-auto pr-2 custom-scrollbar content-start">
+    <ul className="flex flex-col lg:grid lg:grid-cols-2 gap-3 overflow-y-auto pr-2 custom-scrollbar content-start">
       {shopItemsToRender.map((item) => {
         const itemData = itemsData[mode === "buy" ? item.category : item.type][item.id];
         if (!itemData) return null;

@@ -4,109 +4,102 @@ import { usePlayer } from "../store/usePlayerStore";
 import items from "../data/items.json";
 import Icon from "../../src/components/Icon";
 
-const SelectedMonsterCard = ({ selectedMonster, player }) => {
-  if (!selectedMonster) {
-    return (
-      <div className="flex flex-col justify-center text-lg items-center h-full text-neutral-300">
-        <p>Select a monster to view details.</p>
-      </div>
-    );
-  }
-
-
+const SelectedMonsterCard = ({ selectedMonster, player, setSelectedMonster }) => {
+  const onClose = () => { setSelectedMonster(null) }
 
   const selectedMonsterData = monstersData[selectedMonster];
   const isDiscovered = player.discoveredMonsters.includes(selectedMonster);
 
   return (
-    <div className="flex flex-col h-full gap-3 p-4 bg-neutral-900/30 rounded text-white overflow-auto">
+    <div className="relative bg-neutral-900 border border-neutral-700 flex flex-col w-[650px] max-h-[550px] overflow-auto p-8 rounded-lg shadow-2xl text-white">
+      <button
+        onClick={onClose}
+        className="absolute cursor-pointer top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-red-400 hover:bg-neutral-700 transition-colors font-bold text-lg"
+        title="Close Details"
+      >
+        ✕
+      </button>
+
       <img
         src={`./images/${selectedMonster}.png`}
-        alt={selectedMonsterData.name}
+        alt={selectedMonsterData?.name}
         className={`w-full h-[250px] object-contain transition-all ${!isDiscovered ? 'grayscale contrast-200 brightness-50' : ''}`}
       />
 
       <p className="witcher-font text-4xl text-amber-300 text-center mt-2">
-        {isDiscovered ? selectedMonsterData.name : "Unidentified Beast"}
+        {isDiscovered ? selectedMonsterData?.name : "Unidentified Beast"}
       </p>
 
-      {isDiscovered ? (
-        <div className="mt-4 flex flex-col gap-4">
-          <p className="italic text-neutral-300 border-l-3 border-amber-500 pl-3">
-            "{selectedMonsterData.bestiary_entry}"
+      <div className="mt-4 flex flex-col gap-4">
+        <p className="italic text-neutral-300 border-l-3 border-amber-500 pl-3">
+          "{selectedMonsterData?.bestiary_entry}"
+        </p>
+
+        <div className=" p-4">
+          <p className="mb-2">
+            <span className="opacity-80 text-sm uppercase tracking-wider text-amber-500">Weakness — Oils:</span>{" "}
+            <span className="font-semibold text-lg ml-2">
+              {(selectedMonsterData?.weakness?.oil || []).join(", ") || "None"}
+            </span>
           </p>
+          <p className="mb-2">
+            <span className="opacity-80 text-sm uppercase tracking-wider text-blue-400">Weakness — Signs:</span>{" "}
+            <span className="font-semibold text-lg ml-2">
+              {(selectedMonsterData?.weakness?.signs || []).join(", ") || "None"}
+            </span>
+          </p>
+          <p>
+            <span className="opacity-80 text-sm uppercase tracking-wider text-red-400">Buffs/Attacks:</span>{" "}
+            <span className="capitalize font-semibold text-lg ml-2">
+              {(selectedMonsterData?.buffs || []).join(", ") || "None"}
+            </span>
+          </p>
+          <div className="bg-neutral-950/50 rounded-md border border-neutral-700 overflow-hidden mt-2">
+            <table className="w-full text-left border-collapse">
 
-          <div className=" p-4">
-            <p className="mb-2">
-              <span className="opacity-80 text-sm uppercase tracking-wider text-amber-500">Weakness — Oils:</span>{" "}
-              <span className="font-semibold text-lg ml-2">
-                {(selectedMonsterData.weakness?.oil || []).join(", ") || "None"}
-              </span>
-            </p>
-            <p className="mb-2">
-              <span className="opacity-80 text-sm uppercase tracking-wider text-blue-400">Weakness — Signs:</span>{" "}
-              <span className="font-semibold text-lg ml-2">
-                {(selectedMonsterData.weakness?.signs || []).join(", ") || "None"}
-              </span>
-            </p>
-            <p>
-              <span className="opacity-80 text-sm uppercase tracking-wider text-red-400">Buffs/Attacks:</span>{" "}
-              <span className="capitalize font-semibold text-lg ml-2">
-                {(selectedMonsterData.buffs || []).join(", ") || "None"}
-              </span>
-            </p>
-            <div className="bg-neutral-950/50 rounded-md border border-neutral-700 overflow-hidden mt-2">
-              <table className="w-full text-left border-collapse">
+              {/* Table Header */}
+              <thead className="bg-neutral-900">
+                <tr className="text-neutral-400 text-xs uppercase tracking-widest border-b border-neutral-700">
+                  <th className="py-2 px-3 font-medium">Potential Loot</th>
+                  <th className="py-2 px-3 font-medium text-right">Drop Chance</th>
+                </tr>
+              </thead>
 
-                {/* Table Header */}
-                <thead className="bg-neutral-900">
-                  <tr className="text-neutral-400 text-xs uppercase tracking-widest border-b border-neutral-700">
-                    <th className="py-2 px-3 font-medium">Potential Loot</th>
-                    <th className="py-2 px-3 font-medium text-right">Drop Chance</th>
-                  </tr>
-                </thead>
+              {/* Table Body */}
+              <tbody>
+                {selectedMonsterData?.drops?.map((drop) => {
+                  const dropData = items[drop.type]?.[drop.id];
+                  if (!dropData) return null;
+                  const dropPercent = Math.round(drop.chance * 100);
 
-                {/* Table Body */}
-                <tbody>
-                  {selectedMonsterData.drops?.map((drop) => {
-                    const dropData = items[drop.type]?.[drop.id];
-                    if (!dropData) return null;
-                    const dropPercent = Math.round(drop.chance * 100);
+                  return (
+                    <tr
+                      key={drop.id}
+                      className="border-b border-neutral-800/50 last:border-0 hover:bg-neutral-800/50 transition-colors"
+                    >
+                      <td className="py-2 px-3 flex items-center gap-3">
+                        <div className=" p-1 rounded-md">
+                          <Icon id={dropData.id} type={drop.type} size={28} />
+                        </div>
+                        <p className="font-semibold text-neutral-200 text-sm">
+                          {dropData.name} <span className="text-neutral-500 font-normal text-xs ml-1">(x{drop.qty})</span>
+                        </p>
+                      </td>
 
-                    return (
-                      <tr
-                        key={drop.id}
-                        className="border-b border-neutral-800/50 last:border-0 hover:bg-neutral-800/50 transition-colors"
-                      >
-                        <td className="py-2 px-3 flex items-center gap-3">
-                          <div className=" p-1 rounded-md">
-                            <Icon id={dropData.id} type={drop.type} size={28} />
-                          </div>
-                          <p className="font-semibold text-neutral-200 text-sm">
-                            {dropData.name} <span className="text-neutral-500 font-normal text-xs ml-1">(x{drop.qty})</span>
-                          </p>
-                        </td>
+                      <td className="py-2 px-3 text-right">
+                        <span className={`font-bold text-sm ${dropPercent >= 50 ? 'text-green-400' : 'text-amber-400'}`}>
+                          {dropPercent}%
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
 
-                        <td className="py-2 px-3 text-right">
-                          <span className={`font-bold text-sm ${dropPercent >= 50 ? 'text-green-400' : 'text-amber-400'}`}>
-                            {dropPercent}%
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-
-              </table>
-            </div>
+            </table>
           </div>
         </div>
-      ) : (
-        <div className="mt-10 flex flex-col items-center text-neutral-400 text-center">
-          <span className="text-4xl mb-4">🗡️</span>
-          <p>Defeat this monster in combat at least once to unlock its Bestiary entry and reveal its weaknesses.</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
@@ -127,14 +120,14 @@ const MonsterBestiary = () => {
       monsterData.weakness.oil.some(oil => oil.toLowerCase().includes(query)) ||
       monsterData.weakness.signs.some(sign => sign.toLowerCase().includes(query)) ||
 
-      monsterData.drops.some((drop) => drop.id.toLowerCase().includes(query) )
+      monsterData.drops.some((drop) => drop.id.toLowerCase().includes(query))
     );
   });
 
   return (
-    <section className="h-[120vh] flex gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
+    <section className="relative h-full  flex gap-5 bg-gradient-to-b from-neutral-900 to-neutral-800 text-white rounded-lg shadow-lg p-4">
 
-      <div className="w-[65%] overflow-y-auto custom-scrollbar pr-2">
+      <div className="overflow-y-auto custom-scrollbar pr-2 w-full">
         <h3 className="text-3xl p-2 witcher-font text-amber-300 border-b border-neutral-700 mb-4">Discovered Monsters</h3>
 
         <div className="w-max mb-4">
@@ -173,9 +166,14 @@ const MonsterBestiary = () => {
         </ul>
       </div>
 
-      <div className="w-[40%] h-full">
-        <SelectedMonsterCard selectedMonster={selectedMonster} player={player} />
-      </div>
+      {
+        (selectedMonster && (
+
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2">
+            <SelectedMonsterCard selectedMonster={selectedMonster} player={player} setSelectedMonster={setSelectedMonster} />
+          </div>
+        ))
+      }
 
     </section>
   );

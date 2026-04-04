@@ -30,7 +30,7 @@ const Regions = () => {
   const currentLocationData = locationsData[playerLocation];
   const [willTravelTo, setWillTravelTo] = useState("");
 
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
 
   const changeSubLocation = (subLocation, travelTime = 1000) => {
     if (player.subLocation === subLocation) return;
@@ -104,9 +104,9 @@ const Regions = () => {
         {currentLocationData.name} Regions
       </h3>
 
-      <div className="w-max mb-5">
+      {/* <div className="w-max mb-5">
         <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} type="text" name="" id="" placeholder="Search..." className="py-2 px-5 witcher-font border rounded-md border-neutral-700 active:outline-none active:border-amber-300 focus:outline-none focus:border-amber-300" />
-      </div>
+      </div> */}
 
       <motion.ul
         className="grid grid-cols-1 lg:grid-cols-3 gap-4"
