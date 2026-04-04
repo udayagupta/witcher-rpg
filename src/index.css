@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: "The Witcher";
-    src: url("./thewitcher-font/Thewitcher.ttf") format("truetype");
+    src: url("/thewitcher-font/Thewitcher.ttf") format("truetype");
 }
 
 @font-face {
     font-family: "PT Sans";
-    src: url("./PT_Sans/PTSans-Regular.ttf") format("truetype");
+    src: url("/PT_Sans/PTSans-Regular.ttf") format("truetype");
     font-weight: 400;
 }
 

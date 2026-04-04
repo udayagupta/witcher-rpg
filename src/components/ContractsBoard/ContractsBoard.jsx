@@ -19,7 +19,7 @@ const ContractsBoard = () => {
       <div className="flex-2 px-4">
         <h3 className="text-2xl p-2 witcher-font text-amber-300">Contracts</h3>
         {/* flex flex-col gap-2 */}
-        <ul className="grid grid-cols-3  gap-5 lg:flex-col lg:flex lg:flex-wrap">
+        <ul className="lg:grid lg:grid-cols-3  gap-5 flex-col flex flex-wrap">
           {contractsIds.map((item) => (
             (!player.completedQuests.includes(item) && (
               <li

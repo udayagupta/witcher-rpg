@@ -5,6 +5,8 @@ import UseConsumables from "./UseConsumables";
 import ActiveEffects from "./ActiveEffects";
 import BattleLogs from "./BattleLogs";
 import { usePlayer } from "../../store/usePlayerStore";
+import { useEffect } from "react";
+import { slideToId } from "../../utils/utils";
 
 const BattleScreenUI = ({
   battleState,
@@ -18,16 +20,23 @@ const BattleScreenUI = ({
   const player = usePlayer();
   const isDiscovered = player.discoveredMonsters.includes(monsterData.id);
 
+  useEffect(() => {
+    if (battleState.currentTurn === "player") slideToId("player-screen");
+    if (battleState.currentTurn === "monster") slideToId("monster-screen");
+  }, [battleState.currentTurn])
+
   return (
     <div className="h-full w-full overflow-x-hidden p-2 sm:p-4">
 
       <div className="player-and-monster-f2f flex flex-col lg:flex-row items-stretch gap-4 lg:gap-5">
+        
         <div
-          className={`player-screen bg-neutral-900 rounded-md flex-1 w-full p-4 transition duration-300 order-2 lg:order-1 ${
+          className={`player-screen bg-neutral-900 rounded-md flex-1 w-full p-4 transform transition-all duration-300 order-2 lg:order-1 ${
             battleState.currentTurn === "player"
-              ? "flashing-border-container"
+              ? "flashing-border-container "
               : "border border-transparent"
           }`}
+          id="player-screen"
         >
           <p className="witcher-font heading">{player.name}</p>
           <HealthBar className="font-semibold" vitality={player.vitality} maxVitality={player.maxVitality}/>
@@ -54,32 +63,45 @@ const BattleScreenUI = ({
         </div>
 
         <div
-          className={`monster-screen  flex-1 w-full rounded-md p-4 transition duration-300 order-1 lg:order-3 ${
+          className={`monster-screen flex-1 w-full rounded-md p-4 flex flex-col transform transition-all duration-300 order-1 lg:order-3 ${
             battleState.currentTurn === "monster"
-              ? "flashing-border-container"
-              : "border border-transparent"
+              ? "flashing-border-container -translate-x-2 lg:translate-x-0"
+              : "border border-transparent translate-x-0"
           }`}
+          id="monster-screen"
         >
-          <p className="witcher-font heading">{isDiscovered ? monsterData.name : "Unidentified Monster"}</p>
-          <MonsterHealth
-            current={monsterData.vitality}
-            max={monsterData.max_vitality}
-            className="mb-2 font-semibold"
-            defense={monsterData.defense}
-          />
-          <ActiveEffects battleState={battleState} target={"monster"}/>
+          <p className="witcher-font heading text-center lg:text-left order-2 lg:order-1">
+            {isDiscovered ? monsterData.name : "Unidentified Monster"}
+          </p>
+
+          <div className="order-3 lg:order-2 w-full">
+            <MonsterHealth
+              current={monsterData.vitality}
+              max={monsterData.max_vitality}
+              className="mb-2 font-semibold"
+              defense={monsterData.defense}
+            />
+          </div>
           
-          <div className="relative mt-4 flex justify-center">
+          {/* EFFECTS: Order 4 on Mobile, Order 3 on Desktop */}
+          <div className="order-4 lg:order-3 w-full">
+            <ActiveEffects battleState={battleState} target={"monster"}/>
+          </div>
+
+          {/* IMAGE: Order 1 on Mobile (Top!), Order 4 on Desktop (Bottom!) */}
+          <div className="relative mb-4 lg:mb-0 lg:mt-4 flex justify-center order-1 lg:order-4 w-full">
             <img
-              src={`./images/${monsterId}.png`}
+              src={`/images/${monsterId}.png`}
               alt="Monster"
               className="w-full max-h-[250px] lg:max-h-[400px] object-contain drop-shadow-2xl"
             />
             <div className="layer animations absolute inset-0 flex items-center justify-center z-50"></div>
           </div>
+          
         </div>
       </div>
       
+      {/* CONSUMABLES & FLEE */}
       <div className="mt-4 flex flex-col gap-3">
         <UseConsumables applyOil={applyOil}/>
         <div className="bg-neutral-900 rounded-md">
