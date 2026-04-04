@@ -141,5 +141,159 @@
     "reward_recipe": ["wolven_steel_sword", "wolven_silver_sword"],
     "short_description": "Survive a massive wolf pack to uncover Kaer Morhen's ancient diagrams.",
     "description": "Old diagrams belonging to the School of the Wolf were dropped near a dense forest during a rout. A massive pack of wolves has claimed the area. Thin their numbers by hunting 15 wolves to retrieve your school's sword recipes."
+  },
+  "contract_viper_school_gear": {
+    "name": "Scavenger Hunt: Viper School Gear",
+    "type": "monster_hunt",
+    "target_monster": "endrega_warrior",
+    "target_qty": 6,
+    "reward_coins": 650,
+    "reward_exp": 300,
+    "reward_recipe": ["viper_steel_sword", "viper_silver_sword"],
+    "short_description": "Retrieve the lost Viper School diagrams from an insectoid-infested cellar.",
+    "description": "An assassin from the School of the Viper was cornered in an old cellar centuries ago. The area is now a breeding ground for Endrega Warriors. Slay the insectoids to recover the lethal twin blade diagrams left behind."
+  },
+  "contract_the_soldiers_elixir": {
+    "name": "The Soldier's Elixir",
+    "type": "monster_hunt",
+    "target_monster": "ghoul",
+    "target_qty": 5,
+    "reward_coins": 200,
+    "reward_exp": 150,
+    "reward_recipe": ["swallow"],
+    "short_description": "Clear the battlefield of ghouls to recover a medic's potion formula.",
+    "description": "A field medic lost their satchel during a skirmish in Velen. The bodies have attracted a pack of starving ghouls. Clear the scavengers away to claim the Swallow potion recipe hidden inside the medic's bag."
+  },
+  "contract_blood_in_the_swamp": {
+    "name": "Blood in the Swamp",
+    "type": "monster_hunt",
+    "target_monster": "foglet",
+    "target_qty": 3,
+    "reward_coins": 450,
+    "reward_exp": 250,
+    "reward_recipe": ["enhanced_swallow"],
+    "short_description": "Hunt the illusion-casting foglets to find an alchemist's remains.",
+    "description": "An alchemist venturing into the swamps seeking rare herbs was ambushed by foglets. Slay the deceptive necrophages to recover his upgraded formula for the Enhanced Swallow potion."
+  },
+  "contract_the_apex_predator": {
+    "name": "The Apex Predator",
+    "type": "monster_hunt",
+    "target_monster": "ekimmara",
+    "target_qty": 1,
+    "reward_coins": 800,
+    "reward_exp": 400,
+    "reward_recipe": ["superior_swallow"],
+    "short_description": "Slay a brutal lower vampire to claim the ultimate healing formula.",
+    "description": "An Ekimmara has made its lair in the old ruins, hoarding the belongings of its countless victims. Among the bones lies an ancient Witcher cache containing the formula for Superior Swallow. Bring the beast down."
+  },
+  "contract_highway_robbery": {
+    "name": "Highway Robbery",
+    "type": "monster_hunt",
+    "target_monster": "bandit",
+    "target_qty": 12,
+    "reward_coins": 400,
+    "reward_exp": 200,
+    "reward_recipe": ["hanged_mans_venom"],
+    "short_description": "Eliminate a massive bandit camp to secure a lethal blade oil.",
+    "description": "A ruthless gang of bandits has blocked the main trade route, extorting merchants and killing those who resist. Wipe out their camp to find the recipe for Hanged Man's Venom among their stolen loot."
+  },
+  "contract_cleansing_the_graveyard": {
+    "name": "Cleansing the Graveyard",
+    "type": "monster_hunt",
+    "target_monster": "alghoul",
+    "target_qty": 4,
+    "reward_coins": 350,
+    "reward_exp": 180,
+    "reward_recipe": ["necrophage_oil"],
+    "short_description": "Eradicate the spiked necrophages digging up the local cemetery.",
+    "description": "The village graveyard has been completely overrun by Alghouls. The local priest offers a bounty and access to the church's hidden archives, containing the formula for Necrophage Oil, to whoever purges the holy ground."
+  },
+  "contract_the_restless_maidens": {
+    "name": "The Restless Maidens",
+    "type": "monster_hunt",
+    "target_monster": "wraith",
+    "target_qty": 5,
+    "reward_coins": 400,
+    "reward_exp": 220,
+    "reward_recipe": ["specter_oil"],
+    "short_description": "Banish the vengeful spirits haunting the executioner's tree.",
+    "description": "Wraiths have gathered around Hanged Man's Tree, their anguished wails driving nearby settlers mad. Banish the specters to uncover a hidden stash at the base of the tree containing the recipe for Specter Oil."
+  },
+  "contract_winged_death": {
+    "name": "Winged Death",
+    "type": "monster_hunt",
+    "target_monster": "wyvern",
+    "target_qty": 2,
+    "reward_coins": 750,
+    "reward_exp": 350,
+    "reward_recipe": ["draconid_oil"],
+    "short_description": "Take down a mated pair of wyverns terrorizing the high cliffs.",
+    "description": "Two wyverns have claimed the rocky peaks, dropping sheep and sometimes shepherds from the sky. Hunt them both down. As an added bonus, you'll find the recipe for Draconid Oil in the remains of a previous, less successful Witcher."
+  },
+  "contract_terror_of_the_woods": {
+    "name": "Terror of the Woods",
+    "type": "monster_hunt",
+    "target_monster": "bear",
+    "target_qty": 5,
+    "reward_coins": 300,
+    "reward_exp": 150,
+    "reward_recipe": ["beast_oil"],
+    "short_description": "Cull the overly aggressive bears blocking the logging camp.",
+    "description": "The lumberjacks cannot do their jobs because the woods are teeming with massive, starving bears. Thin their numbers so work can resume, and you'll find the formula for Beast Oil in the abandoned foreman's cabin."
+  },
+  "contract_the_screeching_cliffs": {
+    "name": "The Screeching Cliffs",
+    "type": "monster_hunt",
+    "target_monster": "harpy",
+    "target_qty": 8,
+    "reward_coins": 500,
+    "reward_exp": 250,
+    "reward_recipe": ["hybrid_oil"],
+    "short_description": "Clear the coastal cliffs of a massive harpy infestation.",
+    "description": "A flock of harpies has built nests along the vital coastal paths, diving at anyone who tries to pass. Eradicate the flock and search their filthy nests to uncover the recipe for Hybrid Oil."
+  },
+  "contract_shadow_of_the_bits": {
+    "name": "Shadow of the Bits",
+    "type": "monster_hunt",
+    "target_monster": "bandit",
+    "target_qty": 12,
+    "reward_coins": 450,
+    "reward_exp": 200,
+    "reward_recipe": null,
+    "short_description": "A ruthless gang is extorting the poorest residents in the slums of Novigrad.",
+    "description": "The City Guard refuses to patrol the impoverished district known as The Bits. A violent gang of bandits has taken over the alleys, shaking down the locals. Clear out the thugs to make the streets safe again."
+  },
+  "contract_temple_isle_menace": {
+    "name": "Temple Isle Menace",
+    "type": "monster_hunt",
+    "target_monster": "witch_hunter",
+    "target_qty": 6,
+    "reward_coins": 550,
+    "reward_exp": 250,
+    "reward_recipe": "elemental_oil",
+    "short_description": "Corrupt Witch Hunters are executing innocent herbalists on Temple Isle.",
+    "description": "Under the guise of serving the Eternal Fire, a rogue squadron of Witch Hunters has been seizing property and executing harmless merchants on Temple Isle. Ambush the patrol and put an end to their fanaticism. You may find the formula for Elementa Oil among their confiscated contraband."
+  },
+  "contract_the_cemetery_stalker": {
+    "name": "The Cemetery Stalker",
+    "type": "monster_hunt",
+    "target_monster": "alghoul",
+    "target_qty": 4,
+    "reward_coins": 400,
+    "reward_exp": 180,
+    "reward_recipe": null,
+    "short_description": "Necrophages are digging up the graves of wealthy nobles.",
+    "description": "The gravedigger of Novigrad Cemetery is terrified. A pack of spiked alghouls has broken into the noble crypts and is feasting on the recently deceased. Eradicate the beasts before the city catches wind of the desecration."
+  },
+  "contract_phantom_of_farcorners": {
+    "name": "Phantom of Farcorners",
+    "type": "monster_hunt",
+    "target_monster": "noonwraith",
+    "target_qty": 1,
+    "reward_coins": 500,
+    "reward_exp": 300,
+    "reward_recipe": null,
+    "short_description": "A spectral figure haunts the farmlands just outside the city walls.",
+    "description": "Farmers in the Farcorners district are abandoning their crops because a weeping spirit appears in the fields at midday, turning anyone who approaches into dried husks. Banish the Noonwraith so the city doesn't starve."
   }
 }

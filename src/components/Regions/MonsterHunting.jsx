@@ -48,7 +48,7 @@ const MonsterHunting = ({ props }) => {
                     src={`./images/${monster}.png`}
                     alt={currentMonster.name}
                     onError={(e) => {
-                      e.target.src = "https://via.placeholder.com/150/171717/FFFFFF?text=No+Image"; 
+                      e.target.src = ""; 
                     }}
                     className={`w-full h-full object-contain drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)] ${!isDiscovered ? 'brightness-0 opacity-50' : 'drop-shadow-lg'} transition-transform duration-300 relative z-10
                       ${isOversized

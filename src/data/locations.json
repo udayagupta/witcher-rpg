@@ -10,7 +10,9 @@
       "contract_song_beneath_the_river",
       "contract_devil_by_the_well",
       "contract_griffin_school_gear",
-      "contract_feline_school_gear"
+      "contract_feline_school_gear",
+      "contract_viper_school_gear",
+      "contract_cleansing_the_graveyard"
     ],
     "sub_locations": {
       "cackler_bridge": {
@@ -179,7 +181,11 @@
     "contracts": [
       "contract_leshen_in_crookback_bog",
       "contract_wyvern_nest_at_crows_perch",
-      "contract_wolven_school_gear"
+      "contract_wolven_school_gear",
+      "contract_the_soldiers_elixir",
+      "contract_blood_in_the_swamp",
+      "contract_highway_robbery",
+      "contract_the_restless_maidens"
     ],
     "sub_locations": {
       "crookback_bog": {
@@ -352,12 +358,17 @@
     "place_description": "A bustling free city and merchant hub. Novigrad is rife with intrigue, markets, churches and criminal networks — monsters hide in alleys and sewers.",
     "badge": "./images/novigrad-badge.png",
     "contracts": [
-      "contract_sewer_beast"
+      "contract_sewer_beast",
+      "contract_the_apex_predator",
+      "contract_shadow_of_the_bits",
+      "contract_temple_isle_menace",
+      "contract_the_cemetery_stalker",
+      "contract_phantom_of_farcorners"
     ],
     "sub_locations": {
       "docks": {
         "id": "docks",
-        "name": "Novigrad Docks",
+        "name": "Novigrad Docks ⚓",
         "monsters_found": ["siren", "drowner", "bear", "mage_hunter", "witch_hunter"],
         "merchant": "dockmaster",
         "blacksmith": null,
@@ -371,7 +382,7 @@
       },
       "old_sewers": {
         "id": "old_sewers",
-        "name": "Old Sewers",
+        "name": "Old Sewers 🐀",
         "monsters_found": ["nekker", "endrega_warrior", "ekimmara"],
         "merchant": null,
         "blacksmith": null,
@@ -384,16 +395,73 @@
       },
       "market_square": {
         "id": "market_square",
-        "name": "Market Square",
+        "name": "Market Square 💰",
         "monsters_found": ["mage_hunter", "witch_hunter", "ekimmara"],
         "merchant": "market_merchants",
+        "blacksmith": "novigrad_blacksmith",
+        "armorer": null,
+        "resources_to_gather": [
+          { "id": "bread", "type": "foods", "chance": 0.8, "maxQty": 2 }
+        ],
+        "canRest": true
+      },
+      "the_bits": {
+        "id": "the_bits",
+        "name": "The Bits (Slums) 🏚️",
+        "monsters_found": ["bandit", "ghoul"],
+        "merchant": null,
         "blacksmith": null,
         "armorer": null,
-        "resources_to_gather": null,
+        "resources_to_gather": [
+          { "id": "metal_scrap", "type": "resources", "chance": 0.8, "maxQty": 3 },
+          { "id": "hide", "type": "resources", "chance": 0.5, "maxQty": 2 },
+          { "id": "water", "type": "foods", "chance": 0.4, "maxQty": 1 }
+        ],
+        "canRest": false
+      },
+      "temple_isle": {
+        "id": "temple_isle",
+        "name": "Temple Isle ⛪",
+        "monsters_found": ["witch_hunter", "mage_hunter"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": "temple_armorer",
+        "resources_to_gather": [
+          { "id": "arenaria", "type": "resources", "chance": 0.6, "maxQty": 2 },
+          { "id": "water", "type": "foods", "chance": 0.8, "maxQty": 1 }
+        ],
         "canRest": true
+      },
+      "novigrad_cemetery": {
+        "id": "novigrad_cemetery",
+        "name": "Novigrad Cemetery 🪦",
+        "monsters_found": ["ghoul", "alghoul", "wraith"],
+        "merchant": null,
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": [
+          { "id": "monster_bone", "type": "resources", "chance": 0.7, "maxQty": 2 },
+          { "id": "mistletoe", "type": "resources", "chance": 0.5, "maxQty": 1 },
+          { "id": "blowball", "type": "resources", "chance": 0.6, "maxQty": 2 }
+        ],
+        "canRest": false
+      },
+      "farcorners": {
+        "id": "farcorners",
+        "name": "Farcorners (Outskirts) 🌾",
+        "monsters_found": ["noonwraith", "wolf", "bandit"],
+        "merchant": "farcorners_innkeeper",
+        "blacksmith": null,
+        "armorer": null,
+        "resources_to_gather": [
+          { "id": "bread", "type": "foods", "chance": 0.5, "maxQty": 1 },
+          { "id": "blowball", "type": "resources", "chance": 0.7, "maxQty": 3 },
+          { "id": "dog_tallow", "type": "resources", "chance": 0.4, "maxQty": 2 }
+        ],
+        "canRest": false
       }
     },
-    "default_sub_location": "docks"
+    "default_sub_location": "market_square"
   },
   "skellige": {
     "id": "skellige",
@@ -403,7 +471,10 @@
     "contracts": [
       "contract_waves_of_the_wyvern",
       "contract_spirits_of_the_standing_stones",
-      "contract_ursine_school_gear"
+      "contract_ursine_school_gear",
+      "contract_winged_death",
+      "contract_terror_of_the_woods",
+      "contract_the_screeching_cliffs"
     ],
     "sub_locations": {
       "harral_west": {

@@ -4,7 +4,7 @@ import monstersData from "../../data/monster.json";
 import recipesData from "../../data/recipes.json";
 
 
-const ContractCard = ({ selectedContract }) => {
+const ContractCard = ({ selectedContract, setSelectedContract }) => {
   const player = usePlayer();
   const acceptContract = usePlayerStore((state) => state.acceptContract);
   const turnInQuest = usePlayerStore((state) => state.turnInQuest);
@@ -31,8 +31,19 @@ const ContractCard = ({ selectedContract }) => {
   const activeQuestInfo = player.activeQuests[selectedContract];
   const isCompleted = activeQuestInfo?.status === "completed";
 
+  const onClose = () => { setSelectedContract(null) };
+
   return (
-    <div className="flex flex-col gap-3 rounded p-4 bg-neutral-900/30 h-full text-white overflow-auto">
+    <div className="relative bg-neutral-900 border border-neutral-700 flex flex-col w-full max-w-[650px] max-h-[90vh] overflow-y-auto min-h-[350px] p-5 sm:p-8 rounded-lg shadow-2xl text-white">
+
+      <button
+        onClick={onClose}
+        className="absolute cursor-pointer top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-neutral-800 text-neutral-400 hover:text-red-400 hover:bg-neutral-700 transition-colors font-bold text-lg"
+        title="Close Details"
+      >
+        ✕
+      </button>
+
       <h3 className="text-center text-3xl text-amber-300 witcher-font">
         {selectedContractData.name}
       </h3>
@@ -48,7 +59,6 @@ const ContractCard = ({ selectedContract }) => {
           Reward: <span className="font-semibold text-amber-400">{selectedContractData.reward_coins} crowns</span>
         </p>
 
-        {/* Changed to a div to handle flex-wrap and items-center properly */}
         <div className='flex flex-wrap items-center gap-2 mt-0.5'>
           <span>Unlocks:</span>
           {selectedContractData.reward_recipe ? (

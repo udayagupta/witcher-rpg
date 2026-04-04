@@ -16,7 +16,7 @@ const MainGameScreen = () => {
   const [isMobileOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <main className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-800 text-white">
+    <main className="flex flex-col  bg-gradient-to-b from-neutral-900 to-neutral-800 text-white">
 
       <div className="lg:hidden flex justify-between items-center p-3 bg-neutral-950 border-b border-neutral-700 sticky top-0 z-40 shadow-lg">
         <h1 className="text-xl witcher-font text-neutral-100 truncate">The Witcher RPG</h1>

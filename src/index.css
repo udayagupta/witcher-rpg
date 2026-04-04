@@ -36,15 +36,6 @@
 
 
 
-.contracts-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
-    gap: 20px;
-    overflow: auto;
-}
-
-
 .side-bar-link {
     /* border: 1px solid; */
     padding: 16px;

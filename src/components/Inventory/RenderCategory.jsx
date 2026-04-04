@@ -62,7 +62,7 @@ const RenderCategory = ({ category }) => {
           }`}
       >
         {items.length === 0 && (
-          <li className='text-4xl mt-8 text-center'>
+          <li className='text-2xl mt-8 text-center'>
             No Items with <span className='text-amber-300'>{category.name}</span> category
           </li>
         )}

@@ -108,5 +108,43 @@
       { "id": "raw_meat", "category": "foods", "qty": 10, "price": 15 },
       { "id": "water", "category": "foods", "qty": -1, "price": 5 }
     ]
+  },
+  "novigrad_blacksmith": {
+    "merchant_id": "novigrad_blacksmith",
+    "name": "Novigrad Master Blacksmith",
+    "type": "blacksmith",
+    "gold": 1200,
+    "pricing_multiplier": 1.2,
+    "inventory": [
+      { "id": "iron_ingot", "category": "resources", "qty": 10, "price": 100 },
+      { "id": "steel_ingot", "category": "resources", "qty": 5, "price": 150 },
+      { "id": "silver_ingot", "category": "resources", "qty": 3, "price": 250 },
+      { "id": "metal_scrap", "category": "resources", "qty": 20, "price": 80 }
+    ]
+  },
+  "temple_armorer": {
+    "merchant_id": "temple_armorer",
+    "name": "Temple Isle Armorer",
+    "type": "armorer",
+    "gold": 950,
+    "pricing_multiplier": 1.4,
+    "inventory": [
+      { "id": "leather_scrap", "category": "resources", "qty": 15, "price": 100 },
+      { "id": "hide", "category": "resources", "qty": 10, "price": 60 },
+      { "id": "monster_bone", "category": "resources", "qty": 5, "price": 120 }
+    ]
+  },
+  "farcorners_innkeeper": {
+    "merchant_id": "farcorners_innkeeper",
+    "name": "Farcorners Innkeeper",
+    "type": "merchant",
+    "gold": 180,
+    "pricing_multiplier": 0.9,
+    "inventory": [
+      { "id": "water", "category": "foods", "qty": -1, "price": 4 },
+      { "id": "bread", "category": "foods", "qty": 15, "price": 15 },
+      { "id": "raw_meat", "category": "foods", "qty": 10, "price": 12 },
+      { "id": "dwarven_spirit", "category": "resources", "qty": 5, "price": 45 }
+    ]
   }
 }
