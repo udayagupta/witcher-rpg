@@ -1,6 +1,6 @@
 import { useContext, useState, createContext, useEffect } from "react";
 import itemsData from "../../data/items.json";
-import { checkIfEquipped, playSound, updateItemsInInventory } from "../../utils/utils";
+import { checkIfEquipped, updateItemsInInventory } from "../../utils/utils";
 
 const PlayerContext = createContext();
 
@@ -190,7 +190,7 @@ export const PlayerProvider = ({ children }) => {
       activeQuests: prev.activeQuests.keys().filter((q) => q !== questId),
     }));
 
-    playSound("quest_completed");
+    // playSound("quest_completed");
   };
 
   const acceptContract = (questId) => {
@@ -206,7 +206,7 @@ export const PlayerProvider = ({ children }) => {
       activeQuests: updatedActiveQuests,
     }));
 
-    playSound("new_quest");
+    // playSound("new_quest");
 
   };
 
@@ -286,9 +286,9 @@ export const PlayerProvider = ({ children }) => {
         didLevelUp = true;
       }
 
-      if (didLevelUp) {
-        setTimeout(() => playSound("level_up"), 0);
-      }
+      // if (didLevelUp) {
+      //   setTimeout(() => playSound("level_up"), 0);
+      // }
 
       return {
         ...prev,
@@ -311,9 +311,9 @@ export const PlayerProvider = ({ children }) => {
     heal(healPoints);
     consumeItem(id, type, 1);
 
-    if (type === "potion") playSound("potion_drink");
-    if (type === "food" && id === "water") playSound("drink");
-    if (type === "food") playSound("food");
+    // if (type === "potion") playSound("potion_drink");
+    // if (type === "food" && id === "water") playSound("drink");
+    // if (type === "food") playSound("food");
   }
 
   const equip = (itemData) => {
@@ -324,7 +324,7 @@ export const PlayerProvider = ({ children }) => {
       equipment: { ...prev.equipment, [itemData.slot]: itemData.id }
     }));
 
-    playSound("equip");
+    // playSound("equip");
 
   }
 

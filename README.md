@@ -78,7 +78,7 @@ Open browser at:
 ## 🐺 Credits
 
 * Inspired by **The Witcher** series by CD Projekt Red.
-* Sound effects from [Voicy](https://www.voicy.network/search/witcher-3-sound-effects).  
+<!-- * Sound effects from [Voicy](https://www.voicy.network/search/witcher-3-sound-effects).   -->
 * Icons from [React Icons](https://react-icons.github.io/react-icons/).
 * Framer Motion for animations: [Framer Motion](https://www.framer.com/motion/).
 * Zustand for State management: [Zustand](https://zustand.docs.pmnd.rs/learn/getting-started/introduction)

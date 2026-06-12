@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { generateLoot } from "../../utils/battle";
 import items from "../../data/items.json";
-import { calculateMonsterExp, playSound } from "../../utils/utils";
+import { calculateMonsterExp } from "../../utils/utils";
 import { usePlayerStore } from "../../store/usePlayerStore";
 import Icon from "../Icon";
 
@@ -38,7 +38,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
     if (hasProcessedRewards.current) return;
 
     if (isVictory) {
-      playSound("quest_completed");
+      // playSound("quest_completed");
       updateLevelExp(xpGained);
       updateQuests(monsterData.id);
       discoverMonster(monsterData.id);
@@ -47,7 +47,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
         addToInventory(loot.id, loot.qty, loot.type);
       });
     } else {
-      playSound("dead");
+      // playSound("dead");
       setPlayer((prev) => ({ ...prev, stats: { ...prev.stats, totalDeaths: prev.stats.totalDeaths + 1 }}))
     }
 
@@ -107,7 +107,7 @@ const BattleResultPopUp = ({ monsterData, battleResult, handleGameMode }) => {
         )}
 
         <button
-          onClick={() => {handleGameMode("explore"); playSound("equip")}}
+          onClick={() => {handleGameMode("explore")}}
           className={`cursor-pointer mt-5 mx-auto block witcher-font px-4 py-2 rounded-md text-sm border transition ${isVictory
             ? "border-amber-300 hover:bg-amber-300 hover:text-black"
             : "border-red-500 hover:bg-red-500 hover:text-black"

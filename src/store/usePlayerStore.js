@@ -263,7 +263,7 @@ export const usePlayerStore = create(
           consumeItem(ingredientData, ingredient.qty);
         });
 
-        if (recipeData.type === "potion") playSound("potion_crafted");
+        // if (recipeData.type === "potion") playSound("potion_crafted");
 
         addToInventory(
           recipeData.yields.id,
@@ -381,9 +381,9 @@ export const usePlayerStore = create(
         get().heal(healPoints);
         get().consumeItem(potionData, 1);
 
-        if (potionData.type === "potion") playSound("potion_drink");
-        if (potionData.type === "food" && potionData.id === "water") {playSound("drink")};
-        if (potionData.type === "food" && potionData.id !== "water") playSound("food");
+        // if (potionData.type === "potion") playSound("potion_drink");
+        // if (potionData.type === "food" && potionData.id === "water") {playSound("drink")};
+        // if (potionData.type === "food" && potionData.id !== "water") playSound("food");
 
 
         return true;
