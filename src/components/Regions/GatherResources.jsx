@@ -9,7 +9,7 @@ const GatherResources = ({ subLocationData, itemsData }) => {
   
   const player = usePlayer();
   
-  const SCAVENGE_TIME = 10;
+  const SCAVENGE_TIME = 5;
   const addToInventory = usePlayerStore((state) => state.addToInventory);
   const [gatherResourcesState, setGatherResourcesState] = useState({
     cooldown: 0,

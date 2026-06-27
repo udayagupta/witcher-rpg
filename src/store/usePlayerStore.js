@@ -119,8 +119,12 @@ export const usePlayerStore = create(
         trousers: [{ id: "hunting_trousers", type: "armor", qty: 1 }],
         boots: [{ id: "hunting_boots", type: "armor", qty: 1 }],
         potions: [{ id: "swallow", type: "potions", qty: 3 }],
-        oils: [],
-        resources: [],
+        oils: [{ id: "hybrid_oil", type: "oils", qty: 3}, { id: "necrophage_oil", type: "oils", qty: 3}],
+        resources: [
+          { id: "iron_ore", type: "resources", qty: 3 }, 
+          { id: "iron_ingot", type: "resources", qty: 5},
+          { id: "metal_scrap", type: "resources", qty: 5}
+        ],
         foods: [
           { id: "water", type: "foods", qty: 5 },
           { id: "bread", type: "foods", qty: 3 },

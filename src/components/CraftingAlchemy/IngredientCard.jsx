@@ -5,10 +5,10 @@ import { Tooltip } from 'react-tooltip';
 
 const locationMap = generateResourcesMap(locations);
 
-const IngredientCard = ({ ingredient, ingredientData, playerQty }) => {
+const IngredientCard = ({ ingredient, ingredientData, playerQty, recipeDataId }) => {
 
   const foundLocations = locationMap[ingredient.id]?.locations || [];
-  const tooltipId = `tooltip-${ingredient.id}`;
+  const tooltipId = `tooltip-${recipeDataId}-${ingredient.type}-${ingredient.id}`;
 
   return (
     <>
@@ -34,7 +34,7 @@ const IngredientCard = ({ ingredient, ingredientData, playerQty }) => {
         place="top"
         className="z-[999] !bg-neutral-950 !border !border-neutral-600 !opacity-100 shadow-2xl rounded-md"
         style={{ width: '220px', padding: '12px' }}
-        clickable={true}
+        // clickable={true}
       >
         <div className="flex flex-col">
           <h5 className="text-amber-300 font-bold text-xs uppercase tracking-wider border-b border-neutral-800 pb-1 mb-2 text-center">
